@@ -588,6 +588,9 @@ body.dif2 .zmap::after,body.dif2 .ibig::after,body.dif2 .sea::after{background:v
 @media (prefers-reduced-motion:reduce){#wx .rain i,#wx .rain b,.skc,.lzret,.sic.clip{animation:none}}
 
 .fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 .14em;line-height:1.05;font-weight:700}.fr i{font-style:normal;padding:0 .2em}.fr i:first-child{border-bottom:.09em solid currentColor}
+html.web .app{max-width:520px;width:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+html.web #stage{flex:1 1 auto;height:auto;min-height:120px;max-height:460px}
+html.web #qcard,html.web #bubble,html.web #shop,html.web #bossbar{flex:0 0 auto}
 </style>
 </head>
 <body>
@@ -2213,6 +2216,25 @@ window.onAndroidBack=function(){try{
   if(window.__scr&&window.__scr!=='home'){show(window.__scr==='map'?'island':window.__scr==='island'?'isles':'home');return true}
 }catch(e){}return false};
 show('home');
+
+/* web app only: scale the battle screen to fit the window (APK untouched) */
+(function(){
+  if(location.hostname==='appassets.androidplatform.net')return;
+  var root=document.documentElement;root.classList.add('web');
+  var RW=390,RH=640;
+  function fit(){
+    var app=document.querySelector('.app');if(!app)return;
+    var cs=getComputedStyle(root),pad=(parseFloat(cs.paddingTop)||0)+(parseFloat(cs.paddingBottom)||0);
+    var vw=root.clientWidth||innerWidth,vh=(innerHeight||root.clientHeight)-pad;
+    var z=Math.max(.7,Math.min(1.8,vw/RW,vh/RH));
+    app.style.zoom=z;app.style.height=Math.floor(vh/z)+'px';
+    try{if(typeof S==='object'&&S)S.W=0}catch(e){}
+  }
+  window.addEventListener('resize',fit);window.addEventListener('orientationchange',fit);
+  if(window.visualViewport)visualViewport.addEventListener('resize',fit);
+  fit();setTimeout(fit,300);
+  window.__fit=fit;
+})();
 })();
 </script>
 <script>
