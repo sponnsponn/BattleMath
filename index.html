@@ -587,16 +587,181 @@ body.dif2 #wx::before{display:none}
 body.dif2 .zmap::after,body.dif2 .ibig::after,body.dif2 .sea::after{background:var(--rt) 0 0/72px 72px,rgba(40,10,55,.5)!important}
 @media (prefers-reduced-motion:reduce){#wx .rain i,#wx .rain b,.skc,.lzret,.sic.clip{animation:none}}
 
+.fbar{display:inline-flex;gap:2px;vertical-align:middle;margin:0 .15em;padding:2px;border:2px solid currentColor;border-radius:6px}.fbar i{display:block;width:.75em;height:1.05em;border-radius:2px;background:rgba(127,127,127,.2)}.fbar i.on{background:#FF8A3D}
+#qtext.long{font-size:19px;line-height:1.35}#pqt.long{font-size:22px;line-height:1.35}
 .fr{display:inline-flex;flex-direction:column;align-items:center;vertical-align:middle;margin:0 .14em;line-height:1.05;font-weight:700}.fr i{font-style:normal;padding:0 .2em}.fr i:first-child{border-bottom:.09em solid currentColor}
 html.web .app{max-width:520px;width:100%;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
 html.web #stage{flex:1 1 auto;height:auto;min-height:120px;max-height:460px}
 html.web #qcard,html.web #bubble,html.web #shop,html.web #bossbar{flex:0 0 auto}
+
+/* v1.7 art */
+.sea>.wv,.ibig>.wv{inset:-30px;z-index:0;pointer-events:none;background-size:144px 72px;image-rendering:pixelated;opacity:.75;animation:wv 7s linear infinite}
+.sea>.wv.w2,.ibig>.wv.w2{opacity:.45;background-size:96px 48px;animation-duration:11s;animation-direction:reverse}
+@keyframes wv{to{transform:translate(144px,72px)}}
+.ibig{background:radial-gradient(circle at 50% 45%,#5cbcf2 0,#3fa4e8 55%,#2a7cc7 100%)}
+.ibig>.isimg{left:0;top:0;width:100%;height:100%;z-index:0;pointer-events:none;image-rendering:pixelated;filter:drop-shadow(0 6px 0 rgba(20,60,110,.35))}
+.sea>.cld,.ibig>.cld{z-index:2;pointer-events:none;image-rendering:pixelated;opacity:.92;filter:drop-shadow(0 26px 0 rgba(20,60,110,.18));animation:cld 38s linear infinite}
+.sea>.cld.c1,.ibig>.cld.c1{top:6%;width:110px;left:-30%}.sea>.cld.c2,.ibig>.cld.c2{top:52%;width:84px;left:-30%;animation-duration:55s;animation-delay:-24s}
+@keyframes cld{to{transform:translateX(560px)}}
+.sea>.bird,.ibig>.bird{z-index:2;pointer-events:none;width:22px;image-rendering:pixelated;animation:bird 16s linear infinite,flap .5s steps(2) infinite}
+.sea>.bird.b1,.ibig>.bird.b1{top:18%;left:110%}.sea>.bird.b2,.ibig>.bird.b2{top:23%;left:118%;width:16px;animation-delay:-1.2s,-.25s}
+@keyframes bird{to{translate:-640px -40px}}@keyframes flap{50%{transform:scaleY(.4)}}
+body.dif1 .sea>.cld,body.dif1 .ibig>.cld{opacity:.3}body.dif2 .sea>.cld,body.dif2 .ibig>.cld{filter:brightness(.55);opacity:.8}body.dif1 .bird,body.dif2 .bird{display:none}
+.isle .land{background:none;background-size:100% 100%;background-repeat:no-repeat;image-rendering:pixelated;border-radius:0;padding:22px 14px 30px}
+#bgx{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden;--k:2}
+#bgx .ly{position:absolute;left:0;bottom:0;height:100%;width:100%;background-repeat:repeat-x;background-size:auto 100%;background-position:left bottom;image-rendering:pixelated}
+#bgx .cld{width:calc(100% + var(--k)*240px);animation:bgs 90s linear infinite;--d:240}
+#bgx .pet{width:calc(100% + var(--k)*96px);height:calc(100% + var(--k)*80px);bottom:auto;top:calc(var(--k)*-80px);background-repeat:repeat;background-size:auto calc(100% / 2);animation:pet 14s linear infinite;opacity:.9}
+@keyframes bgs{to{transform:translateX(calc(var(--k)*-240px))}}
+@keyframes pet{to{transform:translate(calc(var(--k)*-96px),calc(var(--k)*80px))}}
+#bgx .sun{position:absolute;left:12%;top:6%;height:30%;aspect-ratio:1;background-size:100% 100%;image-rendering:pixelated;animation:sunp 4s ease-in-out infinite alternate}
+@keyframes sunp{to{filter:brightness(1.08) drop-shadow(0 0 6px #FFF3B0)}}
+body.dif1 #bgx .sun,body.dif2 #bgx .sun{display:none}body.dif2 #bgx .pet{display:none}
+@media (prefers-reduced-motion:reduce){.sea>.wv,.ibig>.wv,.cld,.bird,#bgx .ly,#bgx .sun{animation:none}}
+/* v1.7 gacha machine */
+.gwrap{flex:1 1 auto;min-height:0;display:flex;flex-direction:column;gap:8px}
+.gwrap .gtabs{margin:0}.gwrap .gshow{margin:0}
+.gstage{flex:1 1 0;min-height:150px;position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:18px;
+  background:radial-gradient(circle at 50% 45%,rgba(255,201,60,.35),transparent 60%),linear-gradient(#2a2350,#171433);border:3px solid #1E2A44}
+.gstage.b2{background:radial-gradient(circle at 50% 45%,rgba(255,120,220,.35),transparent 60%),linear-gradient(#2c1b55,#140f2e)}
+.gstage::before{content:'';position:absolute;inset:-50%;background:repeating-conic-gradient(from 0deg,rgba(255,255,255,.07) 0 10deg,transparent 10deg 24deg);animation:grot 30s linear infinite}
+.gstage::after{content:'';position:absolute;inset:0;background:radial-gradient(1.5px 1.5px at 12% 20%,#fff 99%,transparent),radial-gradient(1.5px 1.5px at 85% 15%,#fff 99%,transparent),radial-gradient(2px 2px at 78% 70%,#fff 99%,transparent),radial-gradient(1.5px 1.5px at 20% 80%,#fff 99%,transparent),radial-gradient(1.5px 1.5px at 50% 8%,#fff 99%,transparent);animation:gtw 2.4s ease-in-out infinite alternate}
+@keyframes grot{to{transform:rotate(360deg)}}@keyframes gtw{to{opacity:.3}}
+.gm2{position:relative;z-index:1;width:230px;height:306px;flex:0 0 auto;transform:scale(var(--s,1));--body:linear-gradient(#ff8277,#e4483e 60%,#c4352d);--neon:#FFC93C}
+.gm2.b2{--body:linear-gradient(#a57bff,#7246e6 60%,#5a2fc9);--neon:#ff8fe0}
+.gm2>*{position:absolute}
+.gsign{left:18px;top:0;width:194px;height:40px;border-radius:12px;background:#1E2A44;border:3px solid var(--neon);box-shadow:0 0 12px var(--neon),inset 0 0 10px rgba(0,0,0,.5);display:flex;align-items:center;justify-content:center;z-index:3}
+.gsign b{font-size:19px;font-weight:800;letter-spacing:2px;color:#fff;text-shadow:0 0 4px var(--neon),0 0 10px var(--neon),0 0 18px var(--neon);white-space:nowrap}
+.gbl{position:absolute;display:flex;justify-content:space-between}
+.gbl i{width:5px;height:5px;border-radius:50%;background:#FFF3B0;box-shadow:0 0 4px #FFE45C;animation:gbk 1s steps(1) infinite}
+.gbl i:nth-child(2n){animation-delay:.5s}
+.gsign .gbl{left:8px;right:8px}.gsign .gbl.t{top:3px}.gsign .gbl.b{bottom:3px}
+@keyframes gbk{50%{background:#7a6a40;box-shadow:none}}
+.gglass{left:22px;top:34px;width:186px;height:156px;border-radius:50% 50% 42% 42%/58% 58% 42% 42%;z-index:1;overflow:hidden;
+  background:radial-gradient(circle at 34% 26%,rgba(255,255,255,.55),rgba(255,255,255,.12) 38%,rgba(170,225,255,.16) 70%,rgba(120,180,255,.28));
+  border:4px solid rgba(255,255,255,.9);box-shadow:0 0 0 4px #1E2A44,inset 0 -14px 24px rgba(0,0,0,.18)}
+.gballs{position:absolute;inset:0}
+.gballs i{position:absolute;width:34px;height:34px;border-radius:50%;border:3px solid #1E2A44;background:linear-gradient(160deg,var(--c) 0 50%,#fff 50%);box-shadow:inset -5px -5px 0 rgba(0,0,0,.15),inset 4px 4px 0 rgba(255,255,255,.35)}
+.gshine{left:18%;top:10%;width:22%;height:46%;border-radius:50%;border-left:6px solid rgba(255,255,255,.85);transform:rotate(18deg);z-index:2}
+.gshine.s2{left:30%;top:9%;width:10%;height:16%;border-left-width:4px;opacity:.7}
+.gneck{left:42px;top:184px;width:146px;height:18px;border-radius:9px;border:3px solid #1E2A44;background:linear-gradient(#ffffff,#b9c3d6 55%,#e9eef6);z-index:2}
+.gbody2{left:12px;top:196px;width:206px;height:100px;border-radius:20px;border:4px solid #1E2A44;background:var(--body);z-index:1;
+  box-shadow:inset 0 -9px 0 rgba(0,0,0,.18),inset 0 6px 0 rgba(255,255,255,.28),0 0 18px rgba(0,0,0,.35)}
+.gbody2>*{position:absolute}
+.gbody2 .gbl.l{left:16px;right:16px;top:9px}
+.gcoin{left:22px;top:24px;width:34px;height:44px;border-radius:9px;background:linear-gradient(#e9eef6,#9aa6bd);border:3px solid #1E2A44;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px}
+.gcoin i{width:6px;height:18px;border-radius:3px;background:#1E2A44;box-shadow:inset 0 0 0 1.5px #FFC93C}.gcoin small{font-size:10px;line-height:1}
+.gknob2{right:20px;top:20px;width:54px;height:54px;border-radius:50%;border:3px solid #1E2A44;background:radial-gradient(circle at 38% 34%,#fff 0 12%,#e3e9f2 13% 40%,#9aa6bd 70%);display:flex;align-items:center;justify-content:center}
+.gknob2 i{font-style:normal;width:34px;height:34px;border-radius:50%;background:radial-gradient(circle at 38% 34%,#fff2a8,#FFC93C 50%,#e09a00);border:3px solid #1E2A44;display:flex;align-items:center;justify-content:center;font-size:17px;color:#1E2A44}
+.gbadge{left:62px;top:30px;width:80px;text-align:center;font-size:9.5px;font-weight:800;letter-spacing:1px;color:#fff;background:rgba(30,42,68,.55);border-radius:6px;padding:2px 0}
+.gchute{left:70px;bottom:-4px;width:66px;height:30px;border-radius:12px 12px 0 0;background:#14162A;border:3px solid #1E2A44;border-bottom:0;overflow:visible}
+.gchute::before{content:'';position:absolute;left:4px;right:4px;top:4px;height:8px;border-radius:4px;background:linear-gradient(#2c3150,#14162A)}
+.gcap{left:50%;bottom:2px;width:30px;height:30px;margin-left:-15px;border-radius:50%;border:3px solid #1E2A44;background:linear-gradient(160deg,var(--cc,#fff) 0 50%,#fff 50%);opacity:0;transform:translateY(-40px) scale(.6)}
+.gcap.drop{animation:gdrop .9s cubic-bezier(.3,1.4,.5,1) forwards}
+.gcap.gSSR.drop,.gcap.gSR.drop{box-shadow:0 0 14px 4px var(--cc)}
+@keyframes gdrop{0%{opacity:1;transform:translateY(-40px) scale(.6)}55%{opacity:1;transform:translateY(8px) scale(1.05)}75%{transform:translateY(0) scale(1)}100%{opacity:1;transform:translateY(-6px) scale(1.25);filter:brightness(1.6)}}
+.gfeet{left:30px;top:294px;width:170px;height:12px;border-radius:0 0 12px 12px;background:#1E2A44}
+.gm2.spin .gknob2 i{animation:gknob .8s ease-in-out}
+.gm2.spin .gballs i{animation:gjig .22s ease-in-out 4 alternate;animation-delay:var(--d)}
+.gm2.spin .gglass{animation:gsh .8s}
+.gm2.spin .gbl i{animation-duration:.25s}
+@keyframes gknob{to{transform:rotate(360deg)}}
+@keyframes gjig{to{transform:translate(4px,-14px) rotate(25deg)}}
+.ginfo{flex:0 0 auto;background:#fff;border:3px solid #1E2A44;border-radius:14px;padding:6px 10px;display:flex;flex-direction:column;gap:4px;color:#1E2A44}
+.grates{font-size:12px;text-align:center}
+.gpity{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.gpity .pity.ss i{background:#FFC93C}
+.gbtns{flex:0 0 auto;margin:0}
+/* reveal overlay */
+.gov{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;padding:12px;background:#1a1640;background:radial-gradient(circle at 50% 42%,color-mix(in srgb,var(--rc) 45%,#1a1640),#0c0a1e 75%);animation:gfade .25s both}
+@keyframes gfade{from{opacity:0}}
+.grays{position:absolute;inset:-60%;background:repeating-conic-gradient(from 0deg,color-mix(in srgb,var(--rc) 40%,transparent) 0 8deg,transparent 8deg 20deg);animation:grot 18s linear infinite;pointer-events:none;
+  -webkit-mask:radial-gradient(circle,#000 0 20%,transparent 60%);mask:radial-gradient(circle,#000 0 20%,transparent 60%)}
+.gov.rN .grays,.gov.rR .grays{opacity:.5}
+.gbox2{position:relative;display:flex;flex-direction:column;align-items:center;gap:12px;max-height:100%;width:100%;max-width:440px}
+.gbox2 h2{margin:0;color:#fff;font-size:22px;text-shadow:0 0 10px var(--rc),0 2px 0 #1E2A44;text-align:center}
+.gov.rSSR .gbox2 h2{animation:gpulse .9s ease-in-out infinite alternate}
+@keyframes gpulse{to{transform:scale(1.08)}}
+.gcards{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;perspective:800px}
+.gcd{width:min(28vw,118px,17vh);aspect-ratio:3/4}
+.gcards.n1 .gcd{width:min(46vw,170px,32vh)}
+.gin{position:relative;width:100%;height:100%;transform-style:preserve-3d;animation:gflip .55s cubic-bezier(.3,1.3,.5,1) both;animation-delay:calc(.4s + var(--i)*.4s)}
+@keyframes gflip{from{transform:rotateY(180deg) scale(.85)}to{transform:none}}
+.gov.fast .gin{animation-delay:0s;animation-duration:.2s}
+.gfront,.gback{position:absolute;inset:0;border-radius:14px;border:3px solid var(--c);backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;padding:6px 4px}
+.gfront{background:#fff;box-shadow:0 0 16px var(--c)}
+.gback{transform:rotateY(180deg);background:repeating-linear-gradient(45deg,#2a2350 0 8px,#221c44 8px 16px);box-shadow:0 0 18px var(--c),inset 0 0 18px var(--c)}
+.gback b{font-size:34px;color:var(--c);text-shadow:0 0 10px var(--c)}
+.gfront img{height:52%;width:auto;max-width:90%;object-fit:contain}
+.gfront .gr{position:absolute;left:6px;top:4px;font-size:12px;color:#fff;background:var(--c);border-radius:6px;padding:0 5px}
+.gfront span{font-size:12px;font-weight:700;color:#1E2A44;text-align:center;line-height:1.2}
+.gfront small{font-size:10.5px;color:#5b6b86}
+.gcd.gSSR .gfront{background:linear-gradient(135deg,#fff7d6,#ffe08a 50%,#fff7d6);background-size:200% 200%;animation:gshim 2s linear infinite}
+.gcd.gSR .gfront{background:linear-gradient(135deg,#fff,#f1e6ff)}
+@keyframes gshim{to{background-position:200% 200%}}
+.gobtn{width:100%;margin:0}
+@media (prefers-reduced-motion:reduce){.gstage::before,.gstage::after,.grays,.gbl i,.gin,.gcd.gSSR .gfront,.gov.rSSR .gbox2 h2{animation:none}}
+#bgx .top{background-position:left top}
+#bgx .pet.up{animation-name:petu;animation-duration:18s}
+@keyframes petu{from{transform:translate(0,calc(var(--k)*80px))}to{transform:translate(calc(var(--k)*-96px),0)}}
+
+/* v2.0 fit-to-screen + top bar */
+#hs>*{zoom:var(--fz,1)}
+.hbar{gap:6px}
+.hbar .chip{font-size:14px;padding:3px 9px}
+.hbar .stc small{font-size:11px;opacity:.7}
+.dseg{display:flex;flex:1;justify-content:center;min-width:0;border:3px solid #1E2A44;border-radius:999px;overflow:hidden;background:#fff}
+.dsb{font:inherit;flex:1;display:flex;align-items:center;justify-content:center;gap:2px;border:0;background:#fff;color:#1E2A44;font-size:12px;font-weight:700;padding:4px 2px;cursor:pointer;min-height:30px;white-space:nowrap}
+.dsb+.dsb{border-left:2px solid #1E2A44}
+.dsb.on.d0{background:#7ED957}.dsb.on.d1{background:#FFC93C}.dsb.on.d2{background:#E4524B;color:#fff}
+.dsb:not(.on){opacity:.7}
+@media (max-width:370px){.dsb span{display:none}.dsb{font-size:15px}}
+#home.g .dseg{border-color:#fff}
+.dlk{font-size:13px;font-weight:700}.dlk.d0{background:#7ED957}.dlk.d1{background:#FFC93C}.dlk.d2{background:#E4524B;color:#fff}
+.vrow{display:flex;align-items:center;gap:10px;margin:8px 0;text-align:left}
+.vrow span{flex:1;display:flex;flex-direction:column;gap:2px}
+.vrow b{font-size:14px}
+.vrow input[type=range]{width:100%;accent-color:#FFC93C;height:28px}
+.vrow em{font-style:normal;font-size:13px;min-width:42px;text-align:right}
+#ovbox .vt{width:48px;height:48px;margin:0;padding:0;font-size:22px;border-radius:14px;flex:0 0 auto}
+#ovbox .vt.off{opacity:.45}
+.sea{height:auto;flex:1 1 0;min-height:300px}
+.ibig{height:auto;flex:1 1 0;min-height:280px}
+.zmap{height:auto;flex:1 1 0;min-height:340px;margin-bottom:0;container-type:size}
+.zmap .lmk img{width:clamp(34px,11cqh,60px)}
+.zmap .lmk.lb img{width:clamp(48px,15cqh,86px)}
+.zmap .sign{font-size:clamp(9.5px,2cqh,12px);padding:0 5px}
+.zmap .sign small{font-size:clamp(9px,1.8cqh,10.5px)}
+.zmap .me{width:clamp(26px,7cqh,40px)}
+.btabs .dt{font-size:14px;min-height:38px;padding:4px}
+.btabs .dt small{font-size:11px;opacity:.75}
+#hs[data-scr=deck] .rost,#hs[data-scr=col] .coll{flex:1 1 0;min-height:140px;overflow:auto;align-content:start;padding:2px 2px 8px;-webkit-overflow-scrolling:touch;border-radius:12px}
+#hs[data-scr=deck] .st,#hs[data-scr=col] .st{margin:0}
+#hs[data-scr=deck]{gap:8px}
+.ptabs{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}.ptb{font-size:10px!important}
+.ptb{font:inherit;display:flex;flex-direction:column;align-items:center;gap:0;font-size:11px;font-weight:600;line-height:1.2;padding:4px 0;border:3px solid #1E2A44;border-radius:12px;background:#fff;color:#1E2A44;cursor:pointer;white-space:nowrap}
+.ptb i{font-style:normal;font-size:18px}
+.ptb.on{background:#FFC93C}
+.stabs .dt{font-size:14px;min-height:40px}
+.logo{font-size:clamp(36px,6.4vh,52px)}.logo span{font-size:clamp(42px,7.4vh,60px)}
+.sea{container-type:size}
+.brf .bscene{width:auto;max-width:100%;max-height:17vh;margin:0 auto 4px}
+.brf h1{font-size:21px;margin:2px 0}
+.brf p{margin:3px 0;font-size:13.5px}
+.brf ul{margin:4px auto;padding:0;list-style:none;font-size:13px;text-align:left;display:grid;gap:1px;width:fit-content}
+.brf .foes img{height:30px}.brf .foes .bossp img{height:48px}.brf .foes .bossp small{font-size:11px}
+.brf .skl{font-size:11px;line-height:1.35}
+.brf .gres{display:flex;justify-content:center;gap:4px;flex-wrap:wrap}.brf .gres .gc{padding:2px}.brf .gres .gc img{height:32px}
+.brf .brow{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:6px;margin-top:8px}
+#ovbox .brf .brow button{margin:0;width:auto;padding:10px 4px;font-size:15px}
+@media (max-height:660px){.brf .bscene{max-height:11vh}.brf p{font-size:12.5px}}
+@media (max-height:740px){.box{padding:16px 16px;gap:8px}.box h1{font-size:22px}.box .stars{font-size:30px}.box ul{font-size:14px;line-height:1.5}.box p{font-size:14px;line-height:1.4}.box button{font-size:17px;padding:10px}}
 </style>
 </head>
 <body>
 <div class="app">
   <div class="hud">
-    <button class="pill" id="menu">☰ เลือกด่าน</button>
+    <button class="pill" id="menu">☰ เลือกด่าน</button><span class="pill dlk" id="dlk" title="เปลี่ยนระดับได้ที่หน้าแผนที่"></span>
     <span class="sndb"><button class="pill ib" id="bS">🔊</button><button class="pill ib" id="bM">🎵</button></span>
     <div class="pill" id="coinpill">🪙 <b id="coins">0</b></div>
     
@@ -640,7 +805,7 @@ var MON=(function(){
   function ell(g,cx,cy,rx,ry,v,only){for(var y=-PAD;y<g.n+PAD;y++)for(var x=-PAD;x<g.n+PAD;x++){var dx=(x+.5-cx)/rx,dy=(y+.5-cy)/ry;if(dx*dx+dy*dy<=1&&(!only||g.get(x,y)===only))g.set(x,y,v)}}
   function rect(g,x0,y0,w,h,v){for(var y=y0;y<y0+h;y++)for(var x=x0;x<x0+w;x++)g.set(x,y,v)}
   function tri(g,x0,yb,w,h,v,lean){for(var i=0;i<h;i++){var ww=Math.max(1,Math.round(w*(1-i/h)));var off=Math.round((w-ww)/2+(lean||0)*i/h);rect(g,x0+off,yb-i,ww,1,v)}}
-  var SYM={'+':['010','111','010'],'-':['000','111','000'],'×':['101','010','101'],'÷':['010','000','111','000','010']};
+  var SYM={'+':['010','111','010'],'-':['000','111','000'],'×':['101','010','101'],'÷':['010','000','111','000','010'],'.':['000','000','000','010','010'],'%':['101','001','010','100','101']};
   function sym(g,s,x0,y0,v){var p=SYM[s];for(var r=0;r<p.length;r++)for(var c=0;c<3;c++)if(p[r][c]==='1')g.set(x0+c,y0+r,v)}
   // body shapes: return {top,bot,cx,eyeY,float}
   function body(g,sp,fr){
@@ -742,7 +907,28 @@ var MON=(function(){
      m:[{shape:'orb',c:['#FF9F7A','#C25A3A','#FFD0BD','#FFF06A','#7A2E18'],eyes:1,mouth:'fang'},
         {shape:'blob',c:['#8ED8FF','#4A9AD0','#D2F0FF','#FF7A8A','#24608A'],eyes:2,mouth:'grin',spikes:3}],
      h:[{shape:'golem',c:['#E6A8C8','#B06A92','#F7D2E6','#FFE45C','#6E3858'],eyes:2,mouth:'fang',brow:1,sym:'÷'},
-        {shape:'box',c:['#FFD9A0','#D09A4A','#FFEFD0','#E4524B','#7A5420'],eyes:2,mouth:'grin',horns:'big',brow:1}]}
+        {shape:'box',c:['#FFD9A0','#D09A4A','#FFEFD0','#E4524B','#7A5420'],eyes:2,mouth:'grin',horns:'big',brow:1}]},
+    {g:[{shape:'blob',c:['#F2C98A','#C4904A','#FFE9C2','#E4524B','#7A5420'],eyes:2,mouth:'grin'},
+        {shape:'orb',c:['#FFD34D','#C99419','#FFF0A8','#8A5A2E','#7A5410'],eyes:2,mouth:'fang',wings:1,float:1},
+        {shape:'tall',c:['#B9E3FF','#6AA8D6','#E6F5FF','#FF8A3D','#2E6A9A'],eyes:2,mouth:'o',cap:1}],
+     m:[{shape:'wide',c:['#E8A86A','#B06A2E','#F7D2A8','#FFF06A','#6E3A14'],eyes:2,mouth:'fang',sym:'×'},
+        {shape:'blob',c:['#C8A2F0','#8A5AC2','#E6D2FF','#FFE45C','#52307F'],eyes:3,mouth:'grin',spots:3}],
+     h:[{shape:'golem',c:['#C9955A','#8A5A2E','#EDC48E','#FFE45C','#5A3820'],eyes:2,mouth:'fang',brow:1,sym:'÷'},
+        {shape:'box',c:['#E86F6F','#A83838','#FFB3B3','#FFE45C','#6E1E1E'],eyes:2,mouth:'grin',horns:'big',brow:1,sym:'×'}]},
+    {g:[{shape:'orb',c:['#FFD34D','#C99419','#FFF0A8','#5A3C20','#7A5410'],eyes:2,mouth:'grin'},
+        {shape:'box',c:['#FF9FB8','#D96A8C','#FFD6E2','#5A3C20','#8A2E4A'],eyes:2,mouth:'fang',horns:'small'},
+        {shape:'blob',c:['#8ED3CB','#4FA89E','#C8F0EA','#FFE45C','#2E6A64'],eyes:3,mouth:'o'}],
+     m:[{shape:'wide',c:['#E0A800','#A87A00','#FFE07A','#E4524B','#6E4E00'],eyes:2,mouth:'fang',sym:'.'},
+        {shape:'tall',c:['#B98A5A','#8A6234','#E2C690','#FFE45C','#5A3C20'],eyes:2,mouth:'grin',brow:1}],
+     h:[{shape:'golem',c:['#C9A24A','#8A6E20','#F2D88A','#E4524B','#5A4410'],eyes:2,mouth:'fang',brow:1,sym:'.'},
+        {shape:'box',c:['#5C8FD6','#2E5A9A','#A9C8F2','#FFE45C','#1E3A6A'],eyes:2,mouth:'grin',horns:'big',brow:1}]},
+    {g:[{shape:'blob',c:['#9FE3C9','#4FA884','#D2F5E8','#5A3C20','#2E6A54'],eyes:2,mouth:'grin',float:1},
+        {shape:'tall',c:['#E8EEF8','#AEB8CC','#FFFFFF','#FF6B9D','#5E6880'],eyes:1,mouth:'o',cap:1},
+        {shape:'orb',c:['#FF8FB8','#D9568A','#FFD0E2','#7ED957','#8A2E4A'],eyes:2,mouth:'fang',spots:3}],
+     m:[{shape:'wide',c:['#5CC8FF','#2E8ACF','#B8E8FF','#FFE45C','#1E5A8A'],eyes:3,mouth:'grin',sym:'%'},
+        {shape:'tall',c:['#B07CE8','#7442B0','#DDC2FF','#7ED957','#4A2380'],eyes:2,mouth:'fang',horns:'small'}],
+     h:[{shape:'golem',c:['#8E96AA','#5E6880','#C8CED8','#5CC8FF','#3A4258'],eyes:2,mouth:'fang',brow:1,sym:'×'},
+        {shape:'box',c:['#7ED957','#3F9A3A','#C8F5B8','#FF6B9D','#2E6B2B'],eyes:3,mouth:'grin',horns:'big',brow:1}]}
   ];
   var BOSS=[
     [{name:'เจ้าก้อนบวกยักษ์',shape:'blob',c:['#5CCB4A','#2E7D2A','#A8F08C','#FFE45C','#1F5A1C'],eyes:2,mouth:'grin',sym:'+',brow:1},
@@ -774,15 +960,36 @@ var MON=(function(){
      {name:'ปีศาจพายสามส่วน',shape:'orb',c:['#E8A86A','#B06A2E','#F7D2A8','#FF5D8F','#6E3A14'],eyes:1,mouth:'fang',spikes:4},
      {name:'จอมขนมปังสี่ส่วน',shape:'box',c:['#F2C98A','#C48F4A','#FFE9C2','#8A5A2E','#6E4420'],eyes:2,mouth:'grin',brow:1,horns:'small'},
      {name:'ยักษ์ช็อกโกแลตสิบชิ้น',shape:'golem',c:['#8A5A44','#5A3424','#C29078','#FFE45C','#3A2014'],eyes:2,mouth:'fang',brow:1,sym:'÷'},
-     {name:'จอมราชันย์เศษส่วน',shape:'tall',c:['#E86FA8','#A8386E','#FFB3D6','#FFE45C','#6E1E48'],eyes:3,mouth:'fang',horns:'big',crown:1,brow:1,spots:5,sym:'÷'}]
+     {name:'จอมราชันย์เศษส่วน',shape:'tall',c:['#E86FA8','#A8386E','#FFB3D6','#FFE45C','#6E1E48'],eyes:3,mouth:'fang',horns:'big',crown:1,brow:1,spots:5,sym:'÷'}],
+    [{name:'พ่อครัวคูณทวี',shape:'tall',c:['#FFF1DC','#D9B98A','#FFFFFF','#E4524B','#8A6E3C'],eyes:2,mouth:'grin',cap:1,brow:1,sym:'×'},
+     {name:'ราชินีผึ้งแบ่งรัง',shape:'orb',c:['#FFD34D','#C99419','#FFF0A8','#3A2A1A','#7A5410'],eyes:2,mouth:'fang',wings:1,float:1,brow:1,sym:'÷'},
+     {name:'วาฬขนสินค้า',shape:'wide',c:['#5C8FD6','#2E5A9A','#A9C8F2','#FFE45C','#1E3A6A'],eyes:2,mouth:'grin',spots:4},
+     {name:'ยักษ์จำนวนคละ',shape:'golem',c:['#B07CE8','#7442B0','#DDC2FF','#FF9F43','#4A2380'],eyes:3,mouth:'fang',brow:1,horns:'big'},
+     {name:'นกฮูกโจทย์ปัญหา',shape:'blob',c:['#A0785A','#6E4E36','#D2B49A','#FFE45C','#4A3220'],eyes:2,mouth:'o',wings:1,float:1,brow:1},
+     {name:'จักรพรรดิเศษส่วน',shape:'box',k:1.1,c:['#D64A4A','#8A2222','#FF9C9C','#FFE45C','#5A1010'],eyes:3,mouth:'fang',horns:'big',crown:1,brow:1,spikes:4,sym:'÷'}],
+    [{name:'เหรียญจอมทอน',shape:'orb',c:['#FFD34D','#C99419','#FFF0A8','#5A3C20','#7A5410'],eyes:2,mouth:'grin',brow:1},
+     {name:'ตาชั่งตาเดียว',shape:'tall',c:['#AEB8CC','#6E7890','#E2E6EE','#E4524B','#3A4258'],eyes:1,mouth:'fang',horns:'small',brow:1},
+     {name:'ปีศาจกระปุกออมสิน',shape:'blob',c:['#FF9FB8','#D96A8C','#FFD6E2','#5A3C20','#8A2E4A'],eyes:2,mouth:'grin',spots:3},
+     {name:'จอมโจรเศษสตางค์',shape:'wide',c:['#5E507F','#3A2E5A','#9182B5','#FFD34D','#2B2442'],eyes:2,mouth:'fang',brow:1,float:1},
+     {name:'นาฬิกาปัดเศษ',shape:'golem',c:['#E8C98A','#B98A5A','#F7E6C2','#E4524B','#6E4E2A'],eyes:3,mouth:'o',brow:1,sym:'.'},
+     {name:'ราชาจุดทศนิยม',shape:'box',k:1.1,c:['#FFC93C','#C98A00','#FFE9A0','#E4524B','#6E4400'],eyes:3,mouth:'fang',horns:'big',crown:1,brow:1,spikes:4,sym:'.'}],
+    [{name:'ไม้บรรทัดยักษ์',shape:'tall',c:['#F2D25C','#B99A20','#FFF0A8','#E4524B','#6E5410'],eyes:2,mouth:'grin',brow:1,sym:'×'},
+     {name:'บีกเกอร์เดือด',shape:'blob',c:['#7ED957','#3F9A3A','#C8F5B8','#E4524B','#2E6B2B'],eyes:2,mouth:'fang',spots:4,float:1},
+     {name:'หลอดทดลองแฝด',shape:'wide',c:['#FF8FB8','#D9568A','#FFD0E2','#5CC8FF','#8A2E4A'],eyes:4,mouth:'grin'},
+     {name:'สไลม์แปลงร่าง',shape:'orb',c:['#5CC8FF','#2E8ACF','#B8E8FF','#FF6B9D','#1E5A8A'],eyes:2,mouth:'o',spikes:3},
+     {name:'นักวิทย์สติหลุด',shape:'golem',c:['#E8EEF8','#AEB8CC','#FFFFFF','#B07CE8','#5E6880'],eyes:2,mouth:'fang',brow:1,cap:1},
+     {name:'จักรพรรดิจุดทอง',shape:'box',k:1.1,c:['#B07CE8','#7442B0','#DDC2FF','#FFD34D','#4A2380'],eyes:3,mouth:'fang',horns:'big',crown:1,brow:1,spikes:4,sym:'%'}]
   ];
   function set(sp,n,css){var s=Object.assign({},sp,{n:n});return{f:frames(s),w:Math.round(css*(n+PAD*2)/n),name:sp.name||''}}
-  var WS=[{dog:[],mini:['fast'],sub:[]},{dog:[],mini:['ranged'],sub:['shield']},{dog:[],mini:['heal'],sub:['split']},{dog:[],mini:['area'],sub:['boom']},{dog:[],mini:['fast'],sub:['split']}];
+  var WS=[{dog:[],mini:['fast'],sub:[]},{dog:[],mini:['ranged'],sub:['shield']},{dog:[],mini:['heal'],sub:['split']},{dog:[],mini:['area'],sub:['boom']},{dog:[],mini:['fast'],sub:['split']},{dog:[],mini:['ranged'],sub:['shield']},{dog:[],mini:['fast'],sub:['shield']},{dog:[],mini:['ranged'],sub:['split']}];
   var BS=[[['rage'],['area'],['ranged'],['push'],['summon'],['area','push','rage']],
           [['ranged'],['area','summon'],['shield'],['fast','ranged'],['shield','rage'],['ranged','shield','summon']],
           [['summon'],['regen','push'],['area','fast'],['summon','shield'],['regen','area'],['summon','regen','rage']],
           [['fast','area'],['shield','ranged'],['push','rage'],['ranged','area'],['shield','push'],['area','push','summon']],
-          [['rage'],['area','summon'],['shield'],['fast','ranged'],['regen','area'],['area','push','summon']]];
+          [['rage'],['area','summon'],['shield'],['fast','ranged'],['regen','area'],['area','push','summon']],
+          [['summon'],['fast','area'],['shield','ranged'],['regen','rage'],['push','summon'],['area','shield','rage']],
+          [['fast'],['shield'],['summon','area'],['ranged','rage'],['regen','push'],['area','push','summon']],
+          [['ranged'],['area','fast'],['shield','summon'],['regen','ranged'],['push','rage'],['area','shield','summon','rage']]];
   function stage(w,s){
     var P=W[w],boss=BOSS[w][s],wb=s===5,o={dog:set(P.g[s%3],18,40),mini:set(P.m[s%2],20,48),sub:set(P.h[(s>>1)%2],22,56),
       big:set(boss,wb?30:26,wb?92:72),name:boss.name};
@@ -796,9 +1003,9 @@ var SND=(function(){
   function init(){
     if(ctx)return ctx.state==='suspended'&&ctx.resume();
     try{var AC=window.AudioContext||window.webkitAudioContext;if(!AC)return;ctx=new AC()}catch(e){ctx=null;return}
-    master=ctx.createGain();master.gain.value=.7;master.connect(ctx.destination);
-    sfxG=ctx.createGain();sfxG.gain.value=opt.s?.55:0;sfxG.connect(master);
-    musG=ctx.createGain();musG.gain.value=opt.m?.22:0;musG.connect(master);
+    master=ctx.createGain();master.gain.value=1;var comp=ctx.createDynamicsCompressor();comp.threshold.value=-12;comp.knee.value=8;comp.ratio.value=5;comp.attack.value=.003;comp.release.value=.2;master.connect(comp);comp.connect(ctx.destination);
+    sfxG=ctx.createGain();sfxG.gain.value=vS();sfxG.connect(master);
+    musG=ctx.createGain();musG.gain.value=vM();musG.connect(master);
     if(cur)play(cur,true);
   }
   function tone(f,t,d,type,v,to,bus){
@@ -858,6 +1065,9 @@ var SND=(function(){
     w2:{bpm:140,lead:P('5 9 12 9 14 12 9 5 7 10 14 10 12 . 9 .'),bass:P('-19 -7 -19 -7 -17 -5 -17 -5 -14 -2 -14 -2 -12 0 -12 0'),w:'square'},
     w3:{bpm:116,lead:P('-1 2 6 2 7 6 2 -1 1 4 8 4 6 . 2 .'),bass:P('-25 . -25 -13 -22 . -22 -10 -24 . -24 -12 -20 . -20 -8'),w:'triangle'},
     w4:{bpm:112,lead:P('7 4 0 4 9 7 4 0 5 2 -1 2 7 . 4 .'),bass:P('-17 . -17 -5 -14 . -14 -2 -19 . -19 -7 -12 . -12 0'),w:'triangle'},
+    w5:{bpm:126,lead:P('2 5 9 5 12 9 5 2 4 7 11 7 9 . 5 .'),bass:P('-22 . -22 -10 -19 . -19 -7 -20 . -20 -8 -15 . -15 -3'),w:'square'},
+    w6:{bpm:132,lead:P('0 4 7 12 11 7 4 7 9 5 9 12 11 . 7 .'),bass:P('-24 . -12 . -19 . -7 . -15 . -3 . -17 . -5 .'),w:'square'},
+    w7:{bpm:118,lead:P('9 12 16 12 14 11 7 11 12 9 5 9 11 . 14 .'),bass:P('-15 . -15 -3 -19 . -19 -7 -24 . -24 -12 -17 . -17 -5'),w:'triangle'},
     boss:{bpm:156,lead:P('0 0 3 0 6 5 3 0 0 0 3 0 7 6 5 3'),bass:P('-24 -24 -24 -24 -21 -21 -21 -21 -18 -18 -18 -18 -17 -17 -17 -17'),w:'sawtooth'}
   };
   function tick(){
@@ -877,7 +1087,8 @@ var SND=(function(){
     if(!ctx||!name)return;nextT=ctx.currentTime+.05;timer=setInterval(tick,40);
   }
   function stop(){cur=null;if(timer){clearInterval(timer);timer=null}}
-  function setOpt(o){opt=o;if(ctx){sfxG.gain.value=opt.s?.55:0;musG.gain.value=opt.m?.22:0}}
+  function vS(){return opt.s?1.25*(opt.sv==null?1:opt.sv):0}function vM(){return opt.m?.5*(opt.mv==null?1:opt.mv):0}
+  function setOpt(o){opt=o;if(ctx){sfxG.gain.value=vS();musG.gain.value=vM()}}
   ['pointerdown','keydown','touchstart'].forEach(function(e){window.addEventListener(e,init,{passive:true})});
   function mode(m){if(md===m)return;md=m;if(cur&&ctx){var c=cur;cur=null;play(c)}}
   return{sfx:sfx,play:play,stop:stop,setOpt:setOpt,mode:mode};
@@ -1127,7 +1338,10 @@ var LAND=(function(){
     {sky:['#CFE9FF','#E9F5FF'],gr:'#7EC8C0',gd:'#5FA8A0',dec:'puddles'},
     {sky:['#CDEDBF','#E4F6DA'],gr:'#4C9A4A',gd:'#3A7D38',dec:'pines'},
     {sky:['#8A90C4','#A9B2DE'],gr:'#6B5B8F',gd:'#564873',dec:'rocks'},
-    {sky:['#FFE3F1','#FFF1F8'],gr:'#F6B8CF',gd:'#E897B5',dec:'flowers'}
+    {sky:['#FFE3F1','#FFF1F8'],gr:'#F6B8CF',gd:'#E897B5',dec:'flowers'},
+    {sky:['#FFE9C9','#FFF5E6'],gr:'#E9B97A',gd:'#C9955A',dec:'flowers'},
+    {sky:['#B5E4EE','#E4F7F6'],gr:'#D8B97E',gd:'#BFA06A',dec:'rocks'},
+    {sky:['#D6E0F8','#EEF3FC'],gr:'#C6D2EE',gd:'#9AA8CC',dec:'rocks'}
   ];
   function deco(g,env,seed,w,h,gy){
     var r=seed;function rn(){r=(r*9301+49297)%233280;return r/233280}
@@ -1161,21 +1375,6 @@ var LAND=(function(){
     return C[key]=url(g,4);
   }
 
-  function terrain(w){
-    var key='t'+w;if(C[key])return C[key];
-    var W=90,H=175,env=ENV[w],g=G(W,H),i,r=w*7+3;function rn(){r=(r*9301+49297)%233280;return r/233280}
-    var base=[['#86D274','#7BC96F'],['#8ED3CB','#7EC8C0'],['#5DAA58','#4C9A4A'],['#7A6A9E','#6B5B8F'],['#F7C6D9','#F2B8CE']][w];
-    for(var y=0;y<H;y++)for(var x=0;x<W;x++)g.s(x,y,((x>>2)+(y>>2))%2?base[0]:base[1]);
-    // stream / ink river / cliff
-    var rc=['#5CA8E8','#2A2F7A','#5CA8E8','#3A2E5A','#8ED3F5'][w];
-    for(y=0;y<H;y++){var cx=Math.round(W*.5+Math.sin(y/14+w)*W*.32);R(g,cx-2,y,5,1,rc);g.s(cx-3,y,'#B6EAFF'===rc?rc:rc)}
-    for(i=0;i<70;i++){var x0=Math.floor(rn()*W),y0=Math.floor(rn()*H);
-      if(w===0){if(i%3)R(g,x0,y0,1,2,'#4E9A4A');else{g.s(x0,y0,'#FFD34D');g.s(x0+1,y0,'#FF6B9D')}}
-      else if(w===1){if(i%2)R(g,x0,y0,3,1,'#5FA8A0');else E(g,x0,y0,1.5,1,'#2A2F7A')}
-      else if(w===2){if(i%3===0){T(g,x0,y0+4,2,6,'#2E6B2B');g.s(x0,y0+5,'#5A3C20')}else R(g,x0,y0,1,2,'#3A7D38')}
-      else{if(i%3===0)E(g,x0,y0,2,1.4,'#8E96AA');else if(i%5===0){T(g,x0,y0+2,1,4,'#4FD1C5')}else g.s(x0,y0,'#564873')}}
-    return C[key]=url(g,4);
-  }
   function island(){
     if(C.isl)return C.isl;var W=100,H=110,g=G(W,H);
     for(var y=0;y<H;y++)for(var x=0;x<W;x++){var dx=(x-50)/46,dy=(y-56)/50,d=dx*dx+dy*dy+.06*Math.sin(x/5)*Math.cos(y/6);
@@ -1183,14 +1382,323 @@ var LAND=(function(){
         var zi=[0,1,2,3][q];g.s(x,y,d>.86?'#F2DC9B':cols[zi][((x>>2)+(y>>2))%2])}}
     return C.isl=url(g,4);
   }
-  return{scene:scene,base:base,LM:LM,terrain:terrain,island:island};
+  /* ===== v1.7 art: islands, sea, battle backdrop layers ===== */
+  function hsh(x,y,s){var n=Math.sin(x*127.1+y*311.7+(s||0)*74.7)*43758.5453;return n-Math.floor(n)}
+  function sno(x,y,s){var xi=Math.floor(x),yi=Math.floor(y),xf=x-xi,yf=y-yi;xf=xf*xf*(3-2*xf);yf=yf*yf*(3-2*yf);
+    var a=hsh(xi,yi,s),b=hsh(xi+1,yi,s),c=hsh(xi,yi+1,s),d=hsh(xi+1,yi+1,s);return a+(b-a)*xf+(c-a)*yf+(a-b-c+d)*xf*yf}
+  function fbm(x,y,s){return sno(x,y,s)*.6+sno(x*2.1,y*2.1,s+3)*.3+sno(x*4.3,y*4.3,s+7)*.1}
+  function pine(g,x,y,h,c1,c2){T(g,x,y,Math.max(2,Math.round(h*.45)),h,c1);T(g,x,y-Math.round(h*.45),Math.max(1,Math.round(h*.3)),Math.round(h*.6),c2);g.s(x,y+1,'#5A3C20')}
+  function bush(g,x,y,r,c1,c2){E(g,x,y,r,r*.8,c1);E(g,x-r*.3,y-r*.3,r*.45,r*.35,c2)}
+  // ---- island art (transparent outside the shallows) ----
+  var ISA=[
+    {cx:60,cy:64,rx:53,ry:56,seed:11,cliff:['#8A6234','#6E4E2A','#5A3C20'],beach:['#F2DC9B','#E6CB82']},
+    {cx:60,cy:64,rx:52,ry:55,seed:23,cliff:['#8A5A3A','#FFF1DC','#6E3E22'],beach:['#FFF1DC','#F2D7A6']},
+    {cx:60,cy:64,rx:52,ry:55,seed:51,cliff:['#9AA4B8','#7E889C','#646E82'],beach:['#EDE6D2','#DDD3B8']},
+    {cx:60,cy:66,rx:46,ry:50,seed:37,cliff:['#7A7F96','#5E6278','#4A4E62'],beach:['#E6E2D6','#D2CDBF']}
+  ];
+  function islandArt(k){
+    var key='ia'+k;if(C[key])return C[key];
+    var A=ISA[k],W=120,H=140,g=G(W,H),M=[],x,y,i;
+    function dd(x,y){var dx=(x-A.cx)/A.rx,dy=(y-A.cy)/A.ry;return dx*dx+dy*dy+.22*(fbm(x/14,y/14,A.seed)-.5)}
+    for(y=0;y<H;y++){M[y]=[];for(x=0;x<W;x++)M[y][x]=dd(x,y)}
+    function inL(x,y){return y>=0&&y<H&&x>=0&&x<W&&M[y][x]<1}
+    // shallow water + foam ring
+    for(y=0;y<H;y++)for(x=0;x<W;x++){var d=M[y][x];
+      if(d>=1&&d<1.22){g.s(x,y,(x+y*3)%7===0?'#9EE0FF':'#6CC4F0')}
+      if(d>=1&&d<1.05&&hsh(x,y,5)>.45)g.s(x,y,'#FFFFFF')}
+    // cliff band (thickness on the south side)
+    var CH=6;
+    for(y=0;y<H;y++)for(x=0;x<W;x++){if(inL(x,y))continue;var up=0;for(i=1;i<=CH;i++)if(inL(x,y-i)){up=i;break}
+      if(up){var cc=A.cliff;var col=k===1?(up%3===2?cc[1]:cc[0]):(up<=2?cc[0]:up<=4?cc[1]:cc[2]);g.s(x,y,col);
+        if(k===1&&up===1&&hsh(x,3,9)>.55)g.s(x,y,'#FF8FB8');if(k===1&&up===2&&hsh(x,3,9)>.8)g.s(x,y,'#FF8FB8');
+        if(!inL(x,y+1)&&!(function(){for(var j=1;j<=CH;j++)if(inL(x,y+1-j))return 1;return 0})())g.s(x,y+1,'#FFFFFF')}}
+    // ground
+    function region(x,y){var nx=x+12*(fbm(x/20,y/20,A.seed+1)-.5),ny=y+12*(fbm(x/20,y/20,A.seed+2)-.5);
+      if(k===0)return (ny<A.cy?2:0)+(nx<A.cx?0:1);
+      if(k===1||k===2)return (nx/W+(1-ny/H))>1?1:0;return 0}
+    var PAL=k===0?[['#7BC96F','#94D886','#62B058'],['#7EC8C0','#9ADAD2','#5FA8A0'],['#4C9A4A','#5DAA58','#3A7D38'],['#7A6A9E','#9182B5','#5E507F']]
+          :k===1?[['#F6B8CF','#FFD6E5','#E897B5'],['#E9B97A','#F5D29E','#C9955A']]:k===2?[['#E8C98A','#F2DCA8','#CFA866'],['#C6D2EE','#DDE6F7','#A8B8DC']]:[['#9BB5A8','#B3C9BE','#7E9A8C']];
+    for(y=0;y<H;y++)for(x=0;x<W;x++){if(!inL(x,y))continue;var d2=M[y][x];
+      if(d2>.84){g.s(x,y,hsh(x,y,2)>.7?A.beach[1]:A.beach[0]);continue}
+      var p=PAL[region(x,y)],n=fbm(x/6,y/6,A.seed+4);g.s(x,y,n>.62?p[1]:n<.36?p[2]:p[0])}
+    function spots(n,fn,minD){var placed=0,t=0;while(placed<n&&t<n*40){t++;var px=Math.floor(hsh(t,k,A.seed+9)*W),py=Math.floor(hsh(k,t,A.seed+8)*H);
+      if(!inL(px,py)||M[py][px]>.78)continue;fn(px,py,region(px,py));placed++}}
+    if(k===0){
+      // dirt path linking the four zones (0 -> 1 -> 3 -> 2)
+      var pts=[[31,104],[89,104],[89,39],[31,39]];
+      for(i=0;i<3;i++){var a=pts[i],b=pts[i+1],n2=60;for(var s2=0;s2<=n2;s2++){var px=a[0]+(b[0]-a[0])*s2/n2+Math.sin(s2/6+i)*3,py=a[1]+(b[1]-a[1])*s2/n2+Math.cos(s2/7+i)*3;
+        if(s2%5<3){R(g,px-1,py-1,3,2,'#D9B98A');g.s(px,py+1,'#B98A5A')}}}
+      // small lake in the ink region
+      E(g,96,82,7,4,'#2A2F7A');E(g,95,81,5,2.5,'#3D4AA8');g.s(93,80,'#9FD3FF');g.s(94,80,'#9FD3FF');
+      // volcano peak in the purple region
+      T(g,101,30,9,12,'#5E507F');T(g,101,30,6,8,'#6D5A4A');R(g,99,19,5,2,'#E4524B');g.s(100,18,'#FF8A3D');E(g,104,13,3,2,'#C2C2CC');E(g,107,9,2.5,1.6,'#D8D8E0');
+      spots(70,function(x,y,r){
+        if(r===0){if(hsh(x,y,1)>.5){g.s(x,y,'#3F9A3A');g.s(x,y-1,['#FF6B9D','#FFD34D','#FFFFFF','#B07CE8'][Math.floor(hsh(x,y,3)*4)])}else{g.s(x,y,'#4E9A4A');g.s(x+1,y-1,'#4E9A4A')}}
+        else if(r===1){if(hsh(x,y,1)>.6){R(g,x,y,1,3,'#3F7F6A');g.s(x,y-1,'#7A5634')}else g.s(x,y,'#5FA8A0')}
+        else if(r===2){pine(g,x,y,7,'#2E6B2B','#3A8A36')}
+        else{if(hsh(x,y,1)>.6)T(g,x,y,1,4,'#4FD1C5');else{E(g,x,y,1.8,1.2,'#8E96AA');g.s(x,y-1,'#B6BCCB')}}},0);
+    }else if(k===1){
+      // chocolate river along the border
+      for(y=0;y<H;y++){var bx=Math.round(W*(y/H)+8*(fbm(1,y/18,A.seed)-.5));for(x=bx-2;x<=bx+2;x++)if(inL(x,y)&&M[y][x]<.84)g.s(x,y,Math.abs(x-bx)<1?'#A86E44':'#7A4A2A')}
+      spots(60,function(x,y,r){
+        if(r===0){var q=hsh(x,y,4);
+          if(q>.75){L(g,x,y,x,y-5,'#FFFFFF');E(g,x,y-7,2.4,2.4,['#FF6B9D','#5CC8FF','#FFD34D'][Math.floor(hsh(x,y,6)*3)]);g.s(x,y-7,'#FFFFFF')}
+          else if(q>.5){R(g,x-2,y-2,5,3,'#C9955A');E(g,x,y-3,2.6,1.8,'#FFFFFF');g.s(x,y-5,'#E4524B')}
+          else g.s(x,y,['#FF6B9D','#5CC8FF','#FFD34D','#7ED957','#FFFFFF'][Math.floor(q*10)%5])}
+        else{var q2=hsh(x,y,4);
+          if(q2>.6){E(g,x,y,2.6,2.2,'#D9A55E');g.s(x-1,y,'#5A3424');g.s(x+1,y-1,'#5A3424');g.s(x,y+1,'#5A3424')}
+          else if(q2>.35){T(g,x,y,3,3,'#F5D29E');R(g,x-3,y,7,1,'#C9955A');g.s(x,y-2,'#E4524B')}
+          else g.s(x,y,'#C9955A')}},0);
+    }else if(k===2){
+      for(y=0;y<H;y++){var bx2=Math.round(W*(y/H)+8*(fbm(1,y/18,A.seed)-.5));for(x=bx2-2;x<=bx2+2;x++)if(inL(x,y)&&M[y][x]<.84)g.s(x,y,Math.abs(x-bx2)<1?'#9EE0FF':'#5CA8E8')}
+      for(y=0;y<H;y++)for(x=0;x<W;x++)if(inL(x,y)&&M[y][x]<.84&&region(x,y)===1&&(x%6===0||y%6===0))g.s(x,y,'#B4C2E4');
+      spots(55,function(x,y,r){var q=hsh(x,y,4);
+        if(r===0){if(q>.72)stall(g,x,y,['#E4524B','#5C8FD6','#3FA34D'][Math.floor(hsh(y,x,2)*3)]);else if(q>.45)coin(g,x,y,2.2);else g.s(x,y,'#BFA06A')}
+        else{if(q>.7)flask(g,x,y,7,['#7ED957','#FF8FB8','#5CC8FF'][Math.floor(hsh(y,x,2)*3)]);else if(q>.45)ruler(g,x,y,7,q>.58);else g.s(x,y,'#8E9AC0')}},0);
+    }else{
+      spots(30,function(x,y){pine(g,x,y,6,'#5E7A6C','#7E9A8C')},0);
+      for(y=0;y<H;y++)for(x=0;x<W;x++)if(inL(x,y)&&hsh(x,y,13)>.55&&fbm(x/10,y/10,40)>.5)g.s(x,y,'#E8ECF2');
+    }
+    return C[key]=url(g,3);
+  }
+  // ---- sea tile, clouds, birds ----
+  function seaTile(){if(C.sea)return C.sea;var g=G(48,24);
+    [[4,5],[28,15],[38,4],[14,19]].forEach(function(p){R(g,p[0],p[1],3,1,'#BFE8FF');R(g,p[0]+3,p[1]-1,3,1,'#E8F7FF');R(g,p[0]+6,p[1],2,1,'#BFE8FF')});
+    return C.sea=url(g,3)}
+  function cloudImg(v){var key='cl'+v;if(C[key])return C[key];var g=G(34,14),o=v?3:0;
+    E(g,10,9,8,4,'#FFFFFF');E(g,18,6,8,5.5,'#FFFFFF');E(g,26,9,7,4,'#FFFFFF');R(g,4,10,26,3,'#FFFFFF');
+    for(var x=0;x<34;x++)for(var y=0;y<14;y++)if(g.g(x,y)&&!g.g(x,y+1))g.s(x,y,'#D6E6F5');
+    if(v){E(g,14,5,4,2,'#F4F9FF')}
+    return C[key]=url(g,3)}
+  function birdImg(){if(C.bird)return C.bird;var g=G(9,4);g.s(0,0,'#1E2A44');g.s(1,1,'#1E2A44');g.s(2,1,'#1E2A44');g.s(3,2,'#1E2A44');g.s(4,2,'#1E2A44');g.s(5,2,'#1E2A44');g.s(6,1,'#1E2A44');g.s(7,1,'#1E2A44');g.s(8,0,'#1E2A44');return C.bird=url(g,3)}
+  // ---- battle backdrop layers (zone 1 = meadow sample) ----
+  function bgLayer(w,part){
+    var key='bg'+w+part;if(C[key])return C[key];var g,x,y,i,H=80,TW;
+    if(w===0){
+      if(part==='sun'){g=G(22,22);E(g,11,11,10.5,10.5,'#FFF3B0');E(g,11,11,8,8,'#FFE45C');E(g,9,9,3,3,'#FFF8D6');
+        for(i=0;i<22;i++)for(var j=0;j<22;j++)if(g.g(i,j)==='#FFF3B0'&&(i+j)%2)g.s(i,j,0);return C[key]=url(g,3)}
+      if(part==='far'){TW=160;g=G(TW,H);
+        for(x=0;x<TW;x++){var a=2*Math.PI*x/TW,h=40+5*Math.sin(a*2+.5)+3*Math.sin(a*5+1.3)+1.5*Math.sin(a*11);
+          for(y=Math.round(h);y<H;y++)g.s(x,y,y<h+2?'#B7DACB':'#9CC9B8');
+          var h2=46+3*Math.sin(a*3+2)+2*Math.sin(a*7);for(y=Math.round(h2);y<H;y++)g.s(x,y,'#8BBFA9')}
+        // tiny far castle
+        var cx=88,cb=Math.round(46+3*Math.sin(2*Math.PI*cx/TW*3+2))-1;R(g,cx-5,cb-7,11,7,'#7FAE9B');R(g,cx-6,cb-11,3,11,'#7FAE9B');R(g,cx+4,cb-11,3,11,'#7FAE9B');R(g,cx-1,cb-13,3,6,'#7FAE9B');g.s(cx,cb-15,'#E4524B');g.s(cx+1,cb-15,'#E4524B');g.s(cx,cb-14,'#7FAE9B');
+        return C[key]=url(g,2)}
+      if(part==='cld'){TW=240;g=G(TW,H);
+        [[20,8,1],[96,16,0],[170,6,1],[214,20,0]].forEach(function(c){var cg=G(34,14);
+          E(cg,10,9,8,4,'#FFFFFF');E(cg,18,6,8,5.5,'#FFFFFF');E(cg,26,9,7,4,'#FFFFFF');R(cg,4,10,26,3,'#FFFFFF');
+          for(var xx=0;xx<34;xx++)for(var yy=0;yy<14;yy++){var v=cg.g(xx,yy);if(v)g.s((c[0]+xx)%TW,c[1]+yy,cg.g(xx,yy+1)?v:'#DCEBF7')}});
+        return C[key]=url(g,2)}
+      if(part==='mid'){TW=160;g=G(TW,H);
+        for(x=0;x<TW;x++){var a2=2*Math.PI*x/TW,hm=50+3*Math.sin(a2*2+1)+2*Math.sin(a2*5);
+          for(y=Math.round(hm);y<H;y++)g.s(x,y,y<hm+1?'#8FD47E':((x>>1)+(y>>1))%5===0?'#5FB052':'#6FBF5E')}
+        // tree clumps
+        [[14,1],[30,0],[108,1],[120,0],[136,1],[150,0]].forEach(function(t){var tx=t[0],a3=2*Math.PI*tx/TW,ty=Math.round(50+3*Math.sin(a3*2+1)+2*Math.sin(a3*5));
+          R(g,tx-1,ty-4,2,5,'#7A5634');E(g,tx,ty-8,t[1]?6:4.5,t[1]?5:4,'#3F9A3A');E(g,tx-2,ty-10,3,2.4,'#5CC85A');if(t[1])E(g,tx+3,ty-6,2,2,'#2E7D32')});
+        // windmill
+        var wx2=56,wy=Math.round(50+3*Math.sin(2*Math.PI*wx2/TW*2+1)+2*Math.sin(2*Math.PI*wx2/TW*5));
+        T(g,wx2,wy,4,14,'#EDE3CC');R(g,wx2-1,wy-4,2,4,'#7A5634');T(g,wx2,wy-14,3,3,'#C0392B');
+        L(g,wx2,wy-15,wx2-7,wy-22,'#8A6234');L(g,wx2,wy-15,wx2+7,wy-22,'#8A6234');L(g,wx2,wy-15,wx2-7,wy-8,'#8A6234');L(g,wx2,wy-15,wx2+7,wy-8,'#8A6234');g.s(wx2,wy-15,'#5A3C20');
+        // fence
+        for(x=70;x<94;x+=4){var a4=2*Math.PI*x/TW,fy=Math.round(50+3*Math.sin(a4*2+1)+2*Math.sin(a4*5));R(g,x,fy-4,1,4,'#FFF7E6')}
+        for(x=70;x<91;x++){var a5=2*Math.PI*x/TW,fy2=Math.round(50+3*Math.sin(a5*2+1)+2*Math.sin(a5*5));g.s(x,fy2-3,'#E6D9BF')}
+        return C[key]=url(g,2)}
+      if(part==='near'){TW=128;g=G(TW,H);var gy=54;
+        for(y=gy;y<H;y++)for(x=0;x<TW;x++){var n=hsh(x>>1,y>>1,3);g.s(x,y,n>.8?'#94D886':n<.2?'#62B058':'#7BC96F')}
+        R(g,0,gy,TW,1,'#5DAA52');
+        for(x=0;x<TW;x++){var bh=Math.floor(hsh(x,1,8)*4);for(y=1;y<=bh;y++)if((x+y)%2===0||y===1)g.s(x,gy-y,y>2?'#94D886':'#7BC96F')}
+        // walking path
+        for(y=70;y<76;y++)for(x=0;x<TW;x++)if(hsh(x>>1,y,6)>.15)g.s(x,y,y===70||y===75?'#C9A06A':hsh(x,y,7)>.85?'#C9A06A':'#D9B98A');
+        // flowers + stones
+        for(i=0;i<26;i++){var fx=Math.floor(hsh(i,2,11)*TW),fy=gy+2+Math.floor(hsh(2,i,11)*14);if(fy>=69)fy-=10;
+          var fc=['#FF6B9D','#FFD34D','#FFFFFF','#B07CE8','#FF8A3D'][i%5];g.s(fx,fy,'#3F9A3A');g.s(fx,fy+1,'#3F9A3A');g.s(fx,fy-1,fc);g.s(fx-1,fy-1,fc);g.s(fx+1,fy-1,fc);g.s(fx,fy-2,fc);g.s(fx,fy-1,'#FFF3B0')}
+        for(i=0;i<8;i++){var sx=Math.floor(hsh(i,5,12)*TW),sy=77+Math.floor(hsh(5,i,12)*2);R(g,sx,sy,3,1,'#8E96AA');g.s(sx+1,sy-1,'#B6BCCB')}
+        return C[key]=url(g,2)}
+      if(part==='pet'){TW=96;g=G(TW,H);for(i=0;i<9;i++){var px=Math.floor(hsh(i,7,4)*TW),py=Math.floor(hsh(7,i,4)*60);g.s(px,py,i%3?'#FFC2DA':'#FFFFFF');if(i%2)g.s(px+1,py,'#FF9DC1')}return C[key]=url(g,2)}
+    }
+    return null;
+  }
+  /* ===== v1.9 art: battle backdrops for every zone + new zone maps ===== */
+  function bl(c,t,f){if(typeof c!=='string'||c[0]!=='#'||c.length!==7)return c;var r=[1,3,5].map(function(i){return parseInt(c.substr(i,2),16)}),q=[1,3,5].map(function(i){return parseInt(t.substr(i,2),16)});
+    return '#'+r.map(function(v,i){var n=Math.round(v+(q[i]-v)*f);return (n<16?'0':'')+n.toString(16)}).join('')}
+  function sh(g,x,y,t,f){var c=g.g(Math.round(x),Math.round(y));if(c)g.s(x,y,bl(c,t,f))}
+  function Esh(g,cx,cy,rx,ry,t,f){for(var y=Math.floor(cy-ry);y<=cy+ry;y++)for(var x=Math.floor(cx-rx);x<=cx+rx;x++){var dx=(x+.5-cx)/rx,dy=(y+.5-cy)/ry;if(dx*dx+dy*dy<=1)sh(g,x,y,t,f)}}
+  function ph(x,TW,base,arr){var a=2*Math.PI*x/TW,h=base;for(var i=0;i<arr.length;i++)h+=arr[i][0]*Math.sin(a*arr[i][1]+arr[i][2]);return h}
+  function fillBelow(g,TW,H,fn,col){for(var x=0;x<TW;x++){var h=Math.round(fn(x));for(var y=Math.max(0,h);y<H;y++)g.s(x,y,typeof col==='function'?col(x,y,h):col)}}
+  function lolli(g,x,y,h,c){L(g,x,y,x,y-h,'#FFFFFF');E(g,x,y-h-3,3.6,3.6,c);E(g,x-1,y-h-4,1.6,1.6,'#FFFFFF');g.s(x+1,y-h-2,'#FFFFFF')}
+  function cupcake(g,x,y,c){R(g,x-3,y-4,7,4,'#C9955A');for(var i=-3;i<4;i+=2)g.s(x+i,y-3,'#A8763E');E(g,x,y-6,4.2,2.6,c);E(g,x,y-8,2.6,1.8,c);g.s(x,y-10,'#E4524B')}
+  function cookie(g,x,y,r){E(g,x,y,r,r*.8,'#D9A55E');g.s(x-1,y,'#5A3424');g.s(x+1,y-1,'#5A3424');g.s(x,y+1,'#5A3424');if(r>3){g.s(x+2,y+1,'#5A3424');g.s(x-2,y-1,'#5A3424')}}
+  function pie(g,x,y,r){E(g,x,y,r,r*.55,'#E9B97A');R(g,x-r,y,2*r+1,Math.ceil(r*.5),'#C9955A');for(var i=-r+2;i<r;i+=3)L(g,x+i,y-r*.45,x+i,y,'#B07A3E');L(g,x-r+1,y-2,x+r-1,y-2,'#B07A3E')}
+  function crystal(g,x,y,h,c){T(g,x,y,2,h,c);g.s(x,y-h+2,'#E6FFFC');T(g,x+3,y,1,Math.round(h*.6),c);T(g,x-3,y,1,Math.round(h*.5),c)}
+  function mush(g,x,y){R(g,x,y-3,1,3,'#FFF1DC');E(g,x,y-4,3,1.8,'#E4524B');g.s(x-1,y-5,'#FFFFFF');g.s(x+1,y-4,'#FFFFFF')}
+  function eraser(g,x,y){R(g,x-4,y-4,9,4,'#FFB3C7');R(g,x-1,y-4,3,4,'#5C8FD6');R(g,x-4,y-1,9,1,'#D96A8C')}
+  function groundTex(g,TW,H,gy,c){for(var y=gy;y<H;y++)for(var x=0;x<TW;x++){var n=fbm(x/7,(y-gy)/3.5+c.s*3,c.s+50),sp=hsh(x,y,c.s+60);g.s(x,y,n>.64?c.l:n<.36?c.d:sp>.93?c.l:c.b)}
+    R(g,0,gy,TW,1,c.e);for(var x2=0;x2<TW;x2++){var bh=c.tuft?Math.floor(hsh(x2,1,8)*4):0;for(var y2=1;y2<=bh;y2++)if((x2+y2)%2===0||y2===1)g.s(x2,gy-y2,y2>2?c.l:c.b)}}
+  function pathBand(g,TW,c){for(var y=70;y<76;y++)for(var x=0;x<TW;x++)if(hsh(x>>1,y,6)>.12){var edge=y===70||y===75;g.s(x,y,edge?c[1]:hsh(x,y,7)>.86?c[1]:c[0])}
+    if(c[2])for(var x3=0;x3<TW;x3+=8)R(g,x3,70,1,6,c[2])}
+  var BGT={
+    1:{sky:'linear-gradient(#8FD0F0 0 20%,#A8DCF4 20% 38%,#C4E8F8 38% 54%,#DDF2FB 54%)',sun:1,cld:1},
+    2:{sky:'linear-gradient(#A9DB98 0 18%,#BFE6B0 18% 36%,#D2EFC6 36% 54%,#E6F7DE 54%)',sun:1,cld:1},
+    3:{sky:'linear-gradient(#1F1A33 0 26%,#2B2442 26% 46%,#3A2E5A 46% 62%,#4A3C6E 62%)',sun:0,cld:0,top:1,up:1},
+    4:{sky:'linear-gradient(#FFC9E1 0 20%,#FFD8EA 20% 38%,#FFE6F1 38% 54%,#FFF3F8 54%)',sun:1,cld:1},
+    5:{sky:'linear-gradient(#FFD09A 0 20%,#FFDDB5 20% 38%,#FFE9CF 38% 54%,#FFF4E6 54%)',sun:1,cld:1,up:1},
+    6:{sky:'linear-gradient(#9BD8E8 0 20%,#B5E4EE 20% 38%,#CDEEF2 38% 54%,#E4F7F6 54%)',sun:1,cld:1},
+    7:{sky:'linear-gradient(#BCCBF2 0 20%,#CCD8F6 20% 38%,#DCE4F8 38% 54%,#ECF1FC 54%)',sun:1,cld:1,up:1}
+  };
+  function bgLayer2(w,part){
+    var key='bg'+w+part;if(C[key])return C[key];var g,x,y,i,H=80,TW=160;
+    if(part==='sun'||part==='cld')return C[key]=bgLayer(0,part);
+    if(part==='far'){g=G(TW,H);
+      if(w===1){fillBelow(g,TW,H,function(x){return ph(x,TW,42,[[5,2,.3],[3,5,1.1],[1.5,9,0]])},function(x,y,h){return y<h+2?'#B9DCDC':'#9CC9C9'});
+        R(g,64,26,14,18,'#7FAAB5');R(g,68,20,6,6,'#7FAAB5');R(g,67,17,8,3,'#5E8A96');R(g,66,30,10,4,'#9CC4CC');
+        R(g,26,14,5,30,'#86B3B8');T(g,28,14,3,6,'#E8D2A8');g.s(28,8,'#5E6278');R(g,26,22,5,2,'#E4524B');
+        fillBelow(g,TW,H,function(x){return ph(x,TW,48,[[2,3,2],[1.5,7,0]])},'#8BBDBA')}
+      else if(w===2){for(var row=0;row<2;row++){var col=row?'#7FB27C':'#A8CFA2',by=row?48:42;
+          fillBelow(g,TW,H,function(x){return ph(x,TW,by,[[2,2,row],[1,5,0]])},col);
+          for(x=row*5;x<TW;x+=row?9:7){var hh=row?12:9,yy=Math.round(ph(x,TW,by,[[2,2,row],[1,5,0]]));T(g,x,yy+1,row?4:3,hh+Math.floor(hsh(x,row,2)*5),col)}}}
+      else if(w===3){g=G(TW,H);
+        for(x=0;x<TW;x+=1){var hp=Math.round(ph(x,TW,30,[[8,3,.2],[4,7,1],[2,13,0]]));for(y=hp;y<H;y++)g.s(x,y,(x%16<2)?'#33294F':'#3E3260')}
+        for(i=0;i<9;i++){var cx=Math.floor(hsh(i,1,3)*TW),cy=40+Math.floor(hsh(1,i,3)*12);Esh(g,cx,cy,6,5,'#4FD1C5',.25);crystal(g,cx,cy+3,5+(i%3)*2,i%2?'#4FD1C5':'#9F7AEA')}}
+      else if(w===4){fillBelow(g,TW,H,function(x){return ph(x,TW,40,[[6,2,.4],[3,5,1.3]])},function(x,y,h){return y<h+3?'#FFFFFF':((y-Math.round(h))%7<2)?'#F2A7C3':'#F7C6D9'});
+        for(x=0;x<TW;x++){var h4=Math.round(ph(x,TW,40,[[6,2,.4],[3,5,1.3]]));if(hsh(x,4,9)>.82)for(y=h4+3;y<h4+5+Math.floor(hsh(x,5,9)*4);y++)g.s(x,y,'#FFFFFF')}
+        [[18],[58],[104],[140]].forEach(function(p){var hx=Math.round(ph(p[0],TW,40,[[6,2,.4],[3,5,1.3]]));E(g,p[0],hx-2,2.4,2.4,'#E4524B');g.s(p[0]-1,hx-3,'#FFB3B3');L(g,p[0],hx-4,p[0]+2,hx-7,'#3F9A3A')});
+        fillBelow(g,TW,H,function(x){return ph(x,TW,49,[[2,3,2],[1,7,0]])},'#F2B8CE')}
+      else{fillBelow(g,TW,H,function(x){return ph(x,TW,42,[[5,2,.8],[3,4,0],[1,11,1]])},function(x,y,h){return y<h+2?'#D9A060':(x%14===(y%14))?'#C98C4E':'#E6B77A'});
+        R(g,92,22,4,22,'#C9955A');R(g,84,20,20,4,'#D9A55E');E(g,84,22,2,2,'#B07A3E');E(g,104,22,2,2,'#B07A3E');
+        fillBelow(g,TW,H,function(x){return ph(x,TW,48,[[2,3,1],[1,6,0]])},'#E2AE70')}
+      return C[key]=url(g,2)}
+    if(part==='mid'){g=G(TW,H);var gh=function(x){return ph(x,TW,51,[[2.5,2,1],[1.5,5,0]])};
+      var MC={1:['#7EC8C0','#9ADAD2'],2:['#4C9A4A','#62B058'],3:['#564873','#6B5B8F'],4:['#F6B8CF','#FFD6E5'],5:['#E9B97A','#F5D29E']}[w];
+      fillBelow(g,TW,H,gh,function(x,y,h){return y<h+1?MC[1]:MC[0]});
+      for(i=0;i<9;i++){x=8+i*17+Math.floor(hsh(i,w,4)*6);y=Math.round(gh(x));var q=i%3;
+        if(w===1){if(q===0){E(g,x,y-1,6,2,'#2A2F7A');E(g,x-1,y-2,4,1,'#3D4AA8');g.s(x-3,y-2,'#9FD3FF');E(g,x+3,y-1,1.6,1,'#4E9A4A')}else if(q===1)eraser(g,x,y);else{for(var r=0;r<4;r++){R(g,x+r*2,y-4-r%2*2,1,4+r%2*2,'#3F7F6A');g.s(x+r*2,y-5-r%2*2,'#7A5634')}}}
+        else if(w===2){if(q===2)mush(g,x,y);else{pine(g,x,y,14+q*4,'#2E6B2B','#3A8A36')}}
+        else if(w===3){if(q===0){T(g,x,y,4,14,'#4A3C6E');T(g,x-1,y,2,10,'#5E507F')}else crystal(g,x,y,8+q*3,q===1?'#4FD1C5':'#9F7AEA')}
+        else if(w===4){if(q===0)lolli(g,x,y,10,['#FF6B9D','#5CC8FF','#FFD34D'][i%3]);else if(q===1)cupcake(g,x,y,['#FFB3D1','#C8A2F0','#9FE3C9'][i%3]);else{L(g,x,y,x,y-10,'#FFFFFF');L(g,x+1,y,x+1,y-10,'#E4524B');L(g,x+1,y-10,x+4,y-12,'#E4524B');L(g,x+4,y-12,x+5,y-10,'#FFFFFF')}}
+        else{if(q===0)pie(g,x,y-1,6);else if(q===1){R(g,x-4,y-11,9,11,'rgba(220,240,255,.7)');R(g,x-4,y-12,9,2,'#C9955A');cookie(g,x,y-6,2.6);cookie(g,x-1,y-3,2.2)}else{E(g,x,y-3,4,3,'#E6B77A');E(g,x,y-3,2.5,1.8,'#C98C4E');g.s(x,y-3,'#E6B77A')}}}
+      return C[key]=url(g,2)}
+    if(part==='top'){g=G(TW,H);for(x=0;x<TW;x++){var tb=Math.round(ph(x,TW,5,[[2,3,0],[1,7,1]]));for(y=0;y<tb;y++)g.s(x,y,'#1F1A33')}
+      for(x=3;x<TW;x+=9){var len=6+Math.floor(hsh(x,3,5)*12);for(y=4;y<4+len;y++){var wd=Math.round(3*(1-(y-4)/len));if(wd>=0)g.s(x-wd,y,'#2B2442');for(var q2=-wd;q2<=wd;q2++)g.s(x+q2,y,q2===-wd?'#4A3C6E':'#2B2442')}g.s(x,4+len,'#9FF5EE')}
+      return C[key]=url(g,2)}
+    if(part==='near'){TW=128;g=G(TW,H);var gy=54;
+      var NC={1:{b:'#7EC8C0',l:'#8ED3CB',d:'#6FB8B0',e:'#5FA8A0',tuft:1,s:1},2:{b:'#4C9A4A',l:'#62B058',d:'#3A7D38',e:'#3A7D38',tuft:1,s:2},3:{b:'#6B5B8F',l:'#7A6A9E',d:'#564873',e:'#4A3C6E',tuft:0,s:3},4:{b:'#F6B8CF',l:'#FFD6E5',d:'#E897B5',e:'#FFFFFF',tuft:0,s:4},5:{b:'#E9B97A',l:'#F5D29E',d:'#C9955A',e:'#C98C4E',tuft:0,s:5}}[w];
+      groundTex(g,TW,H,gy,NC);
+      if(w===4)for(x=0;x<TW;x++){g.s(x,gy,'#FFFFFF');g.s(x,gy+1,'#FFFFFF');if(hsh(x,2,6)>.7){g.s(x,gy+2,'#FFFFFF');if(hsh(x,3,6)>.6)g.s(x,gy+3,'#FFFFFF')}}
+      pathBand(g,TW,{1:['#CFE3E0','#8FB5B0'],2:['#B98A5A','#8A6234'],3:['#8E80B0','#4A3C6E','#5E507F'],4:['#F2D7A6','#C9955A','#D9A55E'],5:['#8A5A3A','#5A3424','#6E3E22']}[w]);
+      for(i=0;i<22;i++){x=Math.floor(hsh(i,2,11+w)*TW);y=gy+3+Math.floor(hsh(2,i,11+w)*13);if(y>=69)y-=10;var k2=i%4;
+        if(w===1){if(k2===0){E(g,x,y,3,1.2,'#2A2F7A');g.s(x-1,y,'#3D4AA8')}else if(k2===1){g.s(x,y,'#3F7F6A');g.s(x,y-1,'#3F7F6A');g.s(x,y-2,'#7A5634')}else g.s(x,y,'#FFFFFF')}
+        else if(w===2){if(k2===0)mush(g,x,y+2);else if(k2===1){L(g,x,y,x-2,y-3,'#2E7D32');L(g,x,y,x+2,y-3,'#2E7D32');g.s(x,y-3,'#2E7D32')}else g.s(x,y,['#E9C46A','#E76F51'][i%2])}
+        else if(w===3){if(k2===0)crystal(g,x,y+2,4,'#4FD1C5');else if(k2===1){L(g,x,y,x+3,y+1,'#3A2E5A');L(g,x+3,y+1,x+5,y,'#3A2E5A')}else{E(g,x,y,1.6,1,'#8E96AA')}}
+        else if(w===4){g.s(x,y,['#FF6B9D','#5CC8FF','#FFD34D','#7ED957','#FFFFFF','#B07CE8'][i%6]);g.s(x+1,y,['#FF6B9D','#5CC8FF','#FFD34D','#7ED957','#FFFFFF','#B07CE8'][i%6]);if(k2===0)lolli(g,x,y+3,4,'#FF6B9D')}
+        else{if(k2===0)cookie(g,x,y,2.2);else if(k2===1){g.s(x,y,'#5A3424');g.s(x+1,y,'#5A3424');g.s(x,y-1,'#7A4A2A')}else g.s(x,y,'#FFF4E0')}}
+      return C[key]=url(g,2)}
+    if(part==='pet'){TW=96;g=G(TW,H);for(i=0;i<9;i++){x=Math.floor(hsh(i,7,4+w)*TW);y=Math.floor(hsh(7,i,4+w)*60);
+        if(w===1){E(g,x,y,1.5,1.5,'#D6F2FF');g.s(x,y,0);g.s(x-1,y-1,'#FFFFFF')}
+        else if(w===2){g.s(x,y,i%2?'#E9C46A':'#7ED957');g.s(x+1,y+1,i%2?'#D9A03A':'#5CB85C')}
+        else if(w===3){g.s(x,y,'#9FF5EE');if(i%2){g.s(x-1,y,'#4FD1C5');g.s(x+1,y,'#4FD1C5');g.s(x,y-1,'#4FD1C5');g.s(x,y+1,'#4FD1C5')}}
+        else if(w===4){R(g,x,y,2,1,['#FF6B9D','#5CC8FF','#FFD34D','#7ED957'][i%4])}
+        else{E(g,x,y,2,1.4,'rgba(255,255,255,.75)')}}
+      return C[key]=url(g,2)}
+    return null;
+  }
+  /* ===== v2.1 art: decimal island zones (market + lab) ===== */
+  function coin(g,x,y,r){E(g,x,y,r,r*.85,'#C99419');E(g,x-.3,y-.3,r-.8,r*.85-.8,'#FFD34D');g.s(x-1,y-1,'#FFF6C8');if(r>2.5)g.s(x,y,'#E0A800')}
+  function flask(g,x,y,h,lc){var nk=Math.max(1,Math.round(h*.3));R(g,x-1,y-h,3,nk,'#E8EEF8');T(g,x,y,Math.round(h*.45),h-nk,'#E8EEF8');T(g,x,y,Math.round(h*.4),Math.round((h-nk)*.55),lc);g.s(x-1,y-h+nk+1,'#FFFFFF')}
+  function stall(g,x,y,c){R(g,x-6,y-5,13,5,'#A8763E');R(g,x-6,y-5,13,1,'#C98C4E');for(var i=-6;i<7;i++)R(g,x+i,y-10,1,3,(i+6)%4<2?c:'#FFFFFF');R(g,x-6,y-7,1,2,'#7A5634');R(g,x+6,y-7,1,2,'#7A5634');coin(g,x-2,y-6,1.6);coin(g,x+2,y-6,1.6)}
+  function ruler(g,x,y,len,vert){if(vert){R(g,x,y-len,3,len,'#F2D25C');for(var i=1;i<len;i+=2)R(g,x,y-i,i%4===1?2:1,1,'#6E5410')}else{R(g,x,y-3,len,3,'#F2D25C');for(var j=1;j<len;j+=2)R(g,x+j,y-3,1,j%4===1?2:1,'#6E5410')}}
+  function bgLayer3(w,part){
+    var key='bg'+w+part;if(C[key])return C[key];var g,x,y,i,H=80,TW=160;
+    if(part==='sun'||part==='cld')return C[key]=bgLayer(0,part);
+    if(part==='far'){g=G(TW,H);
+      if(w===6){fillBelow(g,TW,H,function(x){return ph(x,TW,50,[[1.5,3,0]])},'#A9C9CC');
+        for(x=0;x<TW;x+=14){var hh=10+Math.floor(hsh(x,6,1)*12),bw=10;R(g,x+1,50-hh,bw,hh,'#A9C9CC');T(g,x+6,50-hh,6,5,'#94B8BC');for(var wy=50-hh+3;wy<48;wy+=4)for(var wx=x+3;wx<x+bw;wx+=3)g.s(wx,wy,'#C8E0E2')}
+        R(g,74,14,10,36,'#94B8BC');T(g,79,14,6,6,'#7FA6AA');E(g,79,22,3.4,3.4,'#E8F2F2');g.s(79,22,'#5E8A8E');g.s(79,20,'#5E8A8E');g.s(80,22,'#5E8A8E')}
+      else{fillBelow(g,TW,H,function(x){return ph(x,TW,50,[[1.5,2,1]])},'#B8C4E8');
+        for(i=0;i<5;i++){x=i*32+6;var rh=14+(i%3)*6;R(g,x,50-rh,18,rh,'#E3DCA8');for(y=50-rh+2;y<50;y+=3)R(g,x,y,y%6===1?4:2,1,'#B9AE6E')}
+        for(i=0;i<4;i++){x=i*40+26;var fh=18+(i%2)*6;R(g,x-2,50-fh,5,6,'#A9B6E0');T(g,x,50,9,fh-6,'#A9B6E0')}}
+      return C[key]=url(g,2)}
+    if(part==='mid'){g=G(TW,H);var gh=function(x){return ph(x,TW,52,[[1.5,2,1],[1,5,0]])};
+      fillBelow(g,TW,H,gh,function(x,y,h){return y<h+1?(w===6?'#EBD3A0':'#D6DEF4'):(w===6?'#E2C690':'#C6D2EE')});
+      for(i=0;i<8;i++){x=10+i*19+Math.floor(hsh(i,w,4)*5);y=Math.round(gh(x));var q=i%3;
+        if(w===6){if(q===0)stall(g,x,y,['#E4524B','#5C8FD6','#3FA34D'][i%3]);else if(q===1){for(var s=0;s<4;s++)coin(g,x,y-1-s*2,2.6)}else{R(g,x-4,y-7,8,7,'#B98A5A');R(g,x-4,y-7,8,1,'#D9B98A');L(g,x-4,y-7,x+3,y-1,'#8A6234')}}
+        else{if(q===0)flask(g,x,y,12,['#7ED957','#FF8FB8','#5CC8FF'][i%3]);else if(q===1){R(g,x-6,y-2,13,2,'#8E96AA');for(var tu=-5;tu<7;tu+=3){R(g,x+tu,y-9,2,7,'#E8EEF8');R(g,x+tu,y-5,2,3,['#FFD34D','#7ED957','#FF6B9D','#5CC8FF'][(tu+5)/3%4])}}
+          else{R(g,x,y-12,1,12,'#6E7890');R(g,x-7,y-12,15,1,'#6E7890');E(g,x-6,y-9,3,1.5,'#AEB8CC');E(g,x+6,y-10,3,1.5,'#AEB8CC');R(g,x-2,y-1,5,1,'#6E7890')}}}
+      return C[key]=url(g,2)}
+    if(part==='near'){TW=128;g=G(TW,H);var gy=54;
+      if(w===6){for(y=gy;y<H;y++)for(x=0;x<TW;x++){var row=Math.floor((y-gy)/4),cx=(x+(row%2)*3)%6;g.s(x,y,(cx===0||(y-gy)%4===0)?'#BFA06A':hsh(x>>1,y>>1,9)>.8?'#E8CC94':'#D8B97E')}
+        R(g,0,gy,TW,1,'#A8864E');
+        for(y=70;y<76;y++)for(x=0;x<TW;x++)g.s(x,y,(y===70||y===75)?'#8A5A2E':((x+(y%2?0:4))%8===0)?'#A86E44':'#C98C4E');
+        for(i=0;i<10;i++){x=Math.floor(hsh(i,3,21)*TW);y=gy+4+Math.floor(hsh(3,i,21)*11);coin(g,x,y,2)}}
+      else{for(y=gy;y<H;y++)for(x=0;x<TW;x++){var ck=((x>>2)+((y-gy)>>2))%2;g.s(x,y,ck?'#DDE6F7':'#C6D2EE')}
+        R(g,0,gy,TW,1,'#9AA8CC');
+        for(y=70;y<76;y++)for(x=0;x<TW;x++)g.s(x,y,(y===70||y===75)?'#6E7890':'#AEB8CC');for(x=3;x<TW;x+=10){g.s(x,72,'#6E7890');g.s(x,74,'#6E7890')}
+        for(i=0;i<8;i++){x=Math.floor(hsh(i,3,22)*TW);y=gy+5+Math.floor(hsh(3,i,22)*10);if(i%2)ruler(g,x,y,8,false);else{g.s(x,y,'#5CC8FF');g.s(x+1,y,'#5CC8FF')}}}
+      return C[key]=url(g,2)}
+    if(part==='pet'){TW=96;g=G(TW,H);for(i=0;i<9;i++){x=Math.floor(hsh(i,7,4+w)*TW);y=Math.floor(hsh(7,i,4+w)*60);
+        if(w===6){g.s(x,y,'#FFE45C');if(i%2){g.s(x-1,y,'#FFF6C8');g.s(x+1,y,'#FFF6C8');g.s(x,y-1,'#FFF6C8');g.s(x,y+1,'#FFF6C8')}}
+        else{E(g,x,y,1.6,1.6,'#E8F4FF');g.s(x,y,0);g.s(x-1,y-1,'#FFFFFF')}}
+      return C[key]=url(g,2)}
+    return null;
+  }
+  function backdrop(w){
+    if(w===0)return {sky:'linear-gradient(#7EC8F5 0 18%,#9AD6F8 18% 34%,#B8E3FB 34% 50%,#D6F0FF 50% 66%,#E8F7FF 66%)',sun:bgLayer(0,'sun'),
+      order:['far','cld','mid','near','pet'],far:bgLayer(0,'far'),cld:bgLayer(0,'cld'),mid:bgLayer(0,'mid'),near:bgLayer(0,'near'),pet:bgLayer(0,'pet'),tw:{far:160,cld:240,mid:160,near:128,pet:96}};
+    var T0=BGT[w];if(!T0)return null;
+    var o={sky:T0.sky,sun:T0.sun?bgLayer2(w,'sun'):null,up:!!T0.up,order:['far'].concat(T0.cld?['cld']:[],['mid'],T0.top?['top']:[],['near','pet']),tw:{far:160,cld:240,mid:160,top:160,near:128,pet:96}};
+    o.order.forEach(function(k){o[k]=(w>=6?bgLayer3:bgLayer2)(w,k)});return o;
+  }
+  // ---- zone map (6 stages) ----
+  var ZROAD=[['#D9B98A','#B98A5A'],['#CFE3E0','#8FB5B0'],['#C49A66','#8A6234'],['#8E80B0','#3A2E5A'],['#F2D7A6','#C9955A'],['#8A5A3A','#5A3424'],['#C98C4E','#8A5A2E'],['#AEB8CC','#6E7890']];
+  var ZGR=[['#7BC96F','#94D886','#62B058'],['#7EC8C0','#9ADAD2','#5FA8A0'],['#4C9A4A','#5DAA58','#3A7D38'],['#6B5B8F','#7A6A9E','#564873'],['#F6B8CF','#FFD6E5','#E897B5'],['#E9B97A','#F5D29E','#C9955A'],['#E2C690','#EED8A8','#CFA866'],['#C6D2EE','#DDE6F7','#A8B8DC']];
+  function terrain(w){
+    var key='t2'+w;if(C[key])return C[key];
+    var W=90,H=175,g=G(W,H),x,y,i,P0=(typeof ZPOS!=='undefined'?ZPOS:[{x:26,y:84},{x:72,y:70},{x:30,y:55},{x:72,y:40},{x:28,y:25},{x:60,y:9}]);
+    var pts=P0.map(function(p){return [p.x/100*W,(p.y+4)/100*H]}),nodes=P0.map(function(p){return [p.x/100*W,p.y/100*H+4]});
+    function dRoad(px,py){var best=1e9;for(var k=0;k<pts.length-1;k++){var a=pts[k],b=pts[k+1],vx=b[0]-a[0],vy=b[1]-a[1],t=((px-a[0])*vx+(py-a[1])*vy)/(vx*vx+vy*vy);t=Math.max(0,Math.min(1,t));var dx=px-(a[0]+vx*t),dy=py-(a[1]+vy*t);best=Math.min(best,dx*dx+dy*dy)}return Math.sqrt(best)}
+    function dNode(px,py){var b=1e9;nodes.forEach(function(n){var dx=px-n[0],dy=(py-n[1])*1.2;b=Math.min(b,Math.sqrt(dx*dx+dy*dy))});return b}
+    var gc=ZGR[w],rd=ZROAD[w];
+    for(y=0;y<H;y++)for(x=0;x<W;x++){var n=fbm(x/7,y/7,w*5+1);g.s(x,y,n>.62?gc[1]:n<.38?gc[2]:gc[0])}
+    // side features
+    if(w===1)for(y=0;y<H;y++){var lx=Math.round(10+6*Math.sin(y/17));for(x=0;x<lx;x++)g.s(x,y,x>lx-2?'#3D4AA8':'#2A2F7A')}
+    if(w===3)for(y=0;y<H;y++){var cl=Math.round(5+3*Math.sin(y/9)+2*Math.sin(y/4)),cr=W-Math.round(5+3*Math.cos(y/11)+2*Math.sin(y/5));for(x=0;x<W;x++)if(x<cl||x>cr)g.s(x,y,(x===cl-1||x===cr+1)?'#4A3C6E':'#2B2442')}
+    if(w===4)for(y=0;y<H;y++){var rx=Math.round(W-12+5*Math.sin(y/13));for(x=rx;x<rx+5;x++)if(x<W)g.s(x,y,x===rx+2?'#A86E44':'#7A4A2A')}
+    if(w===7)for(y=0;y<H;y++)for(x=0;x<W;x++)if(x%9===0||y%9===0)sh(g,x,y,'#5E6880',.12);
+    if(w===6)for(y=0;y<H;y++){var cx6=Math.round(8+3*Math.sin(y/15));for(x=0;x<cx6;x++)g.s(x,y,x>cx6-2?'#9EE0FF':'#5CA8E8')}
+    if(w===0){E(g,10,118,7,4,'#5CA8E8');E(g,9,117,5,2.5,'#8ED3F5');g.s(7,116,'#FFFFFF')}
+    // road with border + shadow
+    for(y=0;y<H;y++)for(x=0;x<W;x++){var d=dRoad(x,y);
+      if(d<4.6&&d>=3.4&&dRoad(x,y-1.5)<3.4)sh(g,x,y,'#000000',.22);
+      if(d<3.4)g.s(x,y,d>2.4?rd[1]:hsh(x,y,w+20)>.85?rd[1]:rd[0])}
+    // plazas around stages
+    nodes.forEach(function(nd,k){Esh(g,nd[0],nd[1]+2,9,5,'#000000',.15);E(g,nd[0],nd[1],9,5,rd[1]);E(g,nd[0],nd[1],8,4.2,rd[0]);
+      for(var a=0;a<12;a++){var ax=Math.round(nd[0]+8*Math.cos(a/12*6.283)),ay=Math.round(nd[1]+4.2*Math.sin(a/12*6.283));if(a%2)g.s(ax,ay,rd[1])}});
+    // decorations, sorted by y so they overlap correctly
+    var items=[];for(i=0;i<240;i++){x=Math.floor(hsh(i,w,31)*W);y=Math.floor(hsh(w,i,32)*H);if(dRoad(x,y)<6||dNode(x,y)<13)continue;
+      if((w===1&&x<16)||(w===6&&x<12))continue;if(w===3&&(x<9||x>W-9))continue;if(w===4&&x>W-18)continue;items.push([x,y,i])}
+    items.sort(function(a,b){return a[1]-b[1]}).forEach(function(it){var x=it[0],y=it[1],i=it[2],q=i%5;
+      if(w===0){if(q<2){g.s(x,y,'#3F9A3A');g.s(x,y-1,['#FF6B9D','#FFD34D','#FFFFFF','#B07CE8'][i%4])}else if(q===2)bush(g,x,y,3,'#4E9A4A','#7ED16E');else if(q===3){R(g,x-1,y-4,2,4,'#7A5634');E(g,x,y-7,4,3.5,'#3F9A3A');E(g,x-1,y-8,2,1.6,'#5CC85A')}else g.s(x,y,'#4E9A4A')}
+      else if(w===1){if(q===0)eraser(g,x,y);else if(q===1){E(g,x,y,3,1.4,'#2A2F7A');g.s(x-1,y-1,'#9FD3FF')}else if(q===2){for(var r=0;r<3;r++){R(g,x+r*2,y-3-r%2,1,3+r%2,'#3F7F6A');g.s(x+r*2,y-4-r%2,'#7A5634')}}else g.s(x,y,'#5FA8A0')}
+      else if(w===2){if(q<3)pine(g,x,y,8+q*2,'#2E6B2B','#3A8A36');else if(q===3)mush(g,x,y);else g.s(x,y,'#3A7D38')}
+      else if(w===3){if(q===0)crystal(g,x,y,5+(i%3),i%2?'#4FD1C5':'#9F7AEA');else if(q===1){E(g,x,y,2.6,1.8,'#8E96AA');g.s(x-1,y-1,'#B6BCCB')}else if(q===2){T(g,x,y,2,6,'#4A3C6E')}else g.s(x,y,'#564873')}
+      else if(w===4){if(q===0)lolli(g,x,y,5,['#FF6B9D','#5CC8FF','#FFD34D'][i%3]);else if(q===1)cupcake(g,x,y,['#FFB3D1','#C8A2F0','#9FE3C9'][i%3]);else g.s(x,y,['#FF6B9D','#5CC8FF','#FFD34D','#7ED957','#FFFFFF'][i%5])}
+      else if(w===5){if(q===0)pie(g,x,y,4);else if(q===1)cookie(g,x,y,2.6);else if(q===2){E(g,x,y,3,2,'#E6B77A');E(g,x,y,1.8,1.2,'#C98C4E')}else g.s(x,y,'#5A3424')}
+      else if(w===6){if(q===0)stall(g,x,y,['#E4524B','#5C8FD6','#3FA34D'][i%3]);else if(q===1)coin(g,x,y,2.4);else if(q===2){R(g,x-3,y-5,6,5,'#B98A5A');R(g,x-3,y-5,6,1,'#D9B98A')}else g.s(x,y,'#BFA06A')}
+      else{if(q===0)flask(g,x,y,8,['#7ED957','#FF8FB8','#5CC8FF'][i%3]);else if(q===1)ruler(g,x,y,8,i%2===0);else if(q===2){E(g,x,y,2.6,2.6,'#8E96AA');E(g,x,y,1,1,'#C6D2EE')}else g.s(x,y,'#8E9AC0')}});
+    // soft vignette edges
+    for(y=0;y<H;y++){sh(g,0,y,'#000000',.25);sh(g,W-1,y,'#000000',.25);sh(g,1,y,'#000000',.12);sh(g,W-2,y,'#000000',.12)}
+    return C[key]=url(g,4);
+  }
+  return{scene:scene,base:base,LM:LM,terrain:terrain,island:island,islandArt:islandArt,seaTile:seaTile,cloudImg:cloudImg,birdImg:birdImg,backdrop:backdrop};
 })();
 var STG=[
   [['ทุ่งดอกไม้บวกบาน','flower'],['บ่อน้ำกลางทุ่ง','well'],['สะพานไม้ข้ามลำธาร','bridge'],['กังหันลมนับเลข','windmill'],['ตลาดนัดบวกเงิน','stall'],['ปราสาทราชาบวก','castle']],
   [['ท่าเรือหมึกดำ','ship'],['บึงขวดหมึก','inkpot'],['ประภาคารลบเลือน','lighthouse'],['หอนาฬิกาถอยหลัง','clocktower'],['ห้องสมุดลืมเลข','library'],['ป้อมปราการราชาลบ','fortress']],
   [['บ้านเห็ดคูณสอง','mushroom'],['ต้นไม้ยักษ์','tree'],['เต็นท์นักผจญภัย','tent'],['หอคอยไม้ตารางเก้า','tower'],['เสาโทเท็มสูตรคูณ','totem'],['วิหารราชาคูณ','temple']],
   [['ปากถ้ำแบ่งส่วน','cave'],['เหมืองคริสตัล','crystal'],['น้ำตกใต้ดิน','waterfall'],['สะพานหินแขวน','bridge'],['ภูเขาไฟหารเศษ','volcano'],['พีระมิดราชาหาร','pyramid']],
-  [['สวนเค้กเศษส่วน','flower'],['ร้านพิซซ่าแบ่งชิ้น','stall'],['หอนาฬิกาครึ่งวง','clocktower'],['ห้องสมุดส่วนเต็ม','library'],['กังหันสี่ส่วน','windmill'],['ปราสาทราชาเศษส่วน','castle']]
+  [['สวนเค้กเศษส่วน','flower'],['ร้านพิซซ่าแบ่งชิ้น','stall'],['หอนาฬิกาครึ่งวง','clocktower'],['ห้องสมุดบวกส่วน','library'],['กังหันลบส่วน','windmill'],['ปราสาทราชาเศษส่วน','castle']],
+  [['เต็นท์ขนมคูณทวี','tent'],['บ่อน้ำผึ้งหารแบ่ง','well'],['ท่าเรือแบ่งสินค้า','ship'],['ประภาคารจำนวนคละ','lighthouse'],['หอคอยโจทย์ปัญหา','tower'],['วิหารจักรพรรดิเศษส่วน','temple']],
+  [['ซุ้มอ่านทศนิยม','stall'],['หอชั่งเปรียบเทียบ','clocktower'],['บ่อเหรียญบวก','well'],['สะพานเงินทอน','bridge'],['ประภาคารปัดเศษ','lighthouse'],['ป้อมราชาทศนิยม','fortress']],
+  [['หอคอยคูณสิบ','tower'],['น้ำตกหารร้อย','waterfall'],['เหมืองคูณจุด','crystal'],['ห้องสมุดแปลงร่าง','library'],['ท่าเรือสินค้า','ship'],['วิหารจักรพรรดิจุดทอง','temple']]
 ];
 /* ---------- difficulty ---------- */
 var DIFF=[{n:'ง่าย',e:'🌱',m:1,dq:0,ch:3,fa:0},{n:'ปานกลาง',e:'🔥',m:1.3,dq:3,ch:3,fa:1},{n:'ยาก',e:'💀',m:2,dq:6,ch:4,fa:2}];
@@ -1202,18 +1710,19 @@ function difBar(id){
 function bindDif(id,cb){[].forEach.call(document.querySelectorAll('#'+id+' .dfb'),function(b){b.onclick=function(){P.dif=+b.getAttribute('data-d');saveP();SND.sfx('tap');applyTheme(P.dif);cb()}})}
 /* ---------- island overview ---------- */
 var ISLES=[
-  {n:'เกาะพื้นฐาน',d:'บวก ลบ คูณ หาร',lm:['castle','fortress','temple','pyramid'],x:6,y:38,w:58},
-  {n:'เกาะเศษส่วนและทศนิยม',d:'เศษส่วน · ทศนิยม',lm:['library','clocktower'],x:56,y:8,w:40,w0:4},
-  {n:'เกาะอัตราส่วนและร้อยละ',d:'เร็ว ๆ นี้',lm:['stall','lighthouse'],x:58,y:70,w:38,soon:1}
+  {n:'เกาะพื้นฐาน',d:'บวก ลบ คูณ หาร',lm:['castle','fortress','temple','pyramid'],x:3,y:12,w:50},
+  {n:'เกาะเศษส่วน',d:'พื้นฐาน · ขั้นสูง',lm:['library','clocktower'],x:54,y:3,w:43,w0:4},
+  {n:'เกาะทศนิยม',d:'พื้นฐาน · ขั้นสูง',lm:['stall','tower'],x:52,y:47,w:44,w0:6},
+  {n:'เกาะอัตราส่วนและร้อยละ',d:'เร็ว ๆ นี้',lm:['stall','lighthouse'],x:6,y:62,w:36,soon:1}
 ];
 function rIsles(){
-  var h=topbar()+'<div class="st">🗺️ หมู่เกาะคณิต</div><div class="sea">';
+  var h=topbar()+'<div class="st">🗺️ หมู่เกาะคณิต</div><div class="sea">'+'<i class="wv" style="background-image:url('+LAND.seaTile()+')"></i><i class="wv w2" style="background-image:url('+LAND.seaTile()+')"></i>';
   ISLES.forEach(function(I,i){if(I.w0!=null)I.soon=!worldUnlocked(I.w0);
-    h+='<button class="isle'+(I.soon?' soon':'')+'" data-i="'+i+'" style="left:'+I.x+'%;top:'+I.y+'%;width:'+I.w+'%">'+
-      '<span class="land">'+I.lm.map(function(k){return '<img src="'+LAND.base(k,false)+'" alt="">'}).join('')+'</span>'+
+    h+='<button class="isle'+(I.soon?' soon':'')+'" data-i="'+i+'" style="left:'+I.x+'%;top:'+I.y+'%;width:min('+I.w+'%,'+[38,34,34,26][i]+'cqh)">'+
+      '<span class="land" style="background-image:url('+LAND.islandArt(i)+')">'+I.lm.map(function(k){return '<img src="'+LAND.base(k,false)+'" alt="">'}).join('')+'</span>'+
       '<span class="iname">'+I.n+'<small>'+(I.soon?'🔒 ':'⭐ '+totalStars()+' · ')+(I.w0!=null&&I.soon?'ผ่านบอสโซนหารก่อน':I.d)+'</small></span></button>';
   });
-  h+='<span class="wave1"></span><span class="wave2"></span><span class="boat">⛵</span></div><div class="note">แตะเกาะเพื่อเลือกด่าน</div>';
+  h+='<img class="cld c1" src="'+LAND.cloudImg(1)+'" alt=""><img class="cld c2" src="'+LAND.cloudImg(0)+'" alt=""><img class="bird b1" src="'+LAND.birdImg()+'" alt=""><img class="bird b2" src="'+LAND.birdImg()+'" alt="">'+'<span class="boat">⛵</span></div><div class="note">แตะเกาะเพื่อเลือกด่าน</div>';
   HS.innerHTML=h;bindTop();
   [].forEach.call(HS.querySelectorAll('.isle'),function(b){b.onclick=function(){if(b.classList.contains('soon')){SND.sfx('bad');b.classList.add('nope');setTimeout(function(){b.classList.remove('nope')},400);return}var ii=+b.getAttribute('data-i');SND.sfx('tap');clouds(function(){show('island',ii)},ISLES[ii].n)}});
 }
@@ -1246,7 +1755,7 @@ function rIsle(w){
 }
 /* ---------- island + zone maps ---------- */
 var ZPOS=[{x:26,y:84},{x:72,y:70},{x:30,y:55},{x:72,y:40},{x:28,y:25},{x:60,y:9}];
-var IPOS=[{x:26,y:74},{x:74,y:74},{x:26,y:28},{x:74,y:28},{x:50,y:52},{x:26,y:26},{x:74,y:26}];
+var IPOS=[{x:26,y:74},{x:74,y:74},{x:26,y:28},{x:74,y:28},{x:30,y:68},{x:70,y:32},{x:30,y:68},{x:70,y:32}];
 function clouds(cb,label){
   var o=document.createElement('div');o.className='clouds';
   o.innerHTML='<i class="cl l"></i><i class="cl r"></i>'+(label?'<b>'+label+'</b>':'');document.body.appendChild(o);
@@ -1257,15 +1766,14 @@ function clouds(cb,label){
 var ISL=0;
 function rIsland(isl){isl=isl||0;ISL=isl;
   var h=topbar()+'<div class="ihead"><button class="back" id="toIsles">◀ หมู่เกาะ</button><b>'+ISLES[isl].n+'</b></div>';
-  h+=difBar('idif');
-  h+='<div class="ibig" style="background-image:url('+LAND.island()+')">';
+  h+='<div class="ibig">'+'<i class="wv" style="background-image:url('+LAND.seaTile()+')"></i><i class="wv w2" style="background-image:url('+LAND.seaTile()+')"></i>'+'<img class="isimg" src="'+LAND.islandArt(isl)+'" alt="">'+'<img class="cld c1" src="'+LAND.cloudImg(1)+'" alt=""><img class="cld c2" src="'+LAND.cloudImg(0)+'" alt=""><img class="bird b1" src="'+LAND.birdImg()+'" alt=""><img class="bird b2" src="'+LAND.birdImg()+'" alt="">';
   WORLDS.forEach(function(W,wi){
     if((W.isl||0)!==isl)return;
     var wu=worldUnlocked(wi),ws=0,lm=STG[wi][NS-1][1];for(var i=0;i<NS;i++)ws+=P.sd[DI()][wi*NS+i]||0;
     h+='<button class="ireg'+(wu?'':' fog')+'" data-w="'+wi+'" style="left:'+IPOS[wi].x+'%;top:'+IPOS[wi].y+'%"><img src="'+LAND.base(lm,true)+'" alt=""><span class="sign">'+W.icon+' '+W.title+'<small>'+(wu?'⭐ '+ws+'/18':(WREQ[wi]?'🔒 ดาว '+WREQ[wi]:'🔒 ผ่านบอสก่อนหน้า'))+'</small></span>'+(wu?'':'<i class="fogc"></i>')+'</button>';
   });
   h+='</div><div class="note">แตะโซนเพื่อเข้าไปผจญภัย</div>';
-  HS.innerHTML=h;bindTop();bindDif('idif',function(){rIsland(isl)});
+  HS.innerHTML=h;bindTop();
   $('toIsles').onclick=function(){SND.sfx('tap');show('isles')};
   [].forEach.call(HS.querySelectorAll('.ireg'),function(b){b.onclick=function(){
     var w=+b.getAttribute('data-w');
@@ -1277,7 +1785,7 @@ function rZone(w){
   if(w==null)w=lastStage().w;MAPW=w;
   var d=DI(),W=WORLDS[w],ws=0,i,ls=lastStage();for(i=0;i<NS;i++)ws+=P.sd[d][w*NS+i]||0;
   var h=topbar()+'<div class="ihead"><button class="back" id="toIsl">◀ เกาะ</button><button class="back" id="toIsles">🗺️ แผนที่หลัก</button></div>';
-  h+='<div class="ztitle" style="--c:'+W.col+'">'+W.icon+' โซน '+(w+1)+': '+W.title+'<small>⭐ '+ws+'/18</small></div>'+dChip();
+  h+='<div class="ztitle" style="--c:'+W.col+'">'+W.icon+' โซน '+(w+1)+': '+W.title+'<small>⭐ '+ws+'/18</small></div>';
   h+='<div class="zmap" style="background-image:url('+LAND.terrain(w)+')"><svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="';
   for(i=0;i<NS;i++)h+=(i?' L':'M')+ZPOS[i].x+' '+(ZPOS[i].y+4);
   h+='"/></svg>';
@@ -1446,12 +1954,15 @@ function evoScene(f,from){
 /* home card + school page */
 function schoolCard(){return '<button class="scard" id="goS"><span class="si">'+schoolImg()+'</span><span class="sinfo"><b>โรงเรียนของฉัน Lv.'+sLv()+'</b><small>'+SCH.forms[sForm()].n+' · เลือด '+sHP()+'%</small>'+expBar()+'</span></button>'}
 function rSchool(){
-  var l=sLv(),f=sForm(),nf=SCH.forms[f+1];
+  var l=sLv(),f=sForm(),nf=SCH.forms[f+1],stb=P.stab||0,on=SCH.skills.filter(function(k){return l>=k.lv}).length;
   var h=topbar()+'<div class="ihead"><button class="back" id="sBack">◀ หน้าหลัก</button><b>โรงเรียนของฉัน</b></div>';
-  h+='<div class="pn sch"><div class="sbig">'+schoolImg()+'</div><b>'+SCH.forms[f].n+' · Lv.'+l+'</b>'+expBar()+'<small>เลือดโรงเรียน '+sHP()+'% · ได้ EXP ทุกครั้งที่เล่นจบด่าน และจากการฝึกซ้อม</small></div>';
-  if(nf)h+='<div class="pn nxt"><span class="shadow">'+schoolImg(f+1)+'</span><span><b>ร่างต่อไป: ???</b><small>วิวัฒนาการที่ Lv.'+nf.lv+'</small></span></div>';
-  h+='<div class="st">สกิลโรงเรียน</div><div class="sklist">'+SCH.skills.map(function(k){var on=l>=k.lv;return '<div class="sk2'+(on?'':' off')+'"><span>'+(on?k.e:'🔒')+'</span><span><b>'+k.n+'</b><small>'+(on?k.d:'ปลดที่ Lv.'+k.lv+' · '+k.d)+'</small></span></div>'}).join('')+'</div>';
+  h+='<div class="dtabs stabs"><button class="dt'+(stb?'':' on')+'" data-t="0">🏫 อาคาร</button><button class="dt'+(stb?' on':'')+'" data-t="1">✨ สกิล ('+on+'/'+SCH.skills.length+')</button></div>';
+  if(!stb){
+    h+='<div class="pn sch"><div class="sbig">'+schoolImg()+'</div><b>'+SCH.forms[f].n+' · Lv.'+l+'</b>'+expBar()+'<small>เลือดโรงเรียน '+sHP()+'% · ได้ EXP ทุกครั้งที่เล่นจบด่าน และจากการฝึกซ้อม</small></div>';
+    if(nf)h+='<div class="pn nxt"><span class="shadow">'+schoolImg(f+1)+'</span><span><b>ร่างต่อไป: ???</b><small>วิวัฒนาการที่ Lv.'+nf.lv+'</small></span></div>';
+  }else h+='<div class="sklist">'+SCH.skills.map(function(k){var o=l>=k.lv;return '<div class="sk2'+(o?'':' off')+'"><span>'+(o?k.e:'🔒')+'</span><span><b>'+k.n+'</b><small>'+(o?k.d:'ปลดที่ Lv.'+k.lv+' · '+k.d)+'</small></span></div>'}).join('')+'</div>';
   HS.innerHTML=h;bindTop();$('sBack').onclick=function(){show('home')};
+  [].forEach.call(HS.querySelectorAll('.stabs .dt'),function(b){b.onclick=function(){P.stab=+b.getAttribute('data-t');saveP();SND.sfx('tap');rSchool();fitHS()}});
 }
 function dChip(){var d=DIFF[DI()];return '<span class="dchip d'+DI()+'">'+d.e+' ระดับ'+d.n+'</span>'}
 /* ---------- difficulty themes ---------- */
@@ -1478,18 +1989,21 @@ var WORLDS=[
 {op:'-',eb:560,title:'ลบเลข',name:'ลานลบรอยหมึก',icon:'➖',tip:'ลบเลขให้ถูก ได้เหรียญไปเรียกฮีโร่!',hpm:1.05,fast:6,bg:'linear-gradient(#CFE9FF 0 62%,#7EC8C0 62% 100%)',col:'#8BD3FF',t:[25,55,90],q:[4,8,12]},
 {op:'×',eb:620,title:'สูตรคูณ',name:'ป่าสูตรคูณ',icon:'✖️',tip:'ท่องสูตรคูณ ได้เหรียญเรียกฮีโร่!',hpm:1.07,fast:7,bg:'linear-gradient(#CDEDBF 0 62%,#4C9A4A 62% 100%)',col:'#A8E6A1',t:[30,65,100],q:[5,10,15]},
 {op:'÷',eb:680,title:'การหาร',name:'ถ้ำแบ่งส่วน',icon:'➗',tip:'หารให้ลงตัว ได้เหรียญเรียกฮีโร่!',hpm:1.1,fast:8,bg:'linear-gradient(#A9B2DE 0 62%,#6B5B8F 62% 100%)',col:'#D7B8FF',t:[35,75,115],q:[6,12,18]}
-,{op:'f',isl:1,eb:700,title:'เศษส่วน',name:'ทุ่งขนมเศษส่วน',icon:'🍰',tip:'แบ่งขนมให้ถูก ได้เหรียญเรียกฮีโร่!',hpm:1.12,fast:9,bg:'linear-gradient(#FFE3F1 0 62%,#F6B8CF 62% 100%)',col:'#FFB3D1',t:[40,80,120],q:[7,14,21]}
+,{op:'f',isl:1,eb:700,title:'เศษส่วนพื้นฐาน',name:'ทุ่งขนมเศษส่วน',icon:'🍰',tip:'แบ่งขนมให้ถูก ได้เหรียญเรียกฮีโร่!',hpm:1.12,fast:9,bg:'linear-gradient(#FFE3F1 0 62%,#F6B8CF 62% 100%)',col:'#FFB3D1',t:[40,80,120],q:[7,14,21],fk:['id','eq','cmp','add','sub','boss'],bk:['id','eq','cmp','add','sub']}
+,{op:'f',isl:1,eb:740,title:'เศษส่วนขั้นสูง',name:'ครัวขนมเศษส่วน',icon:'🥧',tip:'คูณ หาร แบ่งให้ถูก ได้เหรียญเรียกฮีโร่!',hpm:1.15,fast:11,bg:'linear-gradient(#FFE9C9 0 62%,#E9B97A 62% 100%)',col:'#FFC98A',t:[40,80,120],q:[7,14,21],fk:['mul','div','of','mix','word','boss'],bk:['mul','div','of','mix','word']}
+,{op:'d',isl:2,eb:720,title:'ทศนิยมพื้นฐาน',name:'ตลาดเหรียญทศนิยม',icon:'🪙',tip:'ตอบทศนิยมให้ถูก ได้เหรียญเรียกฮีโร่!',hpm:1.13,fast:9,bg:'linear-gradient(#B5E4EE 0 62%,#D8B97E 62% 100%)',col:'#FFD34D',t:[40,80,120],q:[7,14,21],fk:['did','dcm','dad','dsb','drn','boss'],bk:['did','dcm','dad','dsb','drn']}
+,{op:'d',isl:2,eb:750,title:'ทศนิยมขั้นสูง',name:'ห้องทดลองทศนิยม',icon:'🧪',tip:'เลื่อนจุดให้ถูก ได้เหรียญเรียกฮีโร่!',hpm:1.16,fast:11,bg:'linear-gradient(#D6E0F8 0 62%,#C6D2EE 62% 100%)',col:'#8EC5FF',t:[40,80,120],q:[7,14,21],fk:['dm10','dd10','dmu','dcv','dwd','boss'],bk:['dm10','dd10','dmu','dcv','dwd']}
 ];
-var WREQ=[0,10,24,40,0],NS=6;
+var WREQ=[0,10,24,40,0,0,0,0],NS=6;
 var BAL={"plan": [["mini", "mini", "sub"], ["mini", "sub", "sub"], ["mini", "sub", "boss"], ["sub", "sub", "boss"]], "trig": [0.85, 0.7, 0.5], "hps": 0.05, "bossM": 1.0, "gapMin": 4.5, "gap0": 7.5, "gapS": 0.3, "gapW": 0.2, "ebs": 0.06, "rush": [[0.7, 0.25, 0.05], [0.65, 0.25, 0.1], [0.6, 0.3, 0.1]], "rushGap": 0.9, "gain": 10, "gainF": 15, "coin0": 20, "first": 8, "baseDef": 1};
 function mkStage(w,s){
   var W=WORLDS[w],boss=s===NS-1,tm=1+.06*s;
   var plan=boss?BAL.plan[3]:s>=3?BAL.plan[2]:s>=1?BAL.plan[1]:BAL.plan[0];
   var MS={mini:'ปีศาจจิ๋วจอมซ่ามาแล้ว!',sub:'ปีศาจจอมพลังมาแล้ว! ระวังนะ',boss:boss?'จอมปีศาจประจำโลกมาแล้ว! สู้ให้เต็มที่!':'จอมปีศาจมาแล้ว! รุมช่วยกันสู้เลย'};
   var DF=DIFF[DI()];
-  return {w:w,s:s,op:W.op,d:s,dq:DF.dq,ch:DF.ch,dmgm:DF.m,dif:DI(),sname:STG[w][s][0],lm:STG[w][s][1],fast:W.fast+DF.fa,hpm:W.hpm*(1+BAL.hps*s)*(boss?BAL.bossM:1)*DF.m,gap:Math.max(BAL.gapMin,BAL.gap0-BAL.gapS*s-BAL.gapW*w-(boss?.3:0)),bg:W.bg,
+  return {w:w,s:s,op:W.op,d:s,dq:DF.dq,ch:DF.ch,dmgm:DF.m,dif:DI(),sname:STG[w][s][0],lm:STG[w][s][1],fast:W.fast+DF.fa+(W.fk&&(W.fk[s]==='word'||W.fk[s]==='dwd')?3:0),fk:W.fk?W.fk[s]:null,fpool:W.bk||null,hpm:W.hpm*(1+BAL.hps*s)*(boss?BAL.bossM:1)*DF.m,gap:Math.max(BAL.gapMin,BAL.gap0-BAL.gapS*s-BAL.gapW*w-(boss?.3:0)),bg:W.bg,
     look:MON.stage(w,s),ebase:Math.round(W.eb*(1+BAL.ebs*s)*(boss?1.15:1)*DF.m),rush:BAL.rush[boss?2:s>=3?1:0],
-    name:W.name,title:(w+1)+'-'+(s+1)+(boss?' ด่านบอส':''),tip:W.tip,boss:boss,
+    name:W.name,title:(w+1)+'-'+(s+1)+(boss?' ด่านบอส':''),tip:W.fk?'📘 ด่านนี้ฝึก: '+(W.fk[s]==='boss'?'รวมทุกเรื่องในโซน':FKN[W.fk[s]]):W.tip,boss:boss,
     spawns:plan.map(function(x,i){return {at:Math.round(W.t[i]*tm),hp:BAL.trig[i],type:x,msg:MS[x],big:i===plan.length-1}})};
 }
 var LEVEL=mkStage(0,0),CUR={w:0,s:0};
@@ -1498,12 +2012,18 @@ var S,raf,last;
 function rnd(a,b){return a+Math.floor(Math.random()*(b-a+1))}
 function shuffle(a){for(var i=a.length-1;i>0;i--){var j=rnd(0,i),t=a[i];a[i]=a[j];a[j]=t}return a}
 
+function bgFit(){var b=document.getElementById('bgx');if(b)b.style.setProperty('--k',(b.clientHeight||150)/80)}
+window.addEventListener('resize',bgFit);try{new ResizeObserver(bgFit).observe(document.getElementById('stage'))}catch(e){}
 function reset(){
   S={t:0,coins:BAL.coin0,php:100,ehp:LEVEL.ebase,ehp0:LEVEL.ebase,units:[],spawn:BAL.first,bossOn:false,bossDone:false,nextSp:0,trick:0,
      asked:0,firstTry:0,times:[],q:null,qStart:0,wrong:false,locked:false,over:false,summoned:0,msgLock:0,cd:{}};
   var st=$('stage');[].slice.call(st.querySelectorAll('.u,.fx')).forEach(function(e){e.remove()});
   ['pb','eb'].forEach(function(i){var b=$(i);b.classList.remove('boom','shield');if(i==='pb')b.querySelector('.ic').textContent='🏫';else{b.querySelector('.ic').innerHTML='<img src="'+LAND.base(LEVEL.lm,LEVEL.boss)+'" alt="">';b.classList.toggle('bossb',!!LEVEL.boss)}});schoolReset();applyTheme(LEVEL.dif||0);
-  $('stage').style.background='url('+LAND.scene(LEVEL.lm,LEVEL.w,{noLm:1})+') center bottom/cover no-repeat,'+LEVEL.bg;$('menu').textContent='☰ '+LEVEL.title;say(LEVEL.tip);
+  var st0=$('stage'),bx=$('bgx'),bk=LAND.backdrop(LEVEL.w);if(bx)bx.remove();
+  if(bk){st0.style.background=bk.sky;bx=document.createElement('div');bx.id='bgx';
+    bx.innerHTML=(bk.sun?'<i class="sun" style="background-image:url('+bk.sun+')"></i>':'')+bk.order.map(function(k){return '<i class="ly '+k+(k==='pet'&&bk.up?' up':'')+'" style="background-image:url('+bk[k]+');--tw:'+bk.tw[k]+'"></i>'}).join('');
+    st0.insertBefore(bx,st0.firstChild);bgFit()}
+  else st0.style.background='url('+LAND.scene(LEVEL.lm,LEVEL.w,{noLm:1})+') center bottom/cover no-repeat,'+LEVEL.bg;$('menu').textContent='☰ '+LEVEL.title;say(LEVEL.tip);
   DC={};renderShop();predecode();
   newQ();draw();
 }
@@ -1522,61 +2042,260 @@ function say(m){$('msg').textContent=m}
 function pickN(c,cands,n){
   var u=[];cands.forEach(function(v){if((typeof v==='string'||v>0)&&v!==c&&u.indexOf(v)<0)u.push(v)});
   shuffle(u);var r=u.slice(0,n),k=1;
-  while(r.length<n){if(r.indexOf(c+k)<0&&c+k!==c)r.push(c+k);if(r.length<n&&c-k>0&&r.indexOf(c-k)<0)r.push(c-k);k++}
+  while(r.length<n&&typeof c!=='string'){if(r.indexOf(c+k)<0&&c+k!==c)r.push(c+k);if(r.length<n&&c-k>0&&r.indexOf(c-k)<0)r.push(c-k);k++}
   return r.slice(0,n);
 }
 function pick2(c,cands){
   var u=[];cands.forEach(function(v){if((typeof v==='string'||v>0)&&v!==c&&u.indexOf(v)<0)u.push(v)});
   shuffle(u);var r=u.slice(0,2),k=1;
-  while(r.length<2){if(r.indexOf(c+k)<0)r.push(c+k);k++}
+  while(r.length<2&&typeof c!=='string'){if(r.indexOf(c+k)<0)r.push(c+k);k++}
   return r;
 }
 function gen(){
   var d=Math.max(0,LEVEL.d+(LEVEL.dq||0)-(S.asked<2?1:0)),op=LEVEL.op,p;
   var A=[10,12,14,16,18,20,25,30,40,50,60,99][d],cy=[0,.2,.4,.5,.6,.7,.5,.5,.5,.5,.5,.5][d],H=[3,4,5,6,8,9,9,10,10,11,12,12][d];
-  if(op==='f')p={d:d,hard:DI()===2};else if(op==='+'||op==='-')p={max:A,carry:cy};else if(op==='×')p={lo:2,hi:H};else p={bmax:H,qmax:H};
+  if(op==='f'||op==='d')p={k:LEVEL.fk,pool:LEVEL.fpool,dif:DI(),warm:S.asked<2};else if(op==='+'||op==='-')p={max:A,carry:cy};else if(op==='×')p={lo:2,hi:H};else p={bmax:H,qmax:H};
   return mkQ(op,p);
 }
-function FR(x){return String(x).replace(/(\d+)\/(\d+)/g,'<span class="fr"><i>$1</i><i>$2</i></span>')}
+function FR(x){
+  var s=String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  s=s.replace(/\[bar:(\d+):(\d+)\]/g,function(_,n,d){n=+n;d=+d;var h='',k=Math.max(1,Math.ceil(n/d));for(var b=0;b<k;b++){h+='<span class="fbar">';for(var i=0;i<d;i++)h+='<i'+(b*d+i<n?' class="on"':'')+'></i>';h+='</span>'}return h});
+  return s.replace(/(\d+)\/(\d+)/g,'<span class="fr"><i>$1</i><i>$2</i></span>');
+}
+function gcd(a,b){a=Math.abs(a);b=Math.abs(b);while(b){var t=b;b=a%b;a=t}return a||1}
+function lcm(a,b){return a/gcd(a,b)*b}
+var FKN={id:'รู้จักเศษส่วน',eq:'เศษส่วนที่เท่ากัน',cmp:'เปรียบเทียบเศษส่วน',add:'บวกเศษส่วน',sub:'ลบเศษส่วน',mul:'คูณเศษส่วน',div:'หารเศษส่วน',of:'เศษส่วนของจำนวน',mix:'เศษเกินและจำนวนคละ',word:'โจทย์ปัญหาเศษส่วน'};
+function fval(x){if(typeof x==='number')return x;var m=String(x).match(/^(?:(\d+) )?(\d+)\/(\d+)$/);if(!m)return NaN;return (+(m[1]||0))+(+m[2])/(+m[3])}
 function mkF(p){
-  var d=p.d||0,hard=!!p.hard,dm=[5,6,8,10,12,12][Math.min(5,d)],k=p.k,den,a,b,c,t,h='',w=[],n,r,wh,s,u=[],x,nn,big;
-  function F(x,y){return x+'/'+y}
-  function G(nu,de){return nu>0&&(hard||nu<=de)?F(nu,de):null}
-  var ks=d<=1?['cmp','cmp','id']:d<=3?['id','add','sub','cmp']:['add','sub','of','of','cmp'];
-  if(hard&&d>=2)ks=ks.concat(['imp','mix','imp']);
-  if(!k)k=ks[rnd(0,ks.length-1)];
-  if(k==='mixed')k=Math.random()<.5?'imp':'mix';
-  if(k==='cmp'){
-    big=Math.random()<.5;
-    if(d<2||Math.random()<.4){den=rnd(7,12);while(u.length<4){x=rnd(1,den-1);if(u.indexOf(x)<0)u.push(x)}
-      c=F(Math.max.apply(0,u),den);w=u.map(function(v){return F(v,den)});t='เศษส่วนใดมากที่สุด?';h='ตัวส่วนเท่ากัน ดูที่ตัวเศษ ยิ่งมากยิ่งมาก'}
-    else{nn=rnd(1,2);while(u.length<4){x=rnd(nn+2,12);if(u.indexOf(x)<0)u.push(x)}
-      c=F(nn,big?Math.min.apply(0,u):Math.max.apply(0,u));w=u.map(function(v){return F(nn,v)});
-      t=big?'เศษส่วนใดมากที่สุด?':'เศษส่วนใดน้อยที่สุด?';h='ตัวเศษเท่ากัน ตัวส่วนน้อย = ชิ้นใหญ่ ตัวส่วนมาก = ชิ้นเล็ก'}
-  }else if(k==='id'){
-    den=rnd(3,dm);n=rnd(1,den-1);t='ขนมแบ่งเป็น '+den+' ชิ้น กินไป '+n+' ชิ้น กินไปกี่ส่วนของทั้งหมด?';c=F(n,den);
-    w=[F(den-n,den),F(n,den+1),F(n+1,den),F(n>1?n-1:n+2,den),hard?F(den,n):F(n,den+2)];h='🟧'.repeat(n)+'⬜'.repeat(den-n)+'  →  '+c;
-  }else if(k==='add'){
-    den=rnd(4,dm+1);a=rnd(1,den-2);b=hard?rnd(1,den-1):rnd(1,den-1-a);s=a+b;c=F(s,den);
-    w=[G(s,den*2),G(s+1,den),G(s-1,den),G(s,den+1),G(a*b,den)].filter(Boolean);
-    t=F(a,den)+' + '+F(b,den)+' = ?';h='ตัวส่วนเท่ากัน บวกเฉพาะตัวเศษ: '+a+' + '+b+' = '+s;
-  }else if(k==='sub'){
-    den=rnd(4,dm+1);a=rnd(2,den-1);b=rnd(1,a-1);s=a-b;c=F(s,den);
-    w=[G(s+1,den),G(s-1,den),G(s,den*2),G(s,den+1),G(a+b,den)].filter(Boolean);
-    t=F(a,den)+' − '+F(b,den)+' = ?';h='ตัวส่วนเท่ากัน ลบเฉพาะตัวเศษ: '+a+' − '+b+' = '+s;
+  var dif=p.dif!=null?p.dif:DI(),k=p.k||'add';
+  if(k==='boss'||k==='any'){var pool=p.pool||['id','eq','cmp','add','sub'];k=pool[rnd(0,pool.length-1)]}
+  if(p.warm&&dif>0&&k!=='cmp'&&k!=='dcm'&&Math.random()<.5)dif--;
+  var hard=dif===2,c,t,h,w=[],noPad=false,noEqv=false,a,b,d,n,m,x,y,L,g,v,kk;
+  function pk(arr){return arr[rnd(0,arr.length-1)]}
+  function cop(lo,hi,den){var o=[];for(var i=lo;i<=hi;i++)if(gcd(i,den)===1)o.push(i);return o.length?pk(o):1}
+  // simplest form; whole numbers come back as numbers; mx => improper as mixed number
+  function S(nu,de,mx){var gg=gcd(nu,de);nu/=gg;de/=gg;if(de===1)return nu;if(mx&&nu>de){var wh=Math.floor(nu/de);return wh+' '+(nu-wh*de)+'/'+de}return nu+'/'+de}
+  function R(nu,de){return nu>0&&de>1?nu+'/'+de:null}               // raw (maybe unsimplified)
+  function RU(nu,de){return gcd(nu,de)>1&&de/gcd(nu,de)>1?nu+'/'+de:null} // the "not simplest" trap
+  function M(wh,nu,de){return wh?wh+' '+nu+'/'+de:nu+'/'+de}
+  if(k==='id'){
+    d=rnd(2,[6,10,12][dif]);
+    if(hard&&Math.random()<.5){do{d=pk([4,6,8,9,10,12]);n=rnd(2,d-1)}while(gcd(n,d)===1);
+      t='[bar:'+n+':'+d+'] ส่วนที่ระบายสีคิดเป็นเศษส่วนอย่างต่ำได้เท่าไร?';c=S(n,d);w=[R(n,d),S(d-n,d),R(n,d+1),S(n+1,d)];
+      h='ระบาย '+n+' จาก '+d+' ช่อง = '+n+'/'+d+' = '+c;
+    }else{n=cop(1,d-1,d);var un=dif>0&&Math.random()<.5;
+      t='[bar:'+n+':'+d+'] ส่วนที่'+(un?'ไม่ได้':'')+'ระบายสีคือเศษส่วนเท่าไร?';var q=un?d-n:n;c=S(q,d);
+      w=[S(d-q,d),R(q,d+1),R(q,d-q),S(q+1<d?q+1:q-1||1,d),R(d,q)];
+      h='นับช่องที่'+(un?'ไม่ได้':'')+'ระบาย = ตัวเศษ ('+q+') ช่องทั้งหมด = ตัวส่วน ('+d+')';}
+  }else if(k==='eq'){
+    if(dif===1){b=rnd(2,6);a=cop(1,b-1,b);m=rnd(2,5);c=a*m;
+      t=a+'/'+b+' = ?/'+(b*m);w=[a+m,c+1,c-1,b*m-c,a*(m+1)];h='ตัวส่วน '+b+' × '+m+' = '+(b*m)+' ตัวเศษก็ต้อง × '+m+' : '+a+' × '+m+' = '+c;
+    }else if(hard&&Math.random()<.5){b=rnd(3,8);a=cop(1,b-1,b);m=rnd(2,5);c=R(a*m,b*m);noEqv=true;
+      t='เศษส่วนใดเท่ากับ '+a+'/'+b+'?';w=[R(a*m+1,b*m),R(a*m,b*m+m),R(a+m,b+m),R(a*m-1>0?a*m-1:a*m+2,b*m),R(b*m-a*m,b*m)];
+      h='คูณทั้งเศษและส่วนด้วย '+m+': '+a+'/'+b+' = '+(a*m)+'/'+(b*m);
+    }else{b=rnd(2,hard?9:6);a=cop(1,b-1,b);m=rnd(2,hard?9:4);x=a*m;y=b*m;c=S(x,y);
+      t='ทำ '+x+'/'+y+' ให้เป็นเศษส่วนอย่างต่ำ';var half=m%2===0&&m>2?R(x/2,y/2):null;
+      w=[half,R(a,y),R(x,b),S(a+1<b?a+1:a-1||1,b),R(a,b+1),R(x-1,y)];h='หารทั้งเศษและส่วนด้วย '+m+': '+x+' ÷ '+m+' = '+a+', '+y+' ÷ '+m+' = '+b;}
+  }else if(k==='cmp'){
+    if(dif===1){b=rnd(2,6);m=rnd(2,3);d=b*m;a=cop(1,b-1,b);x=Math.random()<.25?a*m:cop(1,d-1,d);
+      c=a*m>x?'>':a*m<x?'<':'=';w=['>','<','='];noPad=true;
+      t='เติมเครื่องหมาย: '+a+'/'+b+' ○ '+x+'/'+d;h='ทำตัวส่วนให้เท่ากัน: '+a+'/'+b+' = '+(a*m)+'/'+d+' แล้วเทียบตัวเศษ '+(a*m)+' กับ '+x;
+    }else{var big=Math.random()<.5,fs=[],vs=[];noPad=true;
+      if(dif===0){d=pk([5,7,8,9,10,11,12]);while(fs.length<4){x=cop(1,d-1,d);if(vs.indexOf(x)<0){vs.push(x);fs.push(x+'/'+d)}}}
+      else{var tries=0;while(fs.length<4&&tries<200){tries++;d=rnd(2,12);x=rnd(1,d-1);var f=S(x,d);if(typeof f!=='string')continue;v=fval(f);if(vs.some(function(z){return Math.abs(z-v)<1e-9}))continue;vs.push(v);fs.push(f)}}
+      var vv=fs.map(fval),best=vv.indexOf(big?Math.max.apply(0,vv):Math.min.apply(0,vv));c=fs[best];w=fs.filter(function(_,i){return i!==best});
+      t='เศษส่วนใด'+(big?'มาก':'น้อย')+'ที่สุด?';h=dif===0?'ตัวส่วนเท่ากัน ดูตัวเศษ ยิ่งมากยิ่งมาก':'ทำตัวส่วนให้เท่ากันก่อน แล้วเทียบตัวเศษ';}
+  }else if(k==='add'||k==='sub'){
+    var add=k==='add',op=add?' + ':' − ';
+    if(dif===0){d=rnd(3,10);if(add){a=rnd(1,d-1);b=rnd(1,d-a)}else{a=rnd(2,d-1);b=rnd(1,a-1)}
+      v=add?a+b:a-b;c=S(v,d);t=a+'/'+d+op+b+'/'+d+' = ?';
+      w=[RU(v,d),add?R(v,d+d):R(add?v:a+b,d),S(v+1,d),v>1?S(v-1,d):null,R(v,d+1)];
+      h='ตัวส่วนเท่ากัน '+(add?'บวก':'ลบ')+'เฉพาะตัวเศษ: '+a+op+b+' = '+v+' → '+v+'/'+d+(String(c)!==v+'/'+d?' = '+c:'');
+    }else if(dif===1){b=rnd(2,6);m=rnd(2,3);d=b*m;
+      do{x=cop(1,b-1,b);y=cop(1,d-1,d);v=add?x*m+y:x*m-y}while(add?v>d:v<=0);
+      var sw=add&&Math.random()<.5;c=S(v,d);t=sw?(y+'/'+d+op+x+'/'+b):(x+'/'+b+op+y+'/'+d);t+=' = ?';
+      w=[RU(v,d),R(add?x+y:Math.abs(x-y)||1,b+d),R(add?x+y:Math.abs(x-y)||1,d),S(v+1,d),v>1?S(v-1,d):null];
+      h='ทำตัวส่วนเป็น '+d+': '+x+'/'+b+' = '+(x*m)+'/'+d+' แล้ว '+(x*m)+op+y+' = '+v+' → '+c;
+    }else{var a1,b1,a2,b2,w1=0;
+      do{b1=rnd(2,9);b2=rnd(2,9)}while(b1===b2||b1%b2===0||b2%b1===0);
+      a1=cop(1,b1-1,b1);a2=cop(1,b2-1,b2);L=lcm(b1,b2);
+      if(!add){w1=rnd(1,2);if(Math.random()<.5)w1=0;if(!w1&&a1*L/b1<=a2*L/b2){var tb=b1;b1=b2;b2=tb;var ta=a1;a1=a2;a2=ta}}
+      x=(w1*b1+a1)*L/b1;y=a2*L/b2;v=add?x+y:x-y;c=S(v,L,true);
+      t=M(w1,a1,b1)+op+a2+'/'+b2+' = ?';
+      w=[RU(v,L),R(add?a1+a2:Math.abs(a1-a2)||1,b1+b2),S(v+1,L,true),v>1?S(v-1,L,true):null,S(v,L*2,true)];
+      h='ทำตัวส่วนเป็น '+L+': '+x+'/'+L+op+y+'/'+L+' = '+v+'/'+L+' = '+c;}
+  }else if(k==='mul'){
+    if(dif===0){d=rnd(3,10);kk=rnd(2,Math.min(4,d));a=cop(1,Math.max(1,Math.floor(d/kk)),d);v=a*kk;c=S(v,d);
+      t=a+'/'+d+' × '+kk+' = ?';w=[R(v,d*kk),RU(v,d),S(a+kk<=d?a+kk:a,d),R(a,d*kk),S(v+1<=d?v+1:v-1||1,d)];
+      h='คูณเฉพาะตัวเศษ: '+a+' × '+kk+' = '+v+' → '+v+'/'+d+(String(c)!==v+'/'+d?' = '+c:'');
+    }else if(dif===1){b=rnd(2,6);d=rnd(2,6);a=cop(1,b-1,b);x=cop(1,d-1,d);c=S(a*x,b*d);
+      t=a+'/'+b+' × '+x+'/'+d+' = ?';w=[RU(a*x,b*d),R(a+x,b+d),R(a*x,b+d),a*d<b*x?S(a*d,b*x):null,S(a*x+1,b*d),R(a*x,b*d*2)];
+      h='เศษคูณเศษ ส่วนคูณส่วน: '+(a*x)+'/'+(b*d)+(String(c)!==(a*x)+'/'+(b*d)?' = '+c:'');
+    }else{b=rnd(2,6);a=cop(1,b-1,b);w1=rnd(1,3);d=rnd(2,6);x=rnd(1,d);if(x===d)x=d-1||1;
+      var nn=(w1*b+a)*x,dd=b*d;if(nn<=dd){x=d;nn=(w1*b+a)*rnd(2,4);t=M(w1,a,b)+' × '+(nn/(w1*b+a))+' = ?';dd=b}else t=M(w1,a,b)+' × '+x+'/'+d+' = ?';
+      c=S(nn,dd,true);w=[S(nn+dd,dd,true),S(w1*x,1)+(typeof S(a*x,b*d)==='string'?' '+S(a*x,b*d):''),S(nn+1,dd,true),nn-1>0?S(nn-1,dd,true):null,S(nn,dd*2,true)];
+      h='เปลี่ยนจำนวนคละเป็นเศษเกินก่อน: '+M(w1,a,b)+' = '+(w1*b+a)+'/'+b+' แล้วคูณ = '+nn+'/'+dd+' = '+c;}
+  }else if(k==='div'){
+    if(dif===0){b=rnd(2,6);kk=rnd(2,4);a=cop(1,b-1,b);c=S(a,b*kk);
+      t=a+'/'+b+' ÷ '+kk+' = ?';w=[R(a*kk,b),RU(a,b*kk),R(a,b+kk),S(a,b*kk+1),S(a+1,b*kk)];
+      h='หารด้วย '+kk+' = คูณด้วย 1/'+kk+': '+a+'/'+b+' × 1/'+kk+' = '+a+'/'+(b*kk)+(String(c)!==a+'/'+(b*kk)?' = '+c:'');
+    }else if(dif===1&&Math.random()<.5){kk=rnd(2,6);b=rnd(2,6);a=pk([1,1,2,3].filter(function(z){return z<b&&(kk*b)%z===0}));c=kk*b/a;
+      t=kk+' ÷ '+a+'/'+b+' = ?';w=[c+1,c-1,kk+b,a*kk/b===Math.floor(a*kk/b)&&a*kk/b>0?a*kk/b:c+b,c*2,kk*a];
+      h='พลิกตัวหารแล้วคูณ: '+kk+' × '+b+'/'+a+' = '+c;
+    }else{do{b=rnd(2,7);a=cop(1,b-1,b);d=rnd(2,7);x=cop(1,d-1,d);nn=a*d;dd=b*x}while(!hard&&nn>=dd||hard&&nn<=dd);
+      c=S(nn,dd,hard);t=a+'/'+b+' ÷ '+x+'/'+d+' = ?';
+      w=[RU(nn,dd),S(a*x,b*d,hard),S(dd,nn,hard),S(nn+1,dd,hard),R(nn,dd*2)];
+      h='พลิกตัวหารแล้วคูณ: '+a+'/'+b+' × '+d+'/'+x+' = '+nn+'/'+dd+' = '+c;}
   }else if(k==='of'){
-    den=[2,3,4,5,10][rnd(0,Math.min(4,d))];n=Math.random()<.5?1:rnd(1,den-1);var wl=den*rnd(2,8),un=wl/den;c=un*n;
-    t=F(n,den)+' ของ '+wl+' = ?';w=[c+1,c-1,wl-c,un,c*2,c+den];h='แบ่ง '+wl+' เป็น '+den+' ส่วน ส่วนละ '+un+(n>1?' แล้วเอา '+n+' ส่วน':'');
-  }else{
-    den=rnd(3,8);wh=rnd(1,3);r=rnd(1,den-1);n=wh*den+r;
-    if(k==='imp'){t=F(n,den)+' เขียนเป็นจำนวนคละได้เท่าไร?';c=wh+' '+F(r,den);w=[(wh+1)+' '+F(r,den),wh+' '+F(den-r,den),(wh>1?wh-1:wh+2)+' '+F(r,den),wh+' '+F(r,den+1)]}
-    else{t=wh+' '+F(r,den)+' เขียนเป็นเศษเกินได้เท่าไร?';c=F(n,den);w=[F(n+1,den),F(n-1,den),F(wh+r,den),F(n,den+1)]}
-    h='เต็ม 1 ชิ้นคือ '+F(den,den)+'  →  '+wh+' × '+den+' + '+r+' = '+n;
+    if(hard&&Math.random()<.5){d=rnd(3,8);n=cop(2,d-1,d);var u=rnd(2,9),X=u*n;c=u*d;
+      t=n+'/'+d+' ของจำนวนหนึ่งเท่ากับ '+X+' จำนวนนั้นคือเท่าไร?';w=[X*n,X+u,u*n,u*(d+1),c-u,X];
+      h=n+' ส่วนเท่ากับ '+X+' → ส่วนละ '+u+' ทั้งหมด '+d+' ส่วน = '+u+' × '+d+' = '+c;
+    }else{d=rnd(2,[5,8,10][dif]);n=dif===0?1:cop(1,d-1,d);var un2=rnd(2,dif===0?9:12),N=d*un2;c=un2*n;
+      t=n+'/'+d+' ของ '+N+' = ?';w=[un2,c+n,c-n,N-c,c+un2,N/n===Math.floor(N/n)?N/n:c+d];
+      h='แบ่ง '+N+' เป็น '+d+' ส่วน ส่วนละ '+un2+(n>1?' เอา '+n+' ส่วน = '+un2+' × '+n+' = '+c:'');}
+  }else if(k==='mix'){
+    if(!hard){d=rnd(2,8);kk=rnd(1,dif?6:4);
+      if(dif===0){t=(kk*d)+'/'+d+' เท่ากับจำนวนนับใด?';c=kk;w=[kk+1,kk-1,kk*d,d,kk+d];h='เต็ม 1 = '+d+'/'+d+' ดังนั้น '+(kk*d)+' ÷ '+d+' = '+kk}
+      else{t=kk+' = ?/'+d;c=kk*d;w=[kk+d,c+1,c-1,d,kk,c+d];h='1 = '+d+'/'+d+' ดังนั้น '+kk+' = '+kk+' × '+d+' = '+c+'/'+d}
+    }else{d=rnd(3,8);var wh=rnd(1,3),r=cop(1,d-1,d);n=wh*d+r;
+      if(Math.random()<.5){t=n+'/'+d+' เขียนเป็นจำนวนคละได้เท่าไร?';c=M(wh,r,d);w=[M(wh+1,r,d),M(wh,d-r,d),M(wh>1?wh-1:wh+2,r,d),M(wh,r,d+1),M(r,wh,d)]}
+      else{t=M(wh,r,d)+' เขียนเป็นเศษเกินได้เท่าไร?';c=n+'/'+d;w=[R(n+1,d),R(n-1,d),R(wh+r,d),R(n,d+1),R(wh*r+d,d)]}
+      h='เต็ม 1 = '+d+'/'+d+': '+wh+' × '+d+' + '+r+' = '+n+' → '+n+'/'+d+' = '+M(wh,r,d);}
+  }else{ // word
+    var tp=rnd(0,2);
+    if(dif===0){
+      if(tp===0){d=rnd(4,10);n=rnd(1,d-1);v=d-n;c=S(v,d);t='พิซซ่า 1 ถาดแบ่งเป็น '+d+' ชิ้น กินไป '+n+' ชิ้น เหลือกี่ส่วนของถาด?';w=[S(n,d),RU(v,d),R(v,n),S(v+1<d?v+1:v-1||1,d)];h='เหลือ '+d+' − '+n+' = '+v+' ชิ้น จาก '+d+' ชิ้น = '+c}
+      else if(tp===1){d=rnd(2,5);var N1=d*rnd(3,10);c=N1/d;t='แม่มีเงิน '+N1+' บาท ให้ลูก 1/'+d+' ของเงิน ลูกได้กี่บาท?';w=[c+d,c*2,N1-c,c+1,c-1];h='แบ่ง '+N1+' เป็น '+d+' ส่วน ส่วนละ '+c}
+      else{d=rnd(4,10);a=rnd(1,d-2);b=rnd(1,d-a);v=a+b;c=S(v,d);t='ดื่มนม '+a+'/'+d+' แก้ว แล้วดื่มอีก '+b+'/'+d+' แก้ว รวมดื่มกี่แก้ว?';w=[R(v,d+d),RU(v,d),S(v+1,d),v>1?S(v-1,d):null];h=a+'/'+d+' + '+b+'/'+d+' = '+v+'/'+d+(String(c)!==v+'/'+d?' = '+c:'')}
+    }else if(dif===1){
+      if(tp===0){b=rnd(2,5);m=rnd(2,3);d=b*m;do{x=cop(1,b-1,b);y=cop(1,d-1,d);v=x*m+y}while(v>d);c=S(v,d);
+        t='ทาสีรั้ว วันแรกทาได้ '+x+'/'+b+' ของรั้ว วันที่สองอีก '+y+'/'+d+' รวมทาไปกี่ส่วน?';w=[R(x+y,b+d),RU(v,d),S(v+1,d),v>1?S(v-1,d):null,R(x+y,d)];h=x+'/'+b+' = '+(x*m)+'/'+d+' → '+(x*m)+' + '+y+' = '+v+' → '+c}
+      else if(tp===1){kk=rnd(2,6);n=rnd(2,6);c=kk*n;t='เชือกยาว '+kk+' เมตร ตัดเป็นท่อนละ 1/'+n+' เมตร ได้กี่ท่อน?';w=[kk+n,c+1,c-1,c+n,kk];h=kk+' ÷ 1/'+n+' = '+kk+' × '+n+' = '+c}
+      else{d=rnd(3,8);n=cop(2,d-1,d);var N2=d*rnd(2,8);c=N2/d*n;t='มีขนม '+N2+' ชิ้น แบ่งให้เพื่อน '+n+'/'+d+' ของทั้งหมด ให้เพื่อนไปกี่ชิ้น?';w=[N2/d,N2-c,c+n,c-n,c+N2/d];h='ส่วนละ '+(N2/d)+' ชิ้น × '+n+' ส่วน = '+c}
+    }else{
+      if(tp===0){d=rnd(3,8);n=cop(1,d-1,d);var N3=d*rnd(5,20);var used=N3/d*n;c=N3-used;t='มีเงิน '+N3+' บาท ใช้ไป '+n+'/'+d+' ของเงิน เหลือเงินกี่บาท?';w=[used,c+N3/d,c-N3/d,N3/d,c+n];h='ใช้ไป '+N3+' ÷ '+d+' × '+n+' = '+used+' เหลือ '+N3+' − '+used+' = '+c}
+      else if(tp===1){d=rnd(3,8);x=cop(1,d-1,d);kk=rnd(2,6);var tot=S(kk*x,d,true);c=kk;t='น้ำ '+tot+' ลิตร เทใส่แก้วละ '+x+'/'+d+' ลิตร ได้กี่แก้ว?';w=[kk+1,kk-1,kk*x,kk+x,kk*2];h=tot+' ÷ '+x+'/'+d+' = '+(kk*x)+'/'+d+' × '+d+'/'+x+' = '+kk}
+      else{b=rnd(2,6);a=cop(1,b-1,b);w1=rnd(2,4);d=rnd(2,6);x=cop(1,d-1,d);L=lcm(b,d);var A=(w1*b+a)*L/b,B=x*L/d;v=A-B;c=S(v,L,true);
+        t='ทางยาว '+M(w1,a,b)+' กม. เดินไปแล้ว '+x+'/'+d+' กม. เหลืออีกกี่ กม.?';w=[S(A+B,L,true),S(v+1,L,true),v>1?S(v-1,L,true):null,RU(v,L),M(w1,Math.abs(a-x)||1,Math.max(2,Math.abs(b-d)||2))];h=M(w1,a,b)+' − '+x+'/'+d+' = '+A+'/'+L+' − '+B+'/'+L+' = '+v+'/'+L+' = '+c}
+    }
   }
-  return {a:n||0,b:den||0,c:c,op:'f',t:t,w:w,hint:h};
+  // clean + pad distractors
+  var cv=fval(c),out=[];
+  function ok(z){if(z==null||z===c||out.indexOf(z)>=0)return false;if(typeof z==='number')return z>0&&z===Math.floor(z);if(typeof z!=='string')return false;
+    if(z==='>'||z==='<'||z==='=')return true;var zv=fval(z);if(!(zv>0)||/^0\/| 0\//.test(z))return false;var zf=z.match(/(\d+)\/(\d+)$/);if(zf&&+zf[1]%+zf[2]===0)return false;
+    if(typeof c==='string'&&/\//.test(c)&&Math.abs(zv-cv)<1e-9){if(noEqv)return false;var mm=z.match(/^(\d+)\/(\d+)$/);return !!(mm&&gcd(+mm[1],+mm[2])>1)}
+    if(typeof c==='number'&&Math.abs(zv-cv)<1e-9)return false;return true}
+  w.forEach(function(z){if(ok(z))out.push(z)});
+  if(!noPad){var st=1;while(out.length<4&&st<60){var cand=[];
+    if(typeof c==='number')cand=[c+st,c-st];
+    else{var mm=String(c).match(/^(?:(\d+) )?(\d+)\/(\d+)$/),W0=+(mm[1]||0),N0=+mm[2],D0=+mm[3];
+      cand=[M(W0,N0+st<D0||!W0?N0+st:N0,D0+(N0+st<D0||!W0?0:st)),M(W0,N0,D0+st),N0>st?M(W0,N0-st,D0):null,W0?M(W0+st,N0,D0):(N0+st)+'/'+(D0+st)];}
+    cand.forEach(function(z){if(out.length<4&&ok(z))out.push(z)});st++}}
+  return {a:0,b:0,c:c,op:'f',k:k,t:t,w:out,hint:h};
+}
+/* ---------- decimals (v2.1) ---------- */
+var DKN={did:'รู้จักทศนิยม',dcm:'เปรียบเทียบทศนิยม',dad:'บวกทศนิยม',dsb:'ลบทศนิยม',drn:'ปัดเศษทศนิยม',dm10:'คูณด้วย 10, 100, 1000',dd10:'หารด้วย 10, 100, 1000',dmu:'คูณทศนิยม',dcv:'แปลงเศษส่วน ↔ ทศนิยม',dwd:'โจทย์ปัญหาทศนิยม'};
+for(var _dk in DKN)FKN[_dk]=DKN[_dk];
+// numbers are kept as integers in thousandths (1.25 -> 1250) so every answer is exact
+function DS(n,pl){var neg=n<0;n=Math.abs(Math.round(n));var i=Math.floor(n/1000),fs=('00'+(n%1000)).slice(-3);
+  if(pl!=null)return (neg?'-':'')+i+(pl?'.'+fs.slice(0,pl):'');
+  fs=fs.replace(/0+$/,'');return (neg?'-':'')+i+(fs?'.'+fs:'')}
+function dval(x){return Math.round(parseFloat(x)*1000)}
+function dpl(n){n=Math.abs(n)%1000;return n===0?0:n%100===0?1:n%10===0?2:3}
+function mkD(p){
+  var dif=p.dif!=null?p.dif:DI(),k=p.k||'dad';
+  if(k==='boss'||k==='any'){var pool=p.pool||['did','dcm','dad','dsb','drn'];k=pool[rnd(0,pool.length-1)]}
+  if(p.warm&&dif>0&&k!=='cmp'&&k!=='dcm'&&Math.random()<.5)dif--;
+  var c,t,h,w=[],noPad=false,fix=null,a,b,v,x,m,n,q,kk,i,isF=false;
+  function pk(r){return r[rnd(0,r.length-1)]}
+  function num(lo,hi,pl){var f=pl?rnd(1,Math.pow(10,pl)-1):0;if(pl>1&&f%10===0)f+=1;return rnd(lo,hi)*1000+f*Math.pow(10,3-pl)}
+  function Df(z){return fix==null?DS(z):DS(z,fix)}
+  if(k==='did'){
+    if(dif===0){n=rnd(1,9);t='[bar:'+n+':10] ส่วนที่ระบายสีเขียนเป็นทศนิยมได้เท่าไร?';c=DS(n*100);w=[DS(n*10),String(n),DS(1000+n*100),DS((10-n)*100)];h='ระบาย '+n+' จาก 10 ช่อง = '+n+'/10 = '+c}
+    else{var ds=[];while(ds.length<3){x=rnd(1,9);if(ds.indexOf(x)<0)ds.push(x)}var I=rnd(1,9);
+      if(dif===2&&Math.random()<.5){v=I*1000+ds[0]*100+ds[1]*10+ds[2];t=I+' + '+DS(ds[0]*100)+' + '+DS(ds[1]*10)+' + '+DS(ds[2])+' = ?';c=DS(v);
+        w=[DS(I*1000+ds[1]*100+ds[0]*10+ds[2]),DS(I*1000+ds[0]*100+ds[2]*10+ds[1]),DS((I*10+ds[0])*1000+ds[1]*100+ds[2]*10),DS(I*1000+ds[0]*10+ds[1]),DS(I*1000+ds[2]*100+ds[1]*10+ds[0])];
+        h='หน่วย '+I+' · ส่วนสิบ '+ds[0]+' · ส่วนร้อย '+ds[1]+' · ส่วนพัน '+ds[2]+' → '+c}
+      else{var pl=dif===1?2:3,j=rnd(1,pl);v=I*1000;for(i=0;i<pl;i++)v+=ds[i]*Math.pow(10,2-i);var dj=ds[j-1],val=dj*Math.pow(10,3-j);
+        t='เลข '+dj+' ใน '+DS(v)+' มีค่าเท่าไร?';c=DS(val);w=[DS(dj*100),DS(dj*10),DS(dj),String(dj),String(dj*10)];
+        h='เลข '+dj+' อยู่หลักส่วน'+['สิบ','ร้อย','พัน'][j-1]+' มีค่า '+c}}
+  }else if(k==='dcm'){
+    if(dif===1){a=num(0,3,1);if(Math.random()<.3){b=a;var A=DS(a),B=DS(b,2)}else{do{b=a+rnd(-9,9)*10}while(b<=0||b%100===0||b===a);A=DS(a);B=DS(b)}
+      if(Math.random()<.5){var tA=A;A=B;B=tA;var tv=a;a=b;b=tv}
+      c=a>b?'>':a<b?'<':'=';w=['>','<','='];noPad=true;t='เติมเครื่องหมาย: '+A+' ○ '+B;h='เติม 0 ให้ตำแหน่งเท่ากัน: '+DS(a,2)+' กับ '+DS(b,2)+' แล้วเทียบทีละหลัก'}
+    else{var vs=[],big=Math.random()<.5;noPad=true;
+      if(dif===0){while(vs.length<4){x=num(0,9,1);if(vs.indexOf(x)<0)vs.push(x)}}
+      else{var d1=rnd(1,9),d2;do{d2=rnd(1,9)}while(d2===d1);[d1*100+d2,d1*100+d2*10,d2*10+d1,d2*100+d1,d1*10+d2,d2*100+d1*10].forEach(function(z){if(vs.indexOf(z)<0&&vs.length<4)vs.push(z)})}
+      x=big?Math.max.apply(0,vs):Math.min.apply(0,vs);c=DS(x);w=vs.filter(function(z){return z!==x}).map(function(z){return DS(z)});
+      t='จำนวนใด'+(big?'มาก':'น้อย')+'ที่สุด?';h='เทียบจากหลักหน่วย แล้วส่วนสิบ ส่วนร้อย ส่วนพัน ทีละหลัก'}
+  }else if(k==='dad'||k==='dsb'){
+    var add=k==='dad',op=add?' + ':' − ',pa,pb;
+    if(dif===0){pa=pb=1;a=num(0,9,1);b=num(0,9,1)}
+    else if(dif===1){pa=1;pb=2;a=num(0,9,1);b=num(0,9,2);if(Math.random()<.5){var t1=a;a=b;b=t1;pa=2;pb=1}}
+    else{pa=3;pb=pk([1,2]);a=num(1,40,3);b=num(0,20,pb);if(Math.random()<.5){var t2=a;a=b;b=t2;var t3=pa;pa=pb;pb=t3}}
+    if(!add&&a<=b){var t4=a;a=b;b=t4;var t5=pa;pa=pb;pb=t5}
+    v=add?a+b:a-b;c=DS(v);var pm=Math.max(pa,pb);
+    var ia=a/Math.pow(10,3-pa),ib=b/Math.pow(10,3-pb),mis=(add?ia+ib:Math.abs(ia-ib))*Math.pow(10,3-pm);
+    w=[pa!==pb?DS(mis):null,DS(v+100),DS(v-100),DS(v+1000),DS(v-10),DS(v+10),add?DS(v-1000):DS(a+b)];
+    t=DS(a)+op+DS(b)+' = ?';h='ตั้งจุดให้ตรงกัน: '+DS(a,pm)+op+DS(b,pm)+' = '+DS(v,pm);
+  }else if(k==='drn'){
+    if(dif===0){x=num(1,19,1);v=Math.floor((x+500)/1000);fix=0;c=String(v);w=[String(Math.floor(x/1000)),String(v+1),String(v-1),String(Math.floor(x/1000)+2)];
+      t=DS(x)+' ปัดเป็นจำนวนเต็มได้เท่าไร?';var dg=Math.floor(x/100)%10;h='ดูหลักส่วนสิบ: '+dg+(dg>=5?' ≥ 5 ปัดขึ้น':' < 5 ปัดทิ้ง')+' → '+c}
+    else if(dif===1){x=num(1,19,2);v=Math.floor((x+50)/100)*100;fix=1;c=DS(v,1);var tr=Math.floor(x/100)*100;w=[DS(tr===v?tr+100:tr,1),DS(v+100,1),DS(v-100,1),DS(Math.floor((x+500)/1000)*1000,1)];
+      t=DS(x)+' ปัดเป็นทศนิยม 1 ตำแหน่งได้เท่าไร?';var dg2=Math.floor(x/10)%10;h='ดูหลักส่วนร้อย: '+dg2+(dg2>=5?' ≥ 5 ปัดขึ้น':' < 5 ปัดทิ้ง')+' → '+c}
+    else{x=num(1,19,3);if(Math.random()<.3)x=Math.floor(x/100)*100+90+rnd(5,9);v=Math.floor((x+5)/10)*10;fix=2;c=DS(v,2);var tr2=Math.floor(x/10)*10;w=[DS(tr2===v?tr2+10:tr2,2),DS(v+10,2),DS(v-10,2),DS(Math.floor((x+50)/100)*100,2),DS(v+100,2)];
+      t=DS(x)+' ปัดเป็นทศนิยม 2 ตำแหน่งได้เท่าไร?';var dg3=x%10;h='ดูหลักส่วนพัน: '+dg3+(dg3>=5?' ≥ 5 ปัดขึ้น':' < 5 ปัดทิ้ง')+' → '+c}
+  }else if(k==='dm10'||k==='dd10'){
+    var mul=k==='dm10';m=dif===0?10:dif===1?pk([10,100]):pk([100,1000]);var z=String(m).length-1;
+    if(mul){x=num(0,9,Math.min(3,dif+1));v=x*m;t=DS(x)+' × '+m+' = ?';w=[DS(v*10),v%10===0?DS(v/10):null,(x%m===0)?DS(x/m):null,DS(v*100)]}
+    else{var xp=Math.max(0,3-z-(dif===2?0:1));x=num(1,dif===0?99:60,xp);v=x/m;t=DS(x)+' ÷ '+m+' = ?';w=[DS(v*10),v%10===0?DS(v/10):null,DS(x*m),DS(v*100)]}
+    c=DS(v);h=(mul?'คูณ':'หาร')+'ด้วย '+m+' → เลื่อนจุดทศนิยมไปทาง'+(mul?'ขวา ':'ซ้าย ')+z+' ตำแหน่ง';
+  }else if(k==='dmu'){
+    var p1,p2;
+    if(dif===0){p1=1;p2=0;a=num(0,5,1);b=rnd(2,9)*1000}
+    else if(dif===1){p1=1;p2=1;a=num(0,4,1);b=num(0,4,1)}
+    else{p1=2;p2=1;a=num(0,9,2);b=num(0,5,1)}
+    v=a*b/1000;c=DS(v);t=DS(a)+' × '+DS(b)+' = ?';
+    w=[DS(v*10),v%10===0?DS(v/10):null,DS(v*100),DS(a+b),DS(v+100)];
+    h='คูณแบบจำนวนนับ แล้วนับตำแหน่งทศนิยมรวม '+(p1+p2)+' ตำแหน่ง → '+c;
+  }else if(k==='dcv'){
+    if(dif===0){n=rnd(1,9);if(Math.random()<.5){t=n+'/10 เขียนเป็นทศนิยมได้เท่าไร?';c=DS(n*100);w=[DS(n*10),String(n),DS(1000+n*100),DS((10-n)*100)]}
+      else{t=DS(n*100)+' = ?/10';c=String(n);w=[String(n*10),String(10-n),String(n+1),String(n>1?n-1:n+2)]}h='ส่วนสิบ: '+n+'/10 = '+DS(n*100)}
+    else if(dif===1){if(Math.random()<.4){n=rnd(1,99);if(n%10===0)n++;t=n+'/100 เขียนเป็นทศนิยมได้เท่าไร?';c=DS(n*10);w=[DS(n*100),DS(n),String(n),DS(n*10+1000)];h='ส่วนร้อย: '+n+'/100 = '+c}
+      else{var fr=pk([[1,2],[1,4],[3,4],[1,5],[2,5],[3,5],[4,5],[1,20],[3,20],[1,25],[1,50]]);a=fr[0];b=fr[1];v=a*1000/b;t=a+'/'+b+' เขียนเป็นทศนิยมได้เท่าไร?';c=DS(v);
+        w=[DS(b*100<1000?b*100:b*10),DS(a*100),DS(v*10),v%10===0?DS(v/10):null,'0.'+a+''+b];h='ทำตัวส่วนเป็น 10 หรือ 100: '+a+'/'+b+' = '+(v/(v%100===0?100:10))+'/'+(v%100===0?10:100)+' = '+c}}
+    else{isF=true;var den=pk([2,4,5,8,20,25,40,50]),nu;do{nu=rnd(1,den-1)}while(gcd(nu,den)!==1);var wh=Math.random()<.4?rnd(1,3):0;v=wh*1000+nu*1000/den;
+      t=DS(v)+' เขียนเป็นเศษส่วนอย่างต่ำได้เท่าไร?';c=(wh?wh+' ':'')+nu+'/'+den;var raw=Math.round(nu*1000/den),rd=1000;while(raw%10===0&&rd>10){raw/=10;rd/=10}
+      w=[(wh?wh+' ':'')+raw+'/'+rd,(wh?wh+' ':'')+nu+'/'+(den*2),(wh?wh+' ':'')+(nu+1)+'/'+den,(wh?(wh+1)+' ':'1 ')+nu+'/'+den,(wh?wh+' ':'')+den+'/'+(nu>1?nu:den+1)];
+      h=DS(v)+' = '+(wh?wh+' ':'')+raw+'/'+rd+' ทอนเป็นอย่างต่ำ = '+c}
+  }else{ // dwd: money / length word problems
+    var tp=rnd(0,dif===2?2:1);
+    if(dif===0){if(tp===0){fix=2;a=rnd(4,40)*250;b=rnd(4,40)*250;v=a+b;c=DS(v,2);t='ซื้อขนม '+DS(a,2)+' บาท และนม '+DS(b,2)+' บาท รวมกี่บาท?';w=[DS(v+1000,2),DS(v-1000,2),DS(v+500,2),DS(v-250,2)];h=DS(a,2)+' + '+DS(b,2)+' = '+c}
+      else{a=num(2,9,1);b=num(0,1,1);if(b>=a)b=a-100;v=a-b;c=DS(v);t='เชือกยาว '+DS(a)+' เมตร ตัดไป '+DS(b)+' เมตร เหลือกี่เมตร?';w=[DS(a+b),DS(v+100),DS(v-100),DS(v+1000)];h=DS(a)+' − '+DS(b)+' = '+c}}
+    else if(dif===1){if(tp===0){fix=2;var Pp=pk([20,50,100]);a=rnd(8,Pp*4-1)*250;v=Pp*1000-a;c=DS(v,2);t='จ่าย '+Pp+' บาท ซื้อของ '+DS(a,2)+' บาท ได้เงินทอนกี่บาท?';w=[DS(v+1000,2),DS(v-1000,2),DS(v+500,2),DS(a,2),DS(v+250,2)];h=Pp+' − '+DS(a,2)+' = '+c}
+      else{fix=2;a=rnd(4,40)*250;kk=rnd(2,6);v=a*kk;c=DS(v,2);t='ดินสอแท่งละ '+DS(a,2)+' บาท ซื้อ '+kk+' แท่ง จ่ายกี่บาท?';w=[DS(v+a,2),DS(v-a,2),DS(a+kk*1000,2),DS(v+1000,2)];h=DS(a,2)+' × '+kk+' = '+c}}
+    else{if(tp===0){fix=2;a=rnd(20,80)*250;kk=rnd(2,4);var tot=a*kk,P2=Math.ceil(tot/1000/50)*50*1000;if(P2===tot)P2+=50000;v=P2-tot;c=DS(v,2);
+        t='ซื้อปากกา '+kk+' ด้าม ด้ามละ '+DS(a,2)+' บาท จ่าย '+DS(P2,0)+' บาท ได้ทอนกี่บาท?';w=[DS(P2-a,2),DS(v+a,2),DS(v-a>0?v-a:v+2000,2),DS(v+1000,2)];h=DS(a,2)+' × '+kk+' = '+DS(tot,2)+' → '+DS(P2,0)+' − '+DS(tot,2)+' = '+c}
+      else if(tp===1){a=num(1,4,2);kk=rnd(3,7);v=a*kk;c=DS(v);t='วิ่งวันละ '+DS(a)+' กม. '+kk+' วัน รวมกี่ กม.?';w=[DS(v*10),v%10===0?DS(v/10):null,DS(a+kk*1000),DS(v+a)];h=DS(a)+' × '+kk+' = '+c}
+      else{kk=rnd(3,8);q=num(0,2,2);a=q*kk;v=q;c=DS(v);t='น้ำ '+DS(a)+' ลิตร แบ่งใส่ขวด '+kk+' ขวดเท่า ๆ กัน ขวดละกี่ลิตร?';w=[DS(v*10),v%10===0?DS(v/10):null,DS(a-kk*1000>0?a-kk*1000:a+kk*1000),DS(v+10),DS(v+100)];h=DS(a)+' ÷ '+kk+' = '+c}}
+  }
+  // clean + pad distractors
+  var out=[];
+  function okv(z){if(z==null)return false;z=String(z);if(z===String(c)||out.indexOf(z)>=0)return false;if(/NaN|undefined|^-|\/0\b/.test(z))return false;
+    if(z==='>'||z==='<'||z==='=')return true;
+    if(isF||/\//.test(z)){var zv=fval(z),cv=fval(c);if(!(zv>0))return false;if(Math.abs(zv-cv)<1e-9){var mm=z.match(/^(?:\d+ )?(\d+)\/(\d+)$/);return !!(mm&&gcd(+mm[1],+mm[2])>1)}return true}
+    var zz=dval(z);if(!(zz>0))return false;if(zz===dval(c))return false;return true}
+  w.forEach(function(z){if(okv(z))out.push(String(z))});
+  if(!noPad){var st=1,cv=isF?0:dval(c),u=isF?0:(fix!=null?Math.pow(10,3-fix):Math.pow(10,3-Math.max(1,dpl(cv))));
+    while(out.length<4&&st<40){var cand=[];
+      if(isF){var mm=String(c).match(/^(?:(\d+) )?(\d+)\/(\d+)$/),W0=mm[1]?mm[1]+' ':'',N0=+mm[2],D0=+mm[3];cand=[W0+(N0+st)+'/'+D0,W0+N0+'/'+(D0+st),N0>st?W0+(N0-st)+'/'+D0:null]}
+      else cand=[Df(cv+st*u),cv-st*u>0?Df(cv-st*u):null];
+      cand.forEach(function(z){if(out.length<4&&okv(z))out.push(String(z))});st++}}
+  return {a:0,b:0,c:String(c),op:'d',k:k,t:t,w:out,hint:h};
 }
 function mkQ(op,p){
   if(op==='f')return mkF(p);
+  if(op==='d')return mkD(p);
   var a,b,c,t,w;
   if(op==='+'){
     if(p.carry&&Math.random()<p.carry){a=rnd(2,9);b=rnd(Math.max(2,11-a),9)}else{a=rnd(1,p.max-1);b=rnd(1,p.max-a)}
@@ -1595,7 +2314,7 @@ function mkQ(op,p){
 function newQ(){
   var g=gen(),o=[g.c].concat(pickN(g.c,g.w,(LEVEL.ch||3)-1));$('choices').className=(LEVEL.ch||3)>3?'c4':'';
   S.q=g;S.qStart=performance.now();S.wrong=false;S.locked=false;
-  $('qtext').innerHTML=FR(g.t);
+  $('qtext').innerHTML=FR(g.t);$('qtext').className=g.t.replace(/\[bar:[^\]]*\]/g,'').length>34?'long':'';
   var box=$('choices');box.innerHTML='';
   shuffle(o).forEach(function(v){
     var bt=document.createElement('button');bt.innerHTML=FR(v);
@@ -1603,7 +2322,7 @@ function newQ(){
   });
   $('hint').className='';$('hint').textContent='';
 }
-function hintFor(q){if(q.op==='f')return '<span class="dt">'+FR(q.hint||'')+'</span>';
+function hintFor(q){if(q.op==='f'||q.op==='d')return '<span class="dt">'+FR(q.hint||'')+'</span>';
   var a=q.a,b=q.b,c=q.c,s,g=[],i;
   if(q.op==='+')s='🔵'.repeat(a)+'  ➕  '+'🟠'.repeat(b);
   else if(q.op==='-')s='🔵'.repeat(c)+'❌'.repeat(b);
@@ -1936,7 +2655,7 @@ function giveTk(n,kind){
   P.tickets+=n;return n;
 }
 function totalStars(){var t=0;P.sd.forEach(function(r){r.forEach(function(x){t+=x||0})});return t}
-function worldUnlocked(w){return w===0||(P.st[(w-1)*NS+NS-1]>=1&&totalStars()>=WREQ[w])}
+function worldUnlocked(w){return true}
 function stageUnlocked(w,s){return worldUnlocked(w)&&(s===0||P.st[w*NS+s-1]>=1)}
 function lastStage(){for(var i=0;i<WORLDS.length*NS;i++){var w=Math.floor(i/NS),s=i%NS;if(P.st[i]<1&&stageUnlocked(w,s))return {w:w,s:s}}return {w:WORLDS.length-1,s:NS-1}}
 function curDeck(){
@@ -1969,13 +2688,17 @@ var HS=$('hs'),HOME=$('home'),PAR=null,MAPW=0,PMODE=0,PR=null;
 function clearPar(){if(PAR){clearInterval(PAR);PAR=null}}
 function stopPractice(){if(PR&&PR.timer)clearInterval(PR.timer);PR=null}
 function navOn(k){[].forEach.call(document.querySelectorAll('#nav button'),function(b){b.classList.toggle('on',b.getAttribute('data-s')===k)})}
-function show(name,arg){window.__scr=name;
+function show(name,arg){window.__scr=name;window.__arg=arg;HS.setAttribute('data-scr',name);HS.style.removeProperty('--fz');
   clearPar();stopPractice();
   HOME.className=name==='gacha'?'g':'';HS.scrollTop=0;
   navOn({home:'home',school:'home',isles:'home',island:'home',map:'home',prac:'home',deck:'deck',gacha:'gacha',col:'col'}[name]);
   ({home:rHome,school:rSchool,isles:rIsles,island:rIsland,map:rZone,prac:rPrac,deck:rDeck,gacha:rGacha,col:rCol})[name](arg);
-  applyTheme(DI());SND.play('home');sndUI();
+  applyTheme(DI());SND.play('home');sndUI();fitHS();
 }
+function fitHS(){var n=window.__scr;if(!HS)return;HS.style.removeProperty('--fz');if(n==='deck'||n==='col'||n==='gacha')return;
+  for(var k=0;k<2;k++){var sh=HS.scrollHeight,ch=HS.clientHeight;if(sh<=ch+2)break;var z=parseFloat(HS.style.getPropertyValue('--fz')||1);HS.style.setProperty('--fz',Math.max(.72,z*ch/sh).toFixed(3))}}
+window.addEventListener('resize',function(){if(HOME&&HOME.style.display!=='none')fitHS()});
+var FHT=0;HS.addEventListener('load',function(){clearTimeout(FHT);FHT=setTimeout(fitHS,60)},true);
 function toHome(name,arg){
   cancelAnimationFrame(raf);if(S){S.quit=true;S.over=true}
   $('ov').className='off';document.querySelector('.app').style.display='none';HOME.style.display='flex';
@@ -1986,13 +2709,33 @@ function startStage(w,s){
   HOME.style.display='none';document.querySelector('.app').style.display='';
   SND.play('w'+w);start();
 }
+var DSH=['ง่าย','กลาง','ยาก'];
+function starsD(){var d=DI(),t=0;for(var i=0;i<P.sd[d].length;i++)t+=P.sd[d][i]||0;return t}
 function topbar(){
-  return '<div class="hbar"><div class="chip">🎫 <b>'+P.tickets+'</b></div><div class="chip">⭐ <b>'+totalStars()+'</b> / '+WORLDS.length*NS*9+'</div><button class="chip ib" id="tgS">🔊</button><button class="chip ib" id="tgM">🎵</button><button class="chip ib" id="cfg" aria-label="ตั้งค่า">⚙️</button></div>';
+  var g=window.__scr==='gacha';
+  return '<div class="hbar">'+(g?'<div class="chip tk">🎫 <b>'+P.tickets+'</b></div>':'')+
+    '<div class="chip stc" title="ดาวของระดับ'+DIFF[DI()].n+'">⭐ <b>'+starsD()+'</b><small>/'+WORLDS.length*NS*3+'</small></div>'+
+    '<div class="dseg" role="group" aria-label="ระดับความยาก">'+DIFF.map(function(d,i){return '<button class="dsb d'+i+(i===DI()?' on':'')+'" data-d="'+i+'" aria-pressed="'+(i===DI())+'">'+d.e+'<span>'+DSH[i]+'</span></button>'}).join('')+'</div>'+
+    '<button class="chip ib" id="cfg" aria-label="ตั้งค่าและเสียง">⚙️</button></div>';
 }
-function bindTop(){if($('cfg'))$('cfg').onclick=settings;if($('tgS'))$('tgS').onclick=tgS;if($('tgM'))$('tgM').onclick=tgM;sndUI()}
+function bindTop(){
+  if($('cfg'))$('cfg').onclick=settings;
+  [].forEach.call(HS.querySelectorAll('.dsb'),function(b){b.onclick=function(){var d=+b.getAttribute('data-d');if(d===DI())return;
+    P.dif=d;saveP();SND.sfx('tap');var sc=HS.scrollTop;show(window.__scr,window.__arg);HS.scrollTop=sc}});
+}
 function settings(){
-  var h='<h1>⚙️ ตั้งค่า</h1><p>ข้อมูลเก็บในเบราว์เซอร์ของเครื่องนี้เท่านั้น</p><button id="rst">ล้างความคืบหน้าทั้งหมด</button><button id="cls">ปิด</button>';
+  var a=P.au,sv=Math.round((a.sv==null?1:a.sv)*100),mv=Math.round((a.mv==null?1:a.mv)*100);
+  var h='<h1>⚙️ ตั้งค่า</h1>'+
+    '<div class="vrow"><button class="vt'+(a.s?'':' off')+'" id="vtS">'+(a.s?'🔊':'🔇')+'</button><span><b>เสียงประกอบ</b><input type="range" id="vS" min="0" max="100" step="5" value="'+sv+'" aria-label="ระดับเสียงประกอบ"></span><em id="vSn">'+sv+'%</em></div>'+
+    '<div class="vrow"><button class="vt'+(a.m?'':' off')+'" id="vtM">🎵</button><span><b>เพลง</b><input type="range" id="vM" min="0" max="100" step="5" value="'+mv+'" aria-label="ระดับเสียงเพลง"></span><em id="vMn">'+mv+'%</em></div>'+
+    '<p>ข้อมูลเก็บในเครื่องนี้เท่านั้น</p><button id="rst">ล้างความคืบหน้าทั้งหมด</button><button id="cls">ปิด</button>';
   $('ovbox').innerHTML=h;$('ov').className='';
+  function upd(){SND.setOpt(P.au);sndUI();$('vtS').textContent=P.au.s?'🔊':'🔇';$('vtS').classList.toggle('off',!P.au.s);$('vtM').classList.toggle('off',!P.au.m)}
+  $('vS').oninput=function(){P.au.sv=this.value/100;P.au.s=this.value>0;$('vSn').textContent=this.value+'%';upd()};
+  $('vM').oninput=function(){P.au.mv=this.value/100;P.au.m=this.value>0;$('vMn').textContent=this.value+'%';upd()};
+  $('vS').onchange=function(){saveP();SND.sfx('tap')};$('vM').onchange=function(){saveP()};
+  $('vtS').onclick=function(){P.au.s=!P.au.s;if(P.au.s&&!P.au.sv)P.au.sv=.6;saveP();upd();SND.sfx('tap')};
+  $('vtM').onclick=function(){P.au.m=!P.au.m;if(P.au.m&&!P.au.mv)P.au.mv=.6;saveP();upd()};
   var armed=false;
   $('rst').onclick=function(){
     if(!armed){armed=true;$('rst').textContent='แตะอีกครั้งเพื่อยืนยัน (ลบทุกอย่าง)';return}
@@ -2039,11 +2782,11 @@ function rMap(w){
 function briefing(w,s){
   var L=mkStage(w,s),st=P.sd[DI()][w*NS+s]||0,deck=curDeck();
   var goals=['ผ่านด่าน','ตอบถูกครั้งแรก 80%+','ตอบเร็วเฉลี่ย ≤ '+L.fast+' วิ'];
-  var h='<img class="bscene" src="'+LAND.scene(L.lm,w)+'" alt=""><h1>ด่าน '+L.title+'</h1><p>'+L.sname+'</p>'+dChip()+(DIFF[DI()].m>1?'<p class="skl">ศัตรูแรง ×'+DIFF[DI()].m+' · ตั๋วรางวัล ×'+DIFF[DI()].m+' · โจทย์ยากขึ้น'+(DIFF[DI()].ch>3?' มี 4 ตัวเลือก':'')+'</p>':'');
+  var h='<img class="bscene" src="'+LAND.scene(L.lm,w)+'" alt=""><h1>ด่าน '+L.title+'</h1><p>'+L.sname+(L.fk?'<br><small>📘 '+(L.fk==='boss'?'รวมทุกเรื่องในโซน':FKN[L.fk])+'</small>':'')+'</p>'+dChip()+(DIFF[DI()].m>1?'<p class="skl">ศัตรูแรง ×'+DIFF[DI()].m+' · ตั๋วรางวัล ×'+DIFF[DI()].m+' · โจทย์ยากขึ้น'+(DIFF[DI()].ch>3?' มี 4 ตัวเลือก':'')+'</p>':'');
   h+='<ul>'+goals.map(function(g,i){return '<li>'+(st>i?'✅':'⬜')+' '+g+'</li>'}).join('')+'</ul>';
   h+='<p>ศัตรูในด่านนี้</p><div class="foes">'+['dog','mini','sub'].map(function(k){return '<img src="'+L.look[k].f[0]+'" alt="">'}).join('')+'<span class="bossp"><img src="'+L.look.big.f[0]+'" alt=""><small>👑 '+L.look.name+'</small></span></div>'+(function(){var ks={};['dog','mini','sub','big'].forEach(function(k){(L.look[k].sk||[]).forEach(function(s){ks[s]=1})});var a=Object.keys(ks);return a.length?'<p class="skl">สกิลศัตรู: '+a.map(function(k){return MSK[k][0]+' '+MSK[k][1]}).join(' · ')+'</p>':''})()+'<p>ทีมของคุณ:</p><div class="gres">'+deck.map(function(k){return '<div class="gc" style="border-color:'+RC[HI[k][1]]+'"><img src="'+IMG[k].i+'" alt=""></div>'}).join('')+'</div>';
-  h+='<button id="go">เริ่มด่าน ▶</button><button id="dk">จัดเดค</button><button id="cl">ปิด</button>';
-  $('ovbox').innerHTML=h;$('ov').className='';
+  h+='<div class="brow"><button id="go">เริ่มด่าน ▶</button><button id="dk">จัดเดค</button><button id="cl">ปิด</button></div>';
+  $('ovbox').innerHTML='<div class="brf">'+h+'</div>';$('ov').className='';
   $('go').onclick=function(){startStage(w,s)};
   $('dk').onclick=function(){$('ov').className='off';show('deck')};
   $('cl').onclick=function(){$('ov').className='off'};
@@ -2056,15 +2799,17 @@ function rDeck(msg){
   h+='</div><div class="slots">';
   for(i=0;i<5;i++){var k=d[i];h+=k?'<button class="slot f" data-k="'+k+'" style="border-color:'+RC[HI[k][1]]+'"><img src="'+IMG[k].i+'" alt=""></button>':'<div class="slot">+</div>'}
   h+='</div><div class="row2"><button class="mini" id="auto">จัดให้อัตโนมัติ</button><button class="mini" id="clr">ล้างเดค</button></div>';
-  h+='<div id="dmsg" class="note">'+(msg||'แตะฮีโร่เพื่อใส่หรือเอาออกจากเดค (สูงสุด 5 ตัว)')+'</div><div class="rost">';
-  HEROES.forEach(function(k){
+  var bn=P.dbn||0;h+='<div id="dmsg" class="note">'+(msg||'แตะฮีโร่เพื่อใส่หรือเอาออกจากเดค (สูงสุด 5 ตัว)')+'</div><div class="dtabs btabs">'+BAN.map(function(B,i){var n=B.ks.filter(function(k){return P.owned.indexOf(k)>=0}).length;return '<button class="dt bt2'+(i===bn?' on':'')+'" data-b="'+i+'">'+B.e+' ตู้ '+(i+1)+' <small>'+n+'/'+B.ks.length+'</small></button>'}).join('')+'</div><div class="rost">';
+  BAN[bn].ks.forEach(function(k){
     var o=P.owned.indexOf(k)>=0,inD=d.indexOf(k)>=0,r=HI[k][1];
     h+='<button class="rc'+(o?'':' lock')+(inD?' in':'')+'" data-k="'+k+'" style="border-color:'+RC[r]+'"'+(o?'':' disabled')+'><img src="'+IMG[k].i+'" alt=""><b style="color:'+RC[r]+'">'+r+'</b><span>'+HI[k][0]+(o?' Lv.'+lvOf(k):'')+'</span><small>'+(o?tags(k).join(' · ')||'สมดุล':'ยังไม่มี')+'</small>'+(inD?'<i>✓</i>':'')+'</button>';
   });
   h+='</div>';
-  HS.innerHTML=h;bindTop();
+  var oldR=HS.querySelector('.rost'),rsc=oldR?oldR.scrollTop:0;
+  HS.innerHTML=h;bindTop();HS.querySelector('.rost').scrollTop=rsc;
   function save(m){saveP();rDeck(m)}
-  [].forEach.call(HS.querySelectorAll('.dt'),function(b){b.onclick=function(){P.di=+b.getAttribute('data-i');saveP();rDeck()}});
+  [].forEach.call(HS.querySelectorAll('.dtabs:not(.btabs) .dt'),function(b){b.onclick=function(){P.di=+b.getAttribute('data-i');saveP();rDeck()}});
+  [].forEach.call(HS.querySelectorAll('.bt2'),function(b){b.onclick=function(){P.dbn=+b.getAttribute('data-b');saveP();SND.sfx('tap');var r=HS.querySelector('.rost');if(r)r.scrollTop=0;rDeck();HS.querySelector('.rost').scrollTop=0}});
   [].forEach.call(HS.querySelectorAll('.slot.f'),function(b){b.onclick=function(){var k=b.getAttribute('data-k');if(d.length<=1){rDeck('ต้องมีฮีโร่อย่างน้อย 1 ตัวในเดค');return}P.decks[P.di]=d.filter(function(x){return x!==k});save()}});
   [].forEach.call(HS.querySelectorAll('.rc'),function(b){b.onclick=function(){
     var k=b.getAttribute('data-k'),at=d.indexOf(k);
@@ -2077,29 +2822,66 @@ function rDeck(msg){
 }
 
 /* ---------- gacha ---------- */
-function rGacha(res){
-  var balls=[['#ff5d5d',8,52],['#4fa3ff',30,60],['#ffc93c',52,50],['#8b5cf6',72,58],['#4ade80',18,30],['#ff9f1c',44,26],['#f472b6',64,32]];
+function rGacha(){
   var gb=P.gb||0,B=BAN[gb];
-  var h=topbar()+'<div class="st w">'+B.e+' ตู้กาชา</div><div class="gtabs">'+BAN.map(function(x,i){return '<button class="gtab'+(i===gb?' on':'')+'" data-b="'+i+'">'+x.e+' '+x.n+'</button>'}).join('')+'</div>';
+  var balls=[['#ff5d5d',10,96],['#4fa3ff',42,100],['#ffc93c',74,98],['#8b5cf6',106,100],['#4ade80',136,94],
+             ['#ff9f1c',24,68],['#f472b6',58,72],['#5ED6CB',92,70],['#ff5d5d',124,66],['#FFB800',74,42]];
+  var bulbs=function(n){var s='';for(var i=0;i<n;i++)s+='<i></i>';return s};
+  var h=topbar()+'<div class="gwrap">';
+  h+='<div class="gtabs">'+BAN.map(function(x,i){return '<button class="gtab'+(i===gb?' on':'')+'" data-b="'+i+'">'+x.e+' '+x.n+'</button>'}).join('')+'</div>';
   h+='<div class="gshow '+B.cl+'">'+B.ks.slice().sort(function(a,b){return RK[HI[b][1]]-RK[HI[a][1]]}).map(function(k){var o=P.owned.indexOf(k)>=0;return '<span class="gsh'+(o?'':' no')+'" style="border-color:'+RC[HI[k][1]]+'"><img src="'+IMG[k].i+'" alt=""><b style="background:'+RC[HI[k][1]]+'">'+HI[k][1]+'</b></span>'}).join('')+'</div>';
-  h+='<div class="gmach '+B.cl+'" id="gmach"><div class="gdome">'+balls.map(function(b){return '<i style="--c:'+b[0]+';left:'+b[1]+'%;top:'+b[2]+'%"></i>'}).join('')+'</div><div class="gbody"><div class="gknob">★</div><div class="gslot"></div></div></div>';
-  h+='<div class="pn gi"><b>ตั๋ว: '+P.tickets+'</b> · N 55% · R 30% · SR 12% · SSR 3%<div class="pity"><span>SR การันตี '+P[B.pr]+'/30</span><i style="width:'+Math.min(100,P[B.pr]/30*100)+'%"></i></div><div class="pity"><span>SSR การันตี '+P[B.ps]+'/80</span><i style="width:'+Math.min(100,P[B.ps]/80*100)+'%"></i></div><small>การันตีนับแยกในแต่ละตู้</small></div>';
-  h+='<div class="row2"><button class="bigb b1 sm" id="gb1"'+(P.tickets<1?' disabled':'')+'>สุ่ม 1 ครั้ง<small>1 ตั๋ว</small></button><button class="bigb b2 sm" id="gb5"'+(P.tickets<5?' disabled':'')+'>สุ่ม 5 ครั้ง<small>5 ตั๋ว</small></button></div>';
-  if(res){h+='<div class="gres big">'+res.map(function(x,i){return '<div class="gc g'+x.t+'" style="--i:'+i+';border-color:'+RC[x.t]+';--g:'+RC[x.t]+'"><img src="'+IMG[x.k].i+'" alt=""><b style="color:'+RC[x.t]+'">'+x.t+'</b><small>'+HI[x.k][0]+(x.dup?'<br>ซ้ำ +1 เศษ 🧩':'<br>ใหม่!')+'</small></div>'}).join('')+'</div>'}
-  h+='<div class="note w">ได้ตั๋วจากผ่านด่าน ตอบถูก และฝึกซ้อม · ตัวซ้ำได้เศษ 🧩 ไปอัปเลเวลในหน้าสะสม</div>';
+  h+='<div class="gstage '+B.cl+'" id="gstage"><div class="gm2 '+B.cl+'" id="gmach">'+
+     '<div class="gsign"><span class="gbl t">'+bulbs(11)+'</span><b>'+B.e+' GACHA</b><span class="gbl b">'+bulbs(11)+'</span></div>'+
+     '<div class="gglass"><div class="gballs">'+balls.map(function(b,i){return '<i style="--c:'+b[0]+';left:'+b[1]+'px;top:'+b[2]+'px;--d:'+(i*.07).toFixed(2)+'s"></i>'}).join('')+'</div><i class="gshine"></i><i class="gshine s2"></i></div>'+
+     '<div class="gneck"></div>'+
+     '<div class="gbody2"><span class="gbl l">'+bulbs(7)+'</span>'+
+       '<div class="gcoin"><i></i><small>🎫</small></div><div class="gknob2"><i>★</i></div>'+
+       '<div class="gbadge">★ KRUBOY ★</div><div class="gchute"><i class="gcap" id="gcap"></i></div></div>'+
+     '<div class="gfeet"></div></div></div>';
+  h+='<div class="ginfo"><div class="grates">N 55% · R 30% · <b style="color:'+RC.SR+'">SR 12%</b> · <b style="color:'+RC.SSR+'">SSR 3%</b></div>'+
+     '<div class="gpity"><div class="pity"><span>SR การันตี '+P[B.pr]+'/30</span><i style="width:'+Math.min(100,P[B.pr]/30*100)+'%"></i></div>'+
+     '<div class="pity ss"><span>SSR การันตี '+P[B.ps]+'/80</span><i style="width:'+Math.min(100,P[B.ps]/80*100)+'%"></i></div></div></div>';
+  h+='<div class="row2 gbtns"><button class="bigb b1 sm" id="gb1"'+(P.tickets<1?' disabled':'')+'>สุ่ม 1 ครั้ง<small>1 ตั๋ว</small></button><button class="bigb b2 sm" id="gb5"'+(P.tickets<5?' disabled':'')+'>สุ่ม 5 ครั้ง<small>5 ตั๋ว</small></button></div>';
+  h+='</div>';
   HS.innerHTML=h;bindTop();
+  gFit();
   function go(n){
-    if(P.tickets<n)return;$('gb1').disabled=true;$('gb5').disabled=true;$('gmach').classList.add('shake');
-    SND.sfx('gacha');setTimeout(function(){P.tickets-=n;var r=[];for(var i=0;i<n;i++)r.push(rollOne(gb));saveP();rGacha(r);SND.sfx('rare',r.reduce(function(a,x){return RK[x.t]>RK[a]?x.t:a},'N'))},800);
+    if(P.tickets<n||$('gmach').classList.contains('spin'))return;
+    $('gb1').disabled=true;$('gb5').disabled=true;
+    P.tickets-=n;var r=[];for(var i=0;i<n;i++)r.push(rollOne(gb));saveP();
+    var best=r.reduce(function(a,x){return RK[x.t]>RK[a]?x.t:a},'N');
+    var m=$('gmach');m.classList.add('spin');SND.sfx('gacha');
+    var cap=$('gcap');cap.style.setProperty('--cc',RC[best]);cap.className='gcap g'+best;
+    setTimeout(function(){cap.classList.add('drop')},900);
+    setTimeout(function(){gReveal(r,n,best,gb)},1800);
   }
   $('gb1').onclick=function(){go(1)};$('gb5').onclick=function(){go(5)};
   [].forEach.call(HS.querySelectorAll('.gtab'),function(t){t.onclick=function(){P.gb=+t.getAttribute('data-b');saveP();SND.sfx('tap');rGacha()}});
+  rGacha.go=go;
+}
+function gFit(){var st=document.getElementById('gstage'),m=document.getElementById('gmach');if(!st||!m)return;
+  var s=Math.min(1.25,(st.clientHeight-6)/306,(st.clientWidth-10)/230);m.style.setProperty('--s',Math.max(.45,s))}
+window.addEventListener('resize',gFit);
+function gReveal(r,n,best,gb){
+  var o=document.createElement('div');o.className='gov r'+best;o.style.setProperty('--rc',RC[best]);
+  var h='<div class="grays"></div><div class="gbox2"><h2>'+(best==='SSR'?'✨ SSR มาแล้ว! ✨':best==='SR'?'🎉 ได้ SR!':'ผลการสุ่ม')+'</h2><div class="gcards n'+n+'">';
+  r.forEach(function(x,i){h+='<div class="gcd g'+x.t+'" style="--i:'+i+';--c:'+RC[x.t]+'"><div class="gin">'+
+    '<div class="gfront"><b class="gr">'+x.t+'</b><img src="'+IMG[x.k].i+'" alt=""><span>'+HI[x.k][0]+'</span><small>'+(x.dup?'ซ้ำ +1 เศษ 🧩':'🆕 ใหม่!')+'</small></div>'+
+    '<div class="gback"><b>?</b></div></div></div>'});
+  h+='</div><div class="row2 gobtn"><button class="bigb b1 sm" id="gok">ตกลง</button><button class="bigb b2 sm" id="gagain"'+(P.tickets<n?' disabled':'')+'>สุ่มอีก '+n+'<small>เหลือ '+P.tickets+' ตั๋ว</small></button></div></div>';
+  o.innerHTML=h;document.body.appendChild(o);
+  var t0=[];r.forEach(function(x,i){t0.push(setTimeout(function(){SND.sfx(RK[x.t]>=2?'rare':'tap',x.t)},400+i*400))});
+  if(best==='SSR')setTimeout(function(){try{confetti()}catch(e){}},400+r.length*400);
+  o.onclick=function(e){if(e.target.closest('button'))return;o.classList.add('fast');t0.forEach(clearTimeout)};
+  function close(){t0.forEach(clearTimeout);o.remove();rGacha()}
+  o.querySelector('#gok').onclick=close;
+  o.querySelector('#gagain').onclick=function(){close();if(P.tickets>=n)rGacha.go(n)};
 }
 
 /* ---------- collection ---------- */
 function rCol(){
-  var h=topbar()+'<div class="st">📖 สะสมฮีโร่ ('+P.owned.length+'/'+HEROES.length+')</div><div class="coll">';
-  BAN.forEach(function(B){h+='<div class="bh">'+B.e+' '+B.n+'</div>';B.ks.forEach(function(k){
+  var bn=P.cbn||0,h=topbar()+'<div class="st">📖 สะสมฮีโร่ ('+P.owned.length+'/'+HEROES.length+')</div><div class="dtabs btabs">'+BAN.map(function(B,i){var n=B.ks.filter(function(k){return P.owned.indexOf(k)>=0}).length;return '<button class="dt bt2'+(i===bn?' on':'')+'" data-b="'+i+'">'+B.e+' ตู้ '+(i+1)+' <small>'+n+'/'+B.ks.length+'</small></button>'}).join('')+'</div><div class="coll">';
+  [BAN[bn]].forEach(function(B){B.ks.forEach(function(k){
     var o=P.owned.indexOf(k)>=0,d=TYPES[k],r=HI[k][1];
     h+='<div class="cc'+(o?'':' lock')+'" style="border-color:'+RC[r]+'"><img src="'+IMG[k].i+'" alt=""><b style="color:'+RC[r]+'">'+r+'</b><span>'+(o?HI[k][0]:'???')+'</span>';
     if(o){
@@ -2114,7 +2896,9 @@ function rCol(){
     h+='</div>';
   })});
   h+='</div>';
-  HS.innerHTML=h;bindTop();
+  var oldC=HS.querySelector('.coll'),csc=oldC?oldC.scrollTop:0;
+  HS.innerHTML=h;bindTop();HS.querySelector('.coll').scrollTop=csc;
+  [].forEach.call(HS.querySelectorAll('.bt2'),function(b){b.onclick=function(){P.cbn=+b.getAttribute('data-b');saveP();SND.sfx('tap');HS.querySelector('.coll').scrollTop=0;rCol();HS.querySelector('.coll').scrollTop=0}});
   [].forEach.call(HS.querySelectorAll('.upb'),function(b){b.onclick=function(){
     var k=b.getAttribute('data-k'),need=lvNeed(k);if(!need||(P.shards[k]||0)<need)return;
     P.shards[k]-=need;P.lv[k]=lvOf(k)+1;saveP();rCol();SND.sfx('lvup');
@@ -2131,13 +2915,16 @@ var TOPICS=[
 {id:'m25',op:'×',label:'แม่ 2-5',p:{lo:2,hi:5}},{id:'m69',op:'×',label:'แม่ 6-9',p:{lo:6,hi:9}},{id:'mall',op:'×',label:'ผสม 2-9',p:{lo:2,hi:9}},
 {id:'d5',op:'÷',label:'ตัวหาร 2-5',p:{bmax:5,qmax:9}},{id:'d9',op:'÷',label:'ตัวหาร 2-9',p:{bmax:9,qmax:9}},
 {id:'mix',op:'*',label:'ผสมทุกแบบ',p:{}},
-{id:'fi',op:'f',label:'อ่านเศษส่วน',p:{d:0,k:'id'}},{id:'fc',op:'f',label:'เปรียบเทียบ',p:{d:2,k:'cmp'}},{id:'fa',op:'f',label:'บวกเศษส่วน',p:{d:3,k:'add'}},{id:'fs',op:'f',label:'ลบเศษส่วน',p:{d:3,k:'sub'}},{id:'fo',op:'f',label:'เศษส่วนของจำนวน',p:{d:4,k:'of'}},{id:'fm',op:'f',label:'เศษเกิน/จำนวนคละ (ยาก)',p:{d:5,k:'mixed',hard:1}}
+{id:'fid',op:'f',label:'รู้จักเศษส่วน',p:{k:'id'}},{id:'feq',op:'f',label:'เศษส่วนที่เท่ากัน',p:{k:'eq'}},{id:'fcm',op:'f',label:'เปรียบเทียบ',p:{k:'cmp'}},{id:'fad',op:'f',label:'บวก',p:{k:'add'}},{id:'fsb',op:'f',label:'ลบ',p:{k:'sub'}},{id:'fmu',op:'f',label:'คูณ',p:{k:'mul'}},{id:'fdv',op:'f',label:'หาร',p:{k:'div'}},{id:'fof',op:'f',label:'เศษส่วนของจำนวน',p:{k:'of'}},{id:'fmx',op:'f',label:'เศษเกิน/จำนวนคละ',p:{k:'mix'}},{id:'fwd',op:'f',label:'โจทย์ปัญหา',p:{k:'word'}},{id:'fall',op:'f',label:'ผสมทุกเรื่อง',p:{k:'any',pool:['id','eq','cmp','add','sub','mul','div','of','mix','word']}}
 ];
+[['did','รู้จักทศนิยม'],['dcm','เปรียบเทียบ'],['dad','บวก'],['dsb','ลบ'],['drn','ปัดเศษ'],['dm10','×10 ×100 ×1000'],['dd10','÷10 ÷100 ÷1000'],['dmu','คูณ'],['dcv','แปลงเศษส่วน ↔ ทศนิยม'],['dwd','โจทย์ปัญหา']].forEach(function(x){TOPICS.push({id:'q'+x[0],op:'d',label:x[1],p:{k:x[0]}})});
+TOPICS.push({id:'qdall',op:'d',label:'ผสมทุกเรื่อง',p:{k:'any',pool:['did','dcm','dad','dsb','drn','dm10','dd10','dmu','dcv','dwd']}});
 for(var tt=2;tt<=9;tt++)TOPICS.push({id:'t'+tt,op:'×',label:'แม่ '+tt,p:{fixed:tt},tb:1});
-var GT=[['+','➕ บวก'],['-','➖ ลบ'],['×','✖️ สูตรคูณ'],['÷','➗ หาร'],['f','🍰 เศษส่วน'],['*','🔀 ผสม']];
+var GT=[['+','➕ บวก'],['-','➖ ลบ'],['×','✖️ สูตรคูณ'],['÷','➗ หาร'],['f','🍰 เศษส่วน'],['d','🪙 ทศนิยม'],['*','🔀 ผสม']];
 function rPrac(){
   var h=topbar()+'<div class="st">📚 ฝึกซ้อม</div><div class="pn"><div class="chips"><button class="mode'+(PMODE?'':' on')+'" data-m="0">ไม่จับเวลา</button><button class="mode'+(PMODE?' on':'')+'" data-m="1">⏱ 60 วินาที</button></div><small>ไม่มีปีศาจ ไม่เสียเหรียญ ผิดแล้วมีภาพช่วย · ตั๋วจากฝึกซ้อม 1 ใบต่อ 20 ข้อถูก (วันละไม่เกิน 3 ใบ)</small></div>';
-  GT.forEach(function(g){
+  var pt=P.ptab||'+';h+='<div class="ptabs">'+GT.map(function(g){var p=g[1].split(' ');return '<button class="ptb'+(g[0]===pt?' on':'')+'" data-g="'+g[0]+'"><i>'+p[0]+'</i>'+p.slice(1).join(' ')+'</button>'}).join('')+'</div>';
+  GT.filter(function(g){return g[0]===pt}).forEach(function(g){
     var list=TOPICS.filter(function(t){return t.op===g[0]});
     h+='<div class="pn"><b>'+g[1]+'</b><div class="chips">'+list.map(function(t){
       var s=P.pstat[t.id],acc=s&&s.t?Math.round(s.c/s.t*100)+'%':'';
@@ -2146,11 +2933,12 @@ function rPrac(){
     }).join('')+'</div></div>';
   });
   HS.innerHTML=h;bindTop();
-  [].forEach.call(HS.querySelectorAll('.mode'),function(b){b.onclick=function(){PMODE=+b.getAttribute('data-m');rPrac()}});
+  [].forEach.call(HS.querySelectorAll('.mode'),function(b){b.onclick=function(){PMODE=+b.getAttribute('data-m');rPrac();fitHS()}});
+  [].forEach.call(HS.querySelectorAll('.ptb'),function(b){b.onclick=function(){P.ptab=b.getAttribute('data-g');saveP();SND.sfx('tap');rPrac();fitHS()}});
   [].forEach.call(HS.querySelectorAll('.tp'),function(b){b.onclick=function(){startPractice(b.getAttribute('data-id'),!!PMODE)}});
 }
 function genTopic(t){
-  if(t.op==='*'){var base=TOPICS.filter(function(x){return x.op!=='*'&&x.op!=='f'&&!x.tb});return genTopic(base[rnd(0,base.length-1)])}
+  if(t.op==='*'){var base=TOPICS.filter(function(x){return x.op!=='*'&&x.op!=='f'&&x.op!=='d'&&!x.tb});return genTopic(base[rnd(0,base.length-1)])}
   return mkQ(t.op,t.p);
 }
 function startPractice(id,timed){
@@ -2165,9 +2953,9 @@ function nextPQ(){
   if(!PR||PR.done)return;
   var g=genTopic(PR.t),o=[g.c].concat(pick2(g.c,g.w));
   PR.q=g;PR.wrong=0;PR.locked=false;
-  $('pqt').innerHTML=FR(g.t);$('ph').className='';$('ph').innerHTML='';
+  $('pqt').innerHTML=FR(g.t);$('pqt').className=g.t.replace(/\[bar:[^\]]*\]/g,'').length>34?'long':'';$('ph').className='';$('ph').innerHTML='';
   var box=$('pch');box.innerHTML='';
-  shuffle(o).forEach(function(v){var b=document.createElement('button');b.innerHTML=FR(v);b.onclick=function(){ansP(v,b)};box.appendChild(b)});
+  shuffle(o).forEach(function(v){var b=document.createElement('button');b.innerHTML=FR(v);b.setAttribute('data-v',String(v));b.onclick=function(){ansP(v,b)};box.appendChild(b)});
 }
 function ansP(v,b){
   if(!PR||PR.locked||PR.done)return;
@@ -2180,8 +2968,8 @@ function ansP(v,b){
     PR.wrong++;b.className='wrong';b.disabled=true;
     if(PR.wrong===1){h.className='bad';h.textContent='ลองอีกครั้งนะ'}
     else{
-      PR.locked=true;PR.n++;st.t++;h.className='bad';h.innerHTML='คำตอบคือ <b>'+PR.q.c+'</b>';
-      [].forEach.call($('pch').children,function(x){if(+x.textContent===PR.q.c)x.className='right'});
+      PR.locked=true;PR.n++;st.t++;h.className='bad';h.innerHTML='คำตอบคือ <b>'+FR(String(PR.q.c))+'</b>';
+      [].forEach.call($('pch').children,function(x){if(x.getAttribute('data-v')===String(PR.q.c))x.className='right'});
       setTimeout(nextPQ,1800);
     }
   }
@@ -2202,7 +2990,7 @@ function endPractice(){
 }
 
 function start(){
-  $('ov').className='off';reset();
+  $('ov').className='off';reset();var dk=$('dlk');if(dk){dk.textContent=DIFF[DI()].e+' '+DSH[DI()]+' 🔒';dk.className='pill dlk d'+DI()}
   last=performance.now();raf=requestAnimationFrame(loop);
 }
 S={over:true,units:[],coins:0,php:100,ehp:100,ehp0:100};
