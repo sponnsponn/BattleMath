@@ -1097,7 +1097,8 @@ html.ls .d2h .dhb span{font-size:10px}
 .dbl.rm{pointer-events:none;opacity:.6;filter:saturate(.6)}
 html.ls #ovbox .d2s{display:flex!important}html.ls .dncode b{font-size:30px}
 
-.u.pvr .face{transform:scaleX(-1)}.pvbi{width:44px;height:44px;object-fit:contain;transform:scaleX(-1)}
+.u.pvr .face{transform:scaleX(-1)}#pb .ic,#eb .ic{position:relative}.pvsch{display:inline-block;transform:scaleX(-1)}
+#pb .ic img.pvav,#eb .ic img.pvav{position:absolute!important;top:-6px;width:30px!important;height:30px!important;object-fit:contain;background:#fff;border:2px solid #1E2A44;border-radius:50%;padding:1px;filter:none!important;animation:none!important}#pb .ic img.pvav{left:2px}#eb .ic img.pvav{right:2px;transform:scaleX(-1)}
 #menu.pvlow{background:#E4524B!important;color:#fff!important;animation:dnb 1s infinite}
 .dnm{align-self:stretch!important}#ovbox .dnm .lb{flex:1;padding:6px 8px}
 
@@ -1108,6 +1109,16 @@ html.ls #ovbox .d2s{display:flex!important}html.ls .dncode b{font-size:30px}
 @keyframes pvban{0%{opacity:0;transform:translate(-50%,10px) scale(.7)}12%{opacity:1;transform:translate(-50%,0) scale(1.08)}20%{transform:translate(-50%,0) scale(1)}85%{opacity:1}100%{opacity:0;transform:translate(-50%,-14px)}}
 .hmon{width:100%;margin-top:8px}
 html.ls .hmon{margin-top:4px;padding:5px 8px!important;min-height:0!important;font-size:17px!important}html.ls .hmon small{display:none}
+/* v3.27 island map keeps the art's 360:420 shape (was stretched to the box on tall phones / wide landscape) */
+.ibig{container-type:size}
+.ibig>.iwrap,html.ls .ibig>.iwrap{left:50%;top:50%;right:auto;bottom:auto;height:auto;width:min(100cqw,85.714cqh);aspect-ratio:360/420;transform:translate(-50%,-50%)}
+.qhl{background:#FFE45C;color:#1E2A44;border-radius:5px;padding:0 2px;margin:0;text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:3px;font-weight:900}
+/* v3.28 layout fixes found by the overflow scan */
+.dangr .dbt{flex:0 0 auto}.dangr canvas{width:clamp(54px,22vw,92px);height:auto;flex:0 1 auto}
+.dangt{min-width:0}.dangt small{white-space:normal;text-align:center;font-size:clamp(9px,3vw,12px)}
+@media (max-width:380px){.hbar .dsb{padding:4px 1px;min-width:0}html[lang=en] .dsb span{font-size:0}html[lang=en] .dsb span::after{content:attr(data-sh);font-size:11px}}
+html.ls #hs[data-scr=map]>.ztitle{font-size:15px;text-overflow:ellipsis}
+html.ls #hs[data-scr=map]>.ztitle small{display:none}
 </style>
 </head>
 <body>
@@ -3098,13 +3109,14 @@ function gen(){
 function FR(x){
   var s=String(x).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>');
   s=s.replace(/\[bar:(\d+):(\d+)\]/g,function(_,n,d){n=+n;d=+d;var h='',k=Math.max(1,Math.ceil(n/d));for(var b=0;b<k;b++){h+='<span class="fbar">';for(var i=0;i<d;i++)h+='<i'+(b*d+i<n?' class="on"':'')+'></i>';h+='</span>'}return h});
-  return s.replace(/(\d+)\/(\d+)/g,'<span class="fr"><i>$1</i><i>$2</i></span>').replace(/\[geo:(\d+)\](<br>)?/g,function(_,i){return typeof GEO!=='undefined'&&GEO[i]||''});
+  s=s.replace(/\[hl:([^\]]*)\]/g,'<b class="qhl">$1</b>');return s.replace(/(\d+|\?)\/(\d+|\?)/g,'<span class="fr"><i>$1</i><i>$2</i></span>').replace(/\[geo:(\d+)\](<br>)?/g,function(_,i){return typeof GEO!=='undefined'&&GEO[i]||''});
 }
 function gcd(a,b){a=Math.abs(a);b=Math.abs(b);while(b){var t=b;b=a%b;a=t}return a||1}
 function lcm(a,b){return a/gcd(a,b)*b}
 var FKN={mlen:'ความยาว',mwt:'น้ำหนัก',mcap:'ปริมาตรและความจุ',mcmp:'เปรียบเทียบหน่วย',mwd:'โจทย์ปัญหาการวัด',tclk:'อ่านเวลา',taft:'เวลาก่อน–หลัง',tdur:'ระยะเวลา',tcnv:'หน่วยเวลา',twd:'วันและเดือน',ccnt:'นับเงิน',cnot:'แลกเงิน',cchg:'เงินทอน',csat:'บาทและสตางค์',cbuy:'ซื้อของ',id:'รู้จักเศษส่วน',eq:'เศษส่วนที่เท่ากัน',cmp:'เปรียบเทียบเศษส่วน',add:'บวกเศษส่วน',sub:'ลบเศษส่วน',mul:'คูณเศษส่วน',div:'หารเศษส่วน',of:'เศษส่วนของจำนวน',mix:'เศษเกินและจำนวนคละ',word:'โจทย์ปัญหาเศษส่วน'};
 function fval(x){if(typeof x==='number')return x;var m=String(x).match(/^(?:(\d+) )?(\d+)\/(\d+)$/);if(!m)return NaN;return (+(m[1]||0))+(+m[2])/(+m[3])}
-function mkF(p){
+function mkF(p){var g=mkF0(p);if(g&&g.w&&!/อย่างต่ำ|simplest/.test(String(g.t))){var vc=fval(g.c);if(typeof g.c==='number'||!isNaN(vc))g.w=g.w.filter(function(x){if(x==null)return true;var vx=typeof x==='number'?x:fval(x);return isNaN(vx)||isNaN(typeof g.c==='number'?g.c:vc)||Math.abs(vx-(typeof g.c==='number'?g.c:vc))>1e-9})}return g}
+function mkF0(p){
   var dif=p.dif!=null?p.dif:DI(),k=p.k||'add';
   if(k==='boss'||k==='any'){var pool=p.pool||['id','eq','cmp','add','sub'];k=pool[rnd(0,pool.length-1)]}
   if(p.warm&&dif>0&&k!=='cmp'&&k!=='dcm'&&Math.random()<.5)dif--;
@@ -3250,12 +3262,12 @@ function mkD(p){
   function Df(z){return fix==null?DS(z):DS(z,fix)}
   if(k==='did'){
     if(dif===0){n=rnd(1,9);t='[bar:'+n+':10] ส่วนที่ระบายสีเขียนเป็นทศนิยมได้เท่าไร?';c=DS(n*100);w=[DS(n*10),String(n),DS(1000+n*100),DS((10-n)*100)];h='ระบาย '+n+' จาก 10 ช่อง = '+n+'/10 = '+c}
-    else{var ds=[];while(ds.length<3){x=rnd(1,9);if(ds.indexOf(x)<0)ds.push(x)}var I=rnd(1,9);
+    else{var I=rnd(1,9),ds=[];while(ds.length<3){x=rnd(1,9);if(ds.indexOf(x)<0&&x!==I)ds.push(x)}
       if(dif===2&&Math.random()<.5){v=I*1000+ds[0]*100+ds[1]*10+ds[2];t=I+' + '+DS(ds[0]*100)+' + '+DS(ds[1]*10)+' + '+DS(ds[2])+' = ?';c=DS(v);
         w=[DS(I*1000+ds[1]*100+ds[0]*10+ds[2]),DS(I*1000+ds[0]*100+ds[2]*10+ds[1]),DS((I*10+ds[0])*1000+ds[1]*100+ds[2]*10),DS(I*1000+ds[0]*10+ds[1]),DS(I*1000+ds[2]*100+ds[1]*10+ds[0])];
         h='หน่วย '+I+' · ส่วนสิบ '+ds[0]+' · ส่วนร้อย '+ds[1]+' · ส่วนพัน '+ds[2]+' → '+c}
       else{var pl=dif===1?2:3,j=rnd(1,pl);v=I*1000;for(i=0;i<pl;i++)v+=ds[i]*Math.pow(10,2-i);var dj=ds[j-1],val=dj*Math.pow(10,3-j);
-        t='เลข '+dj+' ใน '+DS(v)+' มีค่าเท่าไร?';c=DS(val);w=[DS(dj*100),DS(dj*10),DS(dj),String(dj),String(dj*10)];
+        var vs=DS(v),vp=vs.indexOf('.')+j;t='เลข '+dj+' ใน '+vs.slice(0,vp)+'[hl:'+vs.charAt(vp)+']'+vs.slice(vp+1)+' มีค่าเท่าไร?';c=DS(val);w=[DS(dj*100),DS(dj*10),DS(dj),String(dj),String(dj*10)];
         h='เลข '+dj+' อยู่หลักส่วน'+['สิบ','ร้อย','พัน'][j-1]+' มีค่า '+c}}
   }else if(k==='dcm'){
     if(dif===1){a=num(0,3,1);if(Math.random()<.3){b=a;var A=DS(a),B=DS(b,2)}else{do{b=a+rnd(-9,9)*10}while(b<=0||b%100===0||b===a);A=DS(a);B=DS(b)}
@@ -4334,7 +4346,7 @@ function show(name,arg){window.__scr=name;window.__arg=arg;HS.setAttribute('data
 
 /* ---------- landscape phones (v3.7) ---------- */
 var LS0={w:380,h:165};
-function lsOn(){var w=window.innerWidth,h=window.innerHeight;return w>h*1.2&&h<=640}
+function lsOn(){var w=window.innerWidth,h=window.innerHeight;return w>h*1.2&&(h<=640||!('ontouchstart' in window)&&!(navigator.maxTouchPoints>0))}
 function lsStage(){var r=document.documentElement;if(!r.classList.contains('ls'))return;var wr=$('stwrap'),st=$('stage');if(!wr||!st)return;
   var cw=wr.clientWidth,ch=wr.clientHeight;if(!cw||!ch)return;var k=Math.max(.6,Math.min(cw/LS0.w,ch/LS0.h));
   st.style.setProperty('--sk',k.toFixed(3));st.style.setProperty('--sw0',LS0.w+'px');st.style.setProperty('--sh0',LS0.h+'px')}
@@ -4370,7 +4382,7 @@ function topbar(){
   var g=window.__scr==='gacha';
   return '<div class="hbar">'+(g?'<div class="chip tk">🎫 <b>'+P.tickets+'</b></div>':'')+(window.__scr==='col'&&P.cbn!=='m'?'<div class="chip tk">💰 <b>'+P.gold+'</b></div>':'')+
     '<div class="chip stc" title="ดาวของระดับ'+DIFF[DI()].n+'">⭐ <b>'+starsD()+'</b><small>/'+WORLDS.length*NS*3+'</small></div>'+
-    '<div class="dseg" role="group" aria-label="ระดับความยาก">'+DIFF.map(function(d,i){return '<button class="dsb d'+i+(i===DI()?' on':'')+'" data-d="'+i+'" aria-pressed="'+(i===DI())+'"><span>'+DSH[i]+'</span></button>'}).join('')+'</div>'+
+    '<div class="dseg" role="group" aria-label="ระดับความยาก">'+DIFF.map(function(d,i){return '<button class="dsb d'+i+(i===DI()?' on':'')+'" data-d="'+i+'" aria-pressed="'+(i===DI())+'"><span data-sh="'+['Easy','Med','Hard'][i]+'">'+DSH[i]+'</span></button>'}).join('')+'</div>'+
     '<button class="chip ib" id="cfg" aria-label="ตั้งค่าและเสียง">⚙️</button></div>';
 }
 function bindTop(){
@@ -5585,8 +5597,8 @@ function pvStart(m){var host=NETR.host,od=P.dif;PV={host:host,me:NETR.me,m:m,cd2
   clearPar();stopPractice();if(DU)duQuit(true);HOME.style.display='none';document.querySelector('.app').style.display='';lsStage();setTimeout(lsStage,50);SND.play('w'+ar);
   start();
   S.php=S.php0=S.ehp=S.ehp0=PVB.base;S.spawn=1e9;S.bossOn=true;S.bossDone=true;S.c2=BAL.coin0;S.uid=0;
-  ['pb','eb'].forEach(function(i){$(i).classList.remove('bossb')});$('eb').querySelector('.ic').innerHTML='<img src="'+IMG[host?m.h2:m.h1].i+'" alt="" class="pvbi">';
-  $('pb').querySelector('.ic').innerHTML='🏫';$('cannon').style.display='none';
+  ['pb','eb'].forEach(function(i){$(i).classList.remove('bossb')});$('pb').querySelector('.ic').innerHTML=schoolImg(0)+'<img src="'+IMG[host?m.h1:m.h2].i+'" alt="" class="pvav">';
+  $('eb').querySelector('.ic').innerHTML='<span class="pvsch">'+schoolImg(0)+'</span><img src="'+IMG[host?m.h2:m.h1].i+'" alt="" class="pvav">';$('cannon').style.display='none';
   say('⚔️ '+LL('ส่งฮีโร่ไปพังฐานของ '+PV.opp+' · ตอบถูกได้เหรียญ','Send heroes to break '+PV.opp+'\'s base · answer to earn coins'));pvClock();draw()}
 function pvClock(){var t=Math.max(0,Math.ceil(PV.tl)),s=Math.floor(t/60)+':'+('0'+t%60).slice(-2);if(PV.clk!==s){PV.clk=s;$('menu').textContent='☰ ⚔️ '+s;$('menu').classList.toggle('pvlow',t<=30)}}
 function pvHostTick(dt){var p=PV;
@@ -5626,6 +5638,12 @@ function pvExit(){if(PV)PV.out=1;stageEl().classList.remove('pvh1','pvh2','pvh3'
 function pvAskQuit(){if(!PV||PV.end){pvExit();return}
   $('ovbox').innerHTML='<div class="brf"><h1>🚪 '+LL('ออกจากศึกนี้?','Leave this battle?')+'</h1><p>'+LL('ถ้าออกตอนนี้ จะนับว่าแพ้','Leaving now counts as a loss')+'</p><div class="brow"><button id="pvst">'+LL('เล่นต่อ','Keep playing')+'</button><button id="pvlv">'+LL('ออก','Leave')+'</button></div></div>';$('ov').className='';
   $('pvst').onclick=function(){$('ov').className='off'};$('pvlv').onclick=function(){$('ov').className='off';if(NETR)dnLeave();pvExit()}}
+
+/* v3.28: keep zone-map signs inside the map (long English names near the edge were cut off) */
+function uiNudge(){var mp=HS&&HS.querySelector('.zmap');if(!mp)return;var R=mp.getBoundingClientRect();
+  [].forEach.call(mp.querySelectorAll('.lmk .sign'),function(s){s.style.translate='';var r=s.getBoundingClientRect(),dx=0;if(r.left<R.left+4)dx=R.left+4-r.left;else if(r.right>R.right-4)dx=R.right-4-r.right;if(dx)s.style.translate=Math.round(dx)+'px 0'})}
+var _uiRZ=rZone;rZone=function(w){var r=_uiRZ(w);setTimeout(uiNudge,0);setTimeout(uiNudge,120);return r};
+window.addEventListener('resize',function(){setTimeout(uiNudge,60)});
 
 window.onAndroidBack=function(){try{
   if(DU&&!DU.gone){var o0=$('ov');if(o0&&o0.className!=='off'){if(DU.pause){o0.className='off';DU.pause=false;DU.last=performance.now()}return true}duPause();return true}
