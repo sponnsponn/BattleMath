@@ -1106,6 +1106,8 @@ html.ls #ovbox .d2s{display:flex!important}html.ls .dncode b{font-size:30px}
 .pvban{position:absolute;left:50%;top:28%;transform:translateX(-50%);z-index:90;white-space:nowrap;font:800 17px/1.2 inherit;padding:8px 14px;border-radius:14px;background:#1E2A44;color:#FFE45C;border:3px solid #FFC93C;box-shadow:0 4px 0 rgba(0,0,0,.3);animation:pvban 2.6s ease forwards;pointer-events:none}
 .pvban.p2,.pvban.p3{background:#B3261E;color:#fff;border-color:#FFE45C}
 @keyframes pvban{0%{opacity:0;transform:translate(-50%,10px) scale(.7)}12%{opacity:1;transform:translate(-50%,0) scale(1.08)}20%{transform:translate(-50%,0) scale(1)}85%{opacity:1}100%{opacity:0;transform:translate(-50%,-14px)}}
+.hmon{width:100%;margin-top:8px}
+html.ls .hmon{margin-top:4px;padding:5px 8px!important;min-height:0!important;font-size:17px!important}html.ls .hmon small{display:none}
 </style>
 </head>
 <body>
@@ -4410,10 +4412,11 @@ function rHome(){
   h+='<button class="bigb b1" id="goA">⚔️ ผจญภัย<small>ต่อไป: ด่าน '+L.title+'</small></button>';
   h+='<div class="hm2"><button class="bigb b2" id="goP">📚 ฝึกซ้อม<small>เลือกหัวข้อ ไม่มีปีศาจ ไม่จับเวลา</small></button>';
   h+='<button class="bigb b3" id="goD">💣 '+LL('ดวลปืนใหญ่','Cannon Duel')+'<small>'+LL('เล็ง ตอบโจทย์ ยิงปีศาจ!','Aim, answer, blast!')+'</small></button></div>';
+  h+='<button class="bigb b3 dnb hmon" id="goN">🌐 '+LL('เล่นออนไลน์','Play online')+'<small>'+LL('ดวลกับเพื่อนคนละเครื่อง · 🎯 ปืนใหญ่ / ⚔️ ศึกฐาน','vs a friend on another device · 🎯 cannon / ⚔️ base battle')+'</small></button>';
   h+='<div class="hmrow" id="dmbar"></div><div class="wallet"><span>💰 <b>'+P.gold+'</b></span><span>🎫 <b>'+P.tickets+'</b></span><span>🏅 <b>'+P.medal+'</b></span>'+(P.title?'<span class="wtl">🏷️ '+titleName(P.title)+'</span>':'')+'</div><div class="note">ตั๋วจากตอบถูกวันนี้ '+P.dayAd+'/5 · จากฝึกซ้อม '+P.dayPr+'/3</div></div>';
   HS.innerHTML=h;bindTop();
   rHomeBar();if(lgCheck().got!==P.lg.last&&!window.__lgShown){window.__lgShown=1;setTimeout(function(){if(window.__scr==='home')lgBox()},400)}
-  $('goA').onclick=function(){show('isles')};$('goS').onclick=function(){SND.sfx('tap');show('school')};$('goP').onclick=function(){show('prac')};$('goD').onclick=function(){SND.sfx('tap');show('duel')};
+  $('goA').onclick=function(){show('isles')};$('goS').onclick=function(){SND.sfx('tap');show('school')};$('goP').onclick=function(){show('prac')};$('goD').onclick=function(){SND.sfx('tap');show('duel')};$('goN').onclick=function(){SND.sfx('tap');duNetMenu()};
   var imgs=[].slice.call(HS.querySelectorAll('.parade img')),f=0;
   function tick(){f++;imgs.forEach(function(im,i){var H=IMG[im.getAttribute('data-k')],fr=H.w[(f+i*2)%H.w.length];im.src=fr.s;im.style.width=Math.round(fr.w*1.5)+'px'})}
   tick();PAR=setInterval(tick,130);
@@ -4690,7 +4693,7 @@ S={over:true,units:[],coins:0,php:100,ehp:100,ehp0:100};
 document.querySelector('.app').style.display='none';$('ov').className='off';
 [].forEach.call(document.querySelectorAll('#nav button'),function(b){b.onclick=function(){show(b.getAttribute('data-s'))}});
 $('menu').onclick=function(){toHome('map',CUR.w)};$('cannon').onclick=fireCannon;$('bS').onclick=tgS;$('bM').onclick=tgM;
-/* ---------- ดวลปืนใหญ่ (v3.20) — Fortress/GunBound-style artillery duel ---------- */
+/* ---------- ดวลปืนใหญ่ (v3.25) — Fortress/GunBound-style artillery duel ---------- */
 var DUEL={W:480,H:300,G:300,VK:4.25,WK:6,zoom:1.5,uh:50,eh:62,cy:22,hr:20,mz:32,
   php:100,ehp:[100,110,105],bfd:8,edmg:[20,25,30],
   err:[10,6.5,5.5],wmax:[2,4,6],think:[60,45,30],guide:[.9,.55,.35],
@@ -4872,10 +4875,14 @@ function duFit(){
 }
 function duImg(src){var i=new Image();i.src=src;return i}
 function duFr(k,s){var a=IMG[k][s];return a&&a.length?a.map(function(f){return duImg(f.s)}):null}
+/* v3.25 arena (scenery, ground colours, music) chosen separately from the topic: -2/undefined = same as topic, -1 = random */
+function duArena(w,two){var a=two&&two.a!=null?two.a:-2;if(a===-1)a=DUEL.zones[rnd(0,DUEL.zones.length-1)];return a>=0&&WORLDS[a]?a:w}
+function duArenaOpts(sel){return '<option value="-2"'+(sel==null||sel===-2?' selected':'')+'>📚 '+LL('ตามเรื่องโจทย์','match the topic')+'</option><option value="-1"'+(sel===-1?' selected':'')+'>🎲 '+LL('สุ่มสนาม','random')+'</option>'+
+  DUEL.zones.slice().sort(function(a,b){return a-b}).map(function(i){return '<option value="'+i+'"'+(sel===i?' selected':'')+'>'+WORLDS[i].icon+' '+WORLDS[i].name+'</option>'}).join('')}
 function duStart(w,headless,two){
-  if(!headless)duDom();var L=mkStage(w,NS-1),dif=DI(),hk=duHero(),look=duLook(w),bk=LAND.backdrop(w);
+  if(!headless)duDom();var A=duArena(w,two),L=mkStage(w,NS-1),dif=DI(),hk=duHero(),look=duLook(w),bk=LAND.backdrop(A);
   var B=duBul(hk),wf=duFr(hk,'w');
-  DU={w:w,L:L,dif:dif,hk:hk,hl:!!headless,t:duTerrain(w),fx:[],shots:[],st:'start',tm:0,wind:0,asked:0,ok:0,eShots:0,lastP:null,ang:50,pow:60,shake:0,ssc:0,ssArm:false,mvd:0,mvAcc:0,
+  DU={w:w,L:L,dif:dif,hk:hk,hl:!!headless,t:duTerrain(A),arena:A,fx:[],shots:[],st:'start',tm:0,wind:0,asked:0,ok:0,eShots:0,lastP:null,ang:50,pow:60,shake:0,ssc:0,ssArm:false,mvd:0,mvAcc:0,
     dl:{p:0,e:35},
     p:{side:'p',x:Math.round(DUEL.W*.14),y:0,vy:0,face:1,hp:DUEL.php,hp0:DUEL.php,an:'w',at:0,B:B,dmg:duDmgOf(hk),mv:Math.round((TYPES[hk]?TYPES[hk].speed:5)*DUEL.mvk),fuel:0,sh:0,
        F:{w:wf,a:duFr(hk,'a')||wf,h:duFr(hk,'h')||duFr(hk,'d')||wf,k:duFr(hk,'k')||wf,u:duFr(hk,'u')||duFr(hk,'a')||wf}},
@@ -4883,11 +4890,11 @@ function duStart(w,headless,two){
   [DU.p,DU.e].forEach(function(u){u.y=duGround({x:u.x,y:0})||DUEL.H-20;u.ok=true});
   DU.p.mk=2;DU.e.mk=3;if(two)duTwoInit(two,look);else duBossInit(look);
   if(headless){DU.st='start';duNext();return}
-  $('dbg').style.background=bk?bk.sky:WORLDS[w].bg;
+  $('dbg').style.background=bk?bk.sky:WORLDS[A].bg;
   $('dbg').innerHTML=bk?(bk.sun?'<i class="sun" style="background-image:url('+bk.sun+')"></i>':'')+['far','cld','mid'].filter(function(k){return bk[k]}).map(function(k){return '<i class="ly '+k+'" style="background-image:url('+bk[k]+')"></i>'}).join(''):'';
   $('dttl').innerHTML=(DU.net?'🌐 ':DU.two?'👥 ':'')+WORLDS[w].icon+' '+LL('ดวล','Duel')+' '+(w+1)+' <small class="dd'+dif+'">'+DIFF[dif].e+' <span>'+DSH[dif]+'</span></small>';
   $('dpi').src=IMG[DU.two?DU.u1.hk:hk].i;$('dei').src=DU.two?IMG[DU.u2.hk].i:look.f[0];$('dballs').innerHTML='';duBalUI();
-  HOME.style.display='none';$('duel').className=DU.two?'two':'';clearPar();applyTheme(dif);SND.play('w'+w);
+  HOME.style.display='none';$('duel').className=DU.two?'two':'';clearPar();applyTheme(dif);SND.play('w'+A);
   $('dmn').onclick=duPause;
   DU.cam=null;duFit();setTimeout(duFit,60);duPanel();duHUD();duCamBind();
   duSay(DU.net?'🌐 '+DU.u1.nm+LL(' (ซ้าย) ปะทะ ',' (left) vs ')+DU.u2.nm+LL(' (ขวา)!',' (right)!'):DU.two?LL('👥 ผู้เล่น 1 (ซ้าย) ปะทะ ผู้เล่น 2 (ขวา)!','👥 Player 1 (left) vs Player 2 (right)!'):LL('👑 '+look.name+' ท้าดวล! ','👑 '+look.name+' challenges you! ')+LL('เล็งให้ดีนะ','Aim carefully'));
@@ -5109,19 +5116,19 @@ function duEnd2(){var D=DU;if(D.st==='over')return;D.st='over';duHUD();var a=D.u
     var row=function(u){return '<li><img src="'+IMG[u.hk].i+'" alt="" style="height:28px;vertical-align:middle"> <b style="color:'+u.col+'">'+u.nm+'</b> · ❤️ '+Math.max(0,Math.round(u.hp))+' · '+LL('ตอบถูก','correct')+' '+(u.qo||0)+'/'+(u.qa||0)+'</li>'};
     $('ovbox').innerHTML='<div class="brf"><h1>'+(w?(D.net?(w===D['u'+NETR.me]?'🏆 '+LL('คุณชนะ!','You win!'):'😅 '+w.nm+LL(' ชนะ! ลองใหม่นะ',' wins! Try again')):'🏆 '+w.nm+LL(' ชนะ!',' wins!')):'🤝 '+LL('เสมอ!','Draw!'))+'</h1><ul>'+row(a)+row(b)+'</ul><div class="brow"><button id="dagain">'+(D.net?LL('กลับห้อง (เล่นอีก)','Back to room'):LL('เล่นอีกครั้ง','Play again'))+' ▶</button><button id="dback">'+LL('กลับ','Back')+'</button></div></div>';$('ov').className='';
     $('dagain').onclick=function(){$('ov').className='off';if(D.net){dnAgain();return}var c=D.two,ww=D.w;duQuit(true);duStart(ww,false,c)};$('dback').onclick=function(){$('ov').className='off';if(D.net)dnLeave();duQuit()}},900)}
-function duSetup2(){var c=P.du2||{},op=DUEL.zones.filter(duOpen),own=P.owned.slice();c.w=op.indexOf(c.w)>=0?c.w:op[0];c.h1=own.indexOf(c.h1)>=0?c.h1:duHero();c.h2=own.indexOf(c.h2)>=0?c.h2:own[1]||own[0];c.q1=c.q1!=null?c.q1:DI();c.q2=c.q2!=null?c.q2:DI();
+function duSetup2(){var c=P.du2||{},op=DUEL.zones.slice(),own=P.owned.slice();c.w=op.indexOf(c.w)>=0?c.w:op[0];c.h1=own.indexOf(c.h1)>=0?c.h1:duHero();c.h2=own.indexOf(c.h2)>=0?c.h2:own[1]||own[0];c.q1=c.q1!=null?c.q1:DI();c.q2=c.q2!=null?c.q2:DI();
   function heroes(n){return '<div class="d2h" data-p="'+n+'">'+own.map(function(k){return '<button class="dhb'+(c['h'+n]===k?' on':'')+'" data-k="'+k+'" style="border-color:'+RC[HI[k][1]]+'"><img src="'+IMG[k].i+'" alt=""><span>'+HI[k][0]+'</span></button>'}).join('')+'</div>'}
   function lv(n){return '<div class="d2q" data-p="'+n+'">'+DSH.map(function(s,i){return '<button class="lb'+(c['q'+n]===i?' on':'')+'" data-q="'+i+'">'+s+'</button>'}).join('')+'</div>'}
   function draw(){var h='<div class="brf d2s"><h1>👥 '+LL('ดวล 2 คน (เครื่องเดียว)','2-player duel (one device)')+' <button class="dinf" id="d2i" aria-label="info">i</button></h1><p class="dtip'+(c.tip?' on':'')+'" id="d2t">'+LL('ผลัดกันเล่นบนเครื่องเดียว · ก่อนแต่ละตามีหน้าให้ส่งเครื่อง · ลูกโป่งให้แย่งกันแตะ ฝั่งซ้าย P1 ฝั่งขวา P2 (แตะผิดล็อก 2 วิ) · แต่ละคนได้ไอเทมสุ่ม 2 ชิ้น · ระดับโจทย์เลือกแยกกันได้ · โหมดนี้ไม่ได้รางวัล','Take turns on one device · a hand-over screen appears before each turn · race to tap balloons: left = P1, right = P2 (wrong tap locks 2 s) · each player gets 2 random items · question level is per player · no rewards in this mode')+'</p>'+
-    '<b>🗺️ '+LL('สนามและเรื่องโจทย์','Map & topic')+'</b><select id="d2w">'+op.map(function(w){return '<option value="'+w+'"'+(w===c.w?' selected':'')+'>'+WORLDS[w].icon+' '+(w+1)+' · '+WORLDS[w].title+'</option>'}).join('')+'</select>'+
+    '<b>🏞️ '+LL('สนาม','Arena')+'</b><select id="d2a">'+duArenaOpts(c.a)+'</select><b>📚 '+LL('เรื่องโจทย์','Topic')+'</b><select id="d2w">'+op.map(function(w){return '<option value="'+w+'"'+(w===c.w?' selected':'')+'>'+WORLDS[w].icon+' '+(w+1)+' · '+WORLDS[w].title+'</option>'}).join('')+'</select>'+
     '<div class="d2g"><div class="d2c"><b style="color:#2E9E55">🟢 '+LL('ผู้เล่น 1 (ซ้าย)','Player 1 (left)')+'</b>'+heroes(1)+'<small>'+LL('ระดับโจทย์','Question level')+'</small>'+lv(1)+'</div>'+
     '<div class="d2c"><b style="color:#4F7BFF">🔵 '+LL('ผู้เล่น 2 (ขวา)','Player 2 (right)')+'</b>'+heroes(2)+'<small>'+LL('ระดับโจทย์','Question level')+'</small>'+lv(2)+'</div></div>'+
     '<div class="brow"><button id="d2go">'+LL('เริ่มดวล!','Start!')+' ▶</button><button id="d2x">'+LL('ปิด','Close')+'</button></div></div>';
     $('ovbox').innerHTML=h;$('ov').className='';[].forEach.call($('ovbox').querySelectorAll('.d2h'),function(r){var o=r.querySelector('.on');if(o)r.scrollLeft=Math.max(0,o.offsetLeft-r.offsetLeft-8)});
-    $('d2w').onchange=function(){c.w=+this.value};$('d2i').onclick=function(){c.tip=!c.tip;SND.sfx('tap');$('d2t').className='dtip'+(c.tip?' on':'')};
+    $('d2w').onchange=function(){c.w=+this.value};$('d2a').onchange=function(){c.a=+this.value};$('d2i').onclick=function(){c.tip=!c.tip;SND.sfx('tap');$('d2t').className='dtip'+(c.tip?' on':'')};
     [].forEach.call($('ovbox').querySelectorAll('.d2h .dhb'),function(b){b.onclick=function(){var n=b.parentNode.getAttribute('data-p');c['h'+n]=b.getAttribute('data-k');SND.sfx('tap');var sc=b.parentNode.scrollLeft;draw();$('ovbox').querySelector('.d2h[data-p="'+n+'"]').scrollLeft=sc}});
     [].forEach.call($('ovbox').querySelectorAll('.d2q .lb'),function(b){b.onclick=function(){c['q'+b.parentNode.getAttribute('data-p')]=+b.getAttribute('data-q');SND.sfx('tap');draw()}});
-    $('d2go').onclick=function(){P.du2=c;saveP();$('ov').className='off';SND.sfx('tap');duStart(c.w,false,{h1:c.h1,h2:c.h2,q1:c.q1,q2:c.q2})};$('d2x').onclick=function(){$('ov').className='off'}}
+    $('d2go').onclick=function(){P.du2=c;saveP();$('ov').className='off';SND.sfx('tap');duStart(c.w,false,{h1:c.h1,h2:c.h2,q1:c.q1,q2:c.q2,a:c.a})};$('d2x').onclick=function(){$('ov').className='off'}}
   draw()}
 function duShopHTML(){var iv=duInv();return '<div class="pn dshop"><b>🎒 '+LL('ไอเทม (ใช้ได้ตาละ 1 ชิ้น)','Items (one per turn)')+' <small>💰 '+P.gold+'</small></b><div class="dshl">'+Object.keys(DUEL.items).map(function(k){var I=DUEL.items[k];
   return '<button class="dsi" data-it="'+k+'"'+(P.gold<I.price?' disabled':'')+'><span>'+I.e+' <b>'+LL(I.n[0],I.n[1])+'</b> ×'+(iv[k]||0)+'</span><small>'+LL(I.d[0],I.d[1])+'</small><em>💰 '+I.price+'</em></button>'}).join('')+'</div></div>'}
@@ -5441,7 +5448,7 @@ function dnRx(m){if(!NETR||!m||typeof m!=='object')return;var t=m.t;
     if(NETR.game&&DU&&DU.net){var tn=DU.tn||0;if(tn>(m.tn||0)||(tn===(m.tn||0)&&dnAuth()))dnSyncSend()}return}
   if(t==='nov'){dnErr(LL('เวอร์ชันเกมไม่ตรงกัน · อัปเดตเกมทั้งสองเครื่องให้เป็นรุ่นล่าสุด','Game versions differ · update both devices'));return}
   if(t==='full'){dnErr(LL('ห้องนี้เต็มแล้ว','This room is full'));return}
-  if(t==='room'){if(NETR.host)return;NETR.room={nk:dnEsc(m.nk),h:HI[m.h]?m.h:'cat',q:m.q|0,w:m.w|0,mode:m.mode==='adv'?'adv':'cannon'};NETR.st='open';dnDraw();return}
+  if(t==='room'){if(NETR.host)return;NETR.room={nk:dnEsc(m.nk),h:HI[m.h]?m.h:'cat',q:m.q|0,w:Math.max(-1,Math.min(WORLDS.length-1,m.w|0)),a:Math.max(-2,Math.min(WORLDS.length-1,m.a==null?-2:m.a|0)),mode:m.mode==='adv'?'adv':'cannon'};NETR.st='open';dnDraw();return}
   if(t==='gi'){if(NETR.host&&NETR.pi){NETR.pi.h=HI[m.h]?m.h:NETR.pi.h;NETR.pi.q=Math.max(0,Math.min(2,m.q|0));NETR.pi.nk=dnEsc(m.nk);dnDraw()}return}
   if(t==='go'){if(!NETR.host)dnStart(m);return}
   if(t==='bye'&&PV&&!PV.end){pvEndUI(PV.me,LL('อีกฝ่ายออกจากศึกแล้ว — คุณชนะ','The other player left — you win'));return}
@@ -5452,7 +5459,7 @@ function dnRx(m){if(!NETR||!m||typeof m!=='object')return;var t=m.t;
   if(t==='tapq'){dnTapQ(m);return}if(t==='ter'){dnTerApply(m.r);return}if(t==='terq'){dnSend({t:'ter',r:dnRle(DU.t.m)});return}
   if(t==='sync'){dnSyncApply(m);return}
   m._t=performance.now();DU.nq.push(m)}
-function dnRoom(){var c=dnCfg();dnSend({t:'room',nk:dnEsc(c.nk),h:c.h,q:c.q,w:c.w|0,mode:c.mode})}
+function dnRoom(){var c=dnCfg();dnSend({t:'room',nk:dnEsc(c.nk),h:c.h,q:c.q,w:c.w|0,a:c.a==null?-2:c.a,mode:c.mode})}
 /* snapshots */
 var DN_UK=['x','y','vy','ok','face','hp','dead','an','kt','kv','sh','fuel','items','qa','qo','st'];
 function dnSnap(){var D=DU,o={tn:D.tn||0,cur:D.p===D.u1?1:2,wind:D.wind,dl:[D.u1===D.p?D.dl.p:D.dl.e,D.u2===D.p?D.dl.p:D.dl.e],u:[],h:dnHash(),asked:D.asked,
@@ -5494,20 +5501,20 @@ function dnTapQ(m){var D=DU,bl=D.bl;if(!dnAuth()||!bl||bl.id!==m.id)return;var b
   dnSend({t:'btap',i:m.i,id:m.id,ok:b.ok,pl:b.pl,rw:bl.rw[0]});duBalRes(m.i)}
 /* start (both devices run the same seeded duStart) */
 function dnStart(m){if(!NETR)return;NETR.game=1;NETR.ui=0;$('ov').className='off';if(m.mode==='adv'){pvStart(m);return}var mr=Math.random,od=P.dif;Math.random=dnRng(m.seed);P.dif=m.d;
-  try{if(DU)duQuit(true);duStart(m.w,false,{h1:m.h1,h2:m.h2,q1:m.q1,q2:m.q2,n1:dnEsc(m.n1),n2:dnEsc(m.n2),net:1})}finally{Math.random=mr;P.dif=od}
+  try{if(DU)duQuit(true);duStart(m.w,false,{h1:m.h1,h2:m.h2,q1:m.q1,q2:m.q2,n1:dnEsc(m.n1),n2:dnEsc(m.n2),net:1,a:m.a!=null&&m.a>=0&&WORLDS[m.a]?m.a:-2})}finally{Math.random=mr;P.dif=od}
   DU.nq=[];DU.tn=0;var dt=$('dttl');if(dt&&!$('dnet')){var e=document.createElement('span');e.id='dnet';dt.parentNode.insertBefore(e,dt.nextSibling)}dnInd();
   var pd=NETR.pend||[];NETR.pend=[];pd.forEach(dnRx)}
 function dnGo(){var c=dnCfg(),pi=NETR&&NETR.pi;if(!pi||!NETR.tx)return;
-  var m={t:'go',w:c.w|0,h1:c.h,h2:pi.h,q1:c.q,q2:pi.q,n1:dnEsc(c.nk)||LL('ผู้เล่น 1','Player 1'),n2:pi.nk||LL('ผู้เล่น 2','Player 2'),seed:rnd(1,2e9),d:DI(),mode:c.mode};
+  var tw=c.w<0?DUEL.zones[rnd(0,DUEL.zones.length-1)]:c.w|0;var m={t:'go',w:tw,a:duArena(tw,{a:c.a==null?-2:c.a}),h1:c.h,h2:pi.h,q1:c.q,q2:pi.q,n1:dnEsc(c.nk)||LL('ผู้เล่น 1','Player 1'),n2:pi.nk||LL('ผู้เล่น 2','Player 2'),seed:rnd(1,2e9),d:DI(),mode:c.mode};
   dnSend(m);dnStart(m)}
 function dnAgain(){var d=NETR;duQuit();if(!NETR||NETR!==d)return;NETR.game=0;NETR.ui=1;if(NETR.st==='lost'){dnClose();duNetMenu();return}if(NETR.host){dnRoom();NETR.pi=NETR.pi||null}duNetMenu()}
 /* lobby UI */
 function duNetMenu(){if(!NETR)NETR={st:'idle',pend:[]};NETR.ui=1;dnDraw()}
-function dnDraw(){if(!NETR||!NETR.ui||NETR.game)return;var c=dnCfg(),own=P.owned.slice(),op=DUEL.zones.filter(duOpen);if(op.indexOf(c.w)<0)c.w=op[0];
+function dnDraw(){if(!NETR||!NETR.ui||NETR.game)return;var c=dnCfg(),own=P.owned.slice(),op=DUEL.zones.slice();if(c.w!==-1&&op.indexOf(c.w)<0)c.w=op[0];
   var st=NETR.st,inRoom=st==='wait'||st==='open'||(st==='conn'&&NETR.code),busy=st==='conn';
   var card=function(o,lb){return '<div class="dnf"><img src="'+IMG[o.h].i+'" alt=""><span><b>'+(o.nk||lb)+'</b><small>'+HI[o.h][0]+' · '+LL('ระดับ','level')+' '+DSH[o.q]+'</small></span></div>'};
   var h='<div class="brf d2s dns"><h1>🌐 '+LL('ดวลออนไลน์','Online duel')+' <button class="dinf" id="dni" aria-label="info">i</button></h1>'+
-    '<p class="dtip'+(NETR.tip?' on':'')+'" id="dnt">'+LL('เล่นกับเพื่อนคนละเครื่องผ่านอินเทอร์เน็ต · คนหนึ่งกดสร้างห้องแล้วบอกรหัส 4 ตัว อีกคนกรอกรหัสแล้วกดเข้าห้อง · เจ้าของห้องเลือกโหมด: 🎯 ปืนใหญ่ = ผลัดกันยิงตามดีเลย์ ลูกโป่งแตะได้เฉพาะฝั่งตัวเอง · ⚔️ ศึกฐาน = ตอบโจทย์รับเหรียญ ส่งฮีโร่จากเด็คของตัวเองไปพังฐานอีกฝ่าย (ฮีโร่ทุกตัวใช้พลังพื้นฐานเท่ากัน ไม่มีเลเวล/สกิล, 4 นาที หมดเวลาดูเลือดฐาน) · โหมดออนไลน์ไม่ได้รางวัล','Play a friend on another device over the internet · one creates a room and shares the 4-character code, the other enters it · the host picks the mode: 🎯 Cannon = take turns, tap balloons on your side · ⚔️ Base battle = answer for coins, send heroes from your deck to break the other base (base stats for all, no levels/skills, 4 minutes, then base HP decides) · no rewards online')+'</p>'+
+    '<p class="dtip'+(NETR.tip?' on':'')+'" id="dnt">'+LL('เล่นกับเพื่อนคนละเครื่องผ่านอินเทอร์เน็ต · คนหนึ่งกดสร้างห้องแล้วบอกรหัส 4 ตัว อีกคนกรอกรหัสแล้วกดเข้าห้อง · เจ้าของห้องเลือกโหมด: 🎯 ปืนใหญ่ = ผลัดกันยิงตามดีเลย์ ลูกโป่งแตะได้เฉพาะฝั่งตัวเอง · เลือกสนามกับเรื่องโจทย์แยกกันได้ ครบ 17 เรื่อง (ไม่ต้องปลดล็อก) หรือสุ่ม · ⚔️ ศึกฐาน = ตอบโจทย์รับเหรียญ ส่งฮีโร่จากเด็คของตัวเองไปพังฐานอีกฝ่าย (ฮีโร่ทุกตัวใช้พลังพื้นฐานเท่ากัน ไม่มีเลเวล/สกิล, 4 นาที หมดเวลาดูเลือดฐาน) · โหมดออนไลน์ไม่ได้รางวัล','Play a friend on another device over the internet · one creates a room and shares the 4-character code, the other enters it · the host picks the mode: 🎯 Cannon = take turns, tap balloons on your side · ⚔️ Base battle = answer for coins, send heroes from your deck to break the other base (base stats for all, no levels/skills, 4 minutes, then base HP decides) · no rewards online')+'</p>'+
     '<b>🙂 '+LL('ชื่อเล่น','Nickname')+'</b><input id="dnk" maxlength="10" autocomplete="off" value="'+dnEsc(c.nk)+'" placeholder="'+LL('ชื่อของคุณ','your name')+'">'+
     '<b>🦸 '+LL('ฮีโร่ของคุณ','Your hero')+'</b><div class="d2h" data-p="m">'+own.map(function(k){return '<button class="dhb'+(c.h===k?' on':'')+'" data-k="'+k+'" style="border-color:'+RC[HI[k][1]]+'"><img src="'+IMG[k].i+'" alt=""><span>'+HI[k][0]+'</span></button>'}).join('')+'</div>'+
     '<small>'+LL('ระดับโจทย์ของคุณ','Your question level')+'</small><div class="d2q" data-p="m">'+DSH.map(function(s,i){return '<button class="lb'+(c.q===i?' on':'')+'" data-q="'+i+'">'+s+'</button>'}).join('')+'</div>';
@@ -5515,9 +5522,9 @@ function dnDraw(){if(!NETR||!NETR.ui||NETR.game)return;var c=dnCfg(),own=P.owned
   if(!inRoom){h+='<div class="dnrow"><button id="dnh"'+(busy?' disabled':'')+'>🏠 '+LL('สร้างห้อง','Create room')+'</button></div>'+
       '<div class="dnrow"><input id="dncode" maxlength="4" autocomplete="off" autocapitalize="characters" placeholder="'+LL('รหัสห้อง','code')+'" value="'+(NETR.code||'')+'"><button id="dnj"'+(busy?' disabled':'')+'>🔑 '+LL('เข้าห้อง','Join')+'</button></div>'}
   else if(NETR.host){h+='<b>🎮 '+LL('โหมด','Mode')+'</b><div class="d2q dnm">'+[['cannon','🎯 '+LL('ปืนใหญ่','Cannon')],['adv','⚔️ '+LL('ศึกฐาน (ผจญภัย)','Base battle')]].map(function(o){return '<button class="lb'+(c.mode===o[0]?' on':'')+'" data-m="'+o[0]+'">'+o[1]+'</button>'}).join('')+'</div>'+'<div class="dncode"><small>'+LL('รหัสห้อง · บอกเพื่อน','Room code · tell your friend')+'</small><b>'+(st==='conn'?'····':NETR.code)+'</b></div>'+
-      '<b>🗺️ '+LL('สนามและเรื่องโจทย์','Map & topic')+'</b><select id="dnw">'+op.map(function(w){return '<option value="'+w+'"'+(w===c.w?' selected':'')+'>'+WORLDS[w].icon+' '+(w+1)+' · '+WORLDS[w].title+'</option>'}).join('')+'</select>'+
+      '<b>🏞️ '+LL('สนาม','Arena')+'</b><select id="dna">'+duArenaOpts(c.a)+'</select><b>📚 '+LL('เรื่องโจทย์','Topic')+' <small>('+op.length+')</small></b><select id="dnw"><option value="-1"'+(c.w===-1?' selected':'')+'>🎲 '+LL('สุ่มทุกเกม','Random each game')+'</option>'+op.map(function(w){return '<option value="'+w+'"'+(w===c.w?' selected':'')+'>'+WORLDS[w].icon+' '+(w+1)+' · '+WORLDS[w].title+'</option>'}).join('')+'</select>'+
       (NETR.pi?card(NETR.pi,LL('เพื่อน','Friend')):'<div class="dnwait">⏳ '+(st==='conn'?LL('กำลังสร้างห้อง…','Creating the room…'):LL('รอเพื่อนเข้าห้อง…','Waiting for your friend…'))+'</div>')}
-  else{h+=st==='open'&&NETR.room?'<div class="dncode"><small>'+LL('อยู่ในห้อง','In room')+'</small><b>'+NETR.code+'</b></div>'+card(NETR.room,LL('เจ้าของห้อง','Host'))+'<div class="dnwait">'+(NETR.room.mode==='adv'?'⚔️ '+LL('ศึกฐาน (ผจญภัย)','Base battle'):'🎯 '+LL('ปืนใหญ่','Cannon'))+' · 🗺️ '+WORLDS[NETR.room.w].icon+' '+(NETR.room.w+1)+' · '+WORLDS[NETR.room.w].title+'<br>⏳ '+LL('รอเจ้าของห้องกดเริ่ม…','Waiting for the host to start…')+'</div>':
+  else{h+=st==='open'&&NETR.room?'<div class="dncode"><small>'+LL('อยู่ในห้อง','In room')+'</small><b>'+NETR.code+'</b></div>'+card(NETR.room,LL('เจ้าของห้อง','Host'))+'<div class="dnwait">'+(NETR.room.mode==='adv'?'⚔️ '+LL('ศึกฐาน (ผจญภัย)','Base battle'):'🎯 '+LL('ปืนใหญ่','Cannon'))+' · 🗺️ '+'📚 '+(NETR.room.w<0?'🎲 '+LL('สุ่มเรื่อง','random topic'):WORLDS[NETR.room.w].icon+' '+WORLDS[NETR.room.w].title)+'<br>🏞️ '+(NETR.room.a===-1?'🎲 '+LL('สุ่มสนาม','random arena'):NETR.room.a>=0?WORLDS[NETR.room.a].icon+' '+WORLDS[NETR.room.a].name:LL('ตามเรื่องโจทย์','matches topic'))+'<br>⏳ '+LL('รอเจ้าของห้องกดเริ่ม…','Waiting for the host to start…')+'</div>':
       '<div class="dnwait">⏳ '+LL('กำลังเข้าห้อง '+NETR.code+'…','Joining '+NETR.code+'…')+'</div>'}
   h+='<div class="brow">'+(NETR.host&&inRoom?'<button id="dngo"'+(NETR.pi&&st==='open'?'':' disabled')+'>'+LL('เริ่มดวล!','Start!')+' ▶</button>':'')+'<button id="dnx">'+(inRoom?LL('ออกจากห้อง','Leave room'):LL('ปิด','Close'))+'</button></div></div>';
   var ae=document.activeElement,foc=ae&&ae.id,sc={};[].forEach.call($('ovbox').querySelectorAll('.d2h'),function(r){sc[r.getAttribute('data-p')]=r.scrollLeft});
@@ -5533,7 +5540,7 @@ function dnDraw(){if(!NETR||!NETR.ui||NETR.game)return;var c=dnCfg(),own=P.owned
   if($('dnh'))$('dnh').onclick=function(){SND.sfx('tap');saveP();dnHost()};
   if($('dncode'))$('dncode').oninput=function(){this.value=this.value.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,4)};
   if($('dnj'))$('dnj').onclick=function(){SND.sfx('tap');saveP();dnJoin($('dncode').value)};
-  if($('dnw'))$('dnw').onchange=function(){c.w=+this.value;upd()};
+  if($('dnw'))$('dnw').onchange=function(){c.w=+this.value;upd()};if($('dna'))$('dna').onchange=function(){c.a=+this.value;upd()};
   if($('dngo'))$('dngo').onclick=function(){SND.sfx('tap');saveP();dnGo()};
   $('dnx').onclick=function(){SND.sfx('tap');if(inRoom)dnLeave();else if(NETR&&!NETR.peer)NETR=null;$('ov').className='off'}}
 
@@ -5574,7 +5581,8 @@ var _pvStep=step;step=function(dt){if(PV&&!PV.host){pvGStep(dt);return}_pvStep(d
 /* start (both devices) */
 function pvStart(m){var host=NETR.host,od=P.dif;PV={host:host,me:NETR.me,m:m,cd2:{},snT:0,tl:PVB.time,opp:host?m.n2:m.n1,ids:{}};
   CH=null;CUR={w:m.w,s:0};P.dif=host?m.q1:m.q2;try{LEVEL=mkStage(m.w,0)}finally{P.dif=od}
-  clearPar();stopPractice();if(DU)duQuit(true);HOME.style.display='none';document.querySelector('.app').style.display='';lsStage();setTimeout(lsStage,50);SND.play('w'+m.w);
+  var ar=m.a!=null&&m.a>=0&&WORLDS[m.a]?m.a:m.w;if(ar!==m.w){var V=mkStage(ar,0);LEVEL.w=ar;LEVEL.lm=V.lm;LEVEL.bg=V.bg}
+  clearPar();stopPractice();if(DU)duQuit(true);HOME.style.display='none';document.querySelector('.app').style.display='';lsStage();setTimeout(lsStage,50);SND.play('w'+ar);
   start();
   S.php=S.php0=S.ehp=S.ehp0=PVB.base;S.spawn=1e9;S.bossOn=true;S.bossDone=true;S.c2=BAL.coin0;S.uid=0;
   ['pb','eb'].forEach(function(i){$(i).classList.remove('bossb')});$('eb').querySelector('.ic').innerHTML='<img src="'+IMG[host?m.h2:m.h1].i+'" alt="" class="pvbi">';
