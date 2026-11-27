@@ -1116,7 +1116,7 @@ html.ls .hmon{margin-top:4px;padding:5px 8px!important;min-height:0!important;fo
 /* v3.28 layout fixes found by the overflow scan */
 .dangr .dbt{flex:0 0 auto}.dangr canvas{width:clamp(54px,22vw,92px);height:auto;flex:0 1 auto}
 .dangt{min-width:0}.dangt small{white-space:normal;text-align:center;font-size:clamp(9px,3vw,12px)}
-@media (max-width:380px){.hbar .dsb{padding:4px 1px;min-width:0}html[lang=en] .dsb span{font-size:0}html[lang=en] .dsb span::after{content:attr(data-sh);font-size:11px}}
+@media (max-width:380px){.hpbar .dsb{padding:4px 1px;min-width:0}html[lang=en] .dsb span{font-size:0}html[lang=en] .dsb span::after{content:attr(data-sh);font-size:11px}}
 html.ls #hs[data-scr=map]>.ztitle{font-size:15px;text-overflow:ellipsis}
 html.ls #hs[data-scr=map]>.ztitle small{display:none}
 /* v3.30 web only: deck slots always equal squares (some desktop browsers let the hero images stretch the grid) */
@@ -1124,6 +1124,118 @@ html.web .slots{grid-template-columns:repeat(5,minmax(0,1fr));align-items:stretc
 html.web .slot{box-sizing:border-box;min-width:0;min-height:0;width:100%;height:auto;aspect-ratio:1/1;overflow:hidden;margin:0;line-height:1}
 @supports not (aspect-ratio:1/1){html.web .slot{height:0;padding-bottom:100%;position:relative}html.web .slot img{position:absolute;inset:6%}}
 html.web .slot img{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain}
+/* v3.35: topic tag sits left so it never hides under the combo badge */
+#qcard #mtg{left:10px;transform:none;max-width:calc(100% - 130px);overflow:hidden;text-overflow:ellipsis}
+#qcard #chr.on~#mtg{left:50%;transform:translateX(-50%)}
+/* v3.35.2: timer line never wraps (screen no longer jumps) */
+.dqi{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;height:1.4em;line-height:1.4em}
+.dqi #dqs{display:inline-block;min-width:2.6ch;text-align:right;font-variant-numeric:tabular-nums}
+/* v3.36 gold shop tabs + briefing boosts */
+.gstabs{display:flex;gap:8px;margin:6px 0 4px}
+.gstabs .stb{flex:1;min-width:0;padding:9px 6px;border:3px solid #1E2A44;border-radius:14px;background:#fff;color:#1E2A44;font:inherit;font-weight:800;font-size:15px;box-shadow:0 3px 0 #1E2A44;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.gstabs .stb.on{background:#FFC93C}
+.sgold{background:#FFF3C4}
+.bbst{margin:6px 0 2px;text-align:left}.bbst p{margin:4px 0}.bbst small{display:block;opacity:.75;font-size:12px;margin-top:3px}
+.bbrow{display:flex;gap:6px}
+.brf .bbrow button.bbc{flex:1;min-width:0;width:auto;margin:0;display:flex;flex-direction:row;align-items:center;justify-content:center;gap:3px;padding:5px 3px;border:2px solid #1E2A44;border-radius:10px;background:#fff;color:#1E2A44;font-size:12px;line-height:1.1;box-shadow:0 2px 0 #1E2A44;white-space:nowrap;overflow:hidden}
+.brf .bbc i{font-style:normal;font-size:14px}.brf .bbc span{overflow:hidden;text-overflow:ellipsis}.brf .bbc b{font-size:11px;opacity:.8}
+.brf .bbrow button.bbc.on{background:#7ED957}.brf .bbrow button.bbc:disabled{opacity:.45}
+.brf .bbst p{margin:2px 0;font-size:12px}
+@media (max-width:370px){.brf .bbrow button.bbc{font-size:11px;gap:2px;padding:5px 2px}.brf .bbc i{font-size:12px}}
+/* v3.37 school yard */
+.yard{position:relative;width:100%;max-width:420px;aspect-ratio:1/.78;margin:2px auto 4px;border:3px solid #1E2A44;border-radius:16px;overflow:hidden;
+  background:repeating-conic-gradient(#7BC96F 0 25%,#72BF66 0 50%) 0 0/18px 18px;image-rendering:pixelated}
+.yard .ysky{position:absolute;left:0;right:0;top:0;height:40%;background:linear-gradient(#8FD0F0 0 30%,#A8DCF4 30% 60%,#C4E8F8 60%)}
+.yard .yfen{position:absolute;left:0;right:0;top:36%;height:6%;background:repeating-linear-gradient(90deg,#FFF6E6 0 4px,transparent 4px 14px),linear-gradient(transparent 30%,#E8D5B5 30% 45%,transparent 45% 70%,#E8D5B5 70% 85%,transparent 85%)}
+.yard .ysch{position:absolute;left:50%;bottom:50%;transform:translateX(-50%)}
+.yard .ysch img{display:block;width:100%!important;height:auto;image-rendering:pixelated}
+.stabs .dt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:clamp(12px,3.6vw,14px);padding:6px 4px}
+.yslot{position:absolute;transform:translate(-50%,-80%) scale(var(--s));width:58px;height:58px;padding:0;border:0;background:none;font:inherit;display:flex;align-items:flex-end;justify-content:center;cursor:pointer}
+.yslot span{font-size:40px;line-height:1;filter:drop-shadow(0 3px 0 rgba(30,42,68,.35))}
+.yslot.f::after{content:'';position:absolute;bottom:-3px;left:14%;right:14%;height:7px;border-radius:50%;background:rgba(30,42,68,.22);z-index:-1}
+.yard.ed .yslot{outline:2px dashed rgba(30,42,68,.55);outline-offset:-2px;border-radius:12px;background:rgba(255,255,255,.28)}
+.yard.ed .yslot em{font-style:normal;font-weight:800;font-size:26px;color:#1E2A44;opacity:.6;align-self:center}
+.yslot.hop span{animation:yhop .45s ease-out}
+@keyframes yhop{0%,100%{transform:translateY(0)}40%{transform:translateY(-14px) scale(1.08)}}
+.yedb{font:inherit;font-weight:800;font-size:15px;margin-top:4px;padding:8px 14px;border:3px solid #1E2A44;border-radius:14px;background:#FFC93C;color:#1E2A44;box-shadow:0 3px 0 #1E2A44;display:flex;flex-direction:column;align-items:center;line-height:1.2}
+.yedb small{font-size:11.5px;font-weight:700;opacity:.8}.yedb.on{background:#7ED957}
+.ypop .ypk{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-height:46vh;overflow:auto;padding:2px}
+.ypop .ypi{font:inherit;margin:0;width:auto;padding:6px 2px;border:2px solid #1E2A44;border-radius:12px;background:#fff;color:#1E2A44;display:flex;flex-direction:column;align-items:center;gap:2px;box-shadow:0 2px 0 #1E2A44}
+.ypop .ypi span{font-size:28px;line-height:1}.ypop .ypi small{font-size:10.5px;line-height:1.15;font-weight:700}
+.ypop .brow2{display:flex;gap:8px;justify-content:center;margin-top:8px}.ypop .brow2 button{margin:0;width:auto;flex:1;padding:9px 6px;font-size:15px}
+/* v3.38 hall of fame */
+.hhero{background:linear-gradient(135deg,#FFE27A,#FFC93C 55%,#FFB020);border:3px solid #1E2A44;border-radius:18px;padding:10px 12px;box-shadow:0 4px 0 #1E2A44;margin:2px 0 10px;text-align:center}
+.hht small{display:block;font-size:11.5px;font-weight:700;color:#7A5A00}.hht b{display:block;font-size:20px;color:#1E2A44;margin:1px 0 8px}
+.hhs{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.hhs span{background:rgba(255,255,255,.75);border-radius:12px;padding:5px 2px;display:flex;flex-direction:column}
+.hhs b{font-size:17px;color:#1E2A44}.hhs small{font-size:10.5px;font-weight:700;color:#5a6680}
+.hgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.hcard{position:relative;font:inherit;text-align:left;display:flex;flex-direction:column;gap:2px;padding:10px 12px 12px;border:3px solid #1E2A44;border-radius:16px;background:#fff;color:#1E2A44;box-shadow:0 4px 0 #1E2A44;cursor:pointer;overflow:hidden;animation:hin .32s ease-out both;animation-delay:var(--d)}
+.hcard::before{content:'';position:absolute;left:0;top:0;right:0;height:6px;background:var(--c)}
+.hcard i{font-style:normal;font-size:30px;line-height:1.1;margin-top:2px}.hcard b{font-size:16px}.hcard small{font-size:12px;font-weight:700;color:#5a6680}
+.hcard em{position:absolute;right:10px;top:12px;font-style:normal;font-size:24px;font-weight:800;color:var(--c)}
+.hcard:active{transform:translateY(3px);box-shadow:0 1px 0 #1E2A44}
+@keyframes hin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.hpbar{display:block;height:8px;border-radius:99px;background:#E6EAF2;overflow:hidden;margin-top:5px;border:1.5px solid #1E2A44}.hpbar>i{display:block;height:100%;border-radius:99px}
+.hpbar.sp{visibility:hidden}
+.hsh{display:flex;align-items:center;gap:8px;margin:2px 0 10px;padding:6px 8px;border-radius:14px;background:#fff;border:3px solid #1E2A44;border-left:10px solid var(--c)}
+.hsh b{font-size:17px;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.hsh small{font-weight:800;font-size:14px;color:#5a6680}
+.hback{font:inherit;font-weight:800;font-size:13px;padding:6px 10px;border:2px solid #1E2A44;border-radius:10px;background:#FFC93C;color:#1E2A44;cursor:pointer;flex:0 0 auto}
+.hstat{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hstat div{background:#fff;border:2px solid #1E2A44;border-radius:14px;padding:8px 10px;display:grid;grid-template-columns:auto 1fr;column-gap:8px;align-items:center;animation:hin .3s ease-out both}
+.hstat i{font-style:normal;font-size:24px;grid-row:span 2}.hstat b{font-size:18px;line-height:1.1}.hstat small{font-size:11px;font-weight:700;color:#5a6680;line-height:1.2}
+.hsec2{font-weight:800;font-size:15px;margin:12px 2px 6px}
+.hrow{display:flex;justify-content:space-between;align-items:center;background:#fff;border:2px solid #1E2A44;border-radius:12px;padding:8px 12px;margin-bottom:6px;font-weight:700}.hrow b{font-size:17px}.hrow.no{opacity:.6}
+.htro{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.htro div{display:flex;flex-direction:column;align-items:center;text-align:center;gap:3px;padding:14px 8px;border:3px solid #c8c8d4;border-radius:16px;background:#EEF1F6}
+.htro i{font-style:normal;font-size:46px;filter:grayscale(1) brightness(.6);opacity:.5}.htro b{font-size:14px}.htro small{font-size:11px;font-weight:700;color:#5a6680}
+.htro .on{background:radial-gradient(circle at 50% 30%,#FFF6C8,#FFE27A);border-color:#E0A800}.htro .on i{filter:none;opacity:1;animation:hglow 2.4s ease-in-out infinite}
+@keyframes hglow{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+.hbdg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hbdg div{display:flex;flex-direction:column;align-items:center;text-align:center;gap:2px;padding:10px 8px;border:3px solid #c8c8d4;border-radius:14px;background:#F4F5F9}
+.hbdg i{font-style:normal;font-size:30px;line-height:1.1}.hbdg b{font-size:13px;line-height:1.25}.hbdg small{font-size:10.5px;font-weight:700;color:#5a6680;line-height:1.3}.hbdg .hpbar{width:100%}
+.hbdg .on{background:#E9F8F2;border-color:#3FA38E}
+.hofb.hsub{overflow:visible;flex:none;min-height:0}
+/* v3.39 hero collection grid */
+.coll.coll3{grid-template-columns:repeat(3,1fr);gap:8px;grid-auto-rows:150px}
+.ct{position:relative;font:inherit;color:#1E2A44;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:3px;min-width:0;padding:22px 5px 7px;border:3px solid var(--rc);border-radius:16px;background:#fff;box-shadow:0 3px 0 rgba(30,42,68,.25);cursor:pointer;overflow:hidden}
+.ct::before{content:'';position:absolute;left:0;right:0;top:0;height:44%;background:linear-gradient(color-mix(in srgb,var(--rc) 22%,#fff),#fff);z-index:0}
+.ct>*{position:relative;z-index:1}
+.ct .cr{position:absolute;left:5px;top:4px;font-size:11px;font-weight:800;color:#fff;background:var(--rc);border-radius:8px;padding:1px 6px}
+.ct .cl{position:absolute;right:5px;top:4px;font-style:normal;font-size:11px;font-weight:800;background:#1E2A44;color:#FFE45C;border-radius:8px;padding:1px 6px}
+.ct .ci{width:100%;height:68px;display:flex;align-items:center;justify-content:center}.ct .ci img{max-width:78px;max-height:68px;object-fit:contain}
+.ct .cn{width:100%;font-size:12.5px;font-weight:800;line-height:1.25;height:2.5em;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;text-align:center}
+.ct .cs{position:relative;width:100%;height:16px;border-radius:99px;background:#EEF1F6;border:1.5px solid #1E2A44;overflow:hidden;margin-top:auto}
+.ct .cs i{position:absolute;left:0;top:0;bottom:0;background:#FFC93C}.ct .cs small{position:relative;display:block;font-size:10.5px;font-weight:800;line-height:13px}
+.ct .cs.mx{background:#FFE27A}.ct .cs.no{background:#EEF1F6;border-color:#c8c8d4}
+.ct.lock{border-color:#c8c8d4;background:#F4F5F9}.ct.lock::before{background:linear-gradient(#E6E9F0,#F4F5F9)}.ct.lock .ci img{filter:brightness(0);opacity:.28}.ct.lock .cr{background:#AEB8CC}.ct.lock .cn{color:#7a869e}
+.ct.awk{box-shadow:0 0 0 2px #FFD34D,0 3px 0 rgba(30,42,68,.25)}
+.ct.up .cs{border-color:#3FA38E}.ct .cup{position:absolute;right:4px;bottom:24px;font-style:normal;font-size:16px;animation:hglow 1.2s ease-in-out infinite}
+.ct:active{transform:translateY(2px)}
+.btabs .dt{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cdet{text-align:left;border-top:8px solid var(--rc);border-radius:12px;padding-top:6px}
+.cdet .cdh{display:flex;gap:10px;align-items:center}.cdet .cdi{flex:0 0 92px;height:92px;border-radius:16px;background:color-mix(in srgb,var(--rc) 18%,#fff);display:flex;align-items:center;justify-content:center;border:3px solid var(--rc)}
+.cdet .cdi img{max-width:84px;max-height:84px}.cdet h1{font-size:20px;margin:2px 0}.cdet .cr2{font-size:12px;color:#fff;background:var(--rc);border-radius:8px;padding:1px 8px}
+.cdet .bars{margin:8px 0 4px}.cdet .ctg,.cdet .afl{font-size:12.5px;margin:3px 0;font-weight:700}.cdet .afl i{opacity:.7;font-weight:600}
+.cdet .sk{font-size:12.5px;background:#F6EEFF;border-radius:10px;padding:6px 8px;margin:6px 0}
+.cdet .cbtn{display:grid;grid-template-columns:1.4fr 1fr;gap:6px;margin-top:6px}.cdet .cbtn button{margin:0;width:auto;padding:9px 4px;font-size:13.5px}
+.cdet .cgold{text-align:center;font-weight:800;margin:6px 0 2px;font-size:13px}.cdet .ccl{width:100%;margin-top:4px}
+.cdet.lvup{animation:hin .5s ease-out}
+.cdet .lvb{display:inline-block;font-style:normal;font-size:12px;font-weight:800;background:#1E2A44!important;color:#FFC93C!important;border:0!important;border-radius:9px;padding:2px 8px;cursor:default}
+.cdet .bars label{height:18px;line-height:18px;font-size:12px}
+.cdet .shp{height:18px;line-height:18px;font-size:12px}
+.cdet .s15{color:#E4524B;font-weight:700}.cdet .s20{color:#C98A00;font-weight:800}.cdet .afl{color:#7442B0}.cdet .sk u{text-decoration:none;font-weight:800}.cdet .sk.lock{color:#7a879c;background:#f1f3f7}
+.cdet .cbtn .upb{font-size:13.5px;font-weight:800;padding:9px 4px}.cdet .cbtn .gsb{margin:0;font-size:13px;padding:9px 4px}
+.cdet .mx{color:#b07a00;font-weight:700;text-align:center}
+.ct .cup{right:5px;top:24px;bottom:auto}
+#ovbox .cdet .cbtn .upb{background:#2fa35b;color:#fff;border:3px solid #1E2A44}#ovbox .cdet .cbtn .upb:disabled{background:#cfd6e3;color:#7a879c}
+#ovbox .cdet .cbtn .gsb{background:#FFF3D6;color:#1E2A44;border:3px solid #1E2A44}#ovbox .cdet .cbtn .gsb:disabled{opacity:.5}
+@media (max-width:370px){.btabs .dt small{display:none}.ct .cn{font-size:11.5px}}
+/* v3.39.1: dark-theme safe text on light panels */
+.cdet .sk,.cdet .bars label,.hstat div,.hrow,.htro div,.hbdg div,.hsh,.hcard,.hhero{color:#1E2A44}
+.cdet .sk.lock{color:#5a6680}.cdet .shp em{color:#5a4300}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .cdet .afl{color:#C9A8FF}:root:not([data-theme="light"]) .cdet .afl i{color:#B8C4DE}}
+:root[data-theme="dark"] .cdet .afl{color:#C9A8FF}
 </style>
 </head>
 <body>
@@ -1163,11 +1275,46 @@ html.web .slot img{display:block;width:100%;height:100%;max-width:100%;max-heigh
 <script>
 /* ---------- i18n: Thai -> English (v2.2) ---------- */
 var LANG=(function(){try{var p=JSON.parse(localStorage.getItem('battlemath.v1')||'{}');return p.lang==='en'?'en':'th'}catch(e){return 'th'}})();
+/* v3.33 English for island 7 (merged into I18N / I18R before the translation regex is built) */
+var I6N={"เกาะแบบรูป จำนวนเต็ม สมการ":"Patterns, Integers & Equations Island","แบบรูป · จำนวนเต็ม · สมการ":"Patterns · Integers · Equations","แบบรูป":"Patterns","จำนวนเต็ม":"Integers","สมการ":"Equations",
+"วิหารลวดลาย":"Pattern Temple","ภูเขาน้ำแข็งใต้ศูนย์":"Below-Zero Ice Mountain","ป่าโทเทมตาชั่ง":"Balance Totem Forest",
+"หาตัวที่หายไปของแบบรูป ได้เหรียญเรียกฮีโร่!":"Find the missing piece of the pattern to earn coins!","จำนวนติดลบก็ไม่กลัว ตอบถูกได้เหรียญ!":"Not afraid of negatives! Answer right to earn coins!","ทำตาชั่งให้สมดุล หาค่าตัวไม่ทราบค่า!":"Balance the scale and find the unknown!",
+"ลานกระเบื้องลวดลาย":"Patterned Tile Plaza","บ่อน้ำนับถอยหลัง":"Countdown Well","สะพานสลับสี":"Alternating Color Bridge","หอคอยทวีคูณ":"Doubling Tower","พีระมิดขั้นบันได":"Staircase Pyramid","วิหารราชาลวดลาย":"Pattern King's Temple",
+"ลานหิมะศูนย์องศา":"Zero-Degree Snowfield","ท่าเรือน้ำแข็ง":"Ice Harbor","กังหันลมหนาว":"Frosty Windmill","ประภาคารเหนือศูนย์":"Above-Zero Lighthouse","ถ้ำน้ำแข็งใต้ดิน":"Underground Ice Cave","ปราสาทราชาน้ำแข็ง":"Ice King's Castle",
+"ลานโทเทมตาชั่ง":"Balance Totem Plaza","ห้องสมุดตัวแปร":"Variable Library","บ่อน้ำสมดุล":"Well of Balance","หอนาฬิกาสองขั้น":"Two-Step Clock Tower","ตลาดโจทย์ปัญหา":"Word Problem Market","วิหารจอมเวทสมการ":"Equation Wizard's Temple",
+"ภูตลายซ้ำ":"Repeating Ghost","หุ่นเรียงลำดับ":"Sequence Robot","ผีเสื้อสลับสี":"Color-Swap Butterfly","งูลวดลาย":"Pattern Snake","ยักษ์ทวีคูณ":"Doubling Giant","ราชาลวดลายนิรันดร์":"Endless Pattern King",
+"ก้อนน้ำแข็งติดลบ":"Negative Ice Cube","เพนกวินใต้ศูนย์":"Sub-Zero Penguin","ปีศาจเทอร์โมมิเตอร์":"Thermometer Demon","มนุษย์หิมะบวกลบ":"Plus-Minus Snowman","ภูตพายุหิมะ":"Blizzard Spirit","ราชาน้ำแข็งศูนย์องศา":"Zero-Degree Ice King",
+"โทเทมตาชั่งเอียง":"Tilted Scale Totem","ผีกล่องปริศนา":"Mystery Box Ghost","หุ่นตัวแปร x":"Variable-x Robot","ยักษ์สองขั้น":"Two-Step Giant","นกฮูกโจทย์ปัญหา":"Word Problem Owl","จอมเวทสมดุลสมการ":"Equation Balance Wizard",
+"เสาลวดลาย":"Pattern Pillar","มนุษย์หิมะติดลบ":"Negative Snowman","ตาชั่งทองคำ":"Golden Scale","🧩 แบบรูป·สมการ":"🧩 Patterns·Equations",
+"แบบรูปเพิ่มขึ้น":"Growing patterns","แบบรูปลดลง":"Shrinking patterns","แบบรูปรูปภาพ":"Picture patterns","แบบรูปคูณ":"Multiplying patterns","แบบรูปผลต่างไม่เท่ากัน":"Changing-difference patterns","รู้จักจำนวนเต็ม":"Meet integers","เปรียบเทียบจำนวนเต็ม":"Comparing integers","บวกจำนวนเต็ม":"Adding integers","ลบจำนวนเต็ม":"Subtracting integers","คูณหารจำนวนเต็ม":"Multiplying & dividing integers","หาตัวไม่ทราบค่า (บวกลบ)":"Find the unknown (+ −)","หาตัวไม่ทราบค่า (คูณหาร)":"Find the unknown (× ÷)","สมการตัวแปร x":"Equations with x","สมการสองขั้น":"Two-step equations","โจทย์ปัญหาสมการ":"Equation word problems",
+"เพิ่มทีละเท่ากัน":"Add the same","ลดทีละเท่ากัน":"Subtract the same","ผลต่างไม่เท่ากัน":"Changing gaps","เปรียบเทียบ·ค่าสัมบูรณ์":"Compare·absolute value","คูณ·หารจำนวนเต็ม":"× ÷ integers","□ บวก·ลบ":"□ add·subtract","□ คูณ·หาร":"□ multiply·divide","สมการ x":"Equations x","โจทย์สมการ":"Equation problems",
+"ผลต่างเพิ่มขึ้นทีละ":"the gap grows by","เพิ่มขึ้นทีละ":"goes up by","ลดลงทีละ":"goes down by","คูณด้วย":"multiply by","หารด้วย":"divide by","ทุกครั้ง":"each time","สลับกัน":"alternating","แบบรูปซ้ำทีละชุด":"the pattern repeats","ชุดละ":"each set has","ของชุด":"of the set","รูปที่":"shape","ทางขวาของ 0 เป็นจำนวนบวก ทางซ้ายเป็นจำนวนลบ":"right of 0 is positive, left of 0 is negative","นับจาก":"count from","ถึง":"to","ไม่นับ 2 จำนวนหัวท้าย":"not counting the two ends","จำนวน":"numbers","จำนวนที่อยู่ทางขวาสุดบนเส้นจำนวนมากที่สุด":"the number furthest right on the number line is the greatest","จำนวนลบที่มีค่าสัมบูรณ์มาก จะน้อยมาก":"a negative number with a big absolute value is very small","เรียงได้":"in order","บนเส้นจำนวน ตัวที่อยู่ขวามากกว่า":"on the number line, the one further right is greater","ค่าสัมบูรณ์คือระยะห่างจาก 0 ไม่ติดลบ":"absolute value is the distance from 0, never negative","บวกทีละคู่":"add a pair at a time","เครื่องหมายเหมือนกัน: บวกค่าสัมบูรณ์ ใส่เครื่องหมายเดิม":"same signs: add the absolute values and keep the sign","เครื่องหมายต่างกัน: เอาค่าสัมบูรณ์มาลบกัน ใช้เครื่องหมายของตัวที่ค่าสัมบูรณ์มากกว่า":"different signs: subtract the absolute values and take the sign of the larger one","ลบด้วย":"subtracting","บวกด้วย":"adding","เครื่องหมายเหมือนกันได้บวก ต่างกันได้ลบ":"same signs give +, different signs give −","ลดลง = ติดลบ":"a drop is negative","ย้าย":"move","ไปอีกข้าง":"to the other side"};
+var I6R=[
+[/^หาจำนวนที่หายไป: (.+)$/,'Find the missing number: $1'],
+[/^รูปที่หายไปคือรูปใด\? (.+)$/,'Which shape is missing? $1'],
+[/^แบบรูป (.+) … รูปลำดับที่ (\d+) คือรูปใด\?$/,'Pattern $1 … what is shape number $2?'],
+[/^(\[geo:\d+\]\n)?ลูกศรชี้ที่จำนวนใด\?$/,'$1Which number is the arrow pointing to?'],
+[/^จำนวนที่มากกว่า (\S+) อยู่ (\d+) คือจำนวนใด\?$/,'Which number is $2 more than $1?'],
+[/^จำนวนที่น้อยกว่า (\S+) อยู่ (\d+) คือจำนวนใด\?$/,'Which number is $2 less than $1?'],
+[/^อุณหภูมิ (\S+) °C สูงขึ้น (\d+) องศา จะเป็นกี่องศา\?$/,'It is $1 °C and the temperature rises $2 degrees. What is it now?'],
+[/^จำนวนเต็มที่อยู่ระหว่าง (\S+) กับ (\S+) มีกี่จำนวน\?$/,'How many integers are between $1 and $2?'],
+[/^จำนวนใดน้อยที่สุด\?$/,'Which number is the smallest?'],
+[/^เรียง (.+) จากน้อยไปมาก จำนวนลำดับที่ 2 คือ\?$/,'Order $1 from least to greatest. Which number is 2nd?'],
+[/^อุณหภูมิลดลงชั่วโมงละ (\d+) องศา ผ่านไป (\d+) ชั่วโมง อุณหภูมิเปลี่ยนไปกี่องศา\?$/,'The temperature drops $1 degrees an hour. After $2 hours, how much has it changed?'],
+[/^หาค่า x: (.+)$/,'Find x: $1'],
+[/^คิดจำนวนหนึ่งไว้ บวกด้วย (\d+) ได้ (\d+) จำนวนนั้นคือเท่าไร\?$/,'Think of a number, add $1 and get $2. What is the number?'],
+[/^จำนวนหนึ่งลบด้วย (\d+) เหลือ (\d+) จำนวนนั้นคือเท่าไร\?$/,'A number minus $1 leaves $2. What is the number?'],
+[/^(\d+) เท่าของจำนวนหนึ่ง เท่ากับ (\d+) จำนวนนั้นคือเท่าไร\?$/,'$1 times a number is $2. What is the number?'],
+[/^ซื้อดินสอ (\d+) แท่ง ราคาเท่ากัน จ่าย (\d+) บาท ได้เงินทอน (\d+) บาท ดินสอแท่งละกี่บาท\?$/,'You buy $1 pencils at the same price, pay $2 baht and get $3 baht change. How much is one pencil?'],
+[/^สองเท่าของจำนวนหนึ่ง บวก (\d+) เท่ากับ (\d+) จำนวนนั้นคือเท่าไร\?$/,'Twice a number plus $1 equals $2. What is the number?'],
+[/^พี่อายุมากกว่าน้อง (\d+) ปี อายุรวมกัน (\d+) ปี น้องอายุกี่ปี\?$/,'The older child is $1 years older; together they are $2. How old is the younger one?']
+];
+
 var I18N={"ตอบโจทย์บวกเลขเพื่อได้เหรียญ แล้วเรียกเหล่าฮีโร่เครื่องเขียนไปพังฐานปีศาจ": "Answer addition questions to earn coins, then summon stationery heroes to smash the demon base", "เทียบจากหลักหน่วย แล้วส่วนสิบ ส่วนร้อย ส่วนพัน ทีละหลัก": "Compare the ones, then tenths, hundredths and thousandths, digit by digit", "ลองใหม่อีกครั้ง ตอบโจทย์เพื่อเรียกฮีโร่ให้เร็วขึ้นนะ": "Try again! Answer faster to summon heroes sooner", "ส่วนที่ระบายสีคิดเป็นเศษส่วนอย่างต่ำได้เท่าไร": "What fraction is shaded, in simplest form", "ตอบโจทย์เพื่อได้เหรียญ แล้วเรียกฮีโร่มาสู้": "Answer questions to earn coins, then summon heroes to fight", "ต้องผ่านด่านบอสของโลกก่อนหน้า และมีดาวสะสม": "Beat the previous world's boss stage and collect stars", "กดปุ่มยิงศัตรูครึ่งสนามฝั่งเรา และผลักถอย": "Tap to blast enemies on our half of the field and push them back", "ยิงดินสอใส่ศัตรูที่เข้าใกล้โรงเรียนเองทุก": "Auto-shoots pencils at enemies near the school every", "ฮีโร่ที่อยู่ใกล้โรงเรียนฟื้นเลือดเรื่อย ๆ": "Heroes near the school slowly heal", "ไม่มีปีศาจ ไม่เสียเหรียญ ผิดแล้วมีภาพช่วย": "No demons, no coin loss, picture help when wrong", "ทำตัวส่วนให้เท่ากันก่อน แล้วเทียบตัวเศษ": "Make the denominators equal, then compare the numerators", "คูณ หาร แบ่งให้ถูก ได้เหรียญเรียกฮีโร่": "Multiply and divide correctly to earn coins for heroes", "คูณแบบจำนวนนับ แล้วนับตำแหน่งทศนิยมรวม": "Multiply as whole numbers, then count the total decimal places:", "ตัวส่วนเท่ากัน ดูตัวเศษ ยิ่งมากยิ่งมาก": "Same denominator: the bigger numerator is bigger", "ทุกครั้งที่เล่นจบด่าน และจากการฝึกซ้อม": "every time you finish a stage, and from practice", "ส่วนที่ระบายสีเขียนเป็นทศนิยมได้เท่าไร": "Write the shaded part as a decimal", "สาดหมึกโดนทุกตัวในระยะ และทำให้ช้าลง": "splashes ink on all enemies in range and slows them", "ตอบทศนิยมให้ถูก ได้เหรียญเรียกฮีโร่": "Answer decimals correctly to earn coins for heroes", "ยืดสายวัดตีได้ไกลกว่าฮีโร่ทั่วไปมาก": "Extends its tape to hit much farther than other heroes", "ฮีโร่เครื่องเขียน พิชิตปีศาจด้วยเลข": "Stationery heroes beat demons with math", "เลื่อนจุดให้ถูก ได้เหรียญเรียกฮีโร่": "Move the decimal point right to earn coins for heroes", "ทุกครั้งที่ตี ทำให้ศัตรูเดินช้าลง": "Every hit slows enemies down", "ลบเลขให้ถูก ได้เหรียญไปเรียกฮีโร่": "Subtract correctly to earn coins for heroes", "เขียนเป็นเศษส่วนอย่างต่ำได้เท่าไร": "written as a fraction in simplest form", "เลือกหัวข้อ ไม่มีปีศาจ ไม่จับเวลา": "Pick a topic. No demons, no timer", "แบ่งขนมให้ถูก ได้เหรียญเรียกฮีโร่": "Share the sweets correctly to earn coins for heroes", "ของเลือด โล่ฟื้นเองเมื่อไม่โดนตี": "of HP; the shield recovers when not hit", "ตีศัตรูทุกตัวในระยะ และตีไกลขึ้น": "Hits every enemy in range, with longer reach", "แตะฮีโร่เพื่อใส่หรือเอาออกจากเดค": "Tap a hero to add or remove it from the deck", "ท่องสูตรคูณ ได้เหรียญเรียกฮีโร่": "Know your times tables to earn coins for heroes", "หารให้ลงตัว ได้เหรียญเรียกฮีโร่": "Divide exactly to earn coins for heroes", "ข้อมูลเก็บในเครื่องนี้เท่านั้น": "Data is saved on this device only", "ผ่านบอสโซนก่อนหน้า และมีดาวรวม": "Beat the previous zone's boss and have total stars", "เปลี่ยนจำนวนคละเป็นเศษเกินก่อน": "Change the mixed number to an improper fraction first:", "โรงเรียนใหญ่ขึ้นและแข็งแรงขึ้น": "The school gets bigger and stronger", "ขว้างโพสอิทแปะศัตรูได้ไกลขึ้น": "Throws Post-its at enemies from farther away", "ของทั้งหมด ให้เพื่อนไปกี่ชิ้น": "of them to a friend. How many pieces is that", "เคลียร์ด่านบอสเพื่อไปโลกถัดไป": "Clear the boss stage to reach the next world", "ทะลุโล่ศัตรู และตีบอสแรงขึ้น": "Pierces enemy shields and hits bosses harder", "เปลี่ยนระดับได้ที่หน้าแผนที่": "Change difficulty on the map screen", "ขวดเท่า ๆ กัน ขวดละกี่ลิตร": "bottles equally. How many litres per bottle", "ยิงรุ้งโดนทุกตัวในระยะ แรง": "fires a rainbow at all enemies in range, power", "ศัตรูต้องหันมาตีตัวนี้ก่อน": "Enemies must attack this hero first", "เขียนเป็นจำนวนคละได้เท่าไร": "written as a mixed number is", "เท่า ทำให้ศัตรูช้าลง ชาร์จ": "x, slows enemies, recharge", "ดาวได้จากตอบถูกและตอบเร็ว": "Stars come from correct and fast answers", "ตีทุกตัวในระยะ และผลักถอย": "hits all enemies in range and knocks them back", "ปัดเป็นจำนวนเต็มได้เท่าไร": "rounded to the nearest whole number is", "เขียนเป็นเศษเกินได้เท่าไร": "written as an improper fraction is", "เหรียญไหลเข้าเองเพิ่มขึ้น": "Faster automatic coin income", "เขียนเป็นทศนิยมได้เท่าไร": "written as a decimal is", "โกรธเมื่อเลือดเหลือครึ่ง": "Enrages at half HP", "ของเงิน เหลือเงินกี่บาท": "of it. How many baht are left", "ชิ้น เหลือกี่ส่วนของถาด": "slices. What fraction of the tray is left", "รองบอสมาอีกแล้ว ระวังนะ": "Another sub-boss! Watch out", "ระบายสีคือเศษส่วนเท่าไร": "shaded part is what fraction", "วิ ฟื้นเลือดฮีโร่รอบตัว": "s, heals nearby heroes", "หมุนตีศัตรูทุกตัวในระยะ": "spins to hit all enemies in range", "เท่า และทำให้ศัตรูช้าลง": "x and slows enemies", "แตะโซนเพื่อเข้าไปผจญภัย": "Tap a zone to start your adventure", "จอมปีศาจประจำโลกมาแล้ว": "The world's Demon Lord has appeared", "ล้างความคืบหน้าทั้งหมด": "Reset all progress", "เกาะอัตราส่วนและร้อยละ": "Ratio & Percent Island", "เริ่มทุกด่านด้วยเหรียญ": "Start every stage with coins", "แตะอีกครั้งเพื่อยืนยัน": "Tap again to confirm", "ให้เป็นเศษส่วนอย่างต่ำ": "in simplest form", "คูณทั้งเศษและส่วนด้วย": "Multiply numerator and denominator by", "ปีศาจจิ๋วจอมซ่ามาแล้ว": "A cheeky mini demon has appeared", "ยักษ์ช็อกโกแลตสิบชิ้น": "Ten-Piece Chocolate Giant", "ยังไม่ได้ตั๋วในรอบนี้": "No tickets this round", "วิหารจักรพรรดิเศษส่วน": "Fraction Emperor's Temple", "หนีบศัตรูจนขยับไม่ได้": "clamps enemies so they can't move", "หารทั้งเศษและส่วนด้วย": "Divide numerator and denominator by", "เศษคูณเศษ ส่วนคูณส่วน": "Numerator × numerator, denominator × denominator:", "แตะเกาะเพื่อเลือกด่าน": "Tap an island to choose stages", "ของจำนวนหนึ่งเท่ากับ": "of a number is", "ของรั้ว วันที่สองอีก": "of the fence, on day 2 another", "ของเงิน ลูกได้กี่บาท": "of it. How many baht does the child get", "ดวงเพื่อเปิดโลกถัดไป": "stars to open the next world", "ต้องมีฮีโร่อย่างน้อย": "You need at least", "ทาสีรั้ว วันแรกทาได้": "Painting a fence: on day 1", "ทุ่งหญ้าหน้าโรงเรียน": "Schoolyard Meadow", "บาท ได้เงินทอนกี่บาท": "baht. How much change (baht)", "ปลดล็อกด่านถัดไปแล้ว": "Next stage unlocked", "ยอดฝีมือเครื่องเขียน": "Stationery Masters", "วิหารจักรพรรดิจุดทอง": "Golden Point Emperor's Temple", "เท่า และทะลุโล่ศัตรู": "x and pierces enemy shields", "เลื่อนจุดทศนิยมไปทาง": "move the decimal point to the", "ชนะปีศาจตัวใหญ่แล้ว": "Big demon defeated", "ตั๋วจากตอบถูกวันนี้": "Tickets from correct answers today", "ทำตัวส่วนให้เท่ากัน": "Make the denominators equal", "ปลดล็อกโลกถัดไปแล้ว": "Next world unlocked", "ฟาดทุกตัวในระยะ แรง": "slams all enemies in range, power", "ฮีโร่กำลังเดินไปสู้": "Heroes are marching to battle", "เครื่องเขียนพื้นฐาน": "Basic Stationery", "แก้ว รวมดื่มกี่แก้ว": "glass. How many glasses in total", "จำนวนนั้นคือเท่าไร": "What is the number", "ชิ้น แบ่งให้เพื่อน": "pieces. Give", "ถูกตั้งแต่ครั้งแรก": "right on the first try", "ปีศาจจอมพลังมาแล้ว": "A mighty demon has appeared", "ร้านพิซซ่าแบ่งชิ้น": "Pizza Slice Shop", "เปรียบเทียบเศษส่วน": "Comparing Fractions", "เมตร ตัดเป็นท่อนละ": "m long, cut into pieces of", "เศษเกินและจำนวนคละ": "Improper Fractions & Mixed Numbers", "แปดไม้โปรแทรกเตอร์": "Eight Protractors", "กระดาษโน้ตสายรุ้ง": "Rainbow Notepad", "จอมราชันย์เศษส่วน": "Fraction Overlord", "ท่าเรือแบ่งสินค้า": "Cargo-Sharing Harbor", "บ่อน้ำผึ้งหารแบ่ง": "Honey-Dividing Pond", "ปราสาทราชาเศษส่วน": "Fraction King's Castle", "ปราสาทแห่งความรู้": "Castle of Knowledge", "ปีศาจกระปุกออมสิน": "Piggy Bank Demon", "ผ่านบอสโซนหารก่อน": "Beat the Division boss first", "พลิกตัวหารแล้วคูณ": "Flip the divisor and multiply:", "รวมทุกเรื่องในโซน": "All topics in this zone", "ราชาพิซซ่าแปดชิ้น": "Eight-Slice Pizza King", "ราชินีผึ้งแบ่งรัง": "Hive-Splitting Queen Bee", "สะพานไม้ข้ามลำธาร": "Wooden Creek Bridge", "หอคอยไม้ตารางเก้า": "Nine-Table Wooden Tower", "หอชั่งเปรียบเทียบ": "Comparison Scale Tower", "เก้าเครื่องคิดเลข": "Nine Calculators", "เจ้าเค้กครึ่งก้อน": "Half-Cake Lord", "เท่ากับจำนวนนับใด": "equals which whole number", "เปรียบเทียบทศนิยม": "Comparing Decimals", "เมตร เหลือกี่เมตร": "m. How many metres are left", "เศษส่วนที่เท่ากัน": "Equivalent Fractions", "เอาตัวอื่นออกก่อน": "Remove another hero first", "แล้วเทียบทีละหลัก": "then compare digit by digit", "โจทย์ปัญหาเศษส่วน": "Fraction Word Problems", "โรงเรียนของเราแตก": "Our school was destroyed", "ให้ตำแหน่งเท่ากัน": "so the decimal places match", "ค้างคาวแบ่งครึ่ง": "Halving Bat", "จอมขนมปังสี่ส่วน": "Quarter-Loaf Lord", "จอมปีศาจประจำโลก": "World Demon Lord", "จักรพรรดิเศษส่วน": "Fraction Emperor", "ตลาดเหรียญทศนิยม": "Decimal Coin Market", "ตั้งจุดให้ตรงกัน": "Line up the decimal points:", "ตำแหน่งได้เท่าไร": "place(s)", "ต้องมีดาวสะสมอีก": "You need", "ทุ่งดอกไม้บวกบาน": "Blooming Addition Meadow", "ท่านปากกาหมึกซึม": "Sir Fountain Pen", "บาท ได้ทอนกี่บาท": "baht. How much change (baht)", "ประภาคารจำนวนคละ": "Mixed Number Lighthouse", "ป้อมปราการราชาลบ": "Subtraction King's Fortress", "ระดับเสียงประกอบ": "Sound effects volume", "รุมช่วยกันสู้เลย": "Everyone, fight together", "ลิตร เทใส่แก้วละ": "L of water is poured into glasses of", "หุ่นไม้ตารางเก้า": "Nine-Table Wooden Golem", "ห้องสมุดแปลงร่าง": "Transformation Library", "เจ้าก้อนบวกยักษ์": "Giant Plus Blob", "เศษส่วนใดเท่ากับ": "Which fraction equals", "เสาโทเท็มสูตรคูณ": "Times-Table Totem", "แก้ว แล้วดื่มอีก": "glass, then another", "โจทย์ปัญหาทศนิยม": "Decimal Word Problems", "โรงเรียนหอนาฬิกา": "Clock Tower School", "ค้างคาวคราบหมึก": "Ink-Stained Bat", "จอมโจรเศษสตางค์": "Small-Change Thief", "จักรพรรดิจุดทอง": "Golden Point Emperor", "จัดให้อัตโนมัติ": "Auto-fill", "ชนะจอมปีศาจแล้ว": "Demon Lord defeated", "ตั้งค่าและเสียง": "Settings and sound", "ทอนเป็นอย่างต่ำ": "simplified", "นกฮูกโจทย์ปัญหา": "Word-Problem Owl", "นักวิทย์สติหลุด": "Mad Scientist", "ประภาคารลบเลือน": "Fading Lighthouse", "ปีศาจพายสามส่วน": "Three-Slice Pie Demon", "ปืนใหญ่ชอล์กแรง": "Chalk cannon power", "ผ่านบอสก่อนหน้า": "Beat the previous boss", "พันจนขยับไม่ได้": "wraps them until they can't move", "ยิงปืนใหญ่ชอล์ก": "Fire the chalk cannon", "ลิตร แบ่งใส่ขวด": "L of water is shared into", "ลิตร ได้กี่แก้ว": "L each. How many glasses", "วิ และฟื้นเลือด": "s and heals", "หอคอยโจทย์ปัญหา": "Word Problem Tower", "หอนาฬิกาครึ่งวง": "Half-Circle Clock Tower", "หอนาฬิกาถอยหลัง": "Backward Clock Tower", "หาได้จากตู้กาชา": "Get it from the gacha machine", "ห้องทดลองทศนิยม": "Decimal Laboratory", "ห้องสมุดบวกส่วน": "Fraction-Adding Library", "เติมเครื่องหมาย": "Fill in the sign", "เต็นท์ขนมคูณทวี": "Doubling Sweets Tent", "เต็นท์นักผจญภัย": "Adventurer's Tent", "เท่า และผลักถอย": "x and knocks back", "เปิดเสียงประกอบ": "Sound effects on", "เมตร ได้กี่ท่อน": "m. How many pieces", "เลเวลสูงสุดแล้ว": "Max level", "เศษส่วนของจำนวน": "Fraction of a Number", "แท่ง จ่ายกี่บาท": "of them. How much do you pay (baht)", "แล้วเทียบตัวเศษ": "then compare the numerators", "กริ่งพักเที่ยง": "Lunch-Break Bell", "กังหันลมนับเลข": "Counting Windmill", "ขวดหมึกน้ำเงิน": "Blue Ink Bottle", "ครัวขนมเศษส่วน": "Fraction Bakery", "คูณเฉพาะตัวเศษ": "Multiply only the numerator:", "จอมปีศาจมาแล้ว": "The Demon Lord has appeared", "ซุ้มอ่านทศนิยม": "Decimal Reading Booth", "ดูหลักส่วนร้อย": "Look at the hundredths digit:", "ตลับเมตรยืดได้": "Stretchy Tape Measure", "ตลาดนัดบวกเงิน": "Money-Adding Market", "ตอบถูกครั้งแรก": "Correct on the first try", "ตัวส่วนเท่ากัน": "Same denominator", "ตั๋วจากฝึกซ้อม": "Tickets from practice", "ตายแล้วแยกร่าง": "splits when defeated", "ต้นไม้ยักษ์คูณ": "Giant Multiplying Tree", "ทุ่งขนมเศษส่วน": "Fraction Sweets Meadow", "บวก ลบ คูณ หาร": "Add · Subtract · Multiply · Divide", "บ่อน้ำกลางทุ่ง": "Meadow Well", "บ้านเห็ดคูณสอง": "Double Mushroom House", "ประภาคารปัดเศษ": "Rounding Lighthouse", "ปลาหมึกลบเลือน": "Fading Squid", "ปากถ้ำแบ่งส่วน": "Dividing Cave Mouth", "ปิดเสียงประกอบ": "Sound effects off", "ป้อมราชาทศนิยม": "Decimal King's Fort", "พีระมิดราชาหาร": "Division King's Pyramid", "ยักษ์ดินสอทื่อ": "Blunt Pencil Giant", "รวมทาไปกี่ส่วน": "What fraction is painted in total", "ระดับเสียงเพลง": "Music volume", "รับดาเมจน้อยลง": "takes less damage", "ราชาเมือกเขียว": "Green Slime King", "ศัตรูในด่านนี้": "Enemies in this stage", "สวนเค้กเศษส่วน": "Fraction Cake Garden", "สาดทุกครั้งที่": "splashes every", "ห้องสมุดลืมเลข": "Forgetful Library", "เศษส่วนขั้นสูง": "Advanced Fractions", "เศษส่วนพื้นฐาน": "Basic Fractions", "เหลืออีกกี่ กม": "How many km are left", "แมงมุมแปดขาคูณ": "Eight-Leg Times Spider", "โรงเรียนของฉัน": "My School", "ไม้บรรทัดยักษ์": "Giant Ruler", "กลุ่ม กลุ่มละ": "groups of", "ก้อนหมึกสามตา": "Three-Eyed Ink Blob", "ข้อถูกได้ตั๋ว": "correct answers earn", "คริสตัลแตกสาม": "Triple-Split Crystal", "คลิปดำจอมหนีบ": "Binder Clip Pincher", "จอมราชันย์คูณ": "Multiplication Overlord", "จอมราชันย์บวก": "Addition Overlord", "จอมราชันย์หาร": "Division Overlord", "จัดเดคให้แล้ว": "Deck filled", "ดูหลักส่วนพัน": "Look at the thousandths digit:", "ดูหลักส่วนสิบ": "Look at the tenths digit:", "ตอบเร็วเฉลี่ย": "Average answer time", "ตาชั่งตาเดียว": "One-Eyed Scale", "ตาถ้ำหารลงตัว": "Exact-Division Cave Eye", "ตาเดียวบวกสิบ": "One-Eyed Plus-Ten", "ตีทีละหลายตัว": "Hits many at once", "ทศนิยมขั้นสูง": "Advanced Decimals", "ทศนิยมพื้นฐาน": "Basic Decimals", "ทำตัวส่วนเป็น": "Make the denominator", "ที่เจาะกระดาษ": "Hole Puncher", "ท่าเรือสินค้า": "Cargo Harbor", "ท่าเรือหมึกดำ": "Black Ink Harbor", "บาท รวมกี่บาท": "baht. How much in total (baht)", "บีกเกอร์เดือด": "Boiling Beaker", "ปราสาทราชาบวก": "Addition King's Castle", "ปัดเป็นทศนิยม": "rounded to", "พ่อครัวคูณทวี": "Doubling Chef", "ภูเขาไฟหารเศษ": "Remainder Volcano", "ยักษ์จำนวนคละ": "Mixed Number Giant", "ราชาจุดทศนิยม": "Decimal Point King", "รู้จักเศษส่วน": "Meet Fractions", "ลองอีกครั้งนะ": "Try again", "วัน รวมกี่ กม": "days. How many km in total", "วิวัฒนาการที่": "Evolves at", "สิบกล่องดินสอ": "Ten Pencil Boxes", "สู้ให้เต็มที่": "Give it your all", "สไลม์แปลงร่าง": "Shape-Shifting Slime", "เลือดโรงเรียน": "School HP", "เหมืองคริสตัล": "Crystal Mine", "โรงเรียนประถม": "Primary School", "โรงเรียนในฝัน": "Dream School", "โล่ครึ่งวงกลม": "Half-Circle Shield", "กังหันลบส่วน": "Fraction-Subtracting Windmill", "จอมราชันย์ลบ": "Subtraction Overlord", "ตัวเศษก็ต้อง": "so the numerator must also be", "นาฬิกาปัดเศษ": "Rounding Clock", "น้ำตกหารร้อย": "Divide-by-100 Waterfall", "บอสประจำด่าน": "Stage boss", "บ่อเหรียญบวก": "Adding Coin Well", "ปัดเศษทศนิยม": "Rounding Decimals", "ปืนใหญ่ชอล์ก": "Chalk Cannon", "ป้อมโรงเรียน": "School Fort", "ผลักฮีโร่ถอย": "pushes heroes back", "ผสมทุกเรื่อง": "Mix of everything", "ผ่านด่านแล้ว": "Stage cleared", "ฟาดไม้บรรทัด": "Ruler Smash", "ฟื้นเลือดเอง": "self-heals", "ยักษ์ยางลบดำ": "Black Eraser Giant", "ระดับความยาก": "Difficulty", "ระเบิดตอนตาย": "explodes when defeated", "รู้จักทศนิยม": "Meet Decimals", "ลานลบรอยหมึก": "Ink-Erasing Plaza", "วันละไม่เกิน": "max per day", "วิหารราชาคูณ": "Multiplication King's Temple", "สะพานหินแขวน": "Hanging Stone Bridge", "สะพานเงินทอน": "Change-Giving Bridge", "สามไม้บรรทัด": "Three Rulers", "หนามทุ่งหญ้า": "Meadow Thorn", "หมู่เกาะคณิต": "Math Archipelago", "หลอดทดลองแฝด": "Twin Test Tubes", "ห้องเรียนไม้": "Wooden Classroom", "อยู่หลักส่วน": "is in the place of", "เรียกลูกน้อง": "summons minions", "เลือดต่ำกว่า": "When HP is below", "เล่นอีกครั้ง": "Play again", "เหมืองคูณจุด": "Decimal-Multiplying Mine", "เหรียญจอมทอน": "Change-Maker Coin", "โจทย์ยากขึ้น": "Harder questions", "โน้ตเติมพลัง": "Power Notes", "โพสอิทจอมติด": "Sticky Post-it", "ไม้ฉากสายฟ้า": "Thunder Set Square", "จดชื่อศัตรู": "Name Taker", "ช่องทั้งหมด": "total boxes", "ดาวของระดับ": "Stars for level", "ดินสอสีรุ้ง": "Rainbow Crayon", "ดินสอแท่งละ": "Pencils cost", "ด่านละครั้ง": "once per stage", "ด้าม ด้ามละ": "pens at", "ต้นไม้ยักษ์": "Giant Tree", "ถาดแบ่งเป็น": "tray is cut into", "ถ้ำแบ่งส่วน": "Dividing Cave", "ทุกครั้งที่": "every", "น้ำตกใต้ดิน": "Underground Waterfall", "บาท ซื้อของ": "baht for something that costs", "ปลดสกิลใหม่": "New skill unlocked", "ปืนใหญ่ขั้น": "Cannon level", "ฝึกอีกครั้ง": "Practice again", "มีค่าเท่าไร": "value is", "ลายเซ็นมรณะ": "Deadly Signature", "ล้างเดคแล้ว": "Deck cleared", "วงเวียนหมุน": "Spinning Compass", "วาฬขนสินค้า": "Cargo Whale", "สี่สมุดโน้ต": "Four Notebooks", "ส่วน ส่วนละ": "parts, each part", "ส่วนเท่ากับ": "parts equal", "หนีบให้หยุด": "Pinch to stop", "หอคอยคูณสิบ": "Times-Ten Tower", "หินแบ่งส่วน": "Dividing Rock", "เกาะพื้นฐาน": "Basic Island", "เกาะเศษส่วน": "Fraction Island", "เฉพาะตัวเศษ": "only the numerators", "เดคเต็มแล้ว": "Deck is full", "เทปใสจอมพัน": "Tape Wrapper", "เปรียบเทียบ": "Compare", "เลือกหัวข้อ": "Choose a topic", "เสียงประกอบ": "Sound effects", "แปลงเศษส่วน": "Convert fractions", "ได้ดาวระดับ": "Also earned stars on", "ได้ตั๋วกาชา": "Got gacha tickets", "ไปพังฐานเลย": "Go smash the base", "กลับแผนที่": "Back to map", "กำแพงยางลบ": "Eraser Wall", "คูณเศษส่วน": "Multiplying Fractions", "จากฝึกซ้อม": "from practice", "ชิ้น กินไป": "slices and", "ด่านนี้ฝึก": "This stage practises", "ตั๋วรางวัล": "Ticket reward", "ตีคริติคอล": "critical hit", "ตีเร็วขึ้น": "attacks faster", "นับช่องที่": "Count the boxes that are", "บวกข้ามสิบ": "Adding across ten", "บวกเศษส่วน": "Adding Fractions", "บวกไม่เกิน": "Adding up to", "บาท ให้ลูก": "baht and gives the child", "บึงขวดหมึก": "Ink Bottle Marsh", "ป่าสูตรคูณ": "Times-Table Forest", "ลบทุกอย่าง": "erases everything", "วิวัฒนาการ": "Evolution", "สรุปการฝึก": "Practice summary", "หนึ่งปากกา": "One Pen", "หอคอยดินสอ": "Pencil Tower", "หารเศษส่วน": "Dividing Fractions", "ห้องพยาบาล": "Nurse's Room", "เกาะทศนิยม": "Decimal Island", "เจ็ดกรรไกร": "Seven Scissors", "เดินไปแล้ว": "walked", "เมตร ตัดไป": "m long. Cut off", "เร็ว ๆ นี้": "Coming soon", "เวลาเฉลี่ย": "Average time", "เห็ดคูณสอง": "Doubling Mushroom", "แผนที่หลัก": "Main map", "โจทย์ปัญหา": "Word problems", "โผล่มาแล้ว": "has appeared", "ไกลขึ้นอีก": "even farther", "ไม่จับเวลา": "No timer", "กบสูตรคูณ": "Times-Table Frog", "คูณทศนิยม": "Multiplying Decimals", "ซื้อปากกา": "Buy", "ด่านถัดไป": "Next stage", "ตีไกลขึ้น": "longer reach", "ทีมของคุณ": "Your team", "บวกทศนิยม": "Adding Decimals", "บาท และนม": "baht and milk costs", "บาท ใช้ไป": "baht and spend", "ผลการสุ่ม": "Results", "ผสมทุกแบบ": "Mix of all", "ผีหมึกหยด": "Ink Drop Ghost", "ฟื้นเลือด": "Heal", "ร่างต่อไป": "Next form", "ลบข้ามสิบ": "Subtracting across ten", "ลบเศษส่วน": "Subtracting Fractions", "ลบไม่เกิน": "Subtracting within", "วิ่งวันละ": "Run", "สกิลศัตรู": "Enemy skills", "สถิติใหม่": "New record", "สะสมฮีโร่": "Hero Collection", "หกวงเวียน": "Six Compasses", "ฮีลเพื่อน": "Heals allies", "เจาะเกราะ": "Armor Pierce", "เยี่ยมเลย": "Excellent", "เริ่มด่าน": "Start stage", "เลือกด่าน": "Stages", "เลือดน้อย": "Low HP", "เศษส่วนใด": "Which fraction", "แปะโพสอิท": "Post-it Stick", "แม่มีเงิน": "Mom has", "กางเกราะ": "Raises armor", "คริติคอล": "Critical", "ความเร็ว": "Speed", "คำตอบคือ": "The answer is", "จอมปีศาจ": "Demon Lord", "จำนวนคละ": "mixed number", "ชิ้น จาก": "pieces out of", "ตัวเลือก": "choices", "ตัวในเดค": "in deck", "ตีบอสแรง": "hits bosses hard", "ตีแรงมาก": "hits very hard", "ตีไกลมาก": "very long reach", "ทำให้ช้า": "slows", "บาท จ่าย": "baht each and pay", "บาท ซื้อ": "baht each. Buy", "ปูหารเศษ": "Remainder Crab", "ผ่านด่าน": "Clear the stage", "ยังไม่มี": "Not owned yet", "ยางลบหนา": "Thick Eraser", "ยืดตีไกล": "stretch reach", "รุ้งพุ่ง": "Rainbow Burst", "ลบทศนิยม": "Subtracting Decimals", "วิ่งเร็ว": "runs fast", "ศัตรูแรง": "Enemy power", "สองยางลบ": "Two Erasers", "ส่วนร้อย": "hundredths", "หนีบแน่น": "Tight Pinch", "หน้าหลัก": "Home", "หมึกพุ่ง": "Ink Burst", "หมู่เกาะ": "Islands", "ห้าดินสอ": "Five Pencils", "เชือกยาว": "A rope is", "เปิดเพลง": "Music on", "เร็วขึ้น": "faster", "เหลาแหลม": "Sharp Point", "โกรธแล้ว": "Enraged", "โรงเรียน": "School", "การันตี": "Guaranteed", "ขั้นสูง": "Advanced", "คูณด้วย": "Multiply by", "คูณพลัง": "Power Multiply", "จำนวนใด": "Which number", "ชิ้นให้": "pieces into", "ซื้อขนม": "A snack costs", "ดังนั้น": "so", "ด่านที่": "Stage", "ด่านบอส": "Boss stage", "ตัวส่วน": "denominator", "ตั้งค่า": "Settings", "ตำแหน่ง": "place(s)", "ถูกต้อง": "Correct", "ทะลุโล่": "Shield Pierce", "ทั้งหมด": "total", "ทุบพื้น": "Ground Pound", "ปัดขึ้น": "round up", "ปัดทิ้ง": "round down", "ปานกลาง": "Medium", "ปิดเพลง": "Music off", "ฝึกซ้อม": "Practice", "พื้นฐาน": "Basics", "ฟาดหมู่": "Sweep", "มินิบอส": "Mini-boss", "ยืดตลับ": "Tape Stretch", "ระวังนะ": "Watch out", "ล้างเดค": "Clear deck", "สุ่มอีก": "Draw again", "สูตรคูณ": "Times tables", "ส่วนที่": "The part that is", "ส่วนพัน": "thousandths", "ส่วนสิบ": "tenths", "หนีบนาน": "Long Pinch", "หมึกคริ": "Ink Crit", "หมึกสาด": "Ink Splash", "หารด้วย": "Divide by", "อัปเป็น": "Upgrade to", "เก่งมาก": "Great job", "เจาะบอส": "Boss Pierce", "เร็วมาก": "Super fast", "เลเซอร์": "Laser", "เศษส่วน": "Fractions", "เศษเกิน": "improper fraction", "แรงขึ้น": "stronger", "แล้วคูณ": "then multiply", "กางโล่": "Shield up", "การหาร": "Division", "ข้อถูก": "correct", "จัดเดค": "Deck", "ดื่มนม": "Drank", "ตอนนี้": "Now", "ตัดฉับ": "Snip", "ตัดรัว": "Rapid Cut", "ตัวหาร": "divisor", "ตัวเศษ": "numerator", "ตีหมู่": "area attack", "ทศนิยม": "Decimals", "ทางยาว": "A path is", "ที่สุด": "the most", "ทุบแรง": "Heavy Smash", "น้อยลง": "less", "บวกเลข": "Addition", "ปลดที่": "Unlocks at", "ปัดเศษ": "Rounding", "ผจญภัย": "Adventure", "พันเทป": "Tape Wrap", "พิซซ่า": "A pizza", "มาแล้ว": "has arrived", "มีเงิน": "You have", "มุมฉาก": "Right Angle", "รองบอส": "Sub-boss", "ล่าบอส": "Boss hunt", "วินาที": "seconds", "สูงสุด": "max", "ส่วนละ": "each part", "อึดมาก": "very tough", "เหรียญ": "coins", "แทงแรง": "Hard Stab", "ไม่ได้": "not", "กลุ่ม": "groups", "ครั้ง": "times", "คอมโบ": "Combo", "ชาร์จ": "recharge", "ตีแรง": "hits hard", "ตีไกล": "long reach", "ต่อไป": "Next", "มีขนม": "There are", "มีค่า": "value", "มีโล่": "has a shield", "ระดับ": "Level", "ระบาย": "shaded", "ลบเลข": "Subtraction", "สมดุล": "Balanced", "หน่วย": "ones", "อาคาร": "Building", "เลือด": "HP", "เหลือ": "left", "โจมตี": "Attack", "โอกาส": "chance", "ใช้ไป": "spent", "ใบต่อ": "ticket per", "กลาง": "Medium", "กาชา": "Gacha", "ง่าย": "Easy", "จดจำ": "Noted", "จ่าย": "Pay", "ชิ้น": "pieces", "ช่อง": "boxes", "ซ้าย": "left", "ด่าน": "Stage", "ด้วย": "with", "ตกลง": "OK", "ตั๋ว": "tickets", "น้อย": "least", "ผลัก": "push", "ฟื้น": "heal", "ราคา": "Cost", "ร้อย": "hundred", "สกิล": "Skills", "สะสม": "Collection", "สุ่ม": "Draw", "ส่วน": "parts", "หนีบ": "pinch", "หมุน": "spin", "หรือ": "or", "เกาะ": "Island", "เติม": "fill", "เต็ม": "full", "เท่า": "x", "เป็น": "as", "เพลง": "Music", "เร็ว": "fast", "แบ่ง": "Share", "แล้ว": "done", "ใหม่": "New", "กัน": "Block", "กับ": "and", "ขวา": "right", "ของ": "of", "ข้อ": "questions", "ครบ": "Reach", "คูณ": "Multiply", "จาก": "from", "ช้า": "slow", "ซ้ำ": "Duplicate", "ดวง": "stars", "ดาว": "Stars", "ตัด": "Cut", "ตัว": "heroes", "ตูม": "Boom", "ตู้": "Machine", "ทุก": "every", "น้ำ": "Water", "บวก": "Add", "บอส": "Boss", "ปิด": "Close", "ผสม": "Mixed", "พัน": "thousand", "มาก": "most", "ยาก": "Hard", "วัด": "Measure", "สิบ": "ten", "หาร": "Divide", "อึด": "tough", "เดค": "Deck", "เลข": "Digit", "เศษ": "shards", "เอา": "take", "แม่": "Mom", "แรง": "strong", "และ": "and", "โซน": "Zone", "โลก": "World", "โล่": "Shield", "ได้": "get", "กม": "km", "จบ": "done", "ทำ": "Simplify", "มี": "has", "ลบ": "Subtract", "วิ": "s", "ใน": "in", "ใบ": "tickets", "สุ่ม 1 ครั้ง": "Draw ×1", "สุ่ม 5 ครั้ง": "Draw ×5", "1 ตั๋ว": "1 ticket", "5 ตั๋ว": "5 tickets", "สุ่มอีก 1": "Draw 1 more", "สุ่มอีก 5": "Draw 5 more", "ร้านค้า": "Shop","🦸 ฮีโร่ประจำสัปดาห์": "🦸 Heroes of the week","🎀 ของตกแต่งประจำสัปดาห์": "🎀 Decorations of the week","🎫 ตั๋วกาชา": "🎫 Gacha ticket","🏷️ ฉายา": "🏷️ Titles","✅ ซื้อแล้ว": "✅ Bought","✅ มีแล้ว": "✅ Owned","ซื้อฮีโร่ได้ตัวละ 1 ครั้งต่อสัปดาห์": "Each hero can be bought once a week","ครบแล้ว": "Sold out","✔️ ใช้อยู่": "✔️ Using","ฉายาแสดงที่หน้าหลัก": "your title shows on the home screen","ม้านั่งสวน": "Garden Bench","กระดานดำยักษ์": "Giant Blackboard","ต้นไม้ใหญ่": "Big Tree","เสาธงโรงเรียน": "School Flagpole","ม้าหมุน": "Carousel","สไลเดอร์": "Slide","กระถางดอกไม้": "Flower Pot","ตู้หนังสือ": "Bookshelf","โคมไฟสวน": "Garden Lamp","รูปปั้นแมวนำโชค": "Lucky Cat Statue","ลูกโลก": "Globe","นาฬิกาโรงเรียน": "School Clock","นักบวกมือใหม่": "Rookie Adder","จอมคูณ": "Times Master","เซียนหาร": "Division Sage","นักล่าปีศาจ": "Demon Hunter","ราชาเศษส่วน": "Fraction King","อัจฉริยะทศนิยม": "Decimal Genius","นักสำรวจรูปทรง": "Shape Explorer","ตำนานคณิต": "Math Legend","ผู้พิชิตระดับง่าย": "Easy Conqueror","ผู้พิชิตระดับกลาง": "Normal Conqueror","ผู้พิชิตระดับยาก": "Hard Conqueror","ดวงเฮงกาชา": "Gacha Lucky Star","🎖️ เหรียญตรา": "🎖️ Badges","ความยาว น้ำหนัก ความจุ": "Length, Weight & Capacity","เมืองไม้บรรทัด": "Ruler Town","วัด ชั่ง ตวงให้ถูก ได้เหรียญเรียกฮีโร่!": "Measure, weigh and pour correctly to earn coins for heroes!","เวลาและปฏิทิน": "Time & Calendar","หอนาฬิกาเวลาเดิน": "Ticking Clock Tower","อ่านเวลาให้ถูก ได้เหรียญเรียกฮีโร่!": "Tell the time correctly to earn coins for heroes!","เงินและการซื้อขาย": "Money & Shopping","ตลาดนัดเงินทอง": "Golden Coin Market","นับเงิน ทอนเงินให้ถูก ได้เหรียญเรียกฮีโร่!": "Count money and give change correctly to earn coins for heroes!","วัด · เวลา · เงิน": "Measure · Time · Money","การวัด": "Measuring","ทุ่งไม้บรรทัด": "Ruler Meadow","กังหันตาชั่ง": "Scale Windmill","บ่อน้ำถ้วยตวง": "Measuring-Cup Well","สะพานเทียบหน่วย": "Unit Bridge","โกดังชั่งตวงวัด": "Weigh House","ปราสาทราชาหน่วยวัด": "Castle of the Unit King","สวนนาฬิกาแดด": "Sundial Garden","หอนาฬิกาเข็มยาว": "Long-Hand Clock Tower","ท่าเรือตรงเวลา": "On-Time Harbour","ห้องสมุดปฏิทิน": "Calendar Library","หอคอยเวลาเดิน": "Ticking Tower","วิหารราชาเวลา": "Temple of the Time King","ร้านขนมหยอดเหรียญ": "Coin Sweet Shop","ตลาดนัดทอนเงิน": "Change Market","ห้างสตางค์ทอง": "Golden Satang Mall","ครัวคิดเงิน": "Cash Kitchen","ประภาคารเหรียญทอง": "Gold Coin Lighthouse","ปราสาทเศรษฐีเงินทอง": "Castle of the Rich Miser","ไม้บรรทัดหักงอ": "Bent Ruler","ลูกตุ้มถ่วงหนัก": "Heavy Weight","ถ้วยตวงล้นปรี่": "Overflowing Cup","สายวัดพันกัน": "Tangled Tape","ตาชั่งเอียงกระเท่เร่": "Wonky Scale","ราชาหน่วยวัดเพี้ยน": "Mixed-Up Unit King","เข็มนาฬิกาหลงทาง": "Lost Clock Hand","นาฬิกาปลุกจอมป่วน": "Rowdy Alarm Clock","นาฬิกาทรายไหลไม่หยุด": "Endless Hourglass","ปฏิทินฉีกขาด": "Torn Calendar","ลูกตุ้มนาฬิกาเหวี่ยง": "Swinging Pendulum","ราชาเวลาย้อนกลับ": "Backward Time King","เหรียญหลอกตา": "Trick Coin","กระเป๋าตังค์หิวเงิน": "Hungry Wallet","ธนบัตรปลอม": "Fake Banknote","กระปุกหมูโลภ": "Greedy Piggy Bank","เครื่องคิดเงินเพี้ยน": "Broken Cash Register","เศรษฐีจอมขี้งก": "Miser Tycoon","นาฬิกาแดด": "Sundial","กระปุกออมสินทอง": "Golden Piggy Bank","ความยาว": "Length","น้ำหนัก": "Weight","ปริมาตรและความจุ": "Capacity","เปรียบเทียบหน่วย": "Comparing units","โจทย์ปัญหาการวัด": "Measurement word problems","อ่านเวลา": "Telling time","เวลาก่อน–หลัง": "Time before & after","ระยะเวลา": "Elapsed time","หน่วยเวลา": "Time units","วันและเดือน": "Days & months","นับเงิน": "Counting money","แลกเงิน": "Exchanging money","เงินทอน": "Change","บาทและสตางค์": "Baht & satang","ซื้อของ": "Shopping","ผสมการวัด": "Mixed measuring","ผสมเรื่องเวลา": "Mixed time","ผสมเรื่องเงิน": "Mixed money","ความจุ": "Capacity","เทียบหน่วย": "Compare units","โจทย์วัด": "Word problems","ก่อน–หลัง": "Before/after","วัน·เดือน": "Days·months","บาท·สตางค์": "Baht·satang","ผสมวัด": "Mix: measure","ผสมเวลา": "Mix: time","ผสมเงิน": "Mix: money","ปกติ": "Normal"};
 Object.assign(I18N,{"ถ้วยนักคิดพันข้อ": "Thousand-Answer Cup", "สวนดาวทอง": "Golden Star Garden", "ประตูนักท้าทาย": "Challenger's Gate", "รูปปั้นฮีโร่": "Hero Statue", "แท่นตื่นพลัง": "Awakening Pedestal", "น้ำพุแห่งความแม่นยำ": "Fountain of Accuracy", "ตอบถูก 100 ข้อ": "100 right answers", "ตอบถูก 500 ข้อ": "500 right answers", "ตอบถูก 1,000 ข้อ": "1,000 right answers", "แม่นยำ 90% (หลังตอบ 200 ข้อ)": "90% accuracy (after 200 answers)", "คอมโบ x20": "x20 combo", "3 ดาวครบทั้งโซน": "3 stars on a whole zone", "3 ดาวครบทั้งเกาะ": "3 stars on a whole island", "ผ่านด่านท้าทายครบทั้งโซน": "All challenges in a zone", "ผ่านด่านท้าทายครบทั้งเกาะ": "All challenges on an island", "ผ่านเกาะบอส 1 เกาะ": "Beat a boss island", "สะสมฮีโร่ 10 ตัว": "Collect 10 heroes", "สะสมฮีโร่ 20 ตัว": "Collect 20 heroes", "สะสมฮีโร่ครบ 30 ตัว": "Collect all 30 heroes", "ฮีโร่ตื่นพลัง Lv.20": "Awaken a hero (Lv.20)", "ฝึกจุดอ่อน 50 ข้อ": "Review weak spots: 50 questions", "ทำภารกิจครบ 3 ข้อ 7 วัน": "Finish all daily missions on 7 days", "ล็อกอินต่อเนื่องครบ 7 วัน": "7-day login streak", "คอมโบสูงสุด": "Best combo", "ความแม่นยำรวม": "Overall accuracy", "ตอบถูกทั้งหมด": "Total right answers", "บอสเร็วสุด": "Fastest boss win", "เหรียญตรา": "Badges", "เกียรติยศ": "Honors", "ได้ถ้วยรางวัลขึ้นหอเกียรติยศ!": "You earned a trophy for the Hall of Fame!"});
 Object.assign(I18N,{"ภารกิจวันนี้": "Today's missions", "ตอบถูก 30 ข้อ (ถูกตั้งแต่ครั้งแรก)": "Answer 30 right (first try)", "ทำคอมโบ x10 ในด่าน": "Get a x10 combo in a stage", "ผ่านด่าน 2 ด่าน": "Clear 2 stages", "ชนะด่านบอส (ด่าน 6) 1 ด่าน": "Beat 1 boss stage (stage 6)", "ได้ 3 ดาว 1 ด่าน": "Get 3 stars on 1 stage", "ตอบถูกในโหมดฝึก 20 ข้อ": "Answer 20 right in practice", "ผ่านด่านท้าทาย 1 ด่าน": "Clear 1 challenge stage", "ฝึกจุดอ่อน 10 ข้อ": "Review weak spots: 10 questions", "ทำครบ 3 ภารกิจ": "Finish all 3 missions", "ภารกิจใหม่ทุกเที่ยงคืน": "New missions every midnight", "ล็อกอินต่อเนื่อง": "Login streak", "ขาดหนึ่งวันเริ่มนับใหม่": "miss a day and it restarts", "รับรางวัลวันนี้": "Claim today's reward", "รับของวันนี้แล้ว พรุ่งนี้มาใหม่นะ": "Claimed today. Come back tomorrow!", "มีรางวัลภารกิจรอรับที่หน้าหลัก": "Mission rewards are waiting on the home screen"});
 Object.assign(I18N,{"พลังสกิล +15%": "skill power +15%", "ตื่นพลังแล้ว!": "Awakened!", "ตื่นพลัง (กรอบทอง + ออร่า)": "Awaken (gold frame + aura)"});
-Object.assign(I18N,{"หีบดาว": "Star chest", "ดาวสูงสุดของแต่ละด่าน": "best stars of each stage", "เปิดหีบ": "Open", "รับแล้ว": "Claimed", "ของตกแต่งเก็บไว้แต่งโรงเรียน (ระบบตกแต่งมาในเวอร์ชันถัดไป)": "Decorations are kept for your school (decorating comes in a later version)", "หีบดาวโซนนี้เปิดได้แล้ว! (ที่แผนที่โซน)": "This zone's star chest is ready! (on the zone map)", "ธงทุ่งดอกไม้": "Meadow Flag", "น้ำพุหมึก": "Ink Fountain", "ต้นสนสูตรคูณ": "Times-Table Pine", "คริสตัลถ้ำ": "Cave Crystal", "เค้กยักษ์": "Giant Cake", "เตาอบขนม": "Bakery Oven", "กองเหรียญทอง": "Gold Coin Pile", "บีกเกอร์วิทย์": "Science Beaker", "โถผลไม้ยักษ์": "Giant Fruit Bowl", "ป้ายลดราคา": "Sale Sign", "พีระมิดจิ๋ว": "Mini Pyramid", "เครนก่อสร้าง": "Construction Crane", "รูปปั้นจอมมาร": "Demon Lord Statue"});
+Object.assign(I18N,{"หีบดาว": "Star chest", "ดาวสูงสุดของแต่ละด่าน": "best stars of each stage", "เปิดหีบ": "Open", "รับแล้ว": "Claimed", "นำของตกแต่งไปวางได้ที่ 🏫 โรงเรียนของฉัน": "Place decorations at 🏫 My school", "หีบดาวโซนนี้เปิดได้แล้ว! (ที่แผนที่โซน)": "This zone's star chest is ready! (on the zone map)", "ธงทุ่งดอกไม้": "Meadow Flag", "น้ำพุหมึก": "Ink Fountain", "ต้นสนสูตรคูณ": "Times-Table Pine", "คริสตัลถ้ำ": "Cave Crystal", "เค้กยักษ์": "Giant Cake", "เตาอบขนม": "Bakery Oven", "กองเหรียญทอง": "Gold Coin Pile", "บีกเกอร์วิทย์": "Science Beaker", "โถผลไม้ยักษ์": "Giant Fruit Bowl", "ป้ายลดราคา": "Sale Sign", "พีระมิดจิ๋ว": "Mini Pyramid", "เครนก่อสร้าง": "Construction Crane", "รูปปั้นจอมมาร": "Demon Lord Statue"});
 Object.assign(I18N,{"อัคคีบวก": "Blaze Plus", "พ่อมดพีชคณิต": "Algebra Wizard", "อัศวินน้ำแข็งลบ": "Frost Minus Knight", "ดาวคูณพันแขน": "Thousand-Arm Times Star", "หุ่นสมดุลสมการ": "Equation Balance Bot", "ศาสตราจารย์หาร": "Professor Divide", "ผลึกเรขา": "Geo Crystal", "นักสำรวจปริมาตร": "Volume Explorer", "ผู้พิทักษ์เศษส่วน": "Fraction Guardian", "นักวิเคราะห์สถิติ": "Stat Analyst", "ตู้ 3 · ฮีโร่วิชาคณิต": "Machine 3 · Math Subject Heroes", "ฮีโร่วิชาคณิต": "Math Subject Heroes", "ตู้ 3": "Machine 3", "บวกทบ": "Stacking Plus", "ตีติดกันแรงขึ้นครั้งละ 10% (สูงสุด 5 ครั้ง) ครั้งที่ 5 ระเบิดไฟโดนทุกตัวในระยะ": "Each hit in a row is 10% stronger (up to 5); the 5th blasts fire at all enemies in range", "Lv.10: ครั้งละ 12%": "Lv.10: 12% per hit", "ทุกครั้งที่ 3 ระเบิดเวทโดนทุกตัวในระยะ แรง 2.5 เท่า และผลักถอย": "Every 3rd hit casts a blast on all enemies in range, 2.5x power, and knocks them back", "Lv.10: แรง 3 เท่า": "Lv.10: 3x power", "ลบความเร็ว": "Speed Minus", "ทุกครั้งที่ตี ทำให้ศัตรูช้าลง ทุกครั้งที่ 4 แช่แข็ง 1 วิ และรับดาเมจน้อยลง 15%": "Every hit slows enemies; every 4th freezes for 1 s; takes 15% less damage", "Lv.10: แช่แข็ง 1.5 วิ · รับดาเมจน้อยลง 25%": "Lv.10: freeze 1.5 s · 25% less damage", "หมัดคูณ": "Times Punch", "ทุกครั้งที่ 3 ต่อยรัวแรง 2 เท่า": "Every 3rd hit is a 2x punch flurry", "Lv.10: แรง 2.5 เท่า": "Lv.10: 2.5x power", "ทุก 5 วิ ฟื้นเลือดฮีโร่รอบตัว 8% และมีโล่ 20% ของเลือด": "Every 5 s heals nearby heroes 8%; has a shield of 20% HP", "Lv.10: ฟื้น 12% · โล่ 30%": "Lv.10: heal 12% · shield 30%", "แบ่งครึ่ง": "Halve", "ตีศัตรูที่เลือดเหลือมากกว่าครึ่ง แรงขึ้น 1.5 เท่า": "Hits enemies above half HP 1.5x harder", "Lv.10: แรง 1.8 เท่า": "Lv.10: 1.8x power", "ขว้างผลึก": "Crystal Throw", "ตีได้ไกลขึ้น ทุกครั้งที่ 4 ผลึกแตกโดนทุกตัวในระยะ": "Longer reach; every 4th hit shatters on all enemies in range", "Lv.10: ไกลขึ้นอีก ทุกครั้งที่ 3": "Lv.10: even longer reach, every 3rd hit", "คลื่นน้ำ": "Water Wave", "ทุกครั้งที่ 4 คลื่นซัดทุกตัวในระยะ และผลักถอย": "Every 4th hit sends a wave at all enemies in range and knocks them back", "Lv.10: ทุกครั้งที่ 3": "Lv.10: every 3rd hit", "โล่ ½": "Half Shield", "ทุกครั้งที่ 4 ยกโล่ รับดาเมจครึ่งเดียว 2 วิ": "Every 4th hit raises a shield: half damage for 2 s", "Lv.10: นาน 3 วิ": "Lv.10: lasts 3 s", "อ่านจุดอ่อน": "Read the Weak Spot", "ระหว่างอยู่ในสนาม ฮีโร่ทั้งทีมตีบอสและรองบอสแรงขึ้น 10%": "While on the field, the whole team hits bosses and sub-bosses 10% harder", "Lv.10: แรงขึ้น 15%": "Lv.10: 15% harder", "ล่าศัตรูเลือดเยอะ": "Hunts high-HP foes", "เสริมทีม": "Team buff", "ผลักถอย": "Knockback", "สถิติ": "Statistics", "สมการ": "Equations", "เปิดเมื่อมีเกาะ": "when its island opens", "แช่แข็ง": "Freeze", "ผลึกแตก": "Crystal burst"});
 Object.assign(I18N,{"ศึกรวมทุกเรื่อง": "All-Topics Battle", "ปราการจอมมาร": "Demon Lord's Rampart", "ศึกรวมเรขาคณิต": "Geometry Showdown", "หอคอยจอมมารรูปทรง": "Shape Demon Lord's Tower", "ดูป้ายบนหัวปีศาจตัวหน้า แล้วตอบเรื่องนั้นให้ถูก": "Check the badge on the front demon's head and answer that topic", "เกาะบอส": "Boss Island", "รวมทุกเรื่อง": "All topics", "ผ่านบอส": "Bosses beaten", "ประตูจอมมาร": "Demon Lord's Gate", "สะพานลาวา": "Lava Bridge", "หอคอยเงา": "Shadow Tower", "ถ้ำมังกรเลข": "Number Dragon Cave", "ภูเขาไฟเดือด": "Boiling Volcano", "ปราสาทจอมมารคณิต": "Math Demon Lord's Castle", "ลานหินรูปทรง": "Shape Stone Plaza", "หอวัดมุมมืด": "Dark Angle Tower", "โกดังเงา": "Shadow Warehouse", "ป้อมเหลี่ยมมืด": "Dark Polygon Fort", "บ่อวงกลมดำ": "Black Circle Well", "วิหารจอมมารเรขา": "Geometry Demon Lord's Temple", "ทหารเฝ้าประตูจอมมาร": "Gate Guard", "มังกรลาวาบวกลบ": "Plus-Minus Lava Dragon", "เงาคูณหาร": "Times-Divide Shadow", "มังกรเศษส่วนสองหัว": "Two-Headed Fraction Dragon", "ยักษ์ภูเขาไฟร้อยละ": "Percent Volcano Giant", "จอมมารคณิตศาสตร์": "Math Demon Lord", "ทหารหินรูปทรง": "Shape Stone Soldier", "เงาไม้โปรแทรกเตอร์": "Protractor Shadow", "กล่องเงาลึกลับ": "Mystery Shadow Box", "ป้อมหกเหลี่ยมมืด": "Dark Hexagon Fort", "วงกลมจันทร์ดำ": "Black Moon Circle", "จอมมารเรขาคณิต": "Geometry Demon Lord", "รูปทรง": "Shapes", "รอบรูป·พื้นที่": "Perimeter·Area", "วงกลม·ปริมาตร": "Circles·Volume", "อัตราส่วน/ร้อยละ": "Ratio/Percent", "ไม่มีความถนัด": "No topic affinity", "สายแทงก์": "Tank", "สายซัพพอร์ต": "Support", "สายฮีล": "Healer", "มีผลในเกาะบอส": "boss islands only", "สมุดปีศาจ": "Demon Book", "ลูกน้อง": "Minion", "ปีศาจจิ๋ว": "Mini demon", "ปีศาจจอมพลัง": "Mighty demon", "จอมปีศาจประจำโซน": "Zone Demon Lord", "บอส": "Boss", "ฮีโร่ที่ได้เปรียบ (เกาะบอส)": "Strong heroes (boss islands)", "ตามป้ายหัวข้อบนหัว": "depends on the topic badge", "ไม่มีสกิล": "No skills", "ยังไม่เจอ": "Not met yet"});
 Object.assign(I18N,{"ห้ามใช้ SR ขึ้นไป": "No SR or higher", "ใช้ทีมได้ 3 ช่อง": "Team of 3 only", "ตอบผิดได้ไม่เกิน 2 ข้อ": "Max 2 wrong answers", "ชนะให้ได้ใน 90 วินาที": "Win within 90 seconds", "เงินเริ่ม 0 รายได้ช้าลง": "Start with 0 coins, slower income", "กฎด่านท้าทาย": "Challenge rules", "ผ่านแล้ว": "Cleared", "รางวัลครั้งแรก": "First-clear reward", "เดคนี้ไม่มีฮีโร่ที่ใช้ได้ ลองจัดเดคใหม่": "No usable heroes in this deck. Try another deck", "ผ่านด่านท้าทาย": "Challenge cleared", "ตอบผิดเกิน 2 ข้อ": "More than 2 wrong answers", "หมดเวลา 90 วินาที": "Time is up (90 s)", "ได้เหรียญท้าทาย และ": "Challenge medal and", "ผ่านแล้ว (รางวัลรับได้ครั้งแรกครั้งเดียว)": "Cleared (reward is first-time only)", "ลองจัดทีมใหม่ แล้วท้าทายอีกครั้งนะ": "Try a new team and challenge again", "ด่านท้าทายถัดไป": "Next challenge", "ท้าทาย": "Challenge", "ผ่านบอสโซนนี้เพื่อปลดด่านท้าทาย": "Beat this zone's boss to unlock challenges", "ทบทวนจุดอ่อน": "Review weak spots", "จะฝึก": "Practising", "ตอบแต่ละเรื่องให้ครบ": "Answer at least", "ข้อ แล้วปุ่มนี้จะเลือกเรื่องที่ผิดบ่อยให้": "questions per topic, then this button picks your weakest topics", "เล่นเพิ่มอีกนิดก่อนนะ": "Play a bit more first", "ต้องทำแต่ละเรื่องอย่างน้อย": "each topic needs at least"});
@@ -1214,8 +1361,8 @@ var I18R=[
 [/^น้ำ (\S+) ลิตร แบ่งใส่ขวด (\d+) ขวดเท่า ๆ กัน ขวดละกี่ลิตร\?$/,'$1 L of water is shared equally into $2 bottles. How many litres per bottle?'],
 [/^ระบาย (\d+) จาก (\d+) ช่อง = (.+)$/,'$1 of $2 boxes shaded = $3'],
 [/^(.+) ของ (\d+) = \?$/,'$1 of $2 = ?']
-];
-var THR=/[\u0E00-\u0E7F]/;
+];I18R.unshift.apply(I18R,I6R);
+Object.assign(I18N,I6N);var THR=/[\u0E00-\u0E7F]/;
 var I18RE=new RegExp(Object.keys(I18N).sort(function(a,b){return b.length-a.length}).map(function(k){return k.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')}).join('|'),'g');
 function tr(s){if(LANG!=='en'||!s||typeof s!=='string'||!THR.test(s))return s;
   for(var i=0;i<I18R.length;i++)if(I18R[i][0].test(s)){s=s.replace(I18R[i][0],I18R[i][1]);break}
@@ -1432,7 +1579,29 @@ var MON=(function(){
         {shape:'tall',c:['#9B6BD6','#6A3EA8','#D2BCF2','#FFD34D','#3A1A6A'],eyes:3,mouth:'grin',cap:1}],
      h:[{shape:'golem',c:['#C9952A','#8A6414','#F2C14E','#3FA34D','#5A400A'],eyes:2,mouth:'fang',brow:1,sym:'฿'},
         {shape:'box',c:['#3FA34D','#1F6B2A','#8ED48E','#FFE45C','#0F3A14'],eyes:3,mouth:'fang',horns:'big',brow:1}]}
-  ];
+  ,
+    {g:[{shape:'blob',c:['#B49AE8','#7A5CC8','#E2D6FB','#FFD34D','#3E2A7A'],eyes:2,mouth:'grin',spots:3},
+        {shape:'orb',c:['#5CC8FF','#2E8ACF','#BDE9FF','#FF6B9D','#14466E'],eyes:1,mouth:'o',spikes:4},
+        {shape:'tall',c:['#FF8FB8','#D9578A','#FFD0E2','#7ED957','#8A2E50'],eyes:2,mouth:'fang'}],
+     m:[{shape:'wide',c:['#7ED957','#3F9A3A','#C8F5B8','#B49AE8','#1F5A1C'],eyes:3,mouth:'fang',horns:'small'},
+        {shape:'box',c:['#FFD34D','#C99419','#FFF0A8','#5CC8FF','#8A5A10'],eyes:2,mouth:'grin',sym:'×'}],
+     h:[{shape:'golem',c:['#7A5CC8','#4A3488','#B9A6E0','#FFD34D','#2A1A5A'],eyes:2,mouth:'fang',brow:1},
+        {shape:'box',c:['#3FA9A0','#1F6E68','#9EE0D8','#FF8A3D','#0F3A36'],eyes:3,mouth:'fang',horns:'big',brow:1}]},
+    {g:[{shape:'blob',c:['#BFE9FF','#7EC2E8','#F0FBFF','#2E5A9A','#3A6E9A'],eyes:2,mouth:'o',sym:'-'},
+        {shape:'orb',c:['#FFFFFF','#B8D8EE','#FFFFFF','#E4524B','#5A7A9A'],eyes:2,mouth:'grin',spikes:3},
+        {shape:'tall',c:['#5C8FD6','#2E5A9A','#A8C8F2','#FFE45C','#1E3A6A'],eyes:1,mouth:'fang',float:1}],
+     m:[{shape:'wide',c:['#7FB2F0','#3F6FD6','#C2DAFF','#FFFFFF','#1F3F8A'],eyes:3,mouth:'fang',sym:'+'},
+        {shape:'tall',c:['#E4524B','#A8302A','#FFA8A0','#BFE9FF','#6B1612'],eyes:2,mouth:'grin',cap:1}],
+     h:[{shape:'golem',c:['#9FD3FF','#5C9AD6','#E0F2FF','#2E5A9A','#24507A'],eyes:2,mouth:'fang',brow:1,sym:'-'},
+        {shape:'box',c:['#2E5A9A','#1E3A6A','#7FB2F0','#FFE45C','#0F1F3A'],eyes:3,mouth:'fang',horns:'big',brow:1}]},
+    {g:[{shape:'box',c:['#C98C4E','#8A5A2E','#F2C49A','#7ED957','#5A3416'],eyes:2,mouth:'grin',sym:'+'},
+        {shape:'blob',c:['#8CCB6E','#4E9A3E','#C8EBB8','#FFD34D','#2E5A22'],eyes:2,mouth:'o',float:1},
+        {shape:'tall',c:['#E8C36A','#A8862E','#FFF0B8','#E4524B','#6E5414'],eyes:1,mouth:'fang'}],
+     m:[{shape:'wide',c:['#A8763E','#6E4A24','#D9B98A','#5CC8FF','#4A2E14'],eyes:3,mouth:'fang',horns:'small'},
+        {shape:'orb',c:['#7ED957','#3F9A3A','#C8F5B8','#FF8A3D','#1F5A1C'],eyes:2,mouth:'grin',spikes:4}],
+     h:[{shape:'golem',c:['#8A6234','#5A3C20','#C9955A','#7ED957','#3A2410'],eyes:2,mouth:'fang',brow:1,sym:'×'},
+        {shape:'box',c:['#4E9A3E','#2E5A22','#9ED98C','#FFE45C','#16300F'],eyes:3,mouth:'fang',horns:'big',brow:1}]}
+];
   var BOSS=[
     [{name:'เจ้าก้อนบวกยักษ์',shape:'blob',c:['#5CCB4A','#2E7D2A','#A8F08C','#FFE45C','#1F5A1C'],eyes:2,mouth:'grin',sym:'+',brow:1},
      {name:'ราชาเมือกเขียว',shape:'wide',c:['#9BE15D','#4E9A2A','#D6FFAE','#FF5D5D','#2E6214'],eyes:3,mouth:'fang',float:1,brow:1},
@@ -1536,9 +1705,28 @@ var MON=(function(){
      {name:'กระปุกหมูโลภ',shape:'blob',c:['#FF8FB8','#D9578A','#FFD0E2','#FFE45C','#8A2E50'],eyes:2,mouth:'grin',spots:3},
      {name:'เครื่องคิดเงินเพี้ยน',shape:'golem',c:['#AEB8CC','#6E7890','#E2E6EE','#5CC8FF','#3A4258'],eyes:2,mouth:'fang',brow:1},
      {name:'เศรษฐีจอมขี้งก',shape:'box',k:1.1,c:['#C9952A','#8A6414','#F2C14E','#3FA34D','#5A400A'],eyes:3,mouth:'fang',horns:'big',crown:1,brow:1,spikes:4,sym:'฿'}]
-  ];
+  ,
+    [{name:'ภูตลายซ้ำ',shape:'blob',c:['#B49AE8','#7A5CC8','#E2D6FB','#FFD34D','#3E2A7A'],eyes:2,mouth:'grin',spots:4},
+     {name:'หุ่นเรียงลำดับ',shape:'golem',c:['#5CC8FF','#2E8ACF','#BDE9FF','#FFE45C','#14466E'],eyes:2,mouth:'fang',brow:1},
+     {name:'ผีเสื้อสลับสี',shape:'wide',c:['#FF8FB8','#D9578A','#FFD0E2','#7ED957','#8A2E50'],eyes:2,mouth:'grin',float:1},
+     {name:'งูลวดลาย',shape:'tall',c:['#7ED957','#3F9A3A','#C8F5B8','#B49AE8','#1F5A1C'],eyes:2,mouth:'fang',spikes:3},
+     {name:'ยักษ์ทวีคูณ',shape:'box',c:['#FFD34D','#C99419','#FFF0A8','#E4524B','#8A5A10'],eyes:3,mouth:'fang',horns:'big',brow:1,sym:'×'},
+     {name:'ราชาลวดลายนิรันดร์',shape:'golem',k:1.1,c:['#7A5CC8','#4A3488','#B9A6E0','#FFD34D','#2A1A5A'],eyes:3,mouth:'fang',horns:'big',crown:1,brow:1,spikes:4}],
+    [{name:'ก้อนน้ำแข็งติดลบ',shape:'box',c:['#BFE9FF','#7EC2E8','#F0FBFF','#2E5A9A','#3A6E9A'],eyes:2,mouth:'o',sym:'-'},
+     {name:'เพนกวินใต้ศูนย์',shape:'tall',c:['#2E3A52','#1A2236','#F0F4FA','#FF8A3D','#0F1420'],eyes:2,mouth:'grin'},
+     {name:'ปีศาจเทอร์โมมิเตอร์',shape:'tall',c:['#E4524B','#A8302A','#FFA8A0','#FFFFFF','#6B1612'],eyes:1,mouth:'fang',brow:1},
+     {name:'มนุษย์หิมะบวกลบ',shape:'blob',c:['#FFFFFF','#C8DCEC','#FFFFFF','#FF8A3D','#5A7A9A'],eyes:2,mouth:'grin',sym:'+'},
+     {name:'ภูตพายุหิมะ',shape:'orb',c:['#9FD3FF','#5C9AD6','#E0F2FF','#2E5A9A','#24507A'],eyes:3,mouth:'fang',float:1,spikes:4},
+     {name:'ราชาน้ำแข็งศูนย์องศา',shape:'golem',k:1.1,c:['#7FB2F0','#3F6FD6','#C2DAFF','#FFE45C','#1F3F8A'],eyes:3,mouth:'fang',horns:'big',crown:1,brow:1,spikes:4,sym:'-'}],
+    [{name:'โทเทมตาชั่งเอียง',shape:'box',c:['#C98C4E','#8A5A2E','#F2C49A','#7ED957','#5A3416'],eyes:2,mouth:'grin',brow:1},
+     {name:'ผีกล่องปริศนา',shape:'box',c:['#B49AE8','#7A5CC8','#E2D6FB','#FFD34D','#3E2A7A'],eyes:2,mouth:'o',float:1},
+     {name:'หุ่นตัวแปร x',shape:'golem',c:['#5C8FD6','#2E5A9A','#A8C8F2','#FFE45C','#1E3A6A'],eyes:2,mouth:'fang',sym:'×'},
+     {name:'ยักษ์สองขั้น',shape:'wide',c:['#8A6234','#5A3C20','#C9955A','#FFD34D','#3A2410'],eyes:3,mouth:'fang',horns:'small',brow:1},
+     {name:'นกฮูกโจทย์ปัญหา',shape:'blob',c:['#A8763E','#6E4A24','#D9B98A','#FFE45C','#4A2E14'],eyes:2,mouth:'grin',spots:3},
+     {name:'จอมเวทสมดุลสมการ',shape:'tall',k:1.1,c:['#4E9A3E','#2E5A22','#9ED98C','#FFE45C','#16300F'],eyes:3,mouth:'fang',horns:'big',crown:1,brow:1,spikes:4,sym:'+'}]
+];
   function set(sp,n,css){var s=Object.assign({},sp,{n:n});return{f:frames(s),w:Math.round(css*(n+PAD*2)/n),name:sp.name||''}}
-  var WS=[{dog:[],mini:['fast'],sub:[]},{dog:[],mini:['ranged'],sub:['shield']},{dog:[],mini:['heal'],sub:['split']},{dog:[],mini:['area'],sub:['boom']},{dog:[],mini:['fast'],sub:['split']},{dog:[],mini:['ranged'],sub:['shield']},{dog:[],mini:['fast'],sub:['shield']},{dog:[],mini:['ranged'],sub:['split']},{dog:[],mini:['heal'],sub:['shield']},{dog:[],mini:['fast'],sub:['boom']},{dog:[],mini:['ranged'],sub:['split']},{dog:[],mini:['area'],sub:['shield']},{dog:[],mini:['fast'],sub:['shield']},{dog:[],mini:['ranged'],sub:['boom']},{dog:[],mini:['heal'],sub:['shield']},{dog:[],mini:['fast'],sub:['split']},{dog:[],mini:['ranged'],sub:['boom']}];
+  var WS=[{dog:[],mini:['fast'],sub:[]},{dog:[],mini:['ranged'],sub:['shield']},{dog:[],mini:['heal'],sub:['split']},{dog:[],mini:['area'],sub:['boom']},{dog:[],mini:['fast'],sub:['split']},{dog:[],mini:['ranged'],sub:['shield']},{dog:[],mini:['fast'],sub:['shield']},{dog:[],mini:['ranged'],sub:['split']},{dog:[],mini:['heal'],sub:['shield']},{dog:[],mini:['fast'],sub:['boom']},{dog:[],mini:['ranged'],sub:['split']},{dog:[],mini:['area'],sub:['shield']},{dog:[],mini:['fast'],sub:['shield']},{dog:[],mini:['ranged'],sub:['boom']},{dog:[],mini:['heal'],sub:['shield']},{dog:[],mini:['fast'],sub:['split']},{dog:[],mini:['ranged'],sub:['boom']},{dog:[],mini:['fast'],sub:['shield']},{dog:[],mini:['ranged'],sub:['boom']},{dog:[],mini:['heal'],sub:['split']}];
   var BS=[[['rage'],['area'],['ranged'],['push'],['summon'],['area','push','rage']],
           [['ranged'],['area','summon'],['shield'],['fast','ranged'],['shield','rage'],['ranged','shield','summon']],
           [['summon'],['regen','push'],['area','fast'],['summon','shield'],['regen','area'],['summon','regen','rage']],
@@ -1555,7 +1743,10 @@ var MON=(function(){
           [['ranged'],['shield','area'],['summon','fast'],['push','regen'],['rage','ranged'],['area','shield','push']],
           [['shield'],['ranged'],['area','fast'],['summon','regen'],['push','shield'],['area','shield']],
           [['fast'],['summon'],['ranged','rage'],['shield','area'],['regen','push'],['area','push','rage']],
-          [['ranged'],['shield','fast'],['area','summon'],['rage','regen'],['push','ranged'],['area','shield','summon']]];
+          [['ranged'],['shield','fast'],['area','summon'],['rage','regen'],['push','ranged'],['area','shield','summon']],
+          [['ranged'],['shield','fast'],['area','summon'],['push','regen'],['rage','shield'],['area','push','summon']],
+          [['shield'],['fast','area'],['ranged','summon'],['rage','push'],['regen','shield'],['area','shield','rage']],
+          [['fast'],['ranged','shield'],['summon','area'],['regen','rage'],['push','ranged'],['area','shield','summon']]];
   function stage(w,s){
     var P=W[w],boss=BOSS[w][s],wb=s===5,o={dog:set(P.g[s%3],18,40),mini:set(P.m[s%2],20,48),sub:set(P.h[(s>>1)%2],22,56),
       big:set(boss,wb?30:26,wb?92:72),name:boss.name};
@@ -1643,6 +1834,9 @@ var SND=(function(){
     w13:{bpm:140,lead:P('7 10 14 10 15 14 10 7 5 8 12 8 14 . 10 .'),bass:P('-17 . -5 -17 -14 . -2 -14 -19 . -7 -19 -12 . 0 -12'),w:'square'},
     w14:{bpm:128,lead:P('0 4 7 9 7 4 2 . 5 9 12 9 7 . 4 .'),bass:P('-24 . -17 . -22 . -15 . -19 . -12 . -20 . -17 .'),w:'square'},
     w15:{bpm:120,lead:P('7 . 4 . 7 . 12 . 11 9 7 5 4 . 2 .'),bass:P('-17 -5 -17 -5 -20 -8 -20 -8 -22 -10 -22 -10 -19 -7 -19 -7'),w:'triangle'},
+    w17:{bpm:130,lead:P('0 4 7 11 7 4 0 4 2 5 9 12 9 5 2 .'),bass:P('-24 . -12 . -20 . -8 . -22 . -10 . -17 . -5 .'),w:'square'},
+    w18:{bpm:126,lead:P('7 . 3 . 0 3 7 10 8 . 5 . 3 5 8 .'),bass:P('-21 . -9 . -16 . -4 . -18 . -6 . -14 . -2 .'),w:'triangle'},
+    w19:{bpm:134,lead:P('0 2 4 7 4 2 0 . 5 7 9 12 9 7 5 .'),bass:P('-24 . -12 . -17 . -5 . -19 . -7 . -12 . 0 .'),w:'square'},
     w16:{bpm:136,lead:P('4 7 11 7 12 11 7 4 2 5 9 5 7 . 11 .'),bass:P('-20 . -8 . -15 . -3 . -17 . -5 . -12 . 0 .'),w:'square'},
     boss:{bpm:156,lead:P('0 0 3 0 6 5 3 0 0 0 3 0 7 6 5 3'),bass:P('-24 -24 -24 -24 -21 -21 -21 -21 -18 -18 -18 -18 -17 -17 -17 -17'),w:'sawtooth'}
   };
@@ -1748,7 +1942,7 @@ var REW={
   bossReplay:1,bossDailyCap:5, // 🏅 for replaying boss-island stages, max per day
   shardGold:{N:40,R:80,SR:150,SSR:300}  // 💰 to buy 1 shard of a hero you own
 };
-var DECO=['ธงทุ่งดอกไม้','น้ำพุหมึก','ต้นสนสูตรคูณ','คริสตัลถ้ำ','เค้กยักษ์','เตาอบขนม','กองเหรียญทอง','บีกเกอร์วิทย์','โถผลไม้ยักษ์','ป้ายลดราคา','พีระมิดจิ๋ว','เครนก่อสร้าง','รูปปั้นจอมมาร','หอคอยรูปทรง','ไม้บรรทัดยักษ์','นาฬิกาแดด','กระปุกออมสินทอง'];
+var DECO=['ธงทุ่งดอกไม้','น้ำพุหมึก','ต้นสนสูตรคูณ','คริสตัลถ้ำ','เค้กยักษ์','เตาอบขนม','กองเหรียญทอง','บีกเกอร์วิทย์','โถผลไม้ยักษ์','ป้ายลดราคา','พีระมิดจิ๋ว','เครนก่อสร้าง','รูปปั้นจอมมาร','หอคอยรูปทรง','ไม้บรรทัดยักษ์','นาฬิกาแดด','กระปุกออมสินทอง','เสาลวดลาย','มนุษย์หิมะติดลบ','ตาชั่งทองคำ'];
 function zStars(w){var t=0;for(var i=0;i<NS;i++)t+=P.st[w*NS+i]||0;return t}
 function chestReady(w){var c=P.chest[w]||[],z=zStars(w),n=0;REW.chest.forEach(function(r,i){if(z>=r.at&&!c[i])n++});return n}
 function chestBox(w){var c=P.chest[w]||[],z=zStars(w);
@@ -1756,7 +1950,7 @@ function chestBox(w){var c=P.chest[w]||[],z=zStars(w);
   REW.chest.forEach(function(r,i){var ok=z>=r.at,got=c[i];
     var rw=[r.gold?'💰 '+r.gold:'',r.tk?'🎫 '+r.tk:'',r.deco?'🎀 '+DECO[w]:''].filter(Boolean).join(' · ');
     h+='<div class="chr2'+(got?' got':ok?' ok':'')+'"><b>'+(got?'✅':ok?'🎁':'🔒')+' ⭐ '+r.at+'</b><span>'+rw+'</span>'+(ok&&!got?'<button class="chc" data-i="'+i+'">เปิดหีบ</button>':got?'<small>รับแล้ว</small>':'<small>'+LL('อีก '+(r.at-z)+' ดาว',(r.at-z)+' more ⭐')+'</small>')+'</div>'});
-  h+='</div><p class="note">🎀 ของตกแต่งเก็บไว้แต่งโรงเรียน (ระบบตกแต่งมาในเวอร์ชันถัดไป)</p><button id="chx">ปิด</button>';
+  h+='</div><p class="note">🎀 นำของตกแต่งไปวางได้ที่ 🏫 โรงเรียนของฉัน</p><button id="chx">ปิด</button>';
   $('ovbox').innerHTML='<div class="brf">'+h+'</div>';$('ov').className='';
   [].forEach.call(document.querySelectorAll('.chc'),function(b){b.onclick=function(){var i=+b.getAttribute('data-i'),r=REW.chest[i];P.chest[w]=P.chest[w]||[];if(P.chest[w][i])return;
     P.chest[w][i]=1;if(r.gold)P.gold+=r.gold;if(r.tk)P.tickets+=r.tk;if(r.deco&&P.deco.indexOf('z'+w)<0)P.deco.push('z'+w);saveP();SND.sfx('rare','SR');confetti();chestBox(w);if(window.__scr==='map')rZone(w)}});
@@ -1857,7 +2051,7 @@ function rShop(){shopInit();var O=shopOffer(),S0=P.shop,h=topbar();
   var tl=MSHOP.tkDay-S0.td.n;
   h+='<div class="ssec">🎫 ตั๋วกาชา</div><div class="srow"><span>🎫 ×1 <small>'+LL('วันนี้ซื้อได้อีก '+tl+' ใบ','Today: '+tl+' left')+'</small></span>'+
     (tl>0?'<button class="sbuy" data-t="t" data-k="tk" data-p="'+MSHOP.tk+'">🏅 '+MSHOP.tk+'</button>':'<button class="sbuy" disabled>ครบแล้ว</button>')+'</div>';
-  h+='<p class="note">🎀 ของตกแต่งเก็บไว้แต่งโรงเรียน (ระบบตกแต่งมาในเวอร์ชันถัดไป)</p></div>';
+  h+='<p class="note">🎀 นำของตกแต่งไปวางได้ที่ 🏫 โรงเรียนของฉัน</p></div>';
   HS.innerHTML=h;bindTop();
   [].forEach.call(HS.querySelectorAll('.sbuy[data-t]'),function(b){b.onclick=function(){var t=b.getAttribute('data-t'),k=b.getAttribute('data-k'),p=+b.getAttribute('data-p')||0;
     if(P.medal<p){SND.sfx('tap');b.classList.add('no');b.textContent=LL('🏅 ไม่พอ','Not enough 🏅');setTimeout(function(){if(b.isConnected){b.classList.remove('no');b.textContent='🏅 '+p}},1200);return}
@@ -2234,7 +2428,11 @@ cubes:function(g){var C3=function(x,y,s,c1,c2,c3){R(g,x,y-s,s,s,c1);for(var i=0;
     {sky:['#E6F4D8','#F2FAEA'],gr:'#C9E3A8',gd:'#A8CF82',dec:'rocks'},
     {sky:['#DDEBFF','#EEF5FF'],gr:'#BCD3F2',gd:'#9FBEE4',dec:'rocks'},
     {sky:['#FFF2C9','#FFF8E6'],gr:'#F2DC9B',gd:'#E6CB82',dec:'rocks'}
-  ];
+  ,
+    {sky:['#EDE4FB','#F7F2FF'],gr:'#C9B6EC',gd:'#A891D8',dec:'rocks'},
+    {sky:['#DDF2FF','#F0FAFF'],gr:'#BFE3F7',gd:'#8FC6E6',dec:'rocks'},
+    {sky:['#E2F4DA','#F1FAEC'],gr:'#A8D49A',gd:'#7FB86E',dec:'flowers'}
+];
   function deco(g,env,seed,w,h,gy){
     var r=seed;function rn(){r=(r*9301+49297)%233280;return r/233280}
     for(var i=0;i<6;i++){var x=Math.floor(rn()*w),y=gy+1+Math.floor(rn()*(h-gy-3));
@@ -2466,7 +2664,10 @@ cubes:function(g){var C3=function(x,y,s,c1,c2,c3){R(g,x,y-s,s,s,c1);for(var i=0;
     14:{sky:'linear-gradient(#9FD6F5 0 20%,#B8E3F8 20% 38%,#D4EFFB 38% 54%,#EAF8FF 54%)',sun:1,cld:1,up:1},
     15:{sky:'linear-gradient(#FFB48A 0 18%,#FFCBA0 18% 34%,#FFDDB8 34% 50%,#FFEED6 50%)',sun:1,cld:1},
     16:{sky:'linear-gradient(#8FD0F5 0 20%,#A8DCF7 20% 38%,#C8E9FA 38% 54%,#E4F5FF 54%)',sun:1,cld:1}
-  };
+  ,
+    17:{sky:'linear-gradient(#C9B6EC 0 20%,#D8CAF2 20% 38%,#E6DDF7 38% 54%,#F3EEFC 54%)',sun:1,cld:1},
+    18:{sky:'linear-gradient(#9FD3F2 0 20%,#B8E0F6 20% 38%,#D0EBFA 38% 54%,#E8F6FD 54%)',sun:1,cld:1},
+    19:{sky:'linear-gradient(#A8D8A0 0 20%,#BEE3B6 20% 38%,#D3EDCC 38% 54%,#E8F6E2 54%)',sun:1,cld:1}};
   function bgLayer2(w,part){
     var key='bg'+w+part;if(C[key])return C[key];var g,x,y,i,H=80,TW=160;
     if(part==='sun'||part==='cld')return C[key]=bgLayer(0,part);
@@ -2638,16 +2839,62 @@ cubes:function(g){var C3=function(x,y,s,c1,c2,c3){R(g,x,y-s,s,s,c1);for(var i=0;
       return C[key]=url(g,2)}
     return null;
   }
+  /* ===== v3.35 art: patterns (17), integers/ice (18), equations/ruins (19) ===== */
+  function shp(g,x,y,k,c){if(k===0)E(g,x,y-2,2.2,2.2,c);else if(k===1)T(g,x,y,2,4,c);else R(g,x-2,y-4,4,4,c)}
+  function thermo(g,x,y,lv){R(g,x-1,y-16,3,13,'#FFFFFF');R(g,x-1,y-16,1,13,'#DDEAF5');for(var i=0;i<4;i++)g.s(x+2,y-14+i*3,'#5E6E8A');R(g,x,y-3-lv,1,lv,'#E4524B');E(g,x,y-2,2.4,2.4,'#E4524B');g.s(x-1,y-3,'#FF9A9A')}
+  function snowman(g,x,y){E(g,x,y-3,3.4,3,'#FFFFFF');E(g,x,y-8,2.4,2.2,'#FFFFFF');g.s(x-1,y-9,'#1E2A44');g.s(x+1,y-9,'#1E2A44');g.s(x,y-8,'#FF8A3D');R(g,x-2,y-6,5,1,'#E4524B');R(g,x-2,y-11,5,1,'#1E2A44');R(g,x-1,y-13,3,2,'#1E2A44');R(g,x-1,y-4,3,1,'#5C8FD6')}
+  function icecube(g,x,y){R(g,x-3,y-6,7,6,'#BFE6FA');R(g,x-3,y-6,7,1,'#FFFFFF');R(g,x-3,y-6,1,6,'#E8F6FD');g.s(x+1,y-4,'#FFFFFF');R(g,x-3,y-1,7,1,'#8EC5E8')}
+  function moai(g,x,y){R(g,x-3,y-14,7,14,'#9A9488');R(g,x-3,y-14,7,1,'#B5AFA2');R(g,x-4,y-12,1,4,'#8A8478');R(g,x-2,y-11,2,1,'#5A564E');R(g,x+1,y-11,2,1,'#5A564E');R(g,x,y-10,1,4,'#7A766A');R(g,x-1,y-5,3,1,'#5A564E');R(g,x-3,y-14,7,1,'#6FA860')}
+  function scale(g,x,y){R(g,x,y-14,1,14,'#C9952E');R(g,x-3,y-1,7,1,'#A8762E');R(g,x-8,y-14,17,1,'#E8B84A');L(g,x-8,y-13,x-10,y-8,'#A8762E');L(g,x-8,y-13,x-6,y-8,'#A8762E');R(g,x-11,y-8,6,1,'#E8B84A');L(g,x+8,y-13,x+6,y-8,'#A8762E');L(g,x+8,y-13,x+10,y-8,'#A8762E');R(g,x+5,y-8,6,1,'#E8B84A');R(g,x-10,y-10,3,2,'#E4524B');R(g,x+6,y-10,4,2,'#5C8FD6');g.s(x,y-15,'#FFE45C')}
+  function eqpil(g,x,y,h){R(g,x-2,y-h,5,h,'#B9B2A4');R(g,x-2,y-h,1,h,'#D2CCBE');R(g,x-3,y-h-1,7,1,'#8A8478');R(g,x-3,y-1,7,1,'#8A8478');R(g,x-1,y-h+3,3,1,'#5A564E');R(g,x-1,y-h+5,3,1,'#5A564E')}
+  function bgLayer6(w,part){
+    var key='bg'+w+part;if(C[key])return C[key];var g,x,y,i,j,H=80,TW=160;
+    if(part==='sun'||part==='cld')return C[key]=bgLayer(0,part);
+    var PC=['#E4524B','#FFC83D','#5C8FD6','#7ED957'];
+    if(part==='far'){g=G(TW,H);
+      if(w===17){fillBelow(g,TW,H,function(x){return ph(x,TW,50,[[2,2,0],[1,5,1]])},'#C2B0E6');
+        for(i=0;i<8;i++){x=8+i*20+Math.floor(hsh(i,2,17)*6);var n=3+Math.floor(hsh(2,i,17)*4);for(j=0;j<n;j++)shp(g,x,48-j*5,(i+j)%3,j%2?'#B3A0DE':'#A891D8')}}
+      else if(w===18){fillBelow(g,TW,H,function(x){return ph(x,TW,40,[[6,2,.3],[3,5,1],[1.5,9,2]])},function(x,y,h){return y<h+4?'#FFFFFF':y<h+7?'#E8F4FC':'#B6D6EE'});
+        fillBelow(g,TW,H,function(x){return ph(x,TW,52,[[2,3,1],[1,7,0]])},'#CFE6F6')}
+      else{for(i=0;i<3;i++){var px=20+i*55,ww=26;for(j=0;j<5;j++)R(g,px-ww+j*5,46-j*5,(ww-j*5)*2,5,j%2?'#93B88A':'#86AD7E');R(g,px-3,22,6,4,'#7A9E72')}
+        fillBelow(g,TW,H,function(x){return ph(x,TW,50,[[2,4,0],[1.5,9,1]])},function(x,y,h){return y<h+2?'#7FB86E':'#9CCB8C'})}
+      return C[key]=url(g,2)}
+    if(part==='mid'){g=G(TW,H);var gh=function(x){return ph(x,TW,52,[[1.5,2,1],[1,5,0]])};
+      var top={17:'#E6DDF7',18:'#FFFFFF',19:'#B5D9A6'}[w],bot={17:'#D8CAF2',18:'#E3F1FB',19:'#A1CC90'}[w];
+      fillBelow(g,TW,H,gh,function(x,y,h){return y<h+1?top:bot});
+      for(i=0;i<8;i++){x=10+i*19+Math.floor(hsh(i,w,4)*5);y=Math.round(gh(x));var q=i%3;
+        if(w===17){if(q===0){for(j=0;j<4;j++)R(g,x-2,y-4-j*4,5,4,PC[j%2?1:0])}else if(q===1){for(j=0;j<5;j++)shp(g,x-8+j*4,y,j%2,PC[j%3])}else{R(g,x,y-12,1,12,'#7A6A9E');for(j=0;j<3;j++)E(g,x+(j%2?3:-3),y-12+j*4,1.6,1.6,PC[(j+2)%4])}}
+        else if(w===18){if(q===0)thermo(g,x,y,3+Math.floor(hsh(i,1,18)*8));else if(q===1)snowman(g,x,y);else{icecube(g,x-3,y);icecube(g,x+3,y);icecube(g,x,y-5)}}
+        else{if(q===0)moai(g,x,y);else if(q===1)scale(g,x,y);else eqpil(g,x,y,10+(i%2)*4)}}
+      return C[key]=url(g,2)}
+    if(part==='near'){TW=128;g=G(TW,H);var gy=54;
+      if(w===17){for(y=gy;y<H;y++)for(x=0;x<TW;x++){var tx=Math.floor(x/8),ty=Math.floor((y-gy)/5);g.s(x,y,(x%8===0||(y-gy)%5===0)?'#B9A6E0':['#F3EEFC','#E6DDF7','#FFF3D6'][(tx+ty)%3])}
+        R(g,0,gy,TW,1,'#9A88C8');for(y=70;y<76;y++)for(x=0;x<TW;x++)g.s(x,y,(y===70||y===75)?'#5E4E8A':PC[Math.floor(x/4)%3]);
+        for(i=0;i<8;i++){x=Math.floor(hsh(i,3,27)*TW);y=gy+6+Math.floor(hsh(3,i,27)*9);shp(g,x,y,i%3,PC[i%4])}}
+      else if(w===18){for(y=gy;y<H;y++)for(x=0;x<TW;x++)g.s(x,y,hsh(x>>1,y>>1,18)>.88?'#FFFFFF':(x+y*2)%23===0?'#A9D6F2':'#D6EEFA');
+        R(g,0,gy,TW,1,'#9FC4DE');for(y=70;y<76;y++)for(x=0;x<TW;x++)g.s(x,y,(y===70||y===75)?'#5E7EA0':(x%16===0)?'#1E2A44':(x%16===8&&y<73)?'#5E7EA0':'#FFFFFF');
+        for(i=0;i<7;i++){x=Math.floor(hsh(i,3,28)*TW);y=gy+6+Math.floor(hsh(3,i,28)*9);if(i%2)icecube(g,x,y);else{R(g,x-2,y-2,5,1,i%4?'#5C8FD6':'#E4524B');if(!(i%4))R(g,x,y-4,1,5,'#E4524B')}}}
+      else{for(y=gy;y<H;y++)for(x=0;x<TW;x++){var row=Math.floor((y-gy)/4),cx=(x+(row%2)*6)%12;g.s(x,y,(cx===0||(y-gy)%4===0)?'#8A8478':hsh(x>>1,y>>1,19)>.86?'#7FB86E':'#B9B2A4')}
+        R(g,0,gy,TW,1,'#6FA860');for(y=70;y<76;y++)for(x=0;x<TW;x++)g.s(x,y,(y===70||y===75)?'#5A564E':((x%12)>=3&&(x%12)<=8&&(y===72||y===73))?'#E8B84A':'#9A9488');
+        for(i=0;i<7;i++){x=Math.floor(hsh(i,3,29)*TW);y=gy+6+Math.floor(hsh(3,i,29)*9);if(i%2){E(g,x,y-1,2,1.4,'#5DAA58');g.s(x+1,y-3,'#7ED957')}else{R(g,x-2,y-3,5,3,'#A8A294');R(g,x-2,y-3,5,1,'#C4BEB0')}}}
+      return C[key]=url(g,2)}
+    if(part==='pet'){TW=96;g=G(TW,H);for(i=0;i<10;i++){x=Math.floor(hsh(i,7,4+w)*TW);y=Math.floor(hsh(7,i,4+w)*60);
+        if(w===17){var c3=PC[i%4];if(i%3===0){g.s(x,y,c3);g.s(x+1,y,c3);g.s(x,y+1,c3);g.s(x+1,y+1,c3)}else if(i%3===1){g.s(x,y,c3);g.s(x-1,y+1,c3);g.s(x,y+1,c3);g.s(x+1,y+1,c3)}else{g.s(x,y,c3);g.s(x+1,y,c3)}}
+        else if(w===18){g.s(x,y,'#FFFFFF');g.s(x-1,y,'#E8F6FD');g.s(x+1,y,'#E8F6FD');g.s(x,y-1,'#E8F6FD');g.s(x,y+1,'#E8F6FD')}
+        else{g.s(x,y,'#FFE45C');if(i%2){g.s(x+1,y,'#7ED957');g.s(x,y+1,'#5DAA58')}}}
+      return C[key]=url(g,2)}
+    return null;
+  }
   function backdrop(w){
     if(w===0)return {sky:'linear-gradient(#7EC8F5 0 18%,#9AD6F8 18% 34%,#B8E3FB 34% 50%,#D6F0FF 50% 66%,#E8F7FF 66%)',sun:bgLayer(0,'sun'),
       order:['far','cld','mid','near','pet'],far:bgLayer(0,'far'),cld:bgLayer(0,'cld'),mid:bgLayer(0,'mid'),near:bgLayer(0,'near'),pet:bgLayer(0,'pet'),tw:{far:160,cld:240,mid:160,near:128,pet:96}};
     var T0=BGT[w];if(!T0)return null;
     var o={sky:T0.sky,sun:T0.sun?bgLayer2(w,'sun'):null,up:!!T0.up,order:['far'].concat(T0.cld?['cld']:[],['mid'],T0.top?['top']:[],['near','pet']),tw:{far:160,cld:240,mid:160,top:160,near:128,pet:96}};
-    var sw={12:3,13:10,14:11,15:7,16:6}[w]||w;o.order.forEach(function(k){o[k]=(sw>=10?bgLayer5:sw>=8?bgLayer4:sw>=6?bgLayer3:bgLayer2)(sw,k)});if(sw!==w)o.dark=1;return o;
+    var sw={12:3,13:10,14:11,15:7,16:6}[w]||w;o.order.forEach(function(k){o[k]=(sw>=17?bgLayer6:sw>=10?bgLayer5:sw>=8?bgLayer4:sw>=6?bgLayer3:bgLayer2)(sw,k)});if(sw!==w)o.dark=1;return o;
   }
   // ---- zone map (6 stages) ----
-  var ZROAD=[['#D9B98A','#B98A5A'],['#CFE3E0','#8FB5B0'],['#C49A66','#8A6234'],['#8E80B0','#3A2E5A'],['#F2D7A6','#C9955A'],['#8A5A3A','#5A3424'],['#C98C4E','#8A5A2E'],['#AEB8CC','#6E7890'],['#F2DCB8','#C9955A'],['#E86F6F','#A83838'],['#D9B98A','#8A6A3E'],['#FFD34D','#2B2F3E'],['#8A3A2A','#5A1A14'],['#7466C2','#3A2E5A'],['#C98C4E','#8A5A2E'],['#AEB8CC','#6E7890'],['#E8C36A','#A8862E']];
-  var ZGR=[['#7BC96F','#94D886','#62B058'],['#7EC8C0','#9ADAD2','#5FA8A0'],['#4C9A4A','#5DAA58','#3A7D38'],['#6B5B8F','#7A6A9E','#564873'],['#F6B8CF','#FFD6E5','#E897B5'],['#E9B97A','#F5D29E','#C9955A'],['#E2C690','#EED8A8','#CFA866'],['#C6D2EE','#DDE6F7','#A8B8DC'],['#BFE6D6','#D4F0E4','#9FD3BE'],['#D9CCEB','#E8DFF5','#BFAEDB'],['#E8D5A8','#F2E4C2','#CFB98A'],['#BFD8F2','#D6E6F8','#9FBEE4'],['#3A2E40','#4A3C52','#2B1F30'],['#2B2442','#3A3058','#1F1A33'],['#8FCB7A','#A8DA94','#76B062'],['#9FC4E8','#B8D6F2','#86AEDA'],['#E6D08A','#F0DEA8','#CDB46A']];
+  var ZROAD=[['#D9B98A','#B98A5A'],['#CFE3E0','#8FB5B0'],['#C49A66','#8A6234'],['#8E80B0','#3A2E5A'],['#F2D7A6','#C9955A'],['#8A5A3A','#5A3424'],['#C98C4E','#8A5A2E'],['#AEB8CC','#6E7890'],['#F2DCB8','#C9955A'],['#E86F6F','#A83838'],['#D9B98A','#8A6A3E'],['#FFD34D','#2B2F3E'],['#8A3A2A','#5A1A14'],['#7466C2','#3A2E5A'],['#C98C4E','#8A5A2E'],['#AEB8CC','#6E7890'],['#E8C36A','#A8862E'],['#9A88C8','#5E4E8A'],['#E8F4FC','#9FC4DE'],['#C98C4E','#8A5A2E']];
+  var ZGR=[['#7BC96F','#94D886','#62B058'],['#7EC8C0','#9ADAD2','#5FA8A0'],['#4C9A4A','#5DAA58','#3A7D38'],['#6B5B8F','#7A6A9E','#564873'],['#F6B8CF','#FFD6E5','#E897B5'],['#E9B97A','#F5D29E','#C9955A'],['#E2C690','#EED8A8','#CFA866'],['#C6D2EE','#DDE6F7','#A8B8DC'],['#BFE6D6','#D4F0E4','#9FD3BE'],['#D9CCEB','#E8DFF5','#BFAEDB'],['#E8D5A8','#F2E4C2','#CFB98A'],['#BFD8F2','#D6E6F8','#9FBEE4'],['#3A2E40','#4A3C52','#2B1F30'],['#2B2442','#3A3058','#1F1A33'],['#8FCB7A','#A8DA94','#76B062'],['#9FC4E8','#B8D6F2','#86AEDA'],['#E6D08A','#F0DEA8','#CDB46A'],['#C9B6EC','#D8CAF2','#A891D8'],['#D6EEFA','#E8F6FD','#A9D6F2'],['#A8D49A','#BEE3B6','#7FB86E']];
   function terrain(w,L){
     var key='t2'+w+(L?'L':'');if(C[key])return C[key];
     var W=L?210:90,H=L?80:175,g=G(W,H),x,y,i,P0=L?ZPOSL:(typeof ZPOS!=='undefined'?ZPOS:[{x:26,y:84},{x:72,y:70},{x:30,y:55},{x:72,y:40},{x:28,y:25},{x:60,y:9}]),OFF=L?ZLOFF:4;
@@ -2722,6 +2969,10 @@ var STG=[
   [['ทุ่งไม้บรรทัด','flower'],['กังหันตาชั่ง','windmill'],['บ่อน้ำถ้วยตวง','well'],['สะพานเทียบหน่วย','bridge'],['โกดังชั่งตวงวัด','cubes'],['ปราสาทราชาหน่วยวัด','castle']],
   [['สวนนาฬิกาแดด','flower'],['หอนาฬิกาเข็มยาว','clocktower'],['ท่าเรือตรงเวลา','ship'],['ห้องสมุดปฏิทิน','library'],['หอคอยเวลาเดิน','tower'],['วิหารราชาเวลา','temple']],
   [['ร้านขนมหยอดเหรียญ','stall'],['ตลาดนัดทอนเงิน','shop'],['ห้างสตางค์ทอง','mall'],['ครัวคิดเงิน','kitchen'],['ประภาคารเหรียญทอง','lighthouse'],['ปราสาทเศรษฐีเงินทอง','castle']]
+,
+  [['ลานกระเบื้องลวดลาย','flower'],['บ่อน้ำนับถอยหลัง','well'],['สะพานสลับสี','bridge'],['หอคอยทวีคูณ','tower'],['พีระมิดขั้นบันได','pyramid'],['วิหารราชาลวดลาย','temple']],
+  [['ลานหิมะศูนย์องศา','flower'],['ท่าเรือน้ำแข็ง','ship'],['กังหันลมหนาว','windmill'],['ประภาคารเหนือศูนย์','lighthouse'],['ถ้ำน้ำแข็งใต้ดิน','cubes'],['ปราสาทราชาน้ำแข็ง','castle']],
+  [['ลานโทเทมตาชั่ง','flower'],['ห้องสมุดตัวแปร','library'],['บ่อน้ำสมดุล','well'],['หอนาฬิกาสองขั้น','clocktower'],['ตลาดโจทย์ปัญหา','stall'],['วิหารจอมเวทสมการ','temple']]
 ];
 /* ---------- difficulty ---------- */
 var DIFF=[{n:'ง่าย',e:'🌱',m:1,dq:0,ch:3,fa:0},{n:'ปานกลาง',e:'🔥',m:1.3,dq:3,ch:3,fa:1},{n:'ยาก',e:'💀',m:2,dq:6,ch:4,fa:2}];
@@ -2739,7 +2990,7 @@ var ISLES=[
   {n:'เกาะอัตราส่วนและร้อยละ',d:'อัตราส่วน · ร้อยละ',lm:['kitchen','mall'],x:6,y:62,w:36,w0:8},
   {n:'เกาะเรขาคณิต',d:'มุม · พื้นที่ · ปริมาตร',lm:['pyramid','cubes'],x:3,y:12,w:50,w0:10,pg:1,cq:38},
   {n:'เกาะการวัด เวลา และเงิน',d:'วัด · เวลา · เงิน',lm:['clocktower','stall'],x:54,y:3,w:43,w0:14,pg:1,cq:34},
-  {n:'เกาะสมการและแบบรูป',d:'เร็ว ๆ นี้',lm:['temple','totem'],x:52,y:47,w:44,soon:1,pg:1,cq:34},
+  {n:'เกาะแบบรูป จำนวนเต็ม สมการ',d:'แบบรูป · จำนวนเต็ม · สมการ',lm:['temple','totem'],x:52,y:47,w:44,w0:17,pg:1,cq:34},
   {n:'เกาะสถิติและกราฟ',d:'เร็ว ๆ นี้',lm:['lighthouse','tower'],x:6,y:62,w:36,soon:1,pg:1,cq:26},
   {n:'👑 เกาะบอส',d:'รวมทุกเรื่อง',lm:['volcano','castle'],x:44,y:69,w:22,w0:12,pg:0,cq:16,boss:1},
   {n:'👑 เกาะบอส',d:'รวมทุกเรื่อง',lm:['volcano','temple'],x:44,y:69,w:22,w0:13,pg:1,cq:16,boss:1}
@@ -2789,7 +3040,7 @@ function rIsle(w){
 /* ---------- island + zone maps ---------- */
 var ZPOS=[{x:26,y:84},{x:72,y:70},{x:30,y:55},{x:72,y:40},{x:28,y:25},{x:60,y:9}];
 var ZPOSL=[{x:11,y:58},{x:26,y:20},{x:41,y:58},{x:56,y:20},{x:71,y:58},{x:86,y:22}],ZLOFF=10;
-var IPOS=[{x:26,y:74},{x:74,y:74},{x:26,y:28},{x:74,y:28},{x:30,y:68},{x:70,y:32},{x:30,y:68},{x:70,y:32},{x:30,y:68},{x:70,y:32},{x:30,y:68},{x:70,y:32},{x:50,y:50},{x:50,y:50},{x:50,y:76},{x:28,y:40},{x:74,y:36}];
+var IPOS=[{x:26,y:74},{x:74,y:74},{x:26,y:28},{x:74,y:28},{x:30,y:68},{x:70,y:32},{x:30,y:68},{x:70,y:32},{x:30,y:68},{x:70,y:32},{x:30,y:68},{x:70,y:32},{x:50,y:50},{x:50,y:50},{x:50,y:76},{x:28,y:40},{x:74,y:36},{x:50,y:76},{x:28,y:40},{x:74,y:36}];
 function clouds(cb,label){
   var o=document.createElement('div');o.className='clouds';
   o.innerHTML='<i class="cl l"></i><i class="cl r"></i>'+(label?'<b>'+label+'</b>':'');document.body.appendChild(o);
@@ -3045,8 +3296,12 @@ var WORLDS=[
 ,{op:'u',isl:5,eb:740,title:'ความยาว น้ำหนัก ความจุ',name:'เมืองไม้บรรทัด',icon:'📏',tip:'วัด ชั่ง ตวงให้ถูก ได้เหรียญเรียกฮีโร่!',hpm:1.05,fast:13,bg:'linear-gradient(#E6F4D8 0 62%,#C9E3A8 62% 100%)',col:'#9BD46A',t:[40,80,120],q:[7,14,21],fk:['mlen', 'mwt', 'mcap', 'mcmp', 'mwd', 'boss'],bk:['mlen', 'mwt', 'mcap', 'mcmp', 'mwd']}
 ,{op:'u',isl:5,eb:770,title:'เวลาและปฏิทิน',name:'หอนาฬิกาเวลาเดิน',icon:'⏰',tip:'อ่านเวลาให้ถูก ได้เหรียญเรียกฮีโร่!',hpm:1.12,fast:13,bg:'linear-gradient(#DDEBFF 0 62%,#BCD3F2 62% 100%)',col:'#7FB2F0',t:[40,80,120],q:[7,14,21],fk:['tclk', 'taft', 'tdur', 'tcnv', 'twd', 'boss'],bk:['tclk', 'taft', 'tdur', 'tcnv', 'twd']}
 ,{op:'u',isl:5,eb:760,title:'เงินและการซื้อขาย',name:'ตลาดนัดเงินทอง',icon:'💰',tip:'นับเงิน ทอนเงินให้ถูก ได้เหรียญเรียกฮีโร่!',hpm:1.06,fast:13,bg:'linear-gradient(#FFF2C9 0 62%,#F2DC9B 62% 100%)',col:'#F2C14E',t:[40,80,120],q:[7,14,21],fk:['ccnt', 'cnot', 'cchg', 'csat', 'cbuy', 'boss'],bk:['ccnt', 'cnot', 'cchg', 'csat', 'cbuy']}
+,
+{op:'e',isl:6,eb:760,title:'แบบรูป',name:'วิหารลวดลาย',icon:'🔷',tip:'หาตัวที่หายไปของแบบรูป ได้เหรียญเรียกฮีโร่!',hpm:1.08,fast:10,bg:'linear-gradient(#EDE4FB 0 62%,#C9B6EC 62% 100%)',col:'#B49AE8',t:[40,80,120],q:[7,14,21],fk:['epa','eps','epp','epm','epg','boss'],bk:['epa','eps','epp','epm','epg']}
+,{op:'e',isl:6,eb:780,title:'จำนวนเต็ม',name:'ภูเขาน้ำแข็งใต้ศูนย์',icon:'🧊',tip:'จำนวนติดลบก็ไม่กลัว ตอบถูกได้เหรียญ!',hpm:1.12,fast:10,bg:'linear-gradient(#DDF2FF 0 62%,#A9D6F2 62% 100%)',col:'#8FD3FF',t:[40,80,120],q:[7,14,21],fk:['zid','zcm','zad','zsb','zmd','boss'],bk:['zid','zcm','zad','zsb','zmd']}
+,{op:'e',isl:6,eb:800,title:'สมการ',name:'ป่าโทเทมตาชั่ง',icon:'🗿',tip:'ทำตาชั่งให้สมดุล หาค่าตัวไม่ทราบค่า!',hpm:1.15,fast:12,bg:'linear-gradient(#E2F4DA 0 62%,#A8D49A 62% 100%)',col:'#8CCB6E',t:[40,80,120],q:[7,14,21],fk:['qas','qmd','qx','q2s','qwd','boss'],bk:['qas','qmd','qx','q2s','qwd']}
 ];
-var WREQ=[0,10,24,40,0,0,0,0,0,0,0,0,0,0,0,0,0],NS=6;
+var WREQ=[0,10,24,40,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],NS=6;
 var BAL={"plan": [["mini", "mini", "sub"], ["mini", "sub", "sub"], ["mini", "sub", "boss"], ["sub", "sub", "boss"]], "trig": [0.85, 0.7, 0.5], "hps": 0.05, "bossM": 1.0, "gapMin": 4.5, "gap0": 7.5, "gapS": 0.3, "gapW": 0.2, "ebs": 0.06, "rush": [[0.7, 0.25, 0.05], [0.65, 0.25, 0.1], [0.6, 0.3, 0.1]], "rushGap": 0.9, "gain": 10, "gainF": 15, "coin0": 20, "first": 8, "baseDef": 1};
 function mkStage(w,s){
   var W=WORLDS[w],boss=s===NS-1,tm=1+.06*s;
@@ -3108,7 +3363,7 @@ function gen(){
   var d=Math.max(0,LEVEL.d+(LEVEL.dq||0)-(S.asked<2?1:0)),op=LEVEL.op,p;
   var A=[10,12,14,16,18,20,25,30,40,50,60,99][d],cy=[0,.2,.4,.5,.6,.7,.5,.5,.5,.5,.5,.5][d],H=[3,4,5,6,8,9,9,10,10,11,12,12][d];
   if(op==='m'){var ff=frontFoe(),tg=ff?ff.mt:(S.qtag&&mtags().indexOf(S.qtag)>=0?S.qtag:mtags()[rnd(0,mtags().length-1)]);S.qtag=tg;var mq=mtGen(tg,LEVEL.s,S.asked<2&&DI()>0?DI()-1:DI());mq.mt=tg;return mq}
-  if(op==='f'||op==='d'||op==='r'||op==='g'||op==='u')p={k:LEVEL.fk,pool:LEVEL.fpool,dif:DI(),warm:S.asked<2};else if(op==='+'||op==='-')p={max:A,carry:cy};else if(op==='×')p={lo:2,hi:H};else p={bmax:H,qmax:H};
+  if(op==='f'||op==='d'||op==='r'||op==='g'||op==='u'||op==='e')p={k:LEVEL.fk,pool:LEVEL.fpool,dif:DI(),warm:S.asked<2};else if(op==='+'||op==='-')p={max:A,carry:cy};else if(op==='×')p={lo:2,hi:H};else p={bmax:H,qmax:H};
   return mkQ(op,p);
 }
 function FR(x){
@@ -3939,6 +4194,7 @@ function mkU(p){
 }
 function mkQ(op,p){
   if(op==='u')return mkU(p);
+  if(op==='e')return mkE(p);
   if(op==='g')return mkG(p);
   if(op==='r'||op==='p')return mkR(p);
   if(op==='f')return mkF(p);
@@ -4628,7 +4884,7 @@ for(var tt=2;tt<=9;tt++)TOPICS.push({id:'t'+tt,op:'×',label:'แม่ '+tt,p:{
 TOPICS.push({id:'qu1all',op:'u',label:'ผสมวัด',p:{k:'any',pool:['mlen','mwt','mcap','mcmp','mwd']}});
 TOPICS.push({id:'qu2all',op:'u',label:'ผสมเวลา',p:{k:'any',pool:['tclk','taft','tdur','tcnv','twd']}});
 TOPICS.push({id:'qu3all',op:'u',label:'ผสมเงิน',p:{k:'any',pool:['ccnt','cnot','cchg','csat','cbuy']}});
-var GT=[['+','➕ บวก'],['-','➖ ลบ'],['×','✖️ สูตรคูณ'],['÷','➗ หาร'],['f','🍰 เศษส่วน'],['d','🪙 ทศนิยม'],['r','⚖️ อัตราส่วน'],['p','💯 ร้อยละ'],['g','📐 เรขาคณิต'],['u','📏 การวัด'],['*','🔀 ผสม']];
+var GT=[['+','➕ บวก'],['-','➖ ลบ'],['×','✖️ สูตรคูณ'],['÷','➗ หาร'],['f','🍰 เศษส่วน'],['d','🪙 ทศนิยม'],['r','⚖️ อัตราส่วน'],['p','💯 ร้อยละ'],['g','📐 เรขาคณิต'],['u','📏 การวัด'],['e','🧩 แบบรูป·สมการ'],['*','🔀 ผสม']];
 function rPrac(){
   var wk=wsWeak();
   var h=topbar()+'<div class="st">📚 ฝึกซ้อม</div><div class="pn wkp"><button class="wkb" id="wkb">🎯 ทบทวนจุดอ่อน</button><small id="wkl">'+(wk.length?'จะฝึก: '+wk.map(function(x){return wsName(x[0])+' ✗'+Math.round(x[1]*100)+'%'}).join(' · '):'ตอบแต่ละเรื่องให้ครบ '+WS_MIN+' ข้อ แล้วปุ่มนี้จะเลือกเรื่องที่ผิดบ่อยให้')+'</small></div><div class="pn"><div class="chips"><button class="mode'+(PMODE?'':' on')+'" data-m="0">ไม่จับเวลา</button><button class="mode'+(PMODE?' on':'')+'" data-m="1">⏱ 60 วินาที</button></div><small>ไม่มีปีศาจ ไม่เสียเหรียญ ผิดแล้วมีภาพช่วย · ตั๋วจากฝึกซ้อม 1 ใบต่อ 20 ข้อถูก (วันละไม่เกิน 3 ใบ)</small></div>';
@@ -4722,7 +4978,7 @@ var DUEL={W:480,H:300,G:300,VK:4.25,WK:6,zoom:1.5,uh:50,eh:62,cy:22,hr:20,mz:32,
     calm:{e:'🍃',n:['ลมสงบ','Calm wind'],d:['ลมหยุดในตานี้','no wind this turn'],price:40},
     heal:{e:'💚',n:['ฮีล','Heal'],d:['เลือด +20 ทันที','+20 HP now'],price:60}},itemHeal:20,
   gold:{first:60,replay:15,ok:2},medal3:[2,3,5],
-  zones:[0,1,2,3,4,5,6,7,8,9,12,10,11,14,15,16,13],gim:{9:'pct',10:'ang',11:'ang',14:'dist'},gimCh:.45,bspd:[1.4,1.2,1],bwrong:1.7,bauto:6,zr:[6,8,10],zw:[10,12,14],
+  zones:[0,1,2,3,4,5,6,7,8,9,12,10,11,14,15,16,13,17,18,19],gim:{9:'pct',10:'ang',11:'ang',14:'dist',17:'seq',18:'wind',19:'scale'},gimCh:.45,bspd:[1.4,1.2,1],bwrong:1.7,bauto:6,zr:[6,8,10],zw:[10,12,14],
   bal:{dif:1,chance:.4,rise:7,fast:2,pen:30,heal:15,pow:1.5,ssAdd:2},
   pal:[['#7BC96F','#5DAA4F','#B98A5A','#9A6E42','#7A5432'],['#7EC8C0','#5FA8A0','#8FB5B0','#6F9590','#4F7570'],
        ['#5DAA58','#3A7D38','#8A6234','#6E4C26','#55391A'],['#7A6A9E','#564873','#4A3E6A','#3A2E5A','#2A2044'],
@@ -4732,7 +4988,7 @@ var DUEL={W:480,H:300,G:300,VK:4.25,WK:6,zoom:1.5,uh:50,eh:62,cy:22,hr:20,mz:32,
        ['#F2DCB8','#E2C08A','#D9B98A','#B8945E','#8A6A3E'],['#BDE3FF','#8FC9F2','#A9B8CC','#8494AA','#5E6E86'],
        ['#B5523A','#7A2A1E','#6E4A3A','#53352A','#3A231A'],['#FFD34D','#C9A12E','#6E5A3A','#53432A','#3A2E1C'],
        ['#9ADF7E','#6FBF55','#B98A5A','#9A6E42','#7A5432'],['#A8D8FF','#7FB8E8','#9AA8C0','#7A88A0','#5A6680'],
-       ['#FFE38A','#E8C04A','#D9A85A','#B8863A','#8A6020']]};
+       ['#FFE38A','#E8C04A','#D9A85A','#B8863A','#8A6020'],['#C9B6EC','#A891D8','#8A6CC0','#6A4E9E','#4A3478'],['#E8F6FD','#BFE3F7','#8FC6E6','#5E9CC4','#3A6E94'],['#A8D49A','#7FB86E','#9A7A4A','#7A5A34','#5A3E20']]};
 /* bullet archetypes: dmg = total damage of one volley, r = blast radius, cs/ck = crater shape/size, g = gravity ×, n/sp = pellets/spread° */
 var BT={std:{dmg:34,r:28,cs:'c',ck:19,vis:'dot',n:['ระเบิดมาตรฐาน','Standard']},
   deep:{dmg:42,r:18,cs:'deep',ck:15,g:1.15,vis:'drop',n:['เจาะลึก','Driller']},
@@ -4870,7 +5126,7 @@ function duGen(L,warm){
   var d=Math.min(11,Math.max(0,L.d+(L.dq||0)-(warm?1:0))),op=L.op,p;
   if(op==='m'){var tg=(MSET[L.w]||[['+']])[NS-1],t=tg[rnd(0,tg.length-1)],ld=L.dif!=null?L.dif:DI(),mq=mtGen(t,NS-1,warm&&ld>0?ld-1:ld);mq.mt=t;return mq}
   var A=[10,12,14,16,18,20,25,30,40,50,60,99][d],cy=[0,.2,.4,.5,.6,.7,.5,.5,.5,.5,.5,.5][d],Hm=[3,4,5,6,8,9,9,10,10,11,12,12][d];
-  if(op==='f'||op==='d'||op==='r'||op==='g'||op==='u')p={k:L.fk,pool:L.fpool,dif:L.dif!=null?L.dif:DI(),warm:warm};else if(op==='+'||op==='-')p={max:A,carry:cy};else if(op==='×')p={lo:2,hi:Hm};else p={bmax:Hm,qmax:Hm};
+  if(op==='f'||op==='d'||op==='r'||op==='g'||op==='u'||op==='e')p={k:L.fk,pool:L.fpool,dif:L.dif!=null?L.dif:DI(),warm:warm};else if(op==='+'||op==='-')p={max:A,carry:cy};else if(op==='×')p={lo:2,hi:Hm};else p={bmax:Hm,qmax:Hm};
   return mkQ(op,p);
 }
 
@@ -5006,7 +5262,7 @@ function duZoneAt(v){var z=DU.bar&&DU.bar.z;if(!z)return '';for(var i=0;i<z.leng
 function duAsk(){
   DU.st='q';duBarStart();var q=duGen(DU.L,DU.asked<1),n=DIFF[DU.L.dif!=null?DU.L.dif:DU.dif].ch||3,o=shuffle([q.c].concat(pickN(q.c,q.w,n-1)));DU.q=q;DU.q0=performance.now();
   var box=document.createElement('div');box.className='dqz in';box.id='dqz';
-  box.innerHTML=(DU.ssArm?'<div class="dqss">⭐ SS!</div>':'')+'<div class="dqt'+((q.t.replace(/\[bar:[^\]]*\]/g,'').length>34||/\[geo:/.test(q.t))?' long':'')+'">'+FR(q.t)+'</div><div class="dch'+(n>3?' c4':'')+'"></div><div class="dqi">⏱️ <b id="dqs">0.0</b> '+LL('วิ','s')+' · '+LL('ตอบถูก แล้วกด ✋ หยุด ให้ตรงแรงที่ต้องการ','Answer, then ✋ Stop at the power you want')+'</div>';
+  box.innerHTML=(DU.ssArm?'<div class="dqss">⭐ SS!</div>':'')+'<div class="dqt'+((q.t.replace(/\[bar:[^\]]*\]/g,'').length>34||/\[geo:/.test(q.t))?' long':'')+'">'+FR(q.t)+'</div><div class="dch'+(n>3?' c4':'')+'"></div><div class="dqi">⏱️ <b id="dqs">0.0</b> '+LL('วิ','s')+' · '+LL('ตอบถูก แล้วกด ✋ หยุด','Answer, then ✋ Stop')+'</div>';
   var ch=box.querySelector('.dch');
   o.forEach(function(v){var b=document.createElement('button');b.innerHTML=FR(v);if(String(v).length>8&&!/[\/:]/.test(v))b.style.fontSize='15px';b.onclick=function(){duAns(v,b)};ch.appendChild(b)});
   var c=$('dctl');c.style.display='none';c.parentNode.insertBefore(box,c);duAimUI();duHUD();setTimeout(duFit,0);
@@ -5045,7 +5301,7 @@ function duBalTurn(){var D=DU;if(D.hl)return;var gm=DUEL.gim[D.w];
 function duBalSpawn(gm){var D=DU,q=gm?duGimQ(gm):duGen(D.L,false),o=shuffle([q.c].concat(pickN(q.c,q.w,2))),cs=shuffle(DU_BC.slice()),it=[],box=$('dballs');
   if(D.two){var o2=shuffle(o.slice()),c2=shuffle(DU_BC.slice());[10,25,40].forEach(function(x,i){it.push({v:o[i],ok:o[i]===q.c,c:cs[i],x:x+rnd(-2,2),pl:1})});[60,75,90].forEach(function(x,i){it.push({v:o2[i],ok:o2[i]===q.c,c:c2[i],x:x+rnd(-2,2),pl:2})})}
   else{var xs=shuffle([22,50,78]);o.forEach(function(v,i){it.push({v:v,ok:v===q.c,c:cs[i],x:xs[i]+rnd(-6,6)})})}
-  var id=(D.blId=(D.blId||0)+1);D.bl={id:id,kind:gm||'',q:q,it:it,rw:DU_BRW[rnd(0,DU_BRW.length-1)],t0:performance.now(),pz:0};
+  var id=(D.blId=(D.blId||0)+1);D.bl={id:id,kind:gm||'',q:q,it:it,rw:gm==='wind'?['calm','🍃 ลมสงบตานี้','🍃 Calm wind this turn']:gm==='scale'?DU_BRW[2]:DU_BRW[rnd(0,DU_BRW.length-1)],t0:performance.now(),pz:0};
   if(D.net)dnSend({t:'bal',id:id,kind:D.bl.kind,qt:q.t,it:it,rw:D.bl.rw});duBalDraw(D)}
 function duBalDraw(D){var bl=D.bl,id=bl.id,it=bl.it,box=$('dballs');
   box.innerHTML=it.map(function(b,i){var s=String(b.v);return '<button class="dbl'+(b.pl?' p'+b.pl:'')+(D.net&&b.pl&&b.pl!==NETR.me?' rm':'')+'" data-i="'+i+'" style="left:'+b.x+'%;--c:'+b.c+';animation-duration:'+DUEL.bal.rise+'s;animation-delay:'+((b.pl?i%3:i)*.35)+'s"><i class="'+(s.length>3?'sm':'')+'">'+FR(s)+'</i>'+(b.pl?'<em>P'+b.pl+'</em>':'')+'</button>'}).join('');
@@ -5059,12 +5315,18 @@ function duBalTap(i){var D=DU,bl=D&&D.bl;if(!bl||D.pause)return;var b=bl.it[i],o
   wsRec(wsKey(bl.q,D.dif),ok);hofAns(ok?1:0);if(ok)dmAdd('ok');
   [].forEach.call(box.querySelectorAll('.dbl'),function(e,k){e.disabled=true;if(k===i)e.classList.add(ok?'pop':'no');else if(!ok&&bl.it[k].ok)e.classList.add('show');else e.classList.add('fade')});
   if(ok){var r=bl.rw[0],lab=LL(bl.rw[1],bl.rw[2]);SND.sfx('combo');duStat('bal');dmAdd('bal');if(sec<=DUEL.bal.fast)duStat('fast');
-    if(r==='ss')D.ssc=Math.min(DUEL.ssNeed,D.ssc+DUEL.bal.ssAdd);else if(r==='heal')D.p.hp=Math.min(D.p.hp0,D.p.hp+DUEL.bal.heal);else if(r==='pow')D.pBuff=DUEL.bal.pow;else D.aimBuff=1;
+    if(r==='calm'){D.wind=0;duHUD()}else if(r==='ss')D.ssc=Math.min(DUEL.ssNeed,D.ssc+DUEL.bal.ssAdd);else if(r==='heal')D.p.hp=Math.min(D.p.hp0,D.p.hp+DUEL.bal.heal);else if(r==='pow')D.pBuff=DUEL.bal.pow;else D.aimBuff=1;
     duSay(LL('🎈 ถูกต้อง! ได้ ','🎈 Correct! You got ')+lab+(sec<=DUEL.bal.fast?LL(' · ⚡ เร็วมาก',' · ⚡ super fast'):''),'good')}
   else{D.dl.p+=DUEL.bal.pen;SND.sfx('bad');duSay(LL('🎈 ผิด! ดีเลย์ +'+DUEL.bal.pen+' · คำตอบคือ ','🎈 Wrong! delay +'+DUEL.bal.pen+' · the answer is ')+bl.q.c,'bad')}
   D.bl=null;setTimeout(function(){if(DU===D&&!D.bl&&box)box.innerHTML=''},ok?600:1300);duBalUI();duHUD();duAimUI()}
 /* island bonus questions shown on the balloons */
 function duGimQ(k){var D=DU,p=D.p,c,t,w;
+  if(k==='seq'){var a=rnd(1,30),d=rnd(2,DU.dif?12:6),s0=[a,a+d,a+2*d,a+3*d];c=a+4*d;t=LL('ตัวต่อไปคือ? '+s0.join(', ')+', __','Next number? '+s0.join(', ')+', __');
+    return {c:c,t:t,w:[c+d,c-1,c+1,c-d,a+3*d+1],op:'e',k:'epa'}}
+  if(k==='wind'){var w0=DU.wind||0,dk=rnd(1,6)*(Math.random()<.5?-1:1),r=w0+dk;t=LL('🌬️ ลมตอนนี้ '+e6Z(w0)+' ถ้าเปลี่ยนไป '+(dk>0?'+':'')+e6Z(dk)+' จะเป็นเท่าไร?','🌬️ The wind is '+e6Z(w0)+'. If it changes by '+(dk>0?'+':'')+e6Z(dk)+', what is it?');
+    return {c:e6Z(r),t:t,w:[e6Z(w0-dk),e6Z(-r),e6Z(r+1),e6Z(r-1),e6Z(dk)].filter(function(z){return z!==e6Z(r)}),op:'e',k:'zad'}}
+  if(k==='scale'){var mul=DU.dif&&Math.random()<.5,a2=rnd(2,mul?9:30),x=rnd(2,mul?9:40),b2=mul?a2*x:a2+x;t='⚖️ '+(mul?a2+' × □ = '+b2:'□ + '+a2+' = '+b2)+'\n□ = ?';
+    return {c:x,t:t,w:[mul?b2-a2:b2+a2,x+1,x-1,x+2,mul?x+a2:a2],op:'e',k:mul?'qmd':'qas'}}
   if(k==='ang'){var a=D.ang,s=duSlope(p);c=Math.max(0,Math.min(95,a+s));t=LL('มุมที่ปรับ '+a+'° '+(s<0?'−':'+')+' มุมพื้น '+Math.abs(s)+'° = ?','Set '+a+'° '+(s<0?'−':'+')+' ground '+Math.abs(s)+'° = ?');
     return {c:c+'°',t:t,w:[c+2,c-2,c+5,c-5,c+10,a,Math.abs(a-s)].filter(function(v){return v>=0&&v!==c}).map(function(v){return v+'°'}),op:'g',k:'gmea'}}
   if(k==='dist'){var d=Math.max(105,Math.round(Math.abs(D.e.x-p.x))),m=Math.floor(d/100),cm=d%100;if(cm===0){d+=7;cm=7}
@@ -5116,6 +5378,7 @@ function duHand(){var D=DU,u=D.p,old=$('dhand');if(old)old.remove();var e=docume
   e.innerHTML='<div><img src="'+IMG[u.hk].i+'" alt=""><b style="color:'+u.col+'">'+LL('ตาของ ','')+u.nm+(LANG==='en'?LL('',"'s turn"):'')+'</b><small>'+LL('ส่งเครื่องให้ '+u.nm+' แล้วแตะพร้อม','Pass the device to '+u.nm)+'</small><button>'+LL('พร้อม! ▶','Ready! ▶')+'</button></div>';
   $('duel').appendChild(e);e.querySelector('button').onclick=function(){e.remove();if(DU!==D||D.st!=='hand')return;D.st='aim';SND.sfx('tap');duBalTurn();duSay(LL('ตา'+u.nm+'! เดิน ปรับมุม แล้วกด 🔥 ยิง',u.nm+': walk, aim, then 🔥 Fire'),'me');duAimUI();duHUD()}}
 function duGive(u,r){var D=DU,me=u===D.p,s=u.st||(u.st={});
+  if(r==='calm'){D.wind=0;duHUD();return}
   if(r==='ss'){if(me)D.ssc=Math.min(DUEL.ssNeed,D.ssc+DUEL.bal.ssAdd);else s.ssc=Math.min(DUEL.ssNeed,(s.ssc||0)+DUEL.bal.ssAdd)}
   else if(r==='heal')u.hp=Math.min(u.hp0,u.hp+DUEL.bal.heal);else if(r==='pow'){if(me)D.pBuff=DUEL.bal.pow;else s.pBuff=DUEL.bal.pow}else{if(me)D.aimBuff=1;else s.aimBuff=1}}
 function duBalTap2(i){var D=DU,bl=D.bl,b=bl.it[i],pl=b.pl,now=performance.now();bl.lock=bl.lock||{};if(bl.lock[pl]>now)return;
@@ -5649,6 +5912,286 @@ function uiNudge(){var mp=HS&&HS.querySelector('.zmap');if(!mp)return;var R=mp.g
   [].forEach.call(mp.querySelectorAll('.lmk .sign'),function(s){s.style.translate='';var r=s.getBoundingClientRect(),dx=0;if(r.left<R.left+4)dx=R.left+4-r.left;else if(r.right>R.right-4)dx=R.right-4-r.right;if(dx)s.style.translate=Math.round(dx)+'px 0'})}
 var _uiRZ=rZone;rZone=function(w){var r=_uiRZ(w);setTimeout(uiNudge,0);setTimeout(uiNudge,120);return r};
 window.addEventListener('resize',function(){setTimeout(uiNudge,60)});
+
+/* v3.32 stride-synced walk (plan A): each hero's speed rises while a foot pushes on the ground and dips while the feet are in the air,
+   so the feet look planted. Average speed over a cycle is unchanged (profile mean = 1). UI_WK[k] = [stride px per cycle, c1re,c1im,c2re,c2im]
+   (1st/2nd harmonics of the foot-contact speed profile measured from the walk frames). Cycle time = stride / real speed, clamped. */
+var UI_WK={"cat21":[30.9,0.314,0.028,0.03,0.124],"cat22":[32.7,-0.194,-0.009,-0.149,0.058],"cat23":[23.5,-0.094,0.261,-0.03,0.001],"cat24":[20.3,0.04,-0.194,-0.07,0.016],"cat25":[32.7,0.395,0.239,0.092,0.19],"cat26":[54.0,-0.026,0.131,0.087,-0.005],"cat27":[14.9,0.037,0.084,-0.035,0.125],"cat28":[21.2,0.219,0.211,0.052,0.175],"cat29":[31.1,0.018,0.174,-0.023,0.138],"cat30":[32.5,-0.094,-0.144,0.095,0.15],"cat":[19.0,-0.197,0.064,-0.151,-0.058],"cat2":[32.7,-0.214,0.276,-0.028,-0.178],"cat3":[38.4,0.225,-0.009,-0.003,0.106],"cat4":[21.5,-0.014,0.072,-0.188,0.198],"cat5":[38.0,0.031,0.191,0.158,0.004],"cat6":[31.7,-0.212,-0.124,-0.043,-0.096],"cat7":[32.3,-0.176,-0.1,0.196,0.047],"cat8":[17.3,-0.075,-0.114,0.05,-0.008],"cat9":[51.8,0.018,-0.13,0.067,0.025],"cat10":[36.6,0.217,-0.056,0.135,-0.083],"cat11":[36.7,0.326,-0.052,0.106,-0.009],"cat18":[28.7,0.063,0.156,0.01,-0.091],"cat13":[33.4,0.146,0.231,0.118,0.086],"cat16":[53.4,-0.116,-0.125,-0.057,-0.173],"cat19":[32.7,0.07,-0.177,0.072,-0.004],"cat14":[44.6,-0.156,0.3,-0.058,0.028],"cat17":[36.3,0.271,0.0,0.012,0.14],"cat20":[45.4,-0.01,-0.211,0.006,-0.181],"cat12":[44.5,-0.345,0.013,0.04,-0.021],"cat15":[32.9,-0.233,-0.079,0.223,0.166]};
+var UI_HOLD=.2,UI_TMIN=.8,UI_TMAX=1.15;
+function uiWM(k,ph){var c=UI_WK[k];if(!c)return 1;var a=2*Math.PI*ph,b=2*a;
+  var m=1+2*(c[1]*Math.cos(a)-c[2]*Math.sin(a))+2*(c[3]*Math.cos(b)-c[4]*Math.sin(b));return Math.max(.3,Math.min(1.9,m))}
+function uiSetSpd(u,m){var base=u.speed/(u._wm||1);u._wm=m;u.speed=base*m}
+var _uiFO=frameOf;frameOf=function(u){var H=IMG[u.type];if(!H||!H.w||u.ultT>0||u.atkT>0||u.defT>0){u.lt=S.t;if(u._wm&&u._wm!==1)uiSetSpd(u,1);return _uiFO(u)}
+  var dt=Math.max(0,Math.min(.1,S.t-(u.lt==null?S.t:u.lt)));u.lt=S.t;
+  if(u.wp==null)u.wp=(u.ph||0)/8;
+  var c=UI_WK[u.type],base=u.speed/(u._wm||1),v=Math.max(.5,base*(typeof stW==='function'?stW():360)/100),T=Math.max(UI_TMIN,Math.min(UI_TMAX,(c?c[0]:30)/v));
+  if(u.mv){u.idle=0;u.wp+=dt/T*(u.slowT>0?.5:1)}else u.idle=(u.idle||0)+dt;
+  var walking=u.mv||u.idle<UI_HOLD,ph=u.wp-Math.floor(u.wp);
+  uiSetSpd(u,walking?uiWM(u.type,ph):1);
+  if(walking)return H.w[Math.floor(ph*H.w.length)%H.w.length];
+  return H.w[0]};
+
+/* ===== v3.33 island 7: แบบรูป (epa eps epp epm epg) · จำนวนเต็ม (zid zcm zad zsb zmd) · สมการ (qas qmd qx q2s qwd) =====
+   op 'e' → mkE(p). Integer and equation answers are strings ("−5" uses U+2212) so negative choices survive pickN. */
+var E6POOL={1:['epa','eps','epp','epm','epg'],2:['zid','zcm','zad','zsb','zmd'],3:['qas','qmd','qx','q2s','qwd']};
+function e6Z(n){return n<0?'−'+(-n):String(n)}
+function e6P(n){return n<0?'('+e6Z(n)+')':e6Z(n)}
+function e6N(z){return parseFloat(String(z).replace('−','-'))}
+function e6Svg(b,w,h){return '<svg class="geo" viewBox="0 0 '+w+' '+h+'" aria-hidden="true">'+b+'</svg>'}
+function e6Line(lo,hi,mark,lab){var W=300,H=64,x0=14,x1=286,b='<line x1="'+x0+'" y1="34" x2="'+x1+'" y2="34" stroke="#1E2A44" stroke-width="2.5"/>',n=hi-lo;
+  for(var v=lo;v<=hi;v++){var x=x0+(x1-x0)*(v-lo)/n,big=v===0;b+='<line x1="'+x+'" y1="'+(big?26:29)+'" x2="'+x+'" y2="'+(big?42:39)+'" stroke="#1E2A44" stroke-width="'+(big?2.5:1.6)+'"/>';
+    if(v%lab===0)b+='<text x="'+x+'" y="56" font-size="11" font-weight="700" fill="'+(v<0?'#2E6BD6':v>0?'#C0392B':'#1E2A44')+'" text-anchor="middle">'+e6Z(v)+'</text>'}
+  var mx=x0+(x1-x0)*(mark-lo)/n;b+='<path d="M'+(mx-7)+' 6 L'+(mx+7)+' 6 L'+mx+' 22 Z" fill="#E4524B" stroke="#1E2A44" stroke-width="1.5"/>';return e6Svg(b,W,H)}
+function e6Scale(L,R){var b='<path d="M120 86 L104 104 L136 104 Z" fill="#8A6234" stroke="#1E2A44" stroke-width="2"/><line x1="40" y1="44" x2="200" y2="44" stroke="#1E2A44" stroke-width="4"/><circle cx="120" cy="44" r="5" fill="#FFC93C" stroke="#1E2A44" stroke-width="2"/><line x1="120" y1="44" x2="120" y2="86" stroke="#1E2A44" stroke-width="4"/>';
+  [[60,L],[180,R]].forEach(function(p){b+='<line x1="'+(p[0]-26)+'" y1="44" x2="'+(p[0]-34)+'" y2="66" stroke="#1E2A44" stroke-width="1.5"/><line x1="'+(p[0]+26)+'" y1="44" x2="'+(p[0]+34)+'" y2="66" stroke="#1E2A44" stroke-width="1.5"/><path d="M'+(p[0]-40)+' 66 Q'+p[0]+' 82 '+(p[0]+40)+' 66 Z" fill="#FFE45C" stroke="#1E2A44" stroke-width="2"/><text x="'+p[0]+'" y="34" font-size="15" font-weight="800" fill="#1E2A44" text-anchor="middle">'+p[1]+'</text>'});
+  return e6Svg(b,240,110)}
+function e6Fin(c,w,num){c=String(c);var out=[];function add(z){z=String(z);if(z!==c&&z!==''&&z!=='NaN'&&out.indexOf(z)<0)out.push(z)}
+  w.forEach(function(z){if(z!=null)add(z)});
+  if(num){var cv=e6N(c),k=1;while(out.length<5&&k<40){add(e6Z(cv+k));if(out.length<5)add(e6Z(cv-k));k++}}
+  return out}
+function mkE(p){
+  var dif=p.dif!=null?p.dif:DI(),k=p.k||'epa';
+  if(k==='boss'||k==='any'){var pool=p.pool||E6POOL[1];k=pool[rnd(0,pool.length-1)]}
+  if(p.warm&&dif>0&&Math.random()<.5)dif--;
+  var t,c,w=[],h='',pic='',num=true,i,a,b,d,x,n,st,seq,miss;
+  function show(seq,miss){return seq.map(function(v,j){return j===miss?'□':v}).join(', ')}
+  if(k==='epa'||k==='eps'){var up=k==='epa';
+    n=dif===0?5:6;d=dif===0?rnd(1,5):dif===1?rnd(2,12):rnd(6,25);
+    st=up?(dif===0?rnd(1,10):dif===1?rnd(2,40):rnd(10,200)):(dif===0?rnd(d*(n-1)+1,d*(n-1)+15):dif===1?rnd(d*n,d*n+70):rnd(d*n+50,d*n+800));
+    seq=[];for(i=0;i<n;i++)seq.push(up?st+i*d:st-i*d);miss=dif===0?(Math.random()<.6?n-1:rnd(1,n-2)):dif===1?rnd(1,n-1):rnd(0,n-1);
+    c=seq[miss];t='หาจำนวนที่หายไป: '+show(seq,miss);w=[c+d,c-d,c+1,c-1,c+2*d,c+10,c-10].filter(function(v){return v>0});
+    var nb=miss>0?seq[miss-1]:seq[1];h=(up?'เพิ่มขึ้นทีละ ':'ลดลงทีละ ')+d+' → '+(miss>0?nb+(up?' + ':' − ')+d:nb+(up?' − ':' + ')+d)+' = '+c}
+  else if(k==='epp'){num=false;var SY=['🔺','🔵','🟩','⭐','❤️','🌙'],sh=shuffle(SY.slice()),U;
+    var forms=dif===0?['AB','AAB','ABB']:dif===1?['ABC','AABB','ABAC']:['ABCD','AABC','ABCB'];var f=forms[rnd(0,forms.length-1)];
+    U=f.split('').map(function(ch){return sh[ch.charCodeAt(0)-65]});
+    if(dif===2&&Math.random()<.5){n=rnd(12,40);c=U[(n-1)%U.length];var shown=[];for(i=0;i<U.length*2;i++)shown.push(U[i%U.length]);
+      t='แบบรูป '+shown.join(' ')+' … รูปลำดับที่ '+n+' คือรูปใด?';var r=(n-1)%U.length+1;h='ชุดละ '+U.length+' รูป · '+n+' = '+U.length+'×'+Math.floor((n-1)/U.length)+' + '+r+' → รูปที่ '+r+' ของชุด = '+c}
+    else{n=dif===0?7:dif===1?8:9;seq=[];for(i=0;i<n;i++)seq.push(U[i%U.length]);miss=dif===0?n-1:rnd(Math.max(2,U.length),n-1);c=seq[miss];
+      t='รูปที่หายไปคือรูปใด? '+seq.map(function(v,j){return j===miss?'❔':v}).join(' ');h='แบบรูปซ้ำทีละชุด: '+U.join(' ')}
+    w=SY.filter(function(s){return s!==c})}
+  else if(k==='epm'){n=5;var dn=dif===2&&Math.random()<.5;var r2=dif===0?2:dif===1?rnd(2,3):rnd(2,5);
+    if(dn){var kk=rnd(1,dif===2?5:3);st=kk*Math.pow(r2,n-1);seq=[];for(i=0;i<n;i++)seq.push(st/Math.pow(r2,i))}
+    else{st=dif===0?rnd(1,5):rnd(1,6);seq=[];for(i=0;i<n;i++)seq.push(st*Math.pow(r2,i))}
+    miss=dif===0?(Math.random()<.6?n-1:rnd(1,n-2)):rnd(1,n-1);c=seq[miss];t='หาจำนวนที่หายไป: '+show(seq,miss);
+    var pv=seq[miss-1];w=[dn?pv-r2:pv+r2,c*r2,dn?c+r2:c+st,c+1,c-1,pv*2,Math.round(c*1.5)].filter(function(v){return v>0&&v!==c});h=(dn?'หารด้วย ':'คูณด้วย ')+r2+' ทุกครั้ง → '+pv+(dn?' ÷ ':' × ')+r2+' = '+c}
+  else if(k==='epg'){var alt=dif===2&&Math.random()<.5;n=dif===0?5:6;seq=[];
+    if(alt){a=rnd(4,9);b=rnd(1,a-1);st=rnd(5,20);x=st;for(i=0;i<n;i++){seq.push(x);x+=i%2===0?a:-b}h='สลับกัน +'+a+' แล้ว −'+b}
+    else{var d0=dif===0?1:rnd(1,dif===1?4:5),inc=dif===0?1:rnd(1,dif===1?2:3);st=dif===0?rnd(1,6):rnd(2,20);x=st;var dd=d0;for(i=0;i<n;i++){seq.push(x);x+=dd;dd+=inc}
+      h='ผลต่างเพิ่มขึ้นทีละ '+inc+': +'+d0+', +'+(d0+inc)+', +'+(d0+2*inc)+', …'}
+    miss=dif===2?rnd(1,n-1):n-1;c=seq[miss];t='หาจำนวนที่หายไป: '+show(seq,miss);var gp=seq[miss]-seq[miss-1];
+    w=[c+1,c-1,seq[miss-1]+(miss>1?seq[miss-1]-seq[miss-2]:gp+1),c+2,c-2,c+gp].filter(function(v){return v>0&&v!==c})}
+  /* ---- integers ---- */
+  else if(k==='zid'){var mode=dif===0?0:dif===1?rnd(0,1):rnd(2,3);
+    if(mode===0){var R=dif===0?5:9;do{x=rnd(-R,R)}while(dif>0&&x===0);pic=e6Line(-(R+1),R+1,x,dif===0?1:2);t='ลูกศรชี้ที่จำนวนใด?';c=e6Z(x);w=[e6Z(-x),e6Z(x+1),e6Z(x-1),e6Z(x+2),e6Z(x-2)];h='ทางขวาของ 0 เป็นจำนวนบวก ทางซ้ายเป็นจำนวนลบ'}
+    else if(mode===1){a=rnd(-12,8);d=rnd(2,9);var more=Math.random()<.5;x=more?a+d:a-d;t='จำนวนที่'+(more?'มากกว่า':'น้อยกว่า')+' '+e6Z(a)+' อยู่ '+d+' คือจำนวนใด?';c=e6Z(x);w=[e6Z(more?a-d:a+d),e6Z(-x),e6Z(x+1),e6Z(x-1),e6Z(d)];h=e6P(a)+(more?' + ':' − ')+d+' = '+c}
+    else if(mode===2){a=rnd(-15,-2);b=rnd(1,12);t='อุณหภูมิ '+e6Z(a)+' °C สูงขึ้น '+b+' องศา จะเป็นกี่องศา?';x=a+b;c=e6Z(x);w=[e6Z(a-b),e6Z(-x),e6Z(b-a),e6Z(x+1),e6Z(x-1)];h=e6P(a)+' + '+b+' = '+c}
+    else{a=rnd(-9,-1);b=rnd(1,9);t='จำนวนเต็มที่อยู่ระหว่าง '+e6Z(a)+' กับ '+b+' มีกี่จำนวน?';x=b-a-1;c=String(x);w=[String(x+1),String(x+2),String(x-1),String(b-a),String(x+3)];h='นับจาก '+e6Z(a+1)+' ถึง '+(b-1)+' (ไม่นับ 2 จำนวนหัวท้าย) = '+x+' จำนวน'}}
+  else if(k==='zcm'){var R2=dif===0?9:dif===1?20:40,mode2=dif===0?rnd(0,1):dif===1?rnd(0,2):rnd(3,4);
+    if(mode2<=1||mode2===4){var nums=[];while(nums.length<4){x=rnd(-R2,R2);if(nums.indexOf(x)<0)nums.push(x)}var srt=nums.slice().sort(function(p2,q2){return p2-q2});
+      if(mode2===0){c=e6Z(srt[3]);t='จำนวนใดมากที่สุด?';h='จำนวนที่อยู่ทางขวาสุดบนเส้นจำนวนมากที่สุด'}else if(mode2===1){c=e6Z(srt[0]);t='จำนวนใดน้อยที่สุด?';h='จำนวนลบที่มีค่าสัมบูรณ์มาก จะน้อยมาก'}
+      else{c=e6Z(srt[1]);t='เรียง '+shuffle(nums.map(e6Z)).join(', ')+' จากน้อยไปมาก จำนวนลำดับที่ 2 คือ?';h='เรียงได้ '+srt.map(e6Z).join(' < ')}
+      w=nums.map(e6Z).filter(function(z){return z!==c});num=false}
+    else if(mode2===2){do{a=rnd(-R2,R2);b=rnd(-R2,R2)}while(a===b&&Math.random()<.7);c=a>b?'>':a<b?'<':'=';w=['>','<','='];num=false;t='เติมเครื่องหมาย: '+e6Z(a)+' ○ '+e6Z(b);h='บนเส้นจำนวน ตัวที่อยู่ขวามากกว่า'}
+    else{a=rnd(-60,-3);t='|'+e6Z(a)+'| = ?';c=String(-a);w=[e6Z(a),'0',String(-a+1),String(-a-1),String(-2*a)];h='ค่าสัมบูรณ์คือระยะห่างจาก 0 ไม่ติดลบ'}}
+  else if(k==='zad'||k==='zsb'){var R3=dif===0?9:dif===1?25:60,add=k==='zad';
+    do{a=rnd(-R3,R3);b=rnd(-R3,R3)}while(a===0||b===0||(add?(a>0&&b>0):(b>0&&a>b&&Math.random()<.7)));
+    if(add&&dif===2&&Math.random()<.4){var c3=rnd(-R3,R3)||5;x=a+b+c3;t=e6P(a)+' + '+e6P(b)+' + '+e6P(c3)+' = ?';c=e6Z(x);w=[e6Z(-x),e6Z(a-b+c3),e6Z(x+1),e6Z(x-1),e6Z(Math.abs(a)+Math.abs(b)+Math.abs(c3))];h='บวกทีละคู่: '+e6P(a)+' + '+e6P(b)+' = '+e6Z(a+b)+' แล้ว + '+e6P(c3)}
+    else if(add){x=a+b;t=e6P(a)+' + '+e6P(b)+' = ?';c=e6Z(x);w=[e6Z(a-b),e6Z(-x),e6Z(x+1),e6Z(x-1),e6Z(Math.abs(a)+Math.abs(b)),e6Z(-(Math.abs(a)+Math.abs(b)))];
+      h=(a<0)===(b<0)?'เครื่องหมายเหมือนกัน: บวกค่าสัมบูรณ์ ใส่เครื่องหมายเดิม':'เครื่องหมายต่างกัน: เอาค่าสัมบูรณ์มาลบกัน ใช้เครื่องหมายของตัวที่ค่าสัมบูรณ์มากกว่า'}
+    else{x=a-b;t=e6Z(a)+' − '+e6P(b)+' = ?';c=e6Z(x);w=[e6Z(a+b),e6Z(b-a),e6Z(x+1),e6Z(x-1),e6Z(-a-b)];h='ลบด้วย '+e6P(b)+' = บวกด้วย '+e6P(-b)+' → '+e6P(a)+' + '+e6P(-b)+' = '+c}}
+  else if(k==='zmd'){var mode3=dif===0?0:dif===1?rnd(0,1):rnd(1,2);
+    if(mode3===0){var M=dif===0?6:12;do{a=rnd(-M,M);b=rnd(-M,M)}while(Math.abs(a)<2||Math.abs(b)<2||(a>0&&b>0));x=a*b;t=e6P(a)+' × '+e6P(b)+' = ?';c=e6Z(x);w=[e6Z(-x),e6Z(a+b),e6Z(x+a),e6Z(x-b),e6Z(Math.abs(a)+Math.abs(b))];h='เครื่องหมายเหมือนกันได้บวก ต่างกันได้ลบ: '+Math.abs(a)+' × '+Math.abs(b)+' = '+Math.abs(x)}
+    else if(mode3===1){do{b=rnd(-12,12);x=rnd(-12,12)}while(Math.abs(b)<2||Math.abs(x)<2||(b>0&&x>0));a=b*x;t=e6P(a)+' ÷ '+e6P(b)+' = ?';c=e6Z(x);w=[e6Z(-x),e6Z(x+1),e6Z(x-1),e6Z(a+b),e6Z(b)];h='เครื่องหมายเหมือนกันได้บวก ต่างกันได้ลบ: '+Math.abs(a)+' ÷ '+Math.abs(b)+' = '+Math.abs(x)}
+    else{a=rnd(2,6);b=rnd(3,8);x=-a*b;t='อุณหภูมิลดลงชั่วโมงละ '+a+' องศา ผ่านไป '+b+' ชั่วโมง อุณหภูมิเปลี่ยนไปกี่องศา?';c=e6Z(x);w=[e6Z(-x),e6Z(-(a+b)),e6Z(x+a),e6Z(x-a),e6Z(a-b)];h='ลดลง = ติดลบ: ('+e6Z(-a)+') × '+b+' = '+c}}
+  /* ---- equations ---- */
+  else if(k==='qas'){var R4=dif===0?20:dif===1?100:500,f2=rnd(0,2);
+    if(dif===2&&Math.random()<.35){a=rnd(5,30);x=-rnd(1,a-1);b=x+a;t='□ + '+a+' = '+e6Z(b)+'\n□ = ?';c=e6Z(x);w=[e6Z(-x),e6Z(b+a),e6Z(x+1),e6Z(x-1),e6Z(a)];h='□ = '+e6Z(b)+' − '+a+' = '+c}
+    else{x=rnd(1,R4-1);a=rnd(1,R4-x);
+      if(f2===0){b=x+a;t='□ + '+a+' = '+b;h='□ = '+b+' − '+a+' = '+x}else if(f2===1){b=x+a;t=a+' + □ = '+b;h='□ = '+b+' − '+a+' = '+x}else{x=rnd(a+1,R4);b=x-a;t='□ − '+a+' = '+b;h='□ = '+b+' + '+a+' = '+x}
+      c=e6Z(x);w=[e6Z(f2===2?b-a:b+a),e6Z(x+1),e6Z(x-1),e6Z(x+10),e6Z(Math.abs(x-10)||11)];if(dif===0&&f2<2)pic=e6Scale(f2===0?'□ + '+a:a+' + □',String(b));t+='\n□ = ?'}}
+  else if(k==='qmd'){var A2=dif===0?5:dif===1?12:25,X2=dif===0?10:dif===1?12:30,f3=rnd(0,3);a=rnd(2,A2);x=rnd(2,X2);
+    if(f3===0){b=a*x;t='□ × '+a+' = '+b;h='□ = '+b+' ÷ '+a+' = '+x;w=[b-a,b+a,x+1,x-1,a*2]}
+    else if(f3===1){b=a*x;t=a+' × □ = '+b;h='□ = '+b+' ÷ '+a+' = '+x;w=[b-a,x+a,x+1,x-1,x*2]}
+    else if(f3===2){b=x;x=a*b;t='□ ÷ '+a+' = '+b;h='□ = '+b+' × '+a+' = '+x;w=[b+a,a,x+a,x-a,b*2]}
+    else{b=a*x;t=b+' ÷ □ = '+a;h='□ = '+b+' ÷ '+a+' = '+x;w=[b*a,b-a,x+1,x-1,a]}
+    c=e6Z(x);w=w.filter(function(v){return v>0}).map(e6Z);t+='\n□ = ?'}
+  else if(k==='qx'){var f4=rnd(0,3),neg=dif===2&&Math.random()<.4;
+    if(f4===0){a=rnd(2,dif===0?10:dif===1?40:90);x=neg?-rnd(1,a-1):rnd(1,dif===0?15:60);b=x+a;t='x + '+a+' = '+e6Z(b);h='x = '+e6Z(b)+' − '+a+' = '+e6Z(x);w=[e6Z(b+a),e6Z(-x)]}
+    else if(f4===1){a=rnd(2,dif===0?10:40);x=neg?rnd(1,a-1):rnd(a+1,a+(dif===0?15:60));b=x-a;t='x − '+a+' = '+e6Z(b);h='x = '+e6Z(b)+' + '+a+' = '+e6Z(x);w=[e6Z(b-a),e6Z(a-b)]}
+    else if(f4===2){a=rnd(2,dif===0?5:dif===1?9:15);x=rnd(2,dif===0?9:12)*(neg?-1:1);b=a*x;t=a+'x = '+e6Z(b);h='x = '+e6Z(b)+' ÷ '+a+' = '+e6Z(x);w=[e6Z(b-a),e6Z(b*a),e6Z(-x)]}
+    else{a=rnd(2,dif===0?5:9);b=rnd(2,dif===0?9:12)*(neg?-1:1);x=a*b;t='x ÷ '+a+' = '+e6Z(b);h='x = '+e6P(b)+' × '+a+' = '+e6Z(x);w=[e6Z(b+a),e6Z(-x),e6Z(a)]}
+    t=t+'\nx = ?';c=e6Z(x);w=w.concat([e6Z(x+1),e6Z(x-1),e6Z(x+2)])}
+  else if(k==='q2s'){var A3=dif===0?3:dif===1?6:9;a=rnd(2,A3);x=dif===2?(rnd(0,3)===0?-rnd(1,9):rnd(1,15)):rnd(1,dif===0?6:12);b=dif===0?rnd(1,9):rnd(1,20)*(dif===2&&Math.random()<.4?-1:1);
+    var sub=dif>0&&Math.random()<.4;if(sub&&b>0)b=-b;var rhs=a*x+b;
+    t=a+'x '+(b<0?'− ':'+ ')+Math.abs(b)+' = '+e6Z(rhs)+'\nx = ?';c=e6Z(x);
+    w=[e6Z((rhs+b)/a===Math.round((rhs+b)/a)?(rhs+b)/a:x+2),e6Z(rhs-b),e6Z(x+1),e6Z(x-1),e6Z(-x)];
+    h='ย้าย '+e6P(b)+' ไปอีกข้าง: '+a+'x = '+e6Z(rhs)+(b<0?' + '+(-b):' − '+b)+' = '+e6Z(a*x)+' → x = '+e6Z(a*x)+' ÷ '+a+' = '+c}
+  else if(k==='qwd'){var f5=dif===0?rnd(0,2):dif===1?rnd(0,3):rnd(2,5);
+    if(f5===0){a=rnd(2,dif===0?15:40);x=rnd(2,dif===0?20:60);b=x+a;t='คิดจำนวนหนึ่งไว้ บวกด้วย '+a+' ได้ '+b+' จำนวนนั้นคือเท่าไร?';h='□ + '+a+' = '+b+' → □ = '+b+' − '+a;w=[b+a]}
+    else if(f5===1){a=rnd(2,dif===0?15:40);x=rnd(a+1,a+(dif===0?20:60));b=x-a;t='จำนวนหนึ่งลบด้วย '+a+' เหลือ '+b+' จำนวนนั้นคือเท่าไร?';h='□ − '+a+' = '+b+' → □ = '+b+' + '+a;w=[b-a>0?b-a:b+1]}
+    else if(f5===2){a=rnd(2,dif===0?5:9);x=rnd(2,dif===0?10:15);b=a*x;t=a+' เท่าของจำนวนหนึ่ง เท่ากับ '+b+' จำนวนนั้นคือเท่าไร?';h=a+' × □ = '+b+' → □ = '+b+' ÷ '+a;w=[b-a,b*a]}
+    else if(f5===3){n=rnd(2,6);x=rnd(3,15);var q=rnd(1,4)*5;var pay=n*x+q;t='ซื้อดินสอ '+n+' แท่ง ราคาเท่ากัน จ่าย '+pay+' บาท ได้เงินทอน '+q+' บาท ดินสอแท่งละกี่บาท?';h=n+'x + '+q+' = '+pay+' → '+n+'x = '+(pay-q)+' → x = '+x;w=[Math.round(pay/n),pay-q,x+q]}
+    else if(f5===4){a=rnd(3,25);x=rnd(2,40);b=2*x+a;t='สองเท่าของจำนวนหนึ่ง บวก '+a+' เท่ากับ '+b+' จำนวนนั้นคือเท่าไร?';h='2x + '+a+' = '+b+' → 2x = '+(b-a)+' → x = '+x;w=[b-a,Math.round((b+a)/2),x+a]}
+    else{a=rnd(2,9);x=rnd(5,20);b=2*x+a;t='พี่อายุมากกว่าน้อง '+a+' ปี อายุรวมกัน '+b+' ปี น้องอายุกี่ปี?';h='x + (x + '+a+') = '+b+' → 2x = '+(b-a)+' → x = '+x;w=[x+a,Math.round(b/2),b-a]}
+    c=e6Z(x);w=w.filter(function(v){return v>0}).map(e6Z).concat([e6Z(x+1),e6Z(x-1),e6Z(x+2)])}
+  if(pic)t=geoTok(pic)+'\n'+t;
+  c=typeof c==='number'?e6Z(c):String(c);w=w.map(function(z){return typeof z==='number'?e6Z(z):z});
+  var out=e6Fin(c,w,num);
+  if(dif<2&&k.charAt(0)==='q'&&c.charAt(0)!=='−'){out=out.filter(function(z){return z.charAt(0)!=='−'});var cv=e6N(c),kk2=2;while(out.length<5&&kk2<60){var z2=e6Z(cv+kk2);if(out.indexOf(z2)<0&&z2!==c)out.push(z2);kk2++}}
+  return {a:0,b:0,c:c,op:'e',k:k,t:t,w:out,hint:h};
+}
+/* names for "ด่านนี้ฝึก" + practice topics */
+Object.assign(FKN,{epa:'แบบรูปเพิ่มขึ้น',eps:'แบบรูปลดลง',epp:'แบบรูปรูปภาพ',epm:'แบบรูปคูณ',epg:'แบบรูปผลต่างไม่เท่ากัน',zid:'รู้จักจำนวนเต็ม',zcm:'เปรียบเทียบจำนวนเต็ม',zad:'บวกจำนวนเต็ม',zsb:'ลบจำนวนเต็ม',zmd:'คูณหารจำนวนเต็ม',qas:'หาตัวไม่ทราบค่า (บวกลบ)',qmd:'หาตัวไม่ทราบค่า (คูณหาร)',qx:'สมการตัวแปร x',q2s:'สมการสองขั้น',qwd:'โจทย์ปัญหาสมการ'});
+[['epa','เพิ่มทีละเท่ากัน'],['eps','ลดทีละเท่ากัน'],['epp','แบบรูปรูปภาพ'],['epm','แบบรูปคูณ'],['epg','ผลต่างไม่เท่ากัน'],['zid','รู้จักจำนวนเต็ม'],['zcm','เปรียบเทียบ·ค่าสัมบูรณ์'],['zad','บวกจำนวนเต็ม'],['zsb','ลบจำนวนเต็ม'],['zmd','คูณ·หารจำนวนเต็ม'],['qas','□ บวก·ลบ'],['qmd','□ คูณ·หาร'],['qx','สมการ x'],['q2s','สมการสองขั้น'],['qwd','โจทย์สมการ']].forEach(function(x){TOPICS.push({id:'q'+x[0],op:'e',label:x[1],p:{k:x[0]}})});
+/* v3.34: new topics in the page-2 boss island (zone 14 = w13) from stage 3, and hero affinities */
+MTAG.e1=['🔷','แบบรูป'];MTAG.e2=['🧊','จำนวนเต็ม'];MTAG.e3=['🗿','สมการ'];MTAGE.e1='Patterns';MTAGE.e2='Integers';MTAGE.e3='Equations';
+MPOOL.e1=E6POOL[1];MPOOL.e2=E6POOL[2];MPOOL.e3=E6POOL[3];
+(function(){var M=MSET[13];if(M&&M[5]&&M[5].indexOf('e1')<0){M[2].push('e1');M[3].push('e1','e2');M[4].push('e2','e3');M[5].push('e1','e2','e3')}})();
+var _e6MT=mtGen;mtGen=function(tag,s,dif){if(tag&&tag.charAt(0)==='e'&&MPOOL[tag])return mkQ('e',{k:'any',pool:MPOOL[tag],dif:dif});return _e6MT(tag,s,dif)};
+var E6AFF={cat24:'e1',cat23:'e2',cat22:'e3',cat25:'e3'};
+var _e6AM=affMatch;affMatch=function(k,tag){if(tag&&E6AFF[k]===tag)return true;return _e6AM(k,tag)};
+var _e6AT=affTxt;affTxt=function(k){var e=E6AFF[k];if(AFF[k]==='eq')return '🗿 '+LL('ถนัดสมการ','Good at equations');var s=_e6AT(k);if(e){var T=MTAG[e];s+=' · '+T[0]+' '+LL('ถนัด'+T[1],'Good at '+MTAGE[e].toLowerCase())}return s};
+/* v3.36: gold shop tab (tickets, medals, one-use stage boosts) + boost picker in the stage briefing */
+var GSHOP={tk:400,tkDay:2,md:150,mdDay:3,bMax:9,b:[
+  ['coin',60,'💰','เงินเริ่มต้น +30','Start with +30 coins','เงิน +30','+30 coins'],
+  ['base',80,'🏰','ฐานเลือด +25%','Base HP +25%','ฐาน +25%','Base +25%'],
+  ['free',50,'⚡','เรียกฮีโร่ครั้งแรกฟรี','First summon is free','ฮีโร่ฟรี','Free hero']]};
+function gsInit(){P.bst=P.bst||{};P.bsel=P.bsel||{};if(!P.shopTab)P.shopTab='g';var S0=P.shop||(P.shop={});if(!S0.gd||S0.gd.d!==dayKey())S0.gd={d:dayKey(),t:0,m:0}}
+function gsTabs(){return '<div class="gstabs">'+[['g','💰 '+LL('ร้านเหรียญทอง','Gold shop')],['m','🏅 '+LL('ร้านเหรียญตรา','Medal shop')]].map(function(t){return '<button class="stb'+(P.shopTab===t[0]?' on':'')+'" data-tb="'+t[0]+'">'+t[1]+'</button>'}).join('')+'</div>'}
+function gsBindTabs(){[].forEach.call(HS.querySelectorAll('.stb'),function(b){b.onclick=function(){var t=b.getAttribute('data-tb');if(t===P.shopTab)return;P.shopTab=t;saveP();SND.sfx('tap');rShop();HS.scrollTop=0}})}
+var _gsShop=rShop;rShop=function(){shopInit();gsInit();
+  if(P.shopTab==='m'){_gsShop();var hd=HS.querySelector('.shead');if(hd)hd.insertAdjacentHTML('afterend',gsTabs());gsBindTabs();return}
+  var G0=P.shop.gd,h=topbar();
+  h+='<div class="shead"><h2>🛒 '+LL('ร้านค้า','Shop')+'</h2><span class="smed sgold">💰 <b>'+P.gold+'</b></span></div>'+gsTabs();
+  h+='<p class="note">'+LL('💰 ได้จากทุกด่าน ภารกิจรายวัน และหีบดาว','Earn 💰 from every stage, daily missions and star chests')+'</p>';
+  h+='<div class="scol"><div class="ssec">🔁 '+LL('แลกของ','Exchange')+'</div>';
+  [['t','🎫',LL('ตั๋วกาชา ×1','Gacha ticket ×1'),GSHOP.tk,GSHOP.tkDay-G0.t],['m','🏅',LL('เหรียญตรา ×1','Medal ×1'),GSHOP.md,GSHOP.mdDay-G0.m]].forEach(function(r){
+    h+='<div class="srow"><span>'+r[1]+' '+r[2]+' <small>'+LL('วันนี้แลกได้อีก '+r[4],'Today: '+r[4]+' left')+'</small></span>'+(r[4]>0?'<button class="sbuy gb" data-t="'+r[0]+'" data-p="'+r[3]+'">💰 '+r[3]+'</button>':'<button class="sbuy" disabled>'+LL('ครบแล้ว','Done')+'</button>')+'</div>'});
+  h+='</div><div class="scol"><div class="ssec">🚀 '+LL('บูสต์ก่อนเข้าด่าน (ใช้ครั้งเดียว)','Stage boosts (one use each)')+'</div><div class="shg">';
+  GSHOP.b.forEach(function(B){var n=P.bst[B[0]]||0,full=n>=GSHOP.bMax;
+    h+='<div class="sit"><i class="sem">'+B[2]+'</i><b>'+LL(B[3],B[4])+'</b><small>'+LL('มีอยู่ ','Owned ')+n+'/'+GSHOP.bMax+'</small>'+(full?'<button class="sbuy" disabled>'+LL('เต็มแล้ว','Full')+'</button>':'<button class="sbuy gb" data-t="b" data-k="'+B[0]+'" data-p="'+B[1]+'">💰 '+B[1]+'</button>')+'</div>'});
+  h+='</div><p class="note">'+LL('เลือกใช้บูสต์ได้ในหน้าก่อนเริ่มด่าน (ไม่ใช้กับด่านท้าทาย) · บูสต์ไม่ช่วยตอบโจทย์','Pick boosts on the stage screen before you start (not in challenge stages) · boosts never answer for you')+'</p></div>';
+  HS.innerHTML=h;bindTop();gsBindTabs();
+  [].forEach.call(HS.querySelectorAll('.sbuy.gb'),function(b){b.onclick=function(){var t=b.getAttribute('data-t'),k=b.getAttribute('data-k'),p=+b.getAttribute('data-p');
+    if(P.gold<p){SND.sfx('tap');b.classList.add('no');b.textContent=LL('💰 ไม่พอ','Not enough 💰');setTimeout(function(){if(b.isConnected){b.classList.remove('no');b.textContent='💰 '+p}},1200);return}
+    if(!b.classList.contains('arm')){[].forEach.call(HS.querySelectorAll('.sbuy.arm'),function(x){x.classList.remove('arm');x.textContent='💰 '+x.getAttribute('data-p')});b.classList.add('arm');b.textContent=LL('แตะอีกครั้งเพื่อซื้อ','Tap again to buy');SND.sfx('tap');return}
+    P.gold-=p;if(t==='t'){P.tickets+=1;G0.t++}else if(t==='m'){P.medal=(P.medal||0)+1;G0.m++}else{P.bst[k]=(P.bst[k]||0)+1}
+    saveP();SND.sfx('coin');var sc=HS.scrollTop;rShop();HS.scrollTop=sc;toast('🛒 '+(t==='t'?'🎫 +1':t==='m'?'🏅 +1':LL('ได้บูสต์ ','Boost +1 ')+GSHOP.b.filter(function(B){return B[0]===k})[0][2]))}});
+};
+/* boost picker in the briefing */
+var _gsBrief=briefing;briefing=function(w,s,ch){_gsBrief(w,s,ch);if(ch)return;gsInit();var br=document.querySelector('#ovbox .brow');if(!br)return;
+  var h='<div class="bbst"><p>🚀 '+LL('บูสต์ (แตะเพื่อเลือก ใช้ครั้งเดียว)','Boosts (tap to pick, one use)')+'</p><div class="bbrow">'+GSHOP.b.map(function(B){var n=P.bst[B[0]]||0,on=n>0&&P.bsel[B[0]];
+    return '<button class="bbc'+(on?' on':'')+'" data-k="'+B[0]+'"'+(n?'':' disabled')+' title="'+LL(B[3],B[4])+'"><i>'+B[2]+'</i><span>'+LL(B[5],B[6])+'</span><b>×'+n+'</b></button>'}).join('')+'</div>'+
+    (GSHOP.b.some(function(B){return P.bst[B[0]]})?'':'<small>'+LL('ซื้อบูสต์ได้ที่ 🛒 ร้านค้า → ร้านเหรียญทอง','Buy boosts in 🛒 Shop → Gold shop')+'</small>')+'</div>';
+  br.insertAdjacentHTML('beforebegin',h);
+  [].forEach.call(document.querySelectorAll('#ovbox .bbc'),function(b){b.onclick=function(){var k=b.getAttribute('data-k');P.bsel[k]=P.bsel[k]?0:1;saveP();SND.sfx('tap');b.classList.toggle('on',!!P.bsel[k])}})};
+var _gsStart=startStage;startStage=function(w,s,ch){gsInit();var use=ch?[]:GSHOP.b.filter(function(B){return P.bsel[B[0]]&&(P.bst[B[0]]||0)>0}).map(function(B){return B[0]});
+  _gsStart(w,s,ch);if(!use.length)return;
+  use.forEach(function(k){P.bst[k]--;if(!P.bst[k])P.bsel[k]=0;
+    if(k==='coin')S.coins+=30;else if(k==='base'){S.php0=Math.round(S.php0*1.25);S.php=S.php0}else if(k==='free')S.bFree=1});
+  saveP();draw();say(LL('🚀 ใช้บูสต์: ','🚀 Boosts: ')+use.map(function(k){return GSHOP.b.filter(function(B){return B[0]===k})[0][2]}).join(' '))};
+var _gsBuy=buy;buy=function(type){if(S&&S.bFree&&!S.over&&!(S.cd&&S.cd[type]>0)){var c=TYPES[type].cost;S.coins+=c;var n0=S.summoned;_gsBuy(type);if(S.summoned>n0)S.bFree=0;else S.coins-=c;return}_gsBuy(type)};
+/* v3.37: school yard decorations (school page only) */
+var YEMO={b_ok:'🏆',b_star:'🌟',b_ch:'⛩️',b_hero:'🗽',b_lv:'🔮',b_acc:'🎯'},
+  YZE=['🌷','⛲','🌲','💎','🎂','🍞','💰','🧪','🍇','🏷️','🔺','🏗️','👹','🗼','📏','⏳','🐷','🎏','⛄','⚖️'],
+  YPOS=[[9,54,.72],[24,57,.72],[76,57,.72],[91,54,.72],[12,74,.86],[37,76,.86],[63,76,.86],[88,74,.86],[10,94,1],[35,96,1],[65,96,1],[90,94,1]],YED=0;
+function yEmo(id){if(YEMO[id])return YEMO[id];if(id[0]==='z')return YZE[+id.slice(1)]||'🎀';var d=SDECO.filter(function(x){return x[0]===id})[0];return d?d[1]:'🎀'}
+function yInit(){P.deco=P.deco||[];if(!P.yard||P.yard.length!==12)P.yard=[null,null,null,null,null,null,null,null,null,null,null,null];
+  for(var i=0;i<12;i++)if(P.yard[i]&&P.deco.indexOf(P.yard[i])<0)P.yard[i]=null}
+function yHTML(){yInit();var F=SCH.forms[sForm()],h='<div class="yard'+(YED?' ed':'')+'"><i class="ysky"></i><i class="yfen"></i><div class="ysch" style="width:'+(F.w/94*40).toFixed(1)+'%">'+schoolImg()+'</div>';
+  YPOS.forEach(function(p,i){var id=P.yard[i];h+='<button class="yslot'+(id?' f':'')+'" data-i="'+i+'" style="left:'+p[0]+'%;top:'+p[1]+'%;--s:'+p[2]+'"'+(id?' title="'+decoName(id)+'"':'')+'>'+(id?'<span>'+yEmo(id)+'</span>':YED?'<em>+</em>':'')+'</button>'});
+  return h+'</div>'}
+function yPick(i){yInit();var cur=P.yard[i],free=P.deco.filter(function(d){return P.yard.indexOf(d)<0});
+  var h='<h1>🎀 '+LL('เลือกของตกแต่ง','Pick a decoration')+'</h1>'+(cur?'<p>'+LL('ตอนนี้: ','Now: ')+yEmo(cur)+' '+decoName(cur)+'</p>':'');
+  h+=free.length?'<div class="ypk">'+free.map(function(d){return '<button class="ypi" data-d="'+d+'"><span>'+yEmo(d)+'</span><small>'+decoName(d)+'</small></button>'}).join('')+'</div>':
+    '<p class="note">'+LL('ของตกแต่งทุกชิ้นวางแล้ว · หาเพิ่มได้จากหีบดาว เหรียญรางวัล และร้านเหรียญตรา','Everything is placed · get more from star chests, badges and the medal shop')+'</p>';
+  h+='<div class="brow2">'+(cur?'<button id="yrm">📦 '+LL('เก็บออก','Remove')+'</button>':'')+'<button id="ycl">'+LL('ปิด','Close')+'</button></div>';
+  $('ovbox').innerHTML='<div class="brf ypop">'+h+'</div>';$('ov').className='';
+  [].forEach.call(document.querySelectorAll('#ovbox .ypi'),function(b){b.onclick=function(){P.yard[i]=b.getAttribute('data-d');saveP();SND.sfx('buy');$('ov').className='off';rSchool()}});
+  if(cur)$('yrm').onclick=function(){P.yard[i]=null;saveP();SND.sfx('tap');$('ov').className='off';rSchool()};
+  $('ycl').onclick=function(){$('ov').className='off'}}
+var _yRS=rSchool;rSchool=function(){_yRS();if(P.stab)return;yInit();var sb=HS.querySelector('.pn.sch .sbig');if(!sb)return;
+  var n=P.deco.length,m=P.yard.filter(Boolean).length;sb.outerHTML=yHTML();
+  yFit();
+  var pn=HS.querySelector('.pn.sch');pn.insertAdjacentHTML('beforeend','<button class="yedb'+(YED?' on':'')+'" id="yedb">'+(YED?'✅ '+LL('เสร็จแล้ว','Done'):'🎀 '+LL('จัดของตกแต่ง','Decorate'))+' <small>'+LL('วางแล้ว '+m+'/12 · มี '+n+' ชิ้น','placed '+m+'/12 · own '+n)+'</small></button>');
+  $('yedb').onclick=function(){YED=YED?0:1;SND.sfx('tap');var sc=HS.scrollTop;rSchool();HS.scrollTop=sc};
+  [].forEach.call(HS.querySelectorAll('.yslot'),function(b){b.onclick=function(){var i=+b.getAttribute('data-i');
+    if(YED){SND.sfx('tap');yPick(i);return}if(P.yard[i]){b.classList.remove('hop');void b.offsetWidth;b.classList.add('hop');SND.sfx('tap');say&&0}else if(!n){toast(LL('ยังไม่มีของตกแต่ง · หาได้จากหีบดาว เหรียญรางวัล และร้านเหรียญตรา','No decorations yet · get them from star chests, badges and the medal shop'))}else{YED=1;rSchool();yPick(i)}}})};
+
+function yFit(){var y=HS.querySelector('.yard'),s=y&&y.querySelector('.ysch'),im=s&&s.querySelector('img');if(!im)return;
+  var f=sForm(),go=function(r){var W=y.clientWidth,H=y.clientHeight,w=s.offsetWidth,mh=H*.46;if(w*r>mh)s.style.width=(mh/r/W*100).toFixed(1)+'%'};
+  if(YRAT[f])go(YRAT[f]);else if(im.complete&&im.naturalWidth)go(YRAT[f]=im.naturalHeight/im.naturalWidth);else im.onload=function(){go(YRAT[f]=im.naturalHeight/im.naturalWidth)}}
+var YRAT={};
+/* v3.38: hall of fame (school → เกียรติยศ) split into tappable sections + no font-shrink jitter on the school page */
+var HSUB=0;
+function hBar(a,b,c){return '<i class="hpbar"><i style="width:'+(b?Math.min(100,a/b*100):0).toFixed(1)+'%;background:'+c+'"></i></i>'}
+function hData(){hofInit();var H=P.hof,tw=[],bad=Object.keys(H.bad).length;WORLDS.forEach(function(W,w){if(W.op==='m')tw.push(w)});
+  return {H:H,acc:H.ans?Math.round(H.ok/H.ans*100):0,tw:tw,tro:tw.filter(function(w){return H.tro.indexOf('tp'+w)>=0}).length,bad:bad,ttl:(P.titles||[]).length}}
+function hSecs(D){return [
+  ['st','📊',LL('สถิติ','Stats'),D.H.ok+' '+LL('ข้อถูก','correct'),0,0,'#5C8FD6'],
+  ['tr','🏆',LL('ถ้วยรางวัล','Trophies'),D.tro+'/'+D.tw.length,D.tro,D.tw.length,'#E0A800'],
+  ['tt','🏷️',LL('ฉายา','Titles'),D.ttl+'/'+TITLES.length,D.ttl,TITLES.length,'#B07CE8'],
+  ['bd','🎖️',LL('เหรียญตรา','Badges'),D.bad+'/'+BADGES.length,D.bad,BADGES.length,'#3FA38E']]}
+var _hHall=hallHTML;hallHTML=function(){var D=hData(),h;
+  if(!HSUB){var tn=P.title?titleName(P.title):'';
+    h='<div class="hhero"><div class="hht"><small>'+LL('ฉายาของฉัน','My title')+'</small><b>'+(tn?'🏷️ '+tn:LL('ยังไม่มีฉายา','No title yet'))+'</b></div><div class="hhs">'+
+      '<span><b>🔥 x'+D.H.combo+'</b><small>'+LL('คอมโบสูงสุด','Best combo')+'</small></span><span><b>🎯 '+D.acc+'%</b><small>'+LL('แม่นยำ','Accuracy')+'</small></span><span><b>✅ '+D.H.ok+'</b><small>'+LL('ตอบถูก','Correct')+'</small></span></div></div>';
+    h+='<div class="hgrid">'+hSecs(D).map(function(s,i){return '<button class="hcard" data-h="'+s[0]+'" style="--c:'+s[6]+';--d:'+(i*40)+'ms"><i>'+s[1]+'</i><b>'+s[2]+'</b><small>'+s[3]+'</small>'+(s[5]?hBar(s[4],s[5],s[6]):'<i class="hpbar sp"></i>')+'<em>›</em></button>'}).join('')+'</div>';
+    return h}
+  var S0=hSecs(D).filter(function(s){return s[0]===HSUB})[0];
+  h='<div class="hsh" style="--c:'+S0[6]+'"><button class="hback" id="hback">◀ '+LL('เกียรติยศ','Hall')+'</button><b>'+S0[1]+' '+S0[2]+'</b><small>'+(S0[5]?S0[3]:'')+'</small></div>';
+  if(HSUB==='st'){var nh=0,tot=Object.keys(HI).filter(function(k){return k.indexOf('cat')===0}).length;P.owned.forEach(function(k){if(k.indexOf('cat')===0)nh++});
+    var st=0;[0,1,2].forEach(function(d){(P.sd[d]||[]).forEach(function(v){st+=v||0})});
+    var T=[['🔥','x'+D.H.combo,LL('คอมโบสูงสุด','Best combo')],['🎯',D.acc+'%',LL('ความแม่นยำรวม','Overall accuracy')],['✅',D.H.ok,LL('ตอบถูกทั้งหมด','Correct answers')],['📝',D.H.ans,LL('ตอบทั้งหมด','Answers')],
+      ['⭐',st,LL('ดาวรวมทุกระดับ','Stars (all levels)')],['🦸',nh+'/'+tot,LL('ฮีโร่ที่มี','Heroes')],['🏫','Lv.'+sLv(),LL('โรงเรียน','School')],['🎀',(P.deco||[]).length,LL('ของตกแต่ง','Decorations')]];
+    h+='<div class="hstat">'+T.map(function(t){return '<div><i>'+t[0]+'</i><b>'+t[1]+'</b><small>'+t[2]+'</small></div>'}).join('')+'</div>';
+    h+='<div class="hsec2">⏱️ '+LL('ชนะบอสเร็วที่สุด','Fastest boss wins')+'</div>'+D.tw.map(function(w){var t=D.H.boss[w];return '<div class="hrow'+(t?'':' no')+'"><span>👑 '+WORLDS[w].title+'</span><b>'+(t?fmtT(t):'–')+'</b></div>'}).join('')}
+  else if(HSUB==='tr'){h+='<div class="htro">'+D.tw.map(function(w){var o=D.H.tro.indexOf('tp'+w)>=0;return '<div class="'+(o?'on':'')+'"><i>🏆</i><b>'+(o?WORLDS[w].title:'???')+'</b><small>'+(o?'✅ '+LL('ได้แล้ว','Earned'):LL('ชนะด่านบอส 6 ของ','Win stage 6 of ')+WORLDS[w].title)+'</small></div>'}).join('')+'</div>'}
+  else if(HSUB==='tt'){h+='<div class="hofb hsub">'+ttlHTML().replace(/<div class="ttlh">[^<]*<\/div>/,'')+'</div>'}
+  else{var B2=BADGES.map(function(B){return [B,!!D.H.bad[B.id],B.p()]});B2.sort(function(a,b){return (b[1]?1:0)-(a[1]?1:0)||(b[2][0]/b[2][1])-(a[2][0]/a[2][1])});
+    h+='<div class="hbdg">'+B2.map(function(x){var B=x[0],o=x[1],p=x[2];return '<div class="'+(o?'on':'')+'"><i>'+(o?B.e:'🔒')+'</i><b>'+B.n+'</b>'+hBar(o?1:p[0],o?1:p[1],o?'#3FA38E':'#8FB5B0')+'<small>'+(o?'✅ ':Math.min(p[0],p[1])+'/'+p[1]+'<br>')+rwTxt(B.rw)+'</small></div>'}).join('')+'</div>'}
+  return h};
+var _hRS=rSchool;rSchool=function(){if(P.stab!==2)HSUB=0;_hRS();if(P.stab!==2)return;
+  [].forEach.call(HS.querySelectorAll('.hcard'),function(b){b.onclick=function(){HSUB=b.getAttribute('data-h');SND.sfx('tap');rSchool();HS.scrollTop=0}});
+  var bk=$('hback');if(bk)bk.onclick=function(){HSUB=0;SND.sfx('tap');rSchool();HS.scrollTop=0}};
+/* jitter fix: the school page scrolls instead of shrinking its font after each image load */
+var _hFit=fitHS;fitHS=function(){if(window.__scr==='school'){if(HS)HS.style.removeProperty('--fz');return}_hFit()};
+/* v3.38.1: warm up the pixel-art caches one piece at a time while the player is idle, so the first island/stage visit does not freeze */
+(function(){var Q=[],busy=0;
+  function add(f){Q.push(f)}
+  function step(dl){busy=1;var t0=performance.now();
+    while(Q.length&&(dl&&dl.timeRemaining?dl.timeRemaining()>8:performance.now()-t0<12)){try{Q.shift()()}catch(e){}}
+    if(Q.length)(window.requestIdleCallback||function(f){setTimeout(f,60)})(step,{timeout:1500});else busy=0}
+  function plan(){add(function(){LAND.seaTile()});add(function(){LAND.cloudImg(0);LAND.cloudImg(1);LAND.birdImg()});
+    ISLES.forEach(function(I,i){add(function(){LAND.islandArt(i)});I.lm.forEach(function(k){add(function(){LAND.base(k,false)})})});
+    var ws=[];WORLDS.forEach(function(W,w){if(worldUnlocked(w))ws.push(w)});ws=ws.slice(-3);if(window.CUR&&CUR.w!=null&&ws.indexOf(CUR.w)<0)ws.unshift(CUR.w);
+    ws.forEach(function(w){add(function(){LAND.backdrop(w)})});}
+  setTimeout(function(){try{plan()}catch(e){}if(!busy)(window.requestIdleCallback||function(f){setTimeout(f,60)})(step,{timeout:1500})},1800)})();
+/* v3.39: hero collection as an even 3-column grid; tap a hero for the full card (stats, skill, level-up) in a popup. Online duel button removed from the cannon-duel page. */
+var COLK=null;
+function colTile(k){var o=P.owned.indexOf(k)>=0,r=HI[k][1],L=o?lvOf(k):0,need=o?lvNeed(k):0,sh=o?(P.shards[k]||0):0,up=o&&need&&sh>=need&&P.gold>=lvGold(k);
+  return '<button class="ct'+(o?'':' lock')+(o&&L>=20?' awk':'')+(up?' up':'')+'" data-k="'+k+'" style="--rc:'+RC[r]+'"><b class="cr">'+r+'</b>'+(o?'<em class="cl">'+(L>=20?'★':'')+'Lv.'+L+'</em>':'')+
+    '<span class="ci"><img src="'+IMG[k].i+'" alt="" loading="lazy"></span><span class="cn">'+(o?HI[k][0]:'???')+'</span>'+
+    (o?(need?'<span class="cs"><i style="width:'+Math.min(100,sh/need*100)+'%"></i><small>🧩 '+sh+'/'+need+'</small></span>':'<span class="cs mx"><small>MAX</small></span>'):'<span class="cs no"><small>🎰 '+LL('กาชา','Gacha')+'</small></span>')+(up?'<i class="cup">⬆️</i>':'')+'</button>'}
+function colCard(k){var d=TYPES[k],r=HI[k][1],L=lvOf(k),m=lvMul(k),need=lvNeed(k),sh=P.shards[k]||0,hp=Math.round(d.hp*m),dm=Math.round(d.dmg*m*10)/10,hs=HSK[k];
+  var h='<div class="cdet'+(L>=20?' awk':'')+'" style="--rc:'+RC[r]+'"><div class="cdh"><span class="cdi"><img src="'+IMG[k].i+'" alt=""></span><span><b class="cr2">'+r+'</b><h1>'+HI[k][0]+'</h1><em class="lvb">'+(L>=20?'★ ':'')+'Lv.'+L+(L>=LVMAX?' MAX':'/'+LVMAX)+'</em></span></div>';
+  h+='<div class="bars"><label><em>❤️ '+LL('เลือด','HP')+' '+hp+'</em><i style="width:'+Math.min(100,hp/300*100)+'%"></i></label><label><em>⚔️ '+LL('โจมตี','Attack')+' '+dm+'</em><i style="width:'+Math.min(100,dm/40*100)+'%"></i></label><label><em>👟 '+LL('ความเร็ว','Speed')+'</em><i style="width:'+Math.min(100,d.speed/7*100)+'%"></i></label></div>';
+  h+='<p class="ctg">'+tags(k).join(' · ')+'</p><p class="afl">'+affTxt(k)+' <i>('+LL('มีผลในเกาะบอส','boss islands')+')</i></p>';
+  h+=L>=5?'<div class="sk">⚡ <u>'+hs[0]+'</u>: '+hs[1]+(L>=10?' ('+hs[2]+')':'<br><i>'+hs[2]+'</i>')+(L>=15?'<br><span class="s15">🔥 Lv.15: พลังสกิล +15%</span>':L>=10?'<br><i>Lv.15: พลังสกิล +15%</i>':'')+(L>=20?'<br><span class="s20">★ ตื่นพลังแล้ว!</span>':L>=15?'<br><i>Lv.20: ตื่นพลัง (กรอบทอง + ออร่า)</i>':'')+'</div>':'<div class="sk lock">🔒 สกิล <u>'+hs[0]+'</u> ปลดที่ Lv.5</div>';
+  if(L<LVMAX)h+='<div class="shp"><em>🧩 เศษ '+sh+'/'+need+'</em><i style="width:'+Math.min(100,sh/need*100)+'%"></i></div><div class="cbtn"><button class="upb cupb"'+(sh<need||P.gold<lvGold(k)?' disabled':'')+'>⬆️ อัปเป็น Lv.'+(L+1)+(lvGold(k)?' · 💰 '+lvGold(k):'')+'</button><button class="gsb cgsb"'+(P.gold<REW.shardGold[r]?' disabled':'')+'>💰 '+REW.shardGold[r]+' → 🧩 +1</button></div>';
+  else h+='<p class="mx">เลเวลสูงสุดแล้ว!</p>';
+  return h+'<p class="cgold">💰 '+P.gold+'</p><button class="ccl" id="ccl">'+LL('ปิด','Close')+'</button></div>'}
+function colOpen(k,fx){COLK=k;$('ovbox').innerHTML=colCard(k);$('ov').className='';var bx=$('ovbox').querySelector('.cdet');if(fx){bx.classList.add('lvup');setTimeout(function(){bx.classList.remove('lvup')},700)}
+  $('ccl').onclick=function(){COLK=null;$('ov').className='off'};
+  var u=bx.querySelector('.cupb'),g=bx.querySelector('.cgsb');
+  if(u)u.onclick=function(){var need=lvNeed(k),gd=lvGold(k);if(!need||(P.shards[k]||0)<need||P.gold<gd)return;P.shards[k]-=need;P.gold-=gd;P.lv[k]=lvOf(k)+1;saveP();SND.sfx('lvup');rCol();colOpen(k,1)};
+  if(g)g.onclick=function(){var pr=REW.shardGold[HI[k][1]];if(P.gold<pr)return;P.gold-=pr;P.shards[k]=(P.shards[k]||0)+1;saveP();SND.sfx('coin');rCol();colOpen(k)}}
+var _cRC=rCol;rCol=function(){if(P.cbn==='m')return _cRC();var bn=P.cbn||0,B=BAN[bn];
+  var h=topbar()+'<div class="st">📖 '+LL('สะสมฮีโร่','Heroes')+' <small>('+P.owned.length+'/'+HEROES.length+')</small></div><div class="dtabs btabs">'+BAN.map(function(B2,i){var n=B2.ks.filter(function(k){return P.owned.indexOf(k)>=0}).length;return '<button class="dt bt2'+(i===bn?' on':'')+'" data-b="'+i+'">'+B2.e+' ตู้ '+(i+1)+' <small>'+n+'/'+B2.ks.length+'</small></button>'}).join('')+'<button class="dt bt2" data-b="m">👹 '+LL('ปีศาจ','Foes')+'</button></div><div class="coll coll3">'+B.ks.map(colTile).join('')+'</div>';
+  var oldC=HS.querySelector('.coll'),csc=oldC?oldC.scrollTop:0;HS.innerHTML=h;bindTop();HS.querySelector('.coll').scrollTop=csc;
+  [].forEach.call(HS.querySelectorAll('.bt2'),function(b){b.onclick=function(){var v=b.getAttribute('data-b');P.cbn=v==='m'?'m':+v;saveP();SND.sfx('tap');rCol();var cl=HS.querySelector('.coll');if(cl)cl.scrollTop=0}});
+  [].forEach.call(HS.querySelectorAll('.ct'),function(b){b.onclick=function(){var k=b.getAttribute('data-k');SND.sfx('tap');if(P.owned.indexOf(k)<0){toast(LL('🔒 หาได้จากตู้กาชา','🔒 Find this hero in the gacha'));return}colOpen(k)}})};
+var _cRD=rDuel;rDuel=function(){_cRD();var b=$('dnb');if(b)b.remove()};
 
 window.onAndroidBack=function(){try{
   if(DU&&!DU.gone){var o0=$('ov');if(o0&&o0.className!=='off'){if(DU.pause){o0.className='off';DU.pause=false;DU.last=performance.now()}return true}duPause();return true}
